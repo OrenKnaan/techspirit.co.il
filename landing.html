@@ -1267,10 +1267,7 @@
       });
 
       if (res.ok) {
-        btn.textContent = 'נשלח! אחזור אליכם בקרוב ✓';
-        btn.style.background = 'var(--teal)';
-        btn.style.opacity = '1';
-        form.reset();
+        window.location.href = 'thank-you.html';
       } else {
         const data = await res.json().catch(() => ({}));
         throw new Error(data.error || 'server error');
