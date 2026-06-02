@@ -4,3 +4,4 @@ Disallow: /analytics/
 Disallow: /thank-you/
 
 Sitemap: https://techspirit.co.il/sitemap.xml
+Sitemap: https://techspirit.co.il/sitemap.txt
