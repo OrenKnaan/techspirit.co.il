@@ -1118,6 +1118,8 @@
         <div class="con-bar"></div>
         <p class="con-desc">יש לכם רעיון? פרויקט? שאלה?<br>שלחו הודעה ואחזור אליכם בהקדם.</p>
         <form id="cf" novalidate>
+          <input type="hidden" name="_subject" value="ליד חדש מהאתר - טכנורוחניק">
+          <input type="hidden" name="_language" value="he">
           <div class="frow">
             <div class="fg">
               <input type="text" id="fn" name="name" placeholder="השם שלכם" required>
@@ -1237,14 +1239,44 @@
     }, 3500);
   })();
 
-  /* ── Contact form ── */
-  document.getElementById('cf').addEventListener('submit', function(e) {
+  /* ── Contact form (Formspree) ── */
+  const FORMSPREE_ID = 'YOUR_FORM_ID'; // ← replace with your ID from formspree.io
+  document.getElementById('cf').addEventListener('submit', async function(e) {
     e.preventDefault();
-    const btn = document.getElementById('sbtn');
-    btn.textContent = 'נשלח! אחזור אליכם בקרוב ✓';
-    btn.style.background = '#2D6B6B';
+    const form = e.target;
+    const btn  = document.getElementById('sbtn');
+    const orig = btn.textContent;
+
+    btn.textContent = 'שולח...';
     btn.disabled = true;
-    /* TODO: wire to form backend (Formspree / EmailJS / Make.com webhook) */
+    btn.style.opacity = '0.75';
+
+    try {
+      const res = await fetch('https://formspree.io/f/' + FORMSPREE_ID, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (res.ok) {
+        btn.textContent = 'נשלח! אחזור אליכם בקרוב ✓';
+        btn.style.background = 'var(--teal)';
+        btn.style.opacity = '1';
+        form.reset();
+      } else {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || 'server error');
+      }
+    } catch (err) {
+      btn.textContent = 'משהו השתבש — נסו שוב';
+      btn.style.background = 'var(--terra-hi)';
+      btn.style.opacity = '1';
+      btn.disabled = false;
+      setTimeout(() => {
+        btn.textContent = orig;
+        btn.style.background = '';
+      }, 4000);
+    }
   });
 </script>
 
