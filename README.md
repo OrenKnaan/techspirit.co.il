@@ -211,8 +211,10 @@ Private branded page (noindex). Features:
 | `<title>` | אתר לרוחך \| אורן כנען - הטכנורוחניק |
 | Meta description | אתר שמדבר את השפה שלכם - לבעלי עסקים רוחניים, מטפלים ומנחות. בניית אתרים עם נשמה, על ידי אורן כנען - הטכנורוחניק. |
 | `lang` / `dir` | `he` / `rtl` |
-| Canonical | not set |
-| Open Graph | ❌ not set |
+| Canonical | ✅ `https://techspirit.co.il/` |
+| Open Graph | ✅ `og:type`, `og:url`, `og:title`, `og:description`, `og:image`, `og:locale` (he_IL), `og:site_name` |
+| Twitter/X Card | ✅ `summary_large_image` — title, description, image |
+| OG image | ✅ `Images/Assets/techspirit-social.jpg` (1200×630) |
 | Structured data | ❌ not set |
 | Robots | indexed (default) |
 
@@ -230,9 +232,9 @@ Private branded page (noindex). Features:
 - ✅ Mobile responsive
 - ✅ Hebrew RTL declared
 - ✅ Favicon set (monk.webp)
-- ❌ `sitemap.xml` — not created
-- ❌ `robots.txt` — not created
-- ❌ Google Search Console — not verified
+- ✅ `sitemap.xml` — `https://techspirit.co.il/` only; all `<loc>` entries use HTTPS
+- ✅ `robots.txt` — `Allow: /`, `Disallow: /analytics/`, `Disallow: /thank-you/`, points to sitemap
+- ✅ Google Search Console — Domain Property verified; sitemap submitted
 
 ---
 
@@ -240,23 +242,29 @@ Private branded page (noindex). Features:
 
 ### High priority
 
-- [ ] **`robots.txt`** — Allow `/`, disallow `/analytics/`, `/thank-you/`
-- [ ] **`sitemap.xml`** — Single-page site; just `https://techspirit.co.il/`
-- [ ] **Google Search Console** — Verify domain, submit sitemap, monitor Core Web Vitals
-- [ ] **Open Graph tags** — `og:title`, `og:description`, `og:image`, `og:url`, `og:locale` (he_IL)
-- [ ] **Canonical tag** — `<link rel="canonical" href="https://techspirit.co.il/">` on index
+- [x] **`robots.txt`** — Allow `/`, disallow `/analytics/`, `/thank-you/`
+- [x] **`sitemap.xml`** — Single-page site; `https://techspirit.co.il/` only; HTTPS enforced in all `<loc>` entries
+- [x] **Google Search Console** — Domain Property verified; sitemap submitted; monitor Core Web Vitals
+- [x] **Open Graph tags** — `og:title`, `og:description`, `og:image`, `og:url`, `og:locale` (he_IL)
+- [x] **Canonical tag** — `<link rel="canonical" href="https://techspirit.co.il/">` on index
+- [x] **Twitter/X Card** — `twitter:card`, `twitter:title`, `twitter:description`, `twitter:image`
+- [x] **OG image** — `techspirit-social.jpg` (1200×630) committed and live
 
 ### Medium priority
 
 - [ ] **Structured data** — `LocalBusiness` schema on index: name, address, phone, URL, service area
-- [ ] **`og:image`** — Create a 1200×630 share image (e.g. monk on teal background + tagline)
-- [ ] **Twitter/X Card** — `twitter:card`, `twitter:title`, `twitter:description`, `twitter:image`
-- [ ] **Alt text audit** — Ensure all portfolio images have descriptive Hebrew alt text
+- [ ] **FAQ schema** — JSON-LD on the FAQ accordion section
+- [ ] **Alt text audit** — Ensure all portfolio and endorser images have descriptive Hebrew alt text
+- [ ] **HTTPS at server level** — Enable hosting panel "Force HTTPS" toggle as backup to the JS redirect
+- [ ] **NAP in footer** — Confirm name/phone/email in footer matches Google Business Profile exactly
 
 ### Lower priority
 
-- [ ] **Page speed audit** — Run Lighthouse; check image compression (monk.webp, portfolio screenshots)
+- [ ] **Page speed audit** — Run Lighthouse / PageSpeed Insights; target LCP < 2.5s
+- [ ] **Image optimisation** — Convert remaining JPG/PNG portfolio images to WebP; add `loading="lazy"` and explicit dimensions
 - [ ] **Self-host fonts** — Reduce Google Fonts dependency for privacy and speed
+- [ ] **Google Business Profile** — Create and optimise for local Israeli searches
+- [ ] **Israeli directory citations** — d.co.il, b144, xnet, zap (NAP must match exactly)
 - [ ] **Hreflang** — Not needed yet (Hebrew-only site)
 
 ---
@@ -288,7 +296,8 @@ python3 -m http.server 8080
 
 ### In progress / planned
 - [ ] **Lead magnet quiz** — "מה סוג הנוכחות הדיגיטלית שהעסק שלך צריך?" — personality quiz with email capture gate before results. Secondary CTA for visitors not ready to WhatsApp.
-- [ ] **SEO foundation** — robots.txt, sitemap.xml, Open Graph, Search Console (see §8)
+- [x] **SEO foundation** — robots.txt, sitemap.xml, canonical, Open Graph, Twitter Card, OG image, Search Console verified (see §8)
+- [ ] **SEO next layer** — Structured data (LocalBusiness + FAQ schema), alt text audit, image optimisation (see §8)
 - [ ] **Meta Pixel** — Placeholder ready in `thank-you/index.html`; activate when Pixel ID is available
 
 ### Owner info
