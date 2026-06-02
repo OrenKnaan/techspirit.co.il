@@ -409,17 +409,17 @@
 
   let tokenClient, accessToken = null, currentDays = 7;
 
-  /* ── SESSION STORAGE ── */
+  /* ── TOKEN STORAGE (localStorage — survives tab/window closes) ── */
   function getStoredToken() {
     try {
-      const s = JSON.parse(sessionStorage.getItem('adminToken') || 'null');
+      const s = JSON.parse(localStorage.getItem('adminToken') || 'null');
       if (!s?.token) return null;
-      if (Date.now() - s.ts > 50 * 60 * 1000) { sessionStorage.removeItem('adminToken'); return null; }
+      if (Date.now() - s.ts > 50 * 60 * 1000) { localStorage.removeItem('adminToken'); return null; }
       return s.token;
     } catch { return null; }
   }
   function saveToken(t) {
-    try { sessionStorage.setItem('adminToken', JSON.stringify({ token: t, ts: Date.now() })); } catch {}
+    try { localStorage.setItem('adminToken', JSON.stringify({ token: t, ts: Date.now() })); } catch {}
   }
 
   /* ── BOOT ── */
@@ -466,7 +466,7 @@
   function signOut() {
     if (accessToken) google.accounts.oauth2.revoke(accessToken);
     accessToken = null;
-    sessionStorage.removeItem('adminToken');
+    localStorage.removeItem('adminToken');
     show('signin');
   }
 

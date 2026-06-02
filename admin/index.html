@@ -266,9 +266,17 @@
 
   let tokenClient;
 
-  /* ── SESSION STORAGE ── */
+  /* ── TOKEN STORAGE (localStorage — survives tab/window closes) ── */
+  function getStoredToken() {
+    try {
+      const s = JSON.parse(localStorage.getItem('adminToken') || 'null');
+      if (!s?.token) return null;
+      if (Date.now() - s.ts > 50 * 60 * 1000) { localStorage.removeItem('adminToken'); return null; }
+      return s.token;
+    } catch { return null; }
+  }
   function saveToken(t) {
-    try { sessionStorage.setItem('adminToken', JSON.stringify({ token: t, ts: Date.now() })); } catch {}
+    try { localStorage.setItem('adminToken', JSON.stringify({ token: t, ts: Date.now() })); } catch {}
   }
 
   function show(s) {
@@ -295,18 +303,15 @@
   }
 
   function signOut() {
-    if (tokenClient && sessionStorage.getItem('adminToken')) {
-      try {
-        const { token } = JSON.parse(sessionStorage.getItem('adminToken'));
-        google.accounts.oauth2.revoke(token);
-      } catch {}
-    }
-    sessionStorage.removeItem('adminToken');
+    const stored = getStoredToken();
+    if (stored) try { google.accounts.oauth2.revoke(stored); } catch {}
+    localStorage.removeItem('adminToken');
     show('signin');
   }
 
   /* ── BOOT ── */
   function boot() {
+    if (getStoredToken()) { show('dashboard'); }
     if (typeof google !== 'undefined') initAuth();
     else document.querySelector('script[src*="gsi"]').addEventListener('load', initAuth);
   }
