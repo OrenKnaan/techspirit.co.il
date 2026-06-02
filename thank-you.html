@@ -17,13 +17,9 @@
     gtag('js', new Date());
     gtag('config', 'G-PQ99J1QETR');
 
-    // Fire conversion event on page load
-    gtag('event', 'generate_lead', {
-      currency: 'ILS',
-      value: 1,
-      event_category: 'contact_form',
-      event_label: 'thank_you_page'
-    });
+    // Fire conversion events on page load
+    gtag('event', 'main_form_submit');
+    gtag('event', 'generate_lead', { currency: 'ILS', value: 1 });
   </script>
 
   <!-- Meta Pixel placeholder — uncomment and add your pixel ID when ready
