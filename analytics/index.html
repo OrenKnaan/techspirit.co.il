@@ -423,15 +423,20 @@
 
   async function loadAll(days) {
     try {
-      const [funnelData, waData] = await Promise.all([
-        fetchFunnel(days),
-        fetchWaClicks(days)
-      ]);
+      const funnelData = await fetchFunnel(days);
       renderSummary(funnelData);
       renderFunnel(funnelData);
-      renderWa(waData);
     } catch (e) {
       document.getElementById('funnel-body').innerHTML = `<div class="error-msg">שגיאה: ${e.message}</div>`;
+    }
+    try {
+      const waData = await fetchWaClicks(days);
+      renderWa(waData);
+    } catch (e) {
+      document.getElementById('wa-body').innerHTML =
+        `<div class="no-data">פירוט לפי מיקום אינו זמין עדיין.<br>
+        יש להגדיר <strong>Custom Dimension</strong> ב-GA4:<br>
+        Admin → Custom Definitions → צור מאפיין → שם: <code>cta_location</code> · סקופ: Event</div>`;
     }
   }
 
