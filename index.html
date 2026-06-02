@@ -1175,8 +1175,8 @@
       <li><a href="#contact">צור קשר</a></li>
     </ul>
     <ul class="f-links" style="margin-top:8px;font-size:13px;opacity:.7">
-      <li><a href="privacy.html">מדיניות פרטיות</a></li>
-      <li><a href="terms.html">תנאי שימוש</a></li>
+      <li><a href="/privacy">מדיניות פרטיות</a></li>
+      <li><a href="/terms">תנאי שימוש</a></li>
     </ul>
     <p class="f-copy">&copy; 2026 טכנורוחניק - אורן כנען. כל הזכויות שמורות.</p>
   </div>
@@ -1312,7 +1312,7 @@
       });
 
       if (res.ok) {
-        window.location.href = 'thank-you.html';
+        window.location.href = '/thank-you';
       } else {
         const data = await res.json().catch(() => ({}));
         throw new Error(data.error || 'server error');
