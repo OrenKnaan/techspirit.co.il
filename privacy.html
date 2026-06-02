@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/webp" href="Images/Assets/monk.webp">
+  <link rel="apple-touch-icon" href="Images/Assets/monk.webp">
+  <meta name="robots" content="noindex, nofollow">
+  <title>מדיניות פרטיות | טכנורוחניק</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Secular+One&family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PQ99J1QETR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-PQ99J1QETR');
+  </script>
+
+  <style>
+    :root {
+      --teal-dark: #162828;
+      --teal:      #2D6B6B;
+      --teal-mid:  #3D8585;
+      --terra:     #C4502A;
+      --gold:      #D4A843;
+      --cream:     #F5F0E6;
+      --parchment: #FAF7F0;
+      --charcoal:  #2C2420;
+      --white:     #FFFFFF;
+      --fh:        'Secular One', sans-serif;
+      --fb:        'Heebo', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--fb); background: var(--parchment); color: var(--charcoal); }
+
+    .site-nav {
+      background: var(--teal-dark);
+      padding: 14px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .site-nav .brand {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none;
+      color: var(--white);
+      font-family: var(--fh);
+      font-size: 18px;
+    }
+    .site-nav .brand img { width: 34px; height: 34px; border-radius: 50%; }
+    .site-nav .back {
+      font-size: 14px;
+      color: rgba(255,255,255,.55);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .site-nav .back:hover { color: var(--white); }
+
+    .page-hero {
+      background: var(--teal-dark);
+      padding: 56px 32px 44px;
+      text-align: center;
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 60% 80% at 10% 110%, rgba(45,107,107,.5) 0%, transparent 55%),
+        radial-gradient(ellipse 40% 50% at 90% 0%, rgba(212,168,67,.12) 0%, transparent 50%);
+    }
+    .page-hero h1 {
+      font-family: var(--fh);
+      font-size: clamp(26px, 5vw, 42px);
+      margin-bottom: 12px;
+      position: relative;
+    }
+    .page-hero .subtitle {
+      font-size: 15px;
+      color: rgba(255,255,255,.45);
+      position: relative;
+    }
+    .divider {
+      width: 44px; height: 3px;
+      background: linear-gradient(90deg, var(--terra), var(--gold));
+      border-radius: 2px;
+      margin: 14px auto 16px;
+    }
+
+    .content {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 52px 32px 88px;
+    }
+
+    .section { margin-bottom: 44px; }
+    .section h2 {
+      font-family: var(--fh);
+      font-size: 20px;
+      color: var(--teal);
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(45,107,107,.18);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section h2 .num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px; height: 28px;
+      background: var(--teal);
+      color: var(--white);
+      border-radius: 50%;
+      font-size: 13px;
+      flex-shrink: 0;
+    }
+    .section p {
+      font-size: 16px;
+      line-height: 2;
+      color: #3a3530;
+      margin-bottom: 14px;
+    }
+    .section p:last-child { margin-bottom: 0; }
+    .section ul {
+      padding-right: 22px;
+      margin-bottom: 14px;
+    }
+    .section ul li {
+      font-size: 16px;
+      line-height: 2;
+      color: #3a3530;
+      margin-bottom: 4px;
+    }
+    .section a { color: var(--teal); }
+    .section a:hover { color: var(--teal-mid); }
+
+    .highlight {
+      background: rgba(45,107,107,.07);
+      border-right: 3px solid var(--teal);
+      padding: 14px 18px;
+      border-radius: 0 6px 6px 0;
+      margin: 4px 0 14px;
+      font-size: 15px;
+      line-height: 1.9;
+      color: #2e2825;
+    }
+
+    .site-footer {
+      background: var(--teal-dark);
+      color: rgba(255,255,255,.5);
+      text-align: center;
+      padding: 36px 24px;
+      font-size: 14px;
+    }
+    .f-links {
+      display: flex;
+      justify-content: center;
+      gap: 8px 24px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+      list-style: none;
+    }
+    .f-links a { color: rgba(255,255,255,.6); text-decoration: none; transition: color .2s; }
+    .f-links a:hover { color: var(--white); }
+    .f-sep { color: rgba(255,255,255,.2); }
+
+    @media (max-width: 600px) {
+      .site-nav { padding: 12px 20px; }
+      .content { padding: 36px 20px 64px; }
+      .page-hero { padding: 40px 20px 32px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="index.html" class="brand">
+    <img src="Images/Assets/monk.webp" alt="טכנורוחניק">
+    טכנורוחניק
+  </a>
+  <a href="index.html" class="back">← חזרה לדף הבית</a>
+</nav>
+
+<div class="page-hero">
+  <h1>מדיניות פרטיות</h1>
+  <div class="divider"></div>
+  <p class="subtitle">עדכון אחרון: יוני 2026</p>
+</div>
+
+<div class="content">
+
+  <div class="section">
+    <h2><span class="num">1</span> מי אנחנו</h2>
+    <p>האתר <strong>techspirit.co.il</strong> מופעל על ידי <strong>אורן כנען</strong>, עוסק פטור (ח.פ. 038741278), המציע שירותי בניית אתרים ועיצוב דיגיטלי לבעלי עסקים רוחניים, מטפלים ומנחות.</p>
+    <p>אנו מחויבים לשמור על פרטיותכם ולטפל בכל מידע אישי שתמסרו לנו באחריות ובשקיפות מלאה.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">2</span> מידע שנאסף</h2>
+    <p><strong>דרך טופס יצירת קשר (בהסכמה מפורשת):</strong></p>
+    <ul>
+      <li>שם מלא</li>
+      <li>כתובת דוא"ל</li>
+      <li>מספר טלפון</li>
+      <li>תוכן ההודעה</li>
+    </ul>
+    <p><strong>דרך Google Analytics (אוטומטי, אנונימי לחלוטין):</strong></p>
+    <ul>
+      <li>עמודים שנצפו ומשך הביקור</li>
+      <li>סוג המכשיר, הדפדפן ומערכת ההפעלה</li>
+      <li>מיקום גיאוגרפי כללי (ברמת מדינה ועיר בלבד)</li>
+      <li>מקור ההגעה לאתר</li>
+    </ul>
+    <div class="highlight">נתוני Analytics אינם כוללים מידע מזהה אישי ולא ניתן לקשרם לאדם ספציפי.</div>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">3</span> שימוש במידע</h2>
+    <p>המידע שנמסר בטופס יצירת הקשר משמש אך ורק:</p>
+    <ul>
+      <li>למענה לפנייתכם ויצירת קשר חוזר</li>
+      <li>להצעת שירות המתאים לצרכיכם</li>
+    </ul>
+    <div class="highlight">לא נשתמש בפרטיכם לצורכי דיוור שיווקי ללא הסכמתכם המפורשת. לא נמכור, נשכיר או נעביר את המידע שלכם לאף גורם שלישי שאינו מפורט להלן.</div>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">4</span> שיתוף עם צד שלישי</h2>
+    <p>המידע שלכם עשוי להיות מועבר לספקי שירות הבאים בלבד, לצורך מתן השירות:</p>
+    <ul>
+      <li><strong>Formspree</strong> - עיבוד וקבלת טפסי יצירת קשר. שרתים בארה"ב. <a href="https://formspree.io/legal/privacy-policy" target="_blank" rel="noopener">מדיניות הפרטיות שלהם &#x2197;</a></li>
+      <li><strong>Google Analytics</strong> - ניתוח תנועה אנונימי באתר. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">מדיניות הפרטיות של Google &#x2197;</a></li>
+    </ul>
+    <p>מלבד גורמים אלה, המידע שלכם לא יועבר, לא יימכר ולא ישותף עם אף גורם נוסף.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">5</span> קובצי עוגיה (Cookies)</h2>
+    <p>האתר משתמש בקובצי עוגיה של Google Analytics למדידת שימוש ושיפור חוויית הגלישה. ניתן לנהל ולמחוק קובצי עוגיה בהגדרות הדפדפן שלכם. השבתתם עשויה להשפיע על אופן הצגת האתר.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">6</span> אחסון ואבטחת מידע</h2>
+    <p>הפרטים שנמסרו בטופס יצירת הקשר מאוחסנים בשרתי Formspree, תחת הצפנת SSL מלאה. נתוני Analytics מאוחסנים בשרתי Google.</p>
+    <p>אנו נוקטים באמצעי אבטחה סבירים להגנה על המידע. יחד עם זאת, אין ביכולתנו להבטיח אבטחה מוחלטת של מידע המועבר דרך האינטרנט.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">7</span> זכויותיכם</h2>
+    <p>בהתאם לחוק הגנת הפרטיות, התשמ"א-1981, יש לכם זכות:</p>
+    <ul>
+      <li>לעיין במידע המוחזק עליכם</li>
+      <li>לבקש תיקון מידע שגוי או לא מדויק</li>
+      <li>לבקש מחיקת המידע שלכם</li>
+      <li>להתנגד לעיבוד המידע שלכם</li>
+    </ul>
+    <p>לממש את זכויותיכם, פנו אלינו ישירות לכתובת המייל המופיעה בסעיף הבא.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">8</span> יצירת קשר בנושא פרטיות</h2>
+    <p>לכל שאלה, בקשה או תלונה בנוגע למדיניות פרטיות זו:</p>
+    <p>
+      <strong>אורן כנען</strong><br>
+      מייל: <a href="mailto:contact@orenknaan.co.il">contact@orenknaan.co.il</a><br>
+      טלפון: <a href="tel:+972544757906">054-4757906</a>
+    </p>
+  </div>
+
+</div>
+
+<footer class="site-footer">
+  <ul class="f-links">
+    <li><a href="index.html">דף הבית</a></li>
+    <li class="f-sep">·</li>
+    <li><a href="privacy.html">מדיניות פרטיות</a></li>
+    <li class="f-sep">·</li>
+    <li><a href="terms.html">תנאי שימוש</a></li>
+    <li class="f-sep">·</li>
+    <li><a href="mailto:contact@orenknaan.co.il">contact@orenknaan.co.il</a></li>
+  </ul>
+  <p>&copy; 2026 אורן כנען - הטכנורוחניק. כל הזכויות שמורות.</p>
+</footer>
+
+</body>
+</html>

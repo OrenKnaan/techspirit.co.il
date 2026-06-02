@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/webp" href="Images/Assets/monk.webp">
+  <link rel="apple-touch-icon" href="Images/Assets/monk.webp">
+  <meta name="robots" content="noindex, nofollow">
+  <title>תנאי שימוש | טכנורוחניק</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Secular+One&family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PQ99J1QETR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-PQ99J1QETR');
+  </script>
+
+  <style>
+    :root {
+      --teal-dark: #162828;
+      --teal:      #2D6B6B;
+      --teal-mid:  #3D8585;
+      --terra:     #C4502A;
+      --gold:      #D4A843;
+      --cream:     #F5F0E6;
+      --parchment: #FAF7F0;
+      --charcoal:  #2C2420;
+      --white:     #FFFFFF;
+      --fh:        'Secular One', sans-serif;
+      --fb:        'Heebo', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--fb); background: var(--parchment); color: var(--charcoal); }
+
+    .site-nav {
+      background: var(--teal-dark);
+      padding: 14px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .site-nav .brand {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none;
+      color: var(--white);
+      font-family: var(--fh);
+      font-size: 18px;
+    }
+    .site-nav .brand img { width: 34px; height: 34px; border-radius: 50%; }
+    .site-nav .back {
+      font-size: 14px;
+      color: rgba(255,255,255,.55);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .site-nav .back:hover { color: var(--white); }
+
+    .page-hero {
+      background: var(--teal-dark);
+      padding: 56px 32px 44px;
+      text-align: center;
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 60% 80% at 90% 110%, rgba(45,107,107,.5) 0%, transparent 55%),
+        radial-gradient(ellipse 40% 50% at 10% 0%, rgba(196,80,42,.12) 0%, transparent 50%);
+    }
+    .page-hero h1 {
+      font-family: var(--fh);
+      font-size: clamp(26px, 5vw, 42px);
+      margin-bottom: 12px;
+      position: relative;
+    }
+    .page-hero .subtitle {
+      font-size: 15px;
+      color: rgba(255,255,255,.45);
+      position: relative;
+    }
+    .divider {
+      width: 44px; height: 3px;
+      background: linear-gradient(90deg, var(--terra), var(--gold));
+      border-radius: 2px;
+      margin: 14px auto 16px;
+    }
+
+    .content {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 52px 32px 88px;
+    }
+
+    .section { margin-bottom: 44px; }
+    .section h2 {
+      font-family: var(--fh);
+      font-size: 20px;
+      color: var(--teal);
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(45,107,107,.18);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section h2 .num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px; height: 28px;
+      background: var(--teal);
+      color: var(--white);
+      border-radius: 50%;
+      font-size: 13px;
+      flex-shrink: 0;
+    }
+    .section p {
+      font-size: 16px;
+      line-height: 2;
+      color: #3a3530;
+      margin-bottom: 14px;
+    }
+    .section p:last-child { margin-bottom: 0; }
+    .section ul {
+      padding-right: 22px;
+      margin-bottom: 14px;
+    }
+    .section ul li {
+      font-size: 16px;
+      line-height: 2;
+      color: #3a3530;
+      margin-bottom: 4px;
+    }
+    .section a { color: var(--teal); }
+    .section a:hover { color: var(--teal-mid); }
+
+    .highlight {
+      background: rgba(45,107,107,.07);
+      border-right: 3px solid var(--teal);
+      padding: 14px 18px;
+      border-radius: 0 6px 6px 0;
+      margin: 4px 0 14px;
+      font-size: 15px;
+      line-height: 1.9;
+      color: #2e2825;
+    }
+    .highlight.terra {
+      background: rgba(196,80,42,.06);
+      border-right-color: var(--terra);
+    }
+
+    .price-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 14px;
+      font-size: 15px;
+    }
+    .price-table th {
+      background: var(--teal-dark);
+      color: var(--white);
+      padding: 10px 14px;
+      text-align: right;
+      font-family: var(--fh);
+      font-weight: 400;
+      font-size: 14px;
+    }
+    .price-table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid rgba(45,107,107,.12);
+      color: #3a3530;
+      line-height: 1.6;
+    }
+    .price-table tr:nth-child(even) td { background: rgba(45,107,107,.04); }
+    .price-table td strong { color: var(--charcoal); }
+
+    .site-footer {
+      background: var(--teal-dark);
+      color: rgba(255,255,255,.5);
+      text-align: center;
+      padding: 36px 24px;
+      font-size: 14px;
+    }
+    .f-links {
+      display: flex;
+      justify-content: center;
+      gap: 8px 24px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+      list-style: none;
+    }
+    .f-links a { color: rgba(255,255,255,.6); text-decoration: none; transition: color .2s; }
+    .f-links a:hover { color: var(--white); }
+    .f-sep { color: rgba(255,255,255,.2); }
+
+    @media (max-width: 600px) {
+      .site-nav { padding: 12px 20px; }
+      .content { padding: 36px 20px 64px; }
+      .page-hero { padding: 40px 20px 32px; }
+      .price-table { font-size: 14px; }
+      .price-table th, .price-table td { padding: 8px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="index.html" class="brand">
+    <img src="Images/Assets/monk.webp" alt="טכנורוחניק">
+    טכנורוחניק
+  </a>
+  <a href="index.html" class="back">← חזרה לדף הבית</a>
+</nav>
+
+<div class="page-hero">
+  <h1>תנאי שימוש ומדיניות שירות</h1>
+  <div class="divider"></div>
+  <p class="subtitle">עדכון אחרון: יוני 2026</p>
+</div>
+
+<div class="content">
+
+  <div class="section">
+    <h2><span class="num">1</span> כללי</h2>
+    <p>ברוכים הבאים לאתר <strong>טכנורוחניק</strong> (techspirit.co.il), המופעל על ידי <strong>אורן כנען</strong>, עוסק פטור (ח.פ. 038741278).</p>
+    <p>השימוש באתר ויצירת קשר דרכו מהווים הסכמה לתנאים המפורטים להלן. אנא קראו אותם בעיון.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">2</span> תיאור השירות</h2>
+    <p>אורן כנען מציע שירותי בניית אתרים, עיצוב דיגיטלי ואסטרטגיה מקוונת, המיועדים בעיקר לבעלי עסקים רוחניים, מטפלים, מנחות ואנשי קהילה.</p>
+    <p>השירותים כוללים, בין היתר: עיצוב ופיתוח אתרים, אינטגרציית טפסים ואנליטיקס, התאמה למובייל ונגישות.</p>
+    <div class="highlight">כל פרויקט מתנהל על בסיס הצעת מחיר כתובה ומוסכמת מראש בין הצדדים.</div>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">3</span> תנאי תשלום</h2>
+    <table class="price-table">
+      <thead>
+        <tr>
+          <th>שלב</th>
+          <th>תנאי תשלום</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>מקדמה</strong></td>
+          <td>50% מהעלות החד-פעמית המוסכמת, לפני תחילת העבודה</td>
+        </tr>
+        <tr>
+          <td><strong>יתרה</strong></td>
+          <td>50% הנותרים בתוך שבוע מסיום הפרויקט</td>
+        </tr>
+        <tr>
+          <td><strong>תחזוקה שנתית</strong></td>
+          <td>תשלום שנתי מראש, לפי מועד חידוש החוזה</td>
+        </tr>
+        <tr>
+          <td><strong>עבודה נוספת</strong></td>
+          <td>150 ש"ח לשעה, או לפי תמחור פרויקטלי מוסכם</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="highlight">כל הסכומים הינם ללא מע"מ. אורן כנען הינו עוסק פטור ואינו מחייב מע"מ.</div>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">4</span> לוחות זמנים</h2>
+    <p>לוח הזמנים לכל פרויקט מוסכם מראש בהצעת המחיר. עמידה בלוח הזמנים מותנית בשיתוף פעולה משני הצדדים:</p>
+    <ul>
+      <li>הלקוח מתחייב למסור תכנים, הערות ואישורים בתוך יומיים מקבלתם.</li>
+      <li>עיכוב מצד הלקוח יגרור דחייה תואמת בלוח הזמנים ללא חיוב נוסף.</li>
+      <li>לו"ז העבודה יחל עם קבלת המקדמה.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">5</span> ביטול הפרויקט</h2>
+    <p>במידה והלקוח מבקש לבטל את ההתקשרות לאחר תחילת העבודה:</p>
+    <ul>
+      <li>תוגש חשבונית עסקה על שעות העבודה שבוצעו בפועל, לפי 150 ש"ח לשעה.</li>
+      <li>המקדמה ששולמה תקוזז מהסכום הסופי.</li>
+      <li>כל חומרי הפרויקט שהושלמו יועברו ללקוח עם השלמת התשלום.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">6</span> קניין רוחני</h2>
+    <p>עם השלמת התשלום המלא:</p>
+    <ul>
+      <li>האתר המוגמר וכל הקוד שנכתב עבורו הופכים לרכושו המלא של הלקוח.</li>
+      <li>הקוד ניתן להעברה לכל מפתח אחר ללא הגבלה.</li>
+      <li>אורן כנען שומר לעצמו את הזכות להציג את הפרויקט בתיק העבודות שלו.</li>
+    </ul>
+    <p>תמונות, גופנים ונכסים שנרכשו עבור פרויקט ספציפי מורשים לשימוש באותו פרויקט בלבד.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">7</span> המחיר אינו כולל</h2>
+    <ul>
+      <li>כתיבת תוכן, תרגום או עריכה לשונית</li>
+      <li>קידום ממומן (פרסום) או SEO שוטף</li>
+      <li>רכישת תמונות ממאגרי תמונות</li>
+      <li>עלויות שוטפות של ספקים חיצוניים (אחסון, דומיין, שירותי צד שלישי)</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">8</span> אחריות ומגבלות</h2>
+    <p>אורן כנען מתחייב לאיכות עבודה מקצועית ולעמידה בתקנים מקובלים בתעשייה.</p>
+    <div class="highlight terra">אורן כנען אינו מתחייב לתוצאות שיווקיות ספציפיות, דירוגים במנועי חיפוש, או לכמות פניות שתתקבלנה דרך האתר.</div>
+    <p>לא תחול אחריות לנזקים עקיפים, אובדן הכנסה, או נזקים תוצאתיים הנובעים מהשימוש באתר שנבנה.</p>
+    <p>אחריות על תקינות האתר לאחר העברתו ללקוח מוגבלת לתקופת התחזוקה השוטפת כפי שמפורט בהצעת המחיר.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">9</span> שינויים בתנאים</h2>
+    <p>אורן כנען רשאי לעדכן תנאים אלה מעת לעת. תנאים לפרויקטים קיימים נקבעים בהצעת המחיר הספציפית ואינם מושפעים משינויים עתידיים.</p>
+    <p>המשך השימוש באתר לאחר עדכון התנאים מהווה הסכמה לגרסה המעודכנת.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">10</span> יצירת קשר</h2>
+    <p>לשאלות, הבהרות או בקשות בנוגע לתנאים אלה:</p>
+    <p>
+      <strong>אורן כנען</strong><br>
+      מייל: <a href="mailto:contact@orenknaan.co.il">contact@orenknaan.co.il</a><br>
+      טלפון: <a href="tel:+972544757906">054-4757906</a><br>
+      ח.פ. 038741278
+    </p>
+  </div>
+
+</div>
+
+<footer class="site-footer">
+  <ul class="f-links">
+    <li><a href="index.html">דף הבית</a></li>
+    <li class="f-sep">·</li>
+    <li><a href="privacy.html">מדיניות פרטיות</a></li>
+    <li class="f-sep">·</li>
+    <li><a href="terms.html">תנאי שימוש</a></li>
+    <li class="f-sep">·</li>
+    <li><a href="mailto:contact@orenknaan.co.il">contact@orenknaan.co.il</a></li>
+  </ul>
+  <p>&copy; 2026 אורן כנען - הטכנורוחניק. כל הזכויות שמורות.</p>
+</footer>
+
+</body>
+</html>
