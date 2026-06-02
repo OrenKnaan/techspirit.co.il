@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /analytics/
+Disallow: /thank-you/
+
+Sitemap: https://techspirit.co.il/sitemap.xml
