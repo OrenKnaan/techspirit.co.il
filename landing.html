@@ -1236,6 +1236,45 @@
     });
   });
 
+  /* ── Funnel section tracking ── */
+  (function() {
+    if (typeof gtag === 'undefined') return;
+
+    const steps = [
+      { id: 'pain',              event: 'section_pain' },
+      { id: 'process',           event: 'section_process' },
+      { id: 'portfolio-preview', event: 'section_portfolio' },
+      { id: 'testimonials',      event: 'section_testimonials' },
+      { id: 'faq',               event: 'section_faq' },
+      { id: 'contact',           event: 'section_contact' },
+    ];
+
+    const fired = new Set();
+    const sectionObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (!e.isIntersecting || fired.has(e.target.id)) return;
+        fired.add(e.target.id);
+        const step = steps.find(s => s.id === e.target.id);
+        if (step) gtag('event', step.event);
+      });
+    }, { threshold: 0.3 });
+
+    steps.forEach(s => {
+      const el = document.getElementById(s.id);
+      if (el) sectionObs.observe(el);
+    });
+
+    // WhatsApp CTA clicks — track position in page
+    document.querySelectorAll('a[href*="wa.me"]').forEach(el => {
+      el.addEventListener('click', () => {
+        const section = el.closest('section');
+        gtag('event', 'cta_whatsapp_click', {
+          cta_location: section ? section.id : 'nav'
+        });
+      });
+    });
+  })();
+
   /* ── Hero slideshow ── */
   (function() {
     const slides = document.querySelectorAll('.hero-slide');
