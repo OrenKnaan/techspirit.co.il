@@ -294,5 +294,5 @@ python3 -m http.server 8080
 ### Owner info
 **Oren Knaan** — עוסק פטור 038741278  
 📞 054-4757906  
-📧 contact@orenknaan.co.il  
+📧 oren@techspirit.co.il  
 🌐 techspirit.co.il
