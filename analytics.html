@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Analytics | טכנורוחניק</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Secular+One&family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+  <style>
+    :root {
+      --teal-dark: #162828;
+      --teal:      #2D6B6B;
+      --teal-mid:  #3D8585;
+      --teal-pale: #75bab8;
+      --terra:     #C4502A;
+      --terra-hi:  #E06840;
+      --gold:      #D4A843;
+      --cream:     #F5F0E6;
+      --charcoal:  #2C2420;
+      --white:     #FFFFFF;
+      --fh:        'Secular One', sans-serif;
+      --fb:        'Heebo', sans-serif;
+      --card-bg:   rgba(255,255,255,.05);
+      --card-border: rgba(255,255,255,.09);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--fb);
+      background: var(--teal-dark);
+      color: var(--white);
+      min-height: 100vh;
+      direction: rtl;
+    }
+    body::before {
+      content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 10% 90%, rgba(45,107,107,.3) 0%, transparent 55%),
+        radial-gradient(ellipse 40% 40% at 90% 10%, rgba(212,168,67,.1) 0%, transparent 50%);
+    }
+
+    /* ── LAYOUT ── */
+    .page { position: relative; z-index: 1; max-width: 960px; margin: 0 auto; padding: 32px 24px 80px; }
+
+    /* ── HEADER ── */
+    .hdr {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 36px; flex-wrap: wrap; gap: 14px;
+    }
+    .hdr-brand { display: flex; align-items: center; gap: 10px; }
+    .hdr-brand img { width: 36px; height: 36px; object-fit: contain; }
+    .hdr-brand span { font-family: var(--fh); font-size: 18px; color: var(--white); }
+    .hdr-badge {
+      background: rgba(212,168,67,.12); border: 1px solid rgba(212,168,67,.28);
+      padding: 4px 14px; border-radius: 20px;
+      font-size: 11px; font-weight: 700; color: var(--gold); letter-spacing: .08em; text-transform: uppercase;
+    }
+
+    /* ── SCREENS ── */
+    .screen { display: none; }
+    .screen.active { display: block; }
+
+    /* ── SETUP SCREEN ── */
+    .setup-card {
+      max-width: 560px; margin: 80px auto; text-align: center;
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 20px; padding: 48px 40px;
+    }
+    .setup-icon { font-size: 48px; margin-bottom: 20px; }
+    .setup-card h2 { font-family: var(--fh); font-size: 26px; margin-bottom: 12px; }
+    .setup-card p { font-size: 15px; color: rgba(255,255,255,.6); line-height: 1.8; margin-bottom: 28px; }
+    .setup-steps {
+      text-align: right; background: rgba(0,0,0,.2); border-radius: 12px;
+      padding: 20px 24px; margin-bottom: 28px;
+    }
+    .setup-steps li { font-size: 13.5px; color: rgba(255,255,255,.75); padding: 5px 0; line-height: 1.7; }
+    .setup-steps li::marker { color: var(--gold); }
+    .setup-steps ol { padding-right: 20px; }
+    .setup-steps code {
+      background: rgba(255,255,255,.08); border-radius: 4px;
+      padding: 1px 6px; font-size: 12px; color: var(--teal-pale);
+      direction: ltr; display: inline-block;
+    }
+
+    /* ── SIGNIN SCREEN ── */
+    .signin-card {
+      max-width: 400px; margin: 100px auto; text-align: center;
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 20px; padding: 48px 36px;
+    }
+    .signin-card img { width: 72px; margin: 0 auto 20px; display: block; }
+    .signin-card h2 { font-family: var(--fh); font-size: 24px; margin-bottom: 8px; }
+    .signin-card p { font-size: 14px; color: rgba(255,255,255,.5); margin-bottom: 32px; }
+    .btn-signin {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--white); color: #3c4043;
+      padding: 12px 24px; border-radius: 50px; border: none; cursor: pointer;
+      font-family: var(--fb); font-size: 15px; font-weight: 700;
+      box-shadow: 0 2px 12px rgba(0,0,0,.3); transition: all .2s;
+    }
+    .btn-signin:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,.4); }
+    .btn-signin svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+    /* ── DATE RANGE ── */
+    .controls {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 28px; flex-wrap: wrap; gap: 12px;
+    }
+    .section-title { font-family: var(--fh); font-size: 20px; color: rgba(255,255,255,.9); }
+    .range-tabs { display: flex; gap: 6px; }
+    .range-btn {
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      color: rgba(255,255,255,.55); padding: 7px 18px; border-radius: 20px;
+      font-family: var(--fb); font-size: 13px; font-weight: 700; cursor: pointer;
+      transition: all .2s;
+    }
+    .range-btn.active, .range-btn:hover {
+      background: rgba(61,133,133,.25); border-color: var(--teal-mid); color: var(--white);
+    }
+    .btn-signout {
+      background: none; border: 1px solid rgba(255,255,255,.15); color: rgba(255,255,255,.4);
+      padding: 7px 16px; border-radius: 20px; cursor: pointer;
+      font-family: var(--fb); font-size: 12px; transition: all .2s;
+    }
+    .btn-signout:hover { border-color: rgba(255,255,255,.4); color: rgba(255,255,255,.7); }
+
+    /* ── SUMMARY CARDS ── */
+    .summary-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 14px; margin-bottom: 32px;
+    }
+    .stat-card {
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 14px; padding: 20px 20px 16px;
+      position: relative; overflow: hidden;
+    }
+    .stat-card::before {
+      content: ''; position: absolute; top: 0; right: 0; left: 0; height: 2px;
+    }
+    .stat-card:nth-child(1)::before { background: var(--teal-mid); }
+    .stat-card:nth-child(2)::before { background: var(--gold); }
+    .stat-card:nth-child(3)::before { background: var(--terra); }
+    .stat-card:nth-child(4)::before { background: #25D366; }
+    .stat-label { font-size: 11px; color: rgba(255,255,255,.45); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 10px; }
+    .stat-value { font-family: var(--fh); font-size: 36px; color: var(--white); line-height: 1; }
+    .stat-sub { font-size: 12px; color: rgba(255,255,255,.35); margin-top: 6px; }
+
+    /* ── FUNNEL ── */
+    .funnel-card {
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 16px; padding: 28px 28px 20px; margin-bottom: 24px;
+    }
+    .funnel-card h3 { font-family: var(--fh); font-size: 16px; color: rgba(255,255,255,.7); margin-bottom: 24px; }
+    .funnel-step { margin-bottom: 14px; }
+    .funnel-step-meta {
+      display: flex; align-items: baseline; justify-content: space-between;
+      margin-bottom: 6px;
+    }
+    .funnel-step-label { font-size: 13.5px; color: rgba(255,255,255,.8); font-weight: 600; }
+    .funnel-step-nums { display: flex; align-items: center; gap: 14px; }
+    .funnel-count { font-family: var(--fh); font-size: 18px; color: var(--white); }
+    .funnel-pct-total { font-size: 12px; color: rgba(255,255,255,.4); }
+    .funnel-drop {
+      font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 10px;
+    }
+    .funnel-drop.good  { background: rgba(61,133,133,.25); color: var(--teal-pale); }
+    .funnel-drop.mid   { background: rgba(212,168,67,.2);  color: var(--gold); }
+    .funnel-drop.bad   { background: rgba(196,80,42,.2);   color: var(--terra-hi); }
+    .funnel-bar-track {
+      height: 8px; background: rgba(255,255,255,.07); border-radius: 4px; overflow: hidden;
+    }
+    .funnel-bar-fill {
+      height: 100%; border-radius: 4px;
+      transition: width .8s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+
+    /* ── WA BREAKDOWN ── */
+    .wa-card {
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 16px; padding: 24px 28px;
+    }
+    .wa-card h3 { font-family: var(--fh); font-size: 16px; color: rgba(255,255,255,.7); margin-bottom: 18px; }
+    .wa-row {
+      display: flex; align-items: center; gap: 12px;
+      padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .wa-row:last-child { border-bottom: none; }
+    .wa-loc { font-size: 13px; color: rgba(255,255,255,.65); flex: 1; }
+    .wa-bar-wrap { flex: 2; height: 6px; background: rgba(255,255,255,.07); border-radius: 3px; overflow: hidden; }
+    .wa-bar { height: 100%; background: #25D366; border-radius: 3px; transition: width .7s ease; }
+    .wa-count { font-family: var(--fh); font-size: 15px; color: #25D366; min-width: 28px; text-align: left; }
+
+    /* ── LOADING / EMPTY ── */
+    .loading {
+      text-align: center; padding: 80px 0; color: rgba(255,255,255,.4); font-size: 15px;
+    }
+    .spinner {
+      width: 36px; height: 36px; border-radius: 50%;
+      border: 3px solid rgba(255,255,255,.1); border-top-color: var(--teal-mid);
+      animation: spin .8s linear infinite; margin: 0 auto 16px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .error-msg {
+      text-align: center; padding: 40px; color: var(--terra-hi); font-size: 14px;
+      background: rgba(196,80,42,.08); border: 1px solid rgba(196,80,42,.2);
+      border-radius: 12px; margin-top: 20px;
+    }
+    .no-data { text-align: center; padding: 48px; color: rgba(255,255,255,.35); font-size: 14px; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .summary-grid { grid-template-columns: repeat(2, 1fr); }
+      .controls { flex-direction: column; align-items: flex-start; }
+      .funnel-card, .wa-card { padding: 20px 18px; }
+    }
+    @media (max-width: 480px) {
+      .summary-grid { grid-template-columns: 1fr 1fr; }
+      .stat-value { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER (always visible) -->
+  <div class="hdr">
+    <div class="hdr-brand">
+      <img src="Images/Assets/monk.webp" alt="טכנורוחניק">
+      <span>טכנורוחניק</span>
+    </div>
+    <div class="hdr-badge">Analytics</div>
+  </div>
+
+  <!-- SCREEN: SETUP (shown when config is missing) -->
+  <div id="screen-setup" class="screen">
+    <div class="setup-card">
+      <div class="setup-icon">⚙️</div>
+      <h2>נדרש הגדרה חד-פעמית</h2>
+      <p>כדי להציג נתונים אמיתיים מ-GA4, צריך להוסיף שני ערכים לקוד הדף. זה לוקח כ-10 דקות.</p>
+      <div class="setup-steps">
+        <p style="font-size:13px;font-weight:700;color:var(--gold);margin-bottom:12px;">שלב 1 — מצא את ה-Property ID שלך ב-GA4</p>
+        <ol>
+          <li>GA4 → Admin (גלגל השיניים) → Property Settings</li>
+          <li>העתק את ה-<strong>Property ID</strong> (מספר כמו <code>123456789</code>)</li>
+          <li>פתח את <code>analytics.html</code> והחלף <code>YOUR_PROPERTY_ID</code></li>
+        </ol>
+        <br>
+        <p style="font-size:13px;font-weight:700;color:var(--gold);margin-bottom:12px;">שלב 2 — צור OAuth Client ID ב-Google Cloud</p>
+        <ol>
+          <li>כנס ל-<a href="https://console.cloud.google.com" target="_blank" style="color:var(--teal-pale)">console.cloud.google.com</a></li>
+          <li>APIs & Services → Enable APIs → אפשר את <strong>Google Analytics Data API</strong></li>
+          <li>Credentials → Create Credentials → OAuth 2.0 Client ID → Web Application</li>
+          <li>ב-Authorized JavaScript Origins הוסף את הדומיין שלך</li>
+          <li>העתק את ה-Client ID והחלף <code>YOUR_CLIENT_ID</code> ב-<code>analytics.html</code></li>
+        </ol>
+      </div>
+      <p style="font-size:12px;color:rgba(255,255,255,.35);">הדף הזה הוא noindex — לא יופיע בגוגל.</p>
+    </div>
+  </div>
+
+  <!-- SCREEN: SIGN IN -->
+  <div id="screen-signin" class="screen">
+    <div class="signin-card">
+      <img src="Images/Assets/monk.webp" alt="">
+      <h2>כניסה לדשבורד</h2>
+      <p>התחבר עם חשבון ה-Google שלך כדי לראות את נתוני הפאנל</p>
+      <button class="btn-signin" onclick="signIn()">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+          <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+          <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+          <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+        </svg>
+        התחבר עם Google
+      </button>
+    </div>
+  </div>
+
+  <!-- SCREEN: DASHBOARD -->
+  <div id="screen-dashboard" class="screen">
+
+    <div class="controls">
+      <span class="section-title">פאנל המרות</span>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
+        <div class="range-tabs">
+          <button class="range-btn active" data-days="7"   onclick="setRange(7,this)">7 ימים</button>
+          <button class="range-btn"        data-days="30"  onclick="setRange(30,this)">30 ימים</button>
+          <button class="range-btn"        data-days="90"  onclick="setRange(90,this)">90 ימים</button>
+        </div>
+        <button class="btn-signout" onclick="signOut()">התנתק</button>
+      </div>
+    </div>
+
+    <!-- Summary cards -->
+    <div class="summary-grid" id="summary-grid">
+      <div class="stat-card">
+        <div class="stat-label">ביקורים</div>
+        <div class="stat-value" id="stat-visits">-</div>
+        <div class="stat-sub">page_view</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">טפסים שנשלחו</div>
+        <div class="stat-value" id="stat-submits">-</div>
+        <div class="stat-sub">main_form_submit</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">המרה</div>
+        <div class="stat-value" id="stat-cvr">-</div>
+        <div class="stat-sub">מביקור לטופס</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">קליקי ווצאפ</div>
+        <div class="stat-value" id="stat-wa">-</div>
+        <div class="stat-sub">cta_whatsapp_click</div>
+      </div>
+    </div>
+
+    <!-- Funnel -->
+    <div class="funnel-card">
+      <h3>פאנל — כמה רחוק הגיעו המבקרים?</h3>
+      <div id="funnel-body">
+        <div class="loading"><div class="spinner"></div>טוען נתונים...</div>
+      </div>
+    </div>
+
+    <!-- WhatsApp by section -->
+    <div class="wa-card">
+      <h3>ווצאפ — מאיזה חלק בדף לחצו?</h3>
+      <div id="wa-body">
+        <div class="loading"><div class="spinner"></div>טוען נתונים...</div>
+      </div>
+    </div>
+
+  </div><!-- /dashboard -->
+
+</div><!-- /page -->
+
+<script>
+  /* ─────────────────────────────────────────────────────
+     CONFIG — fill these two values then push
+  ───────────────────────────────────────────────────── */
+  const PROPERTY_ID = 'YOUR_PROPERTY_ID'; // e.g. '123456789'  (GA4 Admin → Property Settings)
+  const CLIENT_ID   = 'YOUR_CLIENT_ID';   // e.g. '123...apps.googleusercontent.com'
+
+  /* ── Funnel definition ── */
+  const FUNNEL = [
+    { event: 'page_view',            label: 'ביקרו בדף' },
+    { event: 'section_pain',         label: 'ראו את הכאבים' },
+    { event: 'section_process',      label: 'ראו את התהליך' },
+    { event: 'section_portfolio',    label: 'ראו עבודות' },
+    { event: 'section_testimonials', label: 'ראו המלצות' },
+    { event: 'section_faq',          label: 'הגיעו לשאלות' },
+    { event: 'section_contact',      label: 'הגיעו לטופס' },
+    { event: 'main_form_submit',     label: 'שלחו טופס ✓' },
+  ];
+
+  const WA_LABELS = {
+    hero:       'Hero',
+    pain:       'כאבים',
+    'final-cta':'CTA סופי',
+    contact:    'טופס',
+    nav:        'ניווט',
+  };
+
+  /* ── State ── */
+  let tokenClient, accessToken = null, currentDays = 7;
+
+  /* ── Boot ── */
+  function boot() {
+    const configured = PROPERTY_ID !== 'YOUR_PROPERTY_ID' && CLIENT_ID !== 'YOUR_CLIENT_ID';
+    if (!configured) { show('setup'); return; }
+    show('signin');
+    window.onload = () => {
+      if (typeof google !== 'undefined') initAuth();
+    };
+    if (typeof google !== 'undefined') initAuth();
+    else document.querySelector('script[src*="gsi"]').addEventListener('load', initAuth);
+  }
+
+  function show(screen) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById('screen-' + screen).classList.add('active');
+  }
+
+  /* ── Auth ── */
+  function initAuth() {
+    tokenClient = google.accounts.oauth2.initTokenClient({
+      client_id: CLIENT_ID,
+      scope: 'https://www.googleapis.com/auth/analytics.readonly',
+      callback: async (resp) => {
+        if (resp.error) { showError('שגיאת אימות: ' + resp.error); return; }
+        accessToken = resp.access_token;
+        show('dashboard');
+        await loadAll(currentDays);
+      }
+    });
+  }
+
+  function signIn() { tokenClient.requestAccessToken({ prompt: 'consent' }); }
+  function signOut() { google.accounts.oauth2.revoke(accessToken); accessToken = null; show('signin'); }
+
+  /* ── Data fetching ── */
+  async function gaPost(body) {
+    const res = await fetch(
+      `https://analyticsdata.googleapis.com/v1beta/properties/${PROPERTY_ID}:runReport`,
+      {
+        method: 'POST',
+        headers: { 'Authorization': `Bearer ${accessToken}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify(body)
+      }
+    );
+    if (res.status === 401) { tokenClient.requestAccessToken({ prompt: '' }); return null; }
+    if (!res.ok) throw new Error(`GA4 API ${res.status}`);
+    return res.json();
+  }
+
+  async function loadAll(days) {
+    try {
+      const [funnelData, waData] = await Promise.all([
+        fetchFunnel(days),
+        fetchWaClicks(days)
+      ]);
+      renderSummary(funnelData);
+      renderFunnel(funnelData);
+      renderWa(waData);
+    } catch (e) {
+      document.getElementById('funnel-body').innerHTML = `<div class="error-msg">שגיאה: ${e.message}</div>`;
+    }
+  }
+
+  function fetchFunnel(days) {
+    return gaPost({
+      dateRanges: [{ startDate: `${days}daysAgo`, endDate: 'today' }],
+      metrics: [{ name: 'eventCount' }],
+      dimensions: [{ name: 'eventName' }],
+      dimensionFilter: {
+        filter: {
+          fieldName: 'eventName',
+          inListFilter: { values: FUNNEL.map(s => s.event) }
+        }
+      }
+    });
+  }
+
+  function fetchWaClicks(days) {
+    return gaPost({
+      dateRanges: [{ startDate: `${days}daysAgo`, endDate: 'today' }],
+      metrics: [{ name: 'eventCount' }],
+      dimensions: [{ name: 'eventName' }, { name: 'customEvent:cta_location' }],
+      dimensionFilter: {
+        filter: { fieldName: 'eventName', stringFilter: { value: 'cta_whatsapp_click' } }
+      }
+    });
+  }
+
+  /* ── Rendering ── */
+  function parseEventCounts(data) {
+    const map = {};
+    (data?.rows || []).forEach(row => {
+      const name  = row.dimensionValues[0].value;
+      const count = parseInt(row.metricValues[0].value, 10);
+      map[name] = (map[name] || 0) + count;
+    });
+    return map;
+  }
+
+  function fmt(n) { return (n || 0).toLocaleString('he-IL'); }
+
+  function renderSummary(data) {
+    const counts = parseEventCounts(data);
+    const visits  = counts['page_view'] || 0;
+    const submits = counts['main_form_submit'] || 0;
+    const wa      = counts['cta_whatsapp_click'] || 0;
+    const cvr     = visits ? ((submits / visits) * 100).toFixed(1) + '%' : '—';
+
+    document.getElementById('stat-visits').textContent  = fmt(visits);
+    document.getElementById('stat-submits').textContent = fmt(submits);
+    document.getElementById('stat-cvr').textContent     = cvr;
+    document.getElementById('stat-wa').textContent      = fmt(wa);
+  }
+
+  function dropColor(pct) {
+    if (pct >= 70) return 'good';
+    if (pct >= 40) return 'mid';
+    return 'bad';
+  }
+
+  function barColor(pct) {
+    if (pct >= 70) return 'linear-gradient(90deg, #3D8585, #75bab8)';
+    if (pct >= 40) return 'linear-gradient(90deg, #b88a30, #D4A843)';
+    return 'linear-gradient(90deg, #a03520, #C4502A)';
+  }
+
+  function renderFunnel(data) {
+    const counts = parseEventCounts(data);
+    const body = document.getElementById('funnel-body');
+
+    const values = FUNNEL.map(s => counts[s.event] || 0);
+    const top = values[0] || 1;
+
+    if (top === 0) {
+      body.innerHTML = '<div class="no-data">אין עדיין נתונים לתקופה הנבחרת.<br>בדרך כלל לוקח 24–48 שעות לנתונים להופיע.</div>';
+      return;
+    }
+
+    body.innerHTML = FUNNEL.map((step, i) => {
+      const count   = values[i];
+      const prev    = i === 0 ? top : (values[i - 1] || 1);
+      const pctTop  = top ? Math.round((count / top) * 100) : 0;
+      const pctPrev = i === 0 ? 100 : (prev ? Math.round((count / prev) * 100) : 0);
+      const dropClass = i === 0 ? '' : dropColor(pctPrev);
+      const dropBadge = i === 0
+        ? `<span class="funnel-drop good">100%</span>`
+        : `<span class="funnel-drop ${dropClass}">${pctPrev}% מהשלב הקודם</span>`;
+
+      return `
+        <div class="funnel-step">
+          <div class="funnel-step-meta">
+            <span class="funnel-step-label">${i + 1}. ${step.label}</span>
+            <div class="funnel-step-nums">
+              ${dropBadge}
+              <span class="funnel-count">${fmt(count)}</span>
+              <span class="funnel-pct-total">${pctTop}%</span>
+            </div>
+          </div>
+          <div class="funnel-bar-track">
+            <div class="funnel-bar-fill" style="width:${pctTop}%;background:${barColor(pctPrev)};"></div>
+          </div>
+        </div>`;
+    }).join('');
+  }
+
+  function renderWa(data) {
+    const body = document.getElementById('wa-body');
+    if (!data?.rows?.length) {
+      body.innerHTML = '<div class="no-data">אין נתוני קליקי ווצאפ עדיין.</div>';
+      return;
+    }
+
+    const map = {};
+    (data.rows || []).forEach(row => {
+      const loc   = row.dimensionValues[1]?.value || 'unknown';
+      const count = parseInt(row.metricValues[0].value, 10);
+      map[loc] = (map[loc] || 0) + count;
+    });
+
+    const sorted = Object.entries(map).sort((a, b) => b[1] - a[1]);
+    const maxVal = sorted[0]?.[1] || 1;
+
+    body.innerHTML = sorted.map(([loc, count]) => {
+      const label = WA_LABELS[loc] || loc;
+      const pct = Math.round((count / maxVal) * 100);
+      return `
+        <div class="wa-row">
+          <span class="wa-loc">${label}</span>
+          <div class="wa-bar-wrap"><div class="wa-bar" style="width:${pct}%"></div></div>
+          <span class="wa-count">${fmt(count)}</span>
+        </div>`;
+    }).join('');
+  }
+
+  /* ── Range switching ── */
+  function setRange(days, btn) {
+    currentDays = days;
+    document.querySelectorAll('.range-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('funnel-body').innerHTML = '<div class="loading"><div class="spinner"></div>טוען נתונים...</div>';
+    document.getElementById('wa-body').innerHTML     = '<div class="loading"><div class="spinner"></div>טוען נתונים...</div>';
+    loadAll(days);
+  }
+
+  boot();
+</script>
+</body>
+</html>
