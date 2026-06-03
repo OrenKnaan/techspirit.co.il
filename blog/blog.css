@@ -2,7 +2,8 @@
 @font-face{font-family:'Secular One';src:url('../fonts/Secular_One/SecularOne-Regular.woff2') format('woff2');font-weight:400;font-display:swap}
 :root{--td:#162828;--t:#2D6B6B;--tm:#3D8585;--tp:#DFF0F0;--terra:#C4502A;--th:#E06840;--g:#D4A843;--gh:#E8C870;--cr:#F5F0E6;--p:#FAF7F0;--ch:#2C2420;--mu:#8A7A6E;--w:#FFFFFF;--fh:'Secular One',sans-serif;--fb:'Heebo',sans-serif;--e:.3s ease}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
-body{font-family:var(--fb);background:var(--p);color:var(--ch);line-height:1.8;direction:rtl;font-size:17px}a{text-decoration:none;color:inherit}img{max-width:100%;height:auto;display:block}
+body{font-family:var(--fb);background:var(--p);color:var(--ch);line-height:1.8;direction:rtl;font-size:17px}a{text-decoration:none;color:inherit}
+.ab a{color:var(--t);border-bottom:1px solid rgba(45,107,107,.3);transition:border-color var(--e),color var(--e)}.ab a:hover{color:var(--td);border-bottom-color:var(--td)}img{max-width:100%;height:auto;display:block}
 .sh{background:var(--td);padding:14px 0;position:sticky;top:0;z-index:900;box-shadow:0 2px 20px rgba(0,0,0,.25)}.sh .c{max-width:1080px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between}
 .sb{display:flex;align-items:center;gap:10px;font-family:var(--fh);font-size:18px;color:var(--w)}.sb img{width:32px;height:32px;object-fit:contain}
 .snl{display:flex;align-items:center;gap:24px}.snl a{color:rgba(255,255,255,.75);font-size:14px;font-weight:500;transition:color var(--e)}.snl a:hover{color:var(--gh)}
