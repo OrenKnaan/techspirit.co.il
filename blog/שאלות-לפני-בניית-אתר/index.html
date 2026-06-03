@@ -229,7 +229,7 @@
 <script>
 (function(){
   var canon=(document.querySelector('link[rel=canonical]')||{}).href||'';
-  var current=canon.replace(/\/+$/,'').split('/').pop();
+  var current=decodeURIComponent(canon.replace(/\/+$/,'').split('/').pop());
   var cur=BLOG_POSTS.find(function(p){return p.slug===current;});
   var curCat=cur?cur.cat:'';
   var pool=BLOG_POSTS.filter(function(p){return p.published&&p.slug!==current;});
