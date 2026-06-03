@@ -15,36 +15,37 @@ const BLOG_POSTS = [
     slug:'שיווק-אתי-לעסק',
     title:'שיווק אתי לעסק: האתר הוא המקום שבו הכנות הופכת לשיווק',
     excerpt:'שיווק אתי לא אומר שיווק חלש. אם יש לך שירות טוב וקהל יעד ברור, אתר שעשוי נכון הוא הכלי השיווקי הכי כנה שיש.',
-    date:'30 בנובמבר 2023',read:'5 דק׳',tag:'שיווק',cat:'seo',feat:false,published:false
+    date:'10 ביוני 2026',read:'5 דק׳',tag:'שיווק',cat:'seo',feat:false,published:false,publishDate:'2026-06-10'
   },
   {
     slug:'אחסון-אתרים-וורדפרס',
     title:'אחסון אתרים וורדפרס בישראל: למה אני משלם יותר ולא מצטער',
     excerpt:'שנים ניסיתי שירותים זולים. עד שהבנתי ששירות אחסון גרוע עולה לך הרבה יותר מהחסכון החודשי.',
-    date:'18 בדצמבר 2024',read:'5 דק׳',tag:'כלים',cat:'tools',feat:false,published:false
+    date:'17 ביוני 2026',read:'5 דק׳',tag:'כלים',cat:'tools',feat:false,published:false,publishDate:'2026-06-17'
   },
   {
     slug:'אתר-אינטרנט-לעסק',
     title:'אתר אינטרנט לעסק: למה להסתמך רק על רשתות חברתיות זו טעות',
     excerpt:'הרשתות החברתיות שלך שייכות לרשתות החברתיות, לא לך. האתר שלך שייך לך. ההבדל הזה חשוב יותר ממה שחושבים.',
-    date:'16 בדצמבר 2024',read:'5 דק׳',tag:'בניית אתרים',cat:'website',feat:false,published:false
+    date:'24 ביוני 2026',read:'5 דק׳',tag:'בניית אתרים',cat:'website',feat:false,published:false,publishDate:'2026-06-24'
   },
   {
     slug:'כתיבת-תוכן-לאתר',
     title:'כתיבת תוכן לאתר: שיעור מתקשורת מקרבת',
     excerpt:'הבעיה הכי נפוצה באתרים של מטפלים: הם כותבים על עצמם, לא על הלקוח. שיעור אחד מ-NVC ישנה את זה.',
-    date:'19 ביוני 2023',read:'5 דק׳',tag:'תוכן',cat:'seo',feat:false,published:false
+    date:'1 ביולי 2026',read:'5 דק׳',tag:'תוכן',cat:'seo',feat:false,published:false,publishDate:'2026-07-01'
   },
   {
     slug:'נוכחות-אינטרנטית',
     title:'לבנות נוכחות אינטרנטית: מה שלמדתי מיצירת מציאות',
     excerpt:'ההבדל בין אתר שעובד לאתר שלא הוא לרוב לא בכלים. הוא בכוונה שמאחוריו.',
-    date:'10 במאי 2022',read:'5 דק׳',tag:'אסטרטגיה',cat:'strategy',feat:false,published:false
+    date:'8 ביולי 2026',read:'5 דק׳',tag:'אסטרטגיה',cat:'strategy',feat:false,published:false,publishDate:'2026-07-08'
   },
   {
     slug:'אתר-לעסק-רוחני',
     title:'בניית אתר לעסק רוחני: 5 דברים שלמדתי בפרויקטים',
     excerpt:'אתר לעסק רוחני שונה. הוא צריך לבנות אמון, לשקף אישיות, ולדבר לקהל שמחפש תהודה לא פיצ׳רים.',
-    date:'17 ביוני 2020',read:'5 דק׳',tag:'בניית אתרים',cat:'website',feat:false,published:false
+    date:'15 ביולי 2026',read:'5 דק׳',tag:'בניית אתרים',cat:'website',feat:false,published:false,publishDate:'2026-07-15'
   }
 ];
+if (typeof module !== 'undefined') module.exports = BLOG_POSTS;
