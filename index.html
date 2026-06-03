@@ -595,6 +595,16 @@
     .f-links a:hover { color: var(--gold); }
     .f-copy { font-size: 12px; color: rgba(255,255,255,.25); }
 
+    /* ── BLOG PREVIEW ── */
+    .bp-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:16px}
+    .bp-card{display:flex;flex-direction:column;background:var(--white);border-radius:var(--r);padding:28px 30px;border:1.5px solid var(--cream-dk);box-shadow:var(--sh-sm);transition:box-shadow var(--ease),transform var(--ease)}
+    .bp-card:hover{box-shadow:var(--sh-md);transform:translateY(-3px)}
+    .bp-tag{display:inline-block;background:rgba(45,107,107,.1);color:var(--teal);font-size:11px;font-weight:700;padding:3px 12px;border-radius:20px;margin-bottom:12px;letter-spacing:.06em;align-self:flex-start}
+    .bp-card h3{font-family:var(--fh);font-size:18px;color:var(--charcoal);margin-bottom:10px;line-height:1.35}
+    .bp-card p{font-size:14.5px;color:var(--muted);line-height:1.75;flex:1}
+    .bp-read{display:inline-block;margin-top:18px;color:var(--teal);font-size:13.5px;font-weight:700}
+    @media(max-width:640px){.bp-grid{grid-template-columns:1fr}}
+
     /* back to top */
     #btt {
       position: fixed; bottom: 28px; left: 28px; z-index: 800;
@@ -1027,6 +1037,7 @@
           <span class="tag">אוטומציות</span>
           <span class="tag">Elementor</span>
         </div>
+        <p class="about-p" style="margin-top:20px">כותב גם על הנושאים האלה <a href="/blog/" style="color:var(--teal);font-weight:700;border-bottom:1.5px solid rgba(45,107,107,.3)">בבלוג ←</a></p>
       </div>
     </div>
   </div>
@@ -1113,6 +1124,33 @@
       </div>
 
     </div>
+  </div>
+</section>
+
+
+<!-- BLOG PREVIEW -->
+<section class="section" style="background:var(--parchment);padding-bottom:72px">
+  <div class="container">
+    <div class="pain-heading rv">
+      <span class="eyebrow">מהבלוג</span>
+      <h2 class="section-h2">קראו לפני שמחליטים</h2>
+      <div class="bar"></div>
+    </div>
+    <div class="bp-grid">
+      <a href="https://techspirit.co.il/blog/שאלות-לפני-בניית-אתר/" class="bp-card rv">
+        <span class="bp-tag">תכנון</span>
+        <h3>4 שאלות שצריך לשאול לפני שבונים אתר לעסק</h3>
+        <p>שאלות שאם לא שואלים אותן לפני הפרויקט, מגלים שהתחלנו מנקודה הלא נכונה אחרי שכבר השקענו.</p>
+        <span class="bp-read">קרא עוד ←</span>
+      </a>
+      <a href="https://techspirit.co.il/blog/בחירת-בונה-אתרים/" class="bp-card rv d1">
+        <span class="bp-tag">בניית אתרים</span>
+        <h3>איך לבחור בונה אתרים שמתאים לך</h3>
+        <p>מה שעשוי לחסוך לך הרבה כאב ראש: להבין שהבעיה הכי נפוצה בפרויקטי אתרים היא לא המחיר, היא ההתאמה.</p>
+        <span class="bp-read">קרא עוד ←</span>
+      </a>
+    </div>
+    <p class="port-more rv" style="margin-top:28px"><a href="/blog/">לכל המאמרים בבלוג ←</a></p>
   </div>
 </section>
 
