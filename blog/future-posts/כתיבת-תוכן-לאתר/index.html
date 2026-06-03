@@ -197,11 +197,7 @@
     </div>
     <div class="bio"><img src="../../Images/Assets/monk.webp" alt="אורן כנען"><div><h3>אורן כנען - הטכנורוחניק</h3><p>בונה אתרים לעסקים רוחניים ומטפלים בישראל. בכל פרויקט אני עוזר לבעל העסק לנסח מה הוא מציע בצורה שמדברת לקהל שלו.</p></div></div>
     <div class="cta"><h2>צריך עזרה בכתיבת התוכן לאתר?</h2><p>חלק מהפרויקטים כוללים גם ייעוץ על כתיבת התוכן, לא רק עיצוב.</p><a href="https://techspirit.co.il/#contact" class="btn"><i class="fab fa-whatsapp"></i>בואו נדבר</a></div>
-    <section class="rel"><h2>עוד מאמרים שאולי יעניינו אותך</h2><div class="rg">
-      <a href="https://techspirit.co.il/blog/שיווק-אתי-לעסק/" class="rc"><span>שיווק</span><h3>שיווק אתי לעסק: האתר הוא המקום שבו הכנות הופכת לשיווק</h3></a>
-      <a href="https://techspirit.co.il/blog/שאלות-לפני-בניית-אתר/" class="rc"><span>תכנון</span><h3>4 שאלות שצריך לשאול לפני שבונים אתר לעסק</h3></a>
-      <a href="https://techspirit.co.il/blog/בחירת-בונה-אתרים/" class="rc"><span>בניית אתרים</span><h3>איך לבחור בונה אתרים שמתאים לך</h3></a>
-    </div></section>
+    <section class="rel"><h2>עוד מאמרים שאולי יעניינו אותך</h2><div class="rg" id="rel-grid"></div></section>
   </article>
 </main>
 <footer><div class="c">
@@ -210,5 +206,20 @@
   <nav class="fl" style="font-size:12px;opacity:.6"><a href="https://techspirit.co.il/privacy">מדיניות פרטיות</a><a href="https://techspirit.co.il/terms">תנאי שימוש</a></nav>
   <p class="fc">&copy; 2026 טכנורוחניק - אורן כנען. כל הזכויות שמורות.</p>
 </div></footer>
+<script src="../../posts.js"></script>
+<script>
+(function(){
+  var canon=(document.querySelector('link[rel=canonical]')||{}).href||'';
+  var current=canon.replace(/\/+$/,'').split('/').pop();
+  var cur=BLOG_POSTS.find(function(p){return p.slug===current;});
+  var curCat=cur?cur.cat:'';
+  var pool=BLOG_POSTS.filter(function(p){return p.published&&p.slug!==current;});
+  pool.sort(function(a,b){return(b.cat===curCat?1:0)-(a.cat===curCat?1:0);});
+  var grid=document.getElementById('rel-grid');
+  if(grid)grid.innerHTML=pool.slice(0,3).map(function(p){
+    return'<a href="https://techspirit.co.il/blog/'+p.slug+'/" class="rc"><span>'+p.tag+'</span><h3>'+p.title+'</h3></a>';
+  }).join('');
+})();
+</script>
 </body>
 </html>

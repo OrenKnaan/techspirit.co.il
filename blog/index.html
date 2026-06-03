@@ -104,11 +104,9 @@
   <p class="fc">&copy; 2026 טכנורוחניק - אורן כנען. כל הזכויות שמורות.</p>
 </div></footer>
 
+<script src="./posts.js"></script>
 <script>
-const posts = [
-  {slug:'שאלות-לפני-בניית-אתר',title:'4 שאלות שצריך לשאול לפני שבונים אתר לעסק',excerpt:'שאלות שאם לא שואלים אותן לפני הפרויקט, מגלים שהתחלנו מנקודה הלא נכונה אחרי שכבר השקענו.',date:'3 ביוני 2026',read:'5 דק׳',tag:'תכנון',cat:'strategy',feat:false},
-  {slug:'בחירת-בונה-אתרים',title:'איך לבחור בונה אתרים שמתאים לך',excerpt:'מה שעשוי לחסוך לך הרבה כאב ראש: להבין שהבעיה הכי נפוצה בפרויקטי אתרים היא לא המחיר, היא ההתאמה.',date:'2 ביוני 2026',read:'5 דק׳',tag:'בניית אתרים',cat:'website',feat:false}
-];
+const posts = BLOG_POSTS.filter(p => p.published);
 
 function render(filter){
   const g=document.getElementById('pg'),nr=document.getElementById('nr');
