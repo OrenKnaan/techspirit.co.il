@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>תוכן Google Business Profile — הטכנורוחניק</title>
+  <style>
+    :root {
+      --teal: #2D6B6B; --teal-dk: #162828; --teal-lt: #DFF0F0;
+      --terra: #C4502A; --gold: #D4A843;
+      --cream: #FAF7F0; --cr: #F5F0E6; --crdk: #EDE5D6;
+      --muted: #8A7A6E; --dark: #2C2420; --white: #fff;
+      --fh: 'Segoe UI', Arial, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--fh); background: var(--cream); color: var(--dark); line-height: 1.7; font-size: 15px; }
+
+    header {
+      background: var(--teal-dk); color: #fff; padding: 28px 32px;
+      display: flex; align-items: center; gap: 16px;
+    }
+    header h1 { font-size: 20px; font-weight: 700; }
+    header p { font-size: 13px; color: rgba(255,255,255,.55); margin-top: 2px; }
+
+    .toc {
+      background: var(--teal-lt); border-bottom: 1px solid var(--crdk);
+      padding: 14px 32px; display: flex; gap: 20px; flex-wrap: wrap;
+    }
+    .toc a { font-size: 13px; color: var(--teal); font-weight: 600; text-decoration: none; }
+    .toc a:hover { text-decoration: underline; }
+
+    main { max-width: 820px; margin: 0 auto; padding: 36px 24px 80px; }
+
+    .section { margin-bottom: 44px; }
+    .section-title {
+      font-size: 13px; font-weight: 700; letter-spacing: .08em;
+      color: var(--teal); text-transform: uppercase; margin-bottom: 18px;
+      padding-bottom: 8px; border-bottom: 2px solid var(--teal-lt);
+    }
+
+    .field { margin-bottom: 20px; }
+    .field-label {
+      font-size: 12px; font-weight: 700; color: var(--muted);
+      text-transform: uppercase; letter-spacing: .06em;
+      margin-bottom: 6px; display: flex; align-items: center; gap: 10px;
+    }
+    .field-label .limit { font-weight: 400; color: #bbb; }
+    .field-label .required {
+      background: var(--terra); color: #fff; font-size: 10px;
+      padding: 1px 7px; border-radius: 10px; letter-spacing: 0;
+    }
+    .field-label .optional {
+      background: var(--crdk); color: var(--muted); font-size: 10px;
+      padding: 1px 7px; border-radius: 10px; letter-spacing: 0;
+    }
+
+    .copy-box {
+      position: relative; background: var(--white);
+      border: 1.5px solid var(--crdk); border-radius: 10px;
+      padding: 14px 50px 14px 16px; font-size: 15px;
+      color: var(--dark); white-space: pre-wrap; line-height: 1.75;
+      cursor: text; min-height: 42px;
+    }
+    .copy-box.multiline { min-height: 90px; }
+    .copy-box.list-box { padding: 0; overflow: hidden; }
+    .copy-box.list-box .list-item {
+      padding: 10px 50px 10px 16px; border-bottom: 1px solid var(--cr);
+      position: relative; display: flex; align-items: flex-start; gap: 10px;
+    }
+    .copy-box.list-box .list-item:last-child { border-bottom: none; }
+    .list-num {
+      background: rgba(45,107,107,.1); color: var(--teal);
+      font-size: 11px; font-weight: 700; min-width: 22px; height: 22px;
+      border-radius: 50%; display: inline-flex; align-items: center;
+      justify-content: center; flex-shrink: 0; margin-top: 2px;
+    }
+    .list-content { flex: 1; }
+    .list-name { font-weight: 700; color: var(--teal-dk); }
+    .list-desc { font-size: 13.5px; color: var(--muted); margin-top: 2px; }
+
+    .copy-btn {
+      position: absolute; top: 10px; left: 10px;
+      background: var(--cr); border: 1px solid var(--crdk); color: var(--muted);
+      font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 6px;
+      cursor: pointer; transition: all .2s; white-space: nowrap;
+      font-family: var(--fh);
+    }
+    .copy-box.list-box .copy-btn { top: 8px; }
+    .copy-btn:hover { background: var(--teal); color: #fff; border-color: var(--teal); }
+    .copy-btn.copied { background: #2a7a4a; color: #fff; border-color: #2a7a4a; }
+
+    .char-counter {
+      font-size: 11px; color: var(--muted); text-align: left;
+      margin-top: 5px;
+    }
+    .char-counter span { font-weight: 700; color: var(--teal); }
+    .char-counter span.warn { color: var(--terra); }
+
+    .note {
+      background: rgba(212,168,67,.1); border-right: 3px solid var(--gold);
+      border-radius: 0 8px 8px 0; padding: 10px 14px; margin-top: 10px;
+      font-size: 13px; color: var(--dark);
+    }
+    .note strong { color: var(--teal-dk); }
+
+    .tip {
+      background: var(--teal-lt); border-radius: 10px;
+      padding: 14px 18px; margin-bottom: 24px; font-size: 13.5px;
+    }
+    .tip strong { color: var(--teal-dk); }
+
+    .steps {
+      background: var(--white); border: 1px solid var(--crdk);
+      border-radius: 12px; padding: 20px 24px; margin-bottom: 28px;
+    }
+    .steps h3 { font-size: 14px; color: var(--teal-dk); margin-bottom: 12px; }
+    .steps ol { padding-right: 20px; }
+    .steps li { font-size: 13.5px; margin-bottom: 8px; color: var(--dark); }
+    .steps li a { color: var(--teal); }
+
+    .badge-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
+    .badge {
+      background: rgba(45,107,107,.1); color: var(--teal);
+      font-size: 12px; font-weight: 700; padding: 4px 12px;
+      border-radius: 20px; border: 1px solid rgba(45,107,107,.2);
+    }
+    .badge.primary { background: var(--teal); color: #fff; border-color: var(--teal); }
+
+    @media(max-width:600px){
+      main { padding: 24px 16px 60px; }
+      header { padding: 20px 16px; }
+      .toc { padding: 12px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>Google Business Profile — הטכנורוחניק</h1>
+    <p>תוכן מוכן להדבקה לפרופיל העסקי בגוגל</p>
+  </div>
+</header>
+
+<nav class="toc">
+  <a href="#basics">פרטי בסיס</a>
+  <a href="#description">תיאור העסק</a>
+  <a href="#services">שירותים</a>
+  <a href="#qa">שאלות ותשובות</a>
+  <a href="#photos">תמונות</a>
+  <a href="#setup">איך להקים</a>
+</nav>
+
+<main>
+
+  <!-- SETUP GUIDE -->
+  <div class="steps" id="setup">
+    <h3>איך מקימים פרופיל (Service Area Business — ללא כתובת פומבית)</h3>
+    <ol>
+      <li>היכנסו ל-<a href="https://business.google.com" target="_blank">business.google.com</a> → "הוסף עסק"</li>
+      <li>שם העסק: הדביקו מהשדה למטה. בחרו קטגוריה: <strong>Web designer</strong></li>
+      <li>בשאלה "האם הלקוחות מגיעים אליך?" — בחרו <strong>לא</strong></li>
+      <li>הגדירו אזור שירות: <strong>ישראל</strong></li>
+      <li>אל תפרסמו כתובת — בחרו "הסתר כתובת"</li>
+      <li>אמתו בעזרת מספר טלפון (SMS) — <strong>054-475-7906</strong></li>
+    </ol>
+  </div>
+
+  <!-- BASICS -->
+  <section class="section" id="basics">
+    <div class="section-title">פרטי בסיס</div>
+
+    <div class="field">
+      <div class="field-label">שם העסק <span class="required">חובה</span></div>
+      <div class="copy-box" id="f-name">הטכנורוחניק<button class="copy-btn" onclick="copyField('f-name', this)">העתק</button></div>
+      <div class="note"><strong>טיפ:</strong> שמרו על שם קצר ועקבי. אל תוסיפו מילות מפתח לשם — גוגל עלולה להסיר את הפרופיל.</div>
+    </div>
+
+    <div class="field">
+      <div class="field-label">קטגוריה ראשית <span class="required">חובה</span></div>
+      <div class="copy-box" id="f-cat1">Web designer<button class="copy-btn" onclick="copyField('f-cat1', this)">העתק</button></div>
+    </div>
+
+    <div class="field">
+      <div class="field-label">קטגוריות משניות <span class="optional">רשות</span></div>
+      <div class="badge-row">
+        <span class="badge primary">Web designer (ראשית)</span>
+        <span class="badge">Internet marketing service</span>
+        <span class="badge">Graphic designer</span>
+        <span class="badge">Search engine optimization service</span>
+      </div>
+      <div class="note">הוסיפו עד 9 קטגוריות משניות. כל הוספה מרחיבה את החשיפה לחיפושים נוספים.</div>
+    </div>
+
+    <div class="field">
+      <div class="field-label">טלפון <span class="required">חובה</span></div>
+      <div class="copy-box" id="f-phone">054-475-7906<button class="copy-btn" onclick="copyField('f-phone', this)">העתק</button></div>
+    </div>
+
+    <div class="field">
+      <div class="field-label">אתר <span class="required">חובה</span></div>
+      <div class="copy-box" id="f-url">https://techspirit.co.il<button class="copy-btn" onclick="copyField('f-url', this)">העתק</button></div>
+    </div>
+
+    <div class="field">
+      <div class="field-label">אזור שירות <span class="required">חובה</span></div>
+      <div class="copy-box" id="f-area">ישראל<button class="copy-btn" onclick="copyField('f-area', this)">העתק</button></div>
+      <div class="note">בחרו "Israel" מהרשימה. אפשר להוסיף גם ערים ספציפיות כמו ירושלים, תל אביב, חיפה אם רוצים לחזק נוכחות מקומית.</div>
+    </div>
+
+    <div class="field">
+      <div class="field-label">Short name (URL קצר) <span class="optional">רשות</span></div>
+      <div class="copy-box" id="f-short">techspirit<button class="copy-btn" onclick="copyField('f-short', this)">העתק</button></div>
+      <div class="note">הכתובת תהיה: <strong>g.page/techspirit</strong> — שלחו ללקוחות לקבלת ביקורות.</div>
+    </div>
+  </section>
+
+  <!-- DESCRIPTION -->
+  <section class="section" id="description">
+    <div class="section-title">תיאור העסק</div>
+    <div class="tip">
+      <strong>מגבלה:</strong> 750 תווים. גוגל מציגה רק ~250 תווים ראשונים — שימו את הדברים החשובים בהתחלה. אין לכלול קישורים, מספרי טלפון, או טענות שאינן ניתנות לאימות.
+    </div>
+
+    <div class="field">
+      <div class="field-label">תיאור <span class="required">חובה</span> <span class="limit">עד 750 תווים</span></div>
+      <div class="copy-box multiline" id="f-desc">בניית אתרים לעסקים רוחניים ומטפלים בישראל.
+
+אם אתם קואצ׳ים, מנחי סדנאות, מטפלים אנרגטיים, או כל עסק שמביא ריפוי ומודעות לעולם — בניתי אתרים דומים לשלכם. מתמחה באתרים שמשקפים אישיות, בונים אמון, ומביאים לקוחות.
+
+כל פרויקט כולל: עיצוב מותאם אישית, כתיבת תוכן, SEO בסיסי, ואחסון. עובד עם לקוחות בכל הארץ.
+
+שיחת ייעוץ ראשונה ללא עלות.<button class="copy-btn" onclick="copyField('f-desc', this)">העתק</button></div>
+      <div class="char-counter" id="desc-count"></div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section" id="services">
+    <div class="section-title">שירותים</div>
+    <div class="tip">
+      <strong>איפה זה מופיע:</strong> בלשונית "שירותים" בפרופיל. כל שירות: שם (עד 120 תווים) + תיאור (עד 300 תווים) + מחיר (רשות).
+    </div>
+
+    <div class="field">
+      <div class="field-label">רשימת שירותים</div>
+      <div class="copy-box list-box" id="f-services">
+        <div class="list-item">
+          <span class="list-num">1</span>
+          <div class="list-content">
+            <div class="list-name">בניית אתר לעסק רוחני</div>
+            <div class="list-desc">אתר מקצועי ומותאם אישית לקואצ׳ים, מטפלים ומנחי סדנאות. עיצוב שמשקף את האישיות שלכם ומביא לקוחות מתאימים.</div>
+          </div>
+          <button class="copy-btn" onclick="copyService(1, this)">העתק</button>
+        </div>
+        <div class="list-item">
+          <span class="list-num">2</span>
+          <div class="list-content">
+            <div class="list-name">SEO לעסקים רוחניים</div>
+            <div class="list-desc">אופטימיזציה למנועי חיפוש עם דגש על קהל רוחני בישראל. כתיבת תוכן, מחקר מילות מפתח, ובניית סמכות בתחום.</div>
+          </div>
+          <button class="copy-btn" onclick="copyService(2, this)">העתק</button>
+        </div>
+        <div class="list-item">
+          <span class="list-num">3</span>
+          <div class="list-content">
+            <div class="list-name">שיפוץ אתר קיים</div>
+            <div class="list-desc">שדרוג אתר קיים — עיצוב, מהירות טעינה, נגישות וSEO. מושלם לעסקים שיש להם אתר שלא עובד כמצופה.</div>
+          </div>
+          <button class="copy-btn" onclick="copyService(3, this)">העתק</button>
+        </div>
+        <div class="list-item">
+          <span class="list-num">4</span>
+          <div class="list-content">
+            <div class="list-name">אחסון ותחזוקת אתרים</div>
+            <div class="list-desc">אחסון מנוהל, גיבויים אוטומטיים, עדכוני אבטחה ותמיכה שוטפת לאתרי WordPress. שקט נפשי בלי להתעסק בטכניקה.</div>
+          </div>
+          <button class="copy-btn" onclick="copyService(4, this)">העתק</button>
+        </div>
+        <div class="list-item">
+          <span class="list-num">5</span>
+          <div class="list-content">
+            <div class="list-name">ייעוץ נוכחות דיגיטלית</div>
+            <div class="list-desc">שיחת ייעוץ למיפוי הנוכחות הדיגיטלית: אתר, SEO, רשתות חברתיות ואסטרטגיה שמתאימה לעסק רוחני.</div>
+          </div>
+          <button class="copy-btn" onclick="copyService(5, this)">העתק</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Q&A -->
+  <section class="section" id="qa">
+    <div class="section-title">שאלות ותשובות (Q&amp;A)</div>
+    <div class="tip">
+      <strong>טיפ:</strong> גוגל מאפשרת לבעל העסק לפרסם שאלות ולענות עליהן מראש. זה מופיע בולט בפרופיל. מומלץ להעלות לפחות 3 שאלות ביום הפתיחה.
+    </div>
+
+    <div class="field">
+      <div class="field-label">שאלה 1</div>
+      <div class="copy-box" id="f-q1">כמה עולה בניית אתר?<button class="copy-btn" onclick="copyField('f-q1', this)">העתק</button></div>
+    </div>
+    <div class="field">
+      <div class="field-label">תשובה 1</div>
+      <div class="copy-box multiline" id="f-a1">המחיר תלוי בהיקף הפרויקט. אתר ויטרינה בסיסי מתחיל מכמה אלפי שקלים, ואתר מלא עם כתיבת תוכן ו-SEO יכול להגיע ליותר. הדרך הטובה ביותר לדעת היא שיחת ייעוץ קצרה ללא עלות — שם אפשר להבין מה מתאים לכם ולקבל הצעה מדויקת.<button class="copy-btn" onclick="copyField('f-a1', this)">העתק</button></div>
+    </div>
+
+    <div class="field">
+      <div class="field-label">שאלה 2</div>
+      <div class="copy-box" id="f-q2">כמה זמן לוקח לבנות אתר?<button class="copy-btn" onclick="copyField('f-q2', this)">העתק</button></div>
+    </div>
+    <div class="field">
+      <div class="field-label">תשובה 2</div>
+      <div class="copy-box multiline" id="f-a2">פרויקט ממוצע לוקח בין שבועיים לחודש — תלוי בזמינות שלכם לאספקת תוכן ופידבק. אתרים מורכבים יותר עם פיצ׳רים מיוחדים עשויים לקחת קצת יותר.<button class="copy-btn" onclick="copyField('f-a2', this)">העתק</button></div>
+    </div>
+
+    <div class="field">
+      <div class="field-label">שאלה 3</div>
+      <div class="copy-box" id="f-q3">האם אתה עובד עם לקוחות מכל הארץ?<button class="copy-btn" onclick="copyField('f-q3', this)">העתק</button></div>
+    </div>
+    <div class="field">
+      <div class="field-label">תשובה 3</div>
+      <div class="copy-box" id="f-a3">כן, כל העבודה מתנהלת מרחוק — שיחות וידאו, שיתוף מסך, ו-WhatsApp. יש לי לקוחות מתל אביב, ירושלים, חיפה, והצפון.<button class="copy-btn" onclick="copyField('f-a3', this)">העתק</button></div>
+    </div>
+
+    <div class="field">
+      <div class="field-label">שאלה 4</div>
+      <div class="copy-box" id="f-q4">האם אתה בונה רק על WordPress?<button class="copy-btn" onclick="copyField('f-q4', this)">העתק</button></div>
+    </div>
+    <div class="field">
+      <div class="field-label">תשובה 4</div>
+      <div class="copy-box" id="f-a4">לא. לעסקים רוחניים קטנים אני לעיתים ממליץ על אתרי HTML סטטיים שמהירים יותר ועולים פחות לתחזוקה. WordPress מתאים כשצריך בלוג, חנות, או תוכן שמתעדכן לעתים קרובות. אדבר על זה בשיחת הייעוץ.<button class="copy-btn" onclick="copyField('f-a4', this)">העתק</button></div>
+    </div>
+  </section>
+
+  <!-- PHOTOS -->
+  <section class="section" id="photos">
+    <div class="section-title">תמונות מומלצות להעלאה</div>
+
+    <div class="tip">
+      גוגל מאפשרת תמונות לוגו, תמונת כיסוי, ותמונות נוספות. פרופילים עם תמונות מקבלים משמעותית יותר קליקים.
+    </div>
+
+    <div class="copy-box list-box">
+      <div class="list-item">
+        <span class="list-num">✓</span>
+        <div class="list-content">
+          <div class="list-name">לוגו</div>
+          <div class="list-desc">monk.webp — רזולוציה מינימלית 250×250. מומלץ 500×500 על רקע לבן או שקוף.</div>
+        </div>
+      </div>
+      <div class="list-item">
+        <span class="list-num">✓</span>
+        <div class="list-content">
+          <div class="list-name">תמונת כיסוי (Cover)</div>
+          <div class="list-desc">תמונה ייצוגית של העסק. יחס 16:9, 1080×608 לפחות. טיפ: צילום סביבת עבודה, לפטופ עם אתר לקוח, או גרפיקה ממותגת.</div>
+        </div>
+      </div>
+      <div class="list-item">
+        <span class="list-num">✓</span>
+        <div class="list-content">
+          <div class="list-name">צילומי מסך של אתרים</div>
+          <div class="list-desc">Screenshots של 4 אתרי הלקוחות. שמרו כ-JPG, 1080×1080 לפחות. זה מחזק אמינות.</div>
+        </div>
+      </div>
+      <div class="list-item">
+        <span class="list-num">✓</span>
+        <div class="list-content">
+          <div class="list-name">תמונת פרופיל (אישית)</div>
+          <div class="list-desc">תמונה שלכם — לקוחות רוחניים מחפשים אדם, לא חברה. פנים מול המצלמה, רקע נקי.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+function copyField(id, btn) {
+  const el = document.getElementById(id);
+  // Get text without the button text
+  const clone = el.cloneNode(true);
+  clone.querySelectorAll('button').forEach(b => b.remove());
+  const text = clone.innerText.trim();
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = '✓ הועתק';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'העתק'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+
+function copyService(num, btn) {
+  const item = document.querySelectorAll('.list-item')[num - 1];
+  const name = item.querySelector('.list-name').innerText.trim();
+  const desc = item.querySelector('.list-desc').innerText.trim();
+  navigator.clipboard.writeText(name + '\n' + desc).then(() => {
+    btn.textContent = '✓ הועתק';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'העתק'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+
+// Character counter for description
+function updateCount() {
+  const el = document.getElementById('f-desc');
+  const clone = el.cloneNode(true);
+  clone.querySelectorAll('button').forEach(b => b.remove());
+  const len = clone.innerText.trim().length;
+  const counter = document.getElementById('desc-count');
+  const isWarn = len > 650;
+  counter.innerHTML = `<span class="${isWarn ? 'warn' : ''}">${len}</span> / 750 תווים`;
+}
+updateCount();
+</script>
+</body>
+</html>
