@@ -503,7 +503,7 @@
       metrics: [{ name: 'eventCount' }],
       dimensions: [{ name: 'eventName' }],
       dimensionFilter: {
-        filter: { fieldName: 'eventName', inListFilter: { values: FUNNEL.map(s => s.event) } }
+        filter: { fieldName: 'eventName', inListFilter: { values: [...FUNNEL.map(s => s.event), 'cta_whatsapp_click'] } }
       }
     });
   }
