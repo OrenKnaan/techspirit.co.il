@@ -1408,7 +1408,7 @@
     btn.addEventListener('click', () => {
       expanded = !expanded;
       document.querySelectorAll('.faq-hidden').forEach(el => {
-        el.style.display = expanded ? '' : 'none';
+        el.style.display = expanded ? 'block' : 'none';
       });
       btn.textContent = expanded ? 'הצג פחות ↑' : 'הצג עוד שאלות ↓';
       if (!expanded) {
