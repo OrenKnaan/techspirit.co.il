@@ -108,7 +108,7 @@
 
 <script src="./posts.js"></script>
 <script>
-const posts = BLOG_POSTS.filter(p => p.published);
+const posts = BLOG_POSTS.filter(p => p.published).sort((a,b) => b.d.localeCompare(a.d));
 
 function render(filter){
   const g=document.getElementById('pg'),nr=document.getElementById('nr');

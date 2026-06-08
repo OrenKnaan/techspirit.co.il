@@ -1254,20 +1254,25 @@
       <h2 class="section-h2">קראו לפני שמחליטים</h2>
       <div class="bar"></div>
     </div>
-    <div class="bp-grid">
-      <a href="https://techspirit.co.il/blog/שאלות-לפני-בניית-אתר/" class="bp-card rv">
-        <span class="bp-tag">תכנון</span>
-        <h3>4 שאלות שצריך לשאול לפני שבונים אתר לעסק</h3>
-        <p>שאלות שאם לא שואלים אותן לפני הפרויקט, מגלים שהתחלנו מנקודה הלא נכונה אחרי שכבר השקענו.</p>
-        <span class="bp-read">קרא עוד ←</span>
-      </a>
-      <a href="https://techspirit.co.il/blog/בחירת-בונה-אתרים/" class="bp-card rv d1">
-        <span class="bp-tag">בניית אתרים</span>
-        <h3>איך לבחור בונה אתרים שמתאים לך</h3>
-        <p>מה שעשוי לחסוך לך הרבה כאב ראש: להבין שהבעיה הכי נפוצה בפרויקטי אתרים היא לא המחיר, היא ההתאמה.</p>
-        <span class="bp-read">קרא עוד ←</span>
-      </a>
-    </div>
+    <div class="bp-grid" id="hp-blog-grid"></div>
+    <script src="/blog/posts.js"></script>
+    <script>
+    (function(){
+      var pool=BLOG_POSTS.filter(function(p){return p.published;}).sort(function(a,b){
+        if(b.weeklyViews!==a.weeklyViews)return b.weeklyViews-a.weeklyViews;
+        return a.d.localeCompare(b.d);
+      });
+      var g=document.getElementById('hp-blog-grid');
+      if(g)g.innerHTML=pool.slice(0,2).map(function(p,i){
+        return'<a href="https://techspirit.co.il/blog/'+p.slug+'/" class="bp-card rv'+(i>0?' d'+i:'')+'">'
+          +'<span class="bp-tag">'+p.tag+'</span>'
+          +'<h3>'+p.title+'</h3>'
+          +'<p>'+p.excerpt+'</p>'
+          +'<span class="bp-read">קרא עוד ←</span>'
+          +'</a>';
+      }).join('');
+    })();
+    </script>
     <p class="port-more rv" style="margin-top:28px"><a href="/blog/">לכל המאמרים בבלוג ←</a></p>
   </div>
 </section>
