@@ -698,6 +698,15 @@
       .frow { grid-template-columns: 1fr; }
       .final-fud { gap: 12px; }
     }
+    #appears-on { background: var(--cream); padding: 32px 0; border-top: 1px solid var(--teal-pale); }
+    .appears-inner { display: flex; align-items: center; justify-content: center; gap: 40px; flex-wrap: wrap; }
+    .appears-label { font-family: var(--fh); font-size: 14px; color: var(--muted); letter-spacing: .05em; white-space: nowrap; margin: 0; }
+    .appears-logo { display: flex; align-items: center; opacity: .75; transition: opacity .2s; }
+    .appears-logo:hover { opacity: 1; }
+    .appears-logo img {
+      height: 36px; width: auto;
+      filter: brightness(0) saturate(100%) invert(37%) sepia(20%) saturate(900%) hue-rotate(140deg) brightness(85%);
+    }
   </style>
 </head>
 <body>
@@ -1320,6 +1329,24 @@
 
 
 </main>
+
+<!-- APPEARS ON -->
+<section id="appears-on">
+  <div class="container">
+    <div class="appears-inner">
+      <p class="appears-label">מופיע גם ב:</p>
+      <a href="https://maps.app.goo.gl/kpdjThQQpELAWhMB9" target="_blank" rel="noopener" class="appears-logo">
+        <img src="Images/appears-on/google-business.webp" alt="גוגל עסקים" width="300" height="300" loading="lazy">
+      </a>
+      <a href="https://www.facebook.com/TechnoSpiritualist" target="_blank" rel="noopener" class="appears-logo">
+        <img src="Images/appears-on/facebook.webp" alt="פייסבוק" width="300" height="300" loading="lazy">
+      </a>
+      <a href="http://b144.ws/jbjwr4" target="_blank" rel="noopener" class="appears-logo">
+        <img src="Images/appears-on/bezeq144.webp" alt="בזק 144" width="300" height="300" loading="lazy">
+      </a>
+    </div>
+  </div>
+</section>
 
 <!-- FOOTER -->
 <footer>
