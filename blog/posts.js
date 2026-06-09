@@ -57,7 +57,7 @@ const BLOG_POSTS = [
     slug:'מחיר-דף-נחיתה',
     title:'כמה עולה לבנות דף נחיתה? מחירון עדכני לשנת 2026',
     excerpt:'מחיר דף נחיתה בישראל: מה קובע את ההמרה, מתי כדאי דף נחיתה מול אתר מלא, ומה שואלים לפני שמזמינים.',
-    date:'9 ביוני 2026',d:'2026-06-09',read:'7 דק׳',tag:'דף נחיתה',cat:'website',feat:false,published:false,publishDate:'2026-06-09',weeklyViews:0
+    date:'9 ביוני 2026',d:'2026-06-09',read:'7 דק׳',tag:'דף נחיתה',cat:'website',feat:false,published:true,publishDate:'2026-06-09',weeklyViews:0
   }
 ];
 if (typeof module !== 'undefined') module.exports = BLOG_POSTS;
