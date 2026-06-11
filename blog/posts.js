@@ -21,7 +21,7 @@ const BLOG_POSTS = [
     slug:'אחסון-אתרים-וורדפרס',
     title:'אחסון אתרים וורדפרס בישראל: למה אני משלם יותר ולא מצטער',
     excerpt:'שנים ניסיתי שירותים זולים. עד שהבנתי ששירות אחסון גרוע עולה לך הרבה יותר מהחסכון החודשי.',
-    date:'17 ביוני 2026',d:'2026-06-17',read:'5 דק׳',tag:'כלים',cat:'tools',feat:false,published:false,publishDate:'2026-06-17',weeklyViews:0
+    date:'11 ביוני 2026',d:'2026-06-11',read:'5 דק׳',tag:'כלים',cat:'tools',feat:false,published:true,weeklyViews:0
   },
   {
     slug:'אתר-אינטרנט-לעסק',
