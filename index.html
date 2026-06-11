@@ -139,27 +139,185 @@
     #mob a { font-family: var(--fh); font-size: 28px; color: var(--white); }
     .mob-x { position: absolute; top: 22px; left: 22px; color: var(--white); font-size: 32px; cursor: pointer; }
 
-    /* ── HERO ── */
+    /* ── HERO (floating monk) ── */
     #hero {
-      min-height: 100vh;
-      background: var(--teal-dark);
-      display: flex; align-items: center;
+      min-height: 100vh; background: var(--teal-dark);
+      display: flex; align-items: center; justify-content: center;
       position: relative; overflow: hidden;
     }
     #hero::before {
+      content:''; position:absolute; inset:0;
+      background:
+        radial-gradient(ellipse 70% 60% at 15% 85%, rgba(45,107,107,.45) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 85% 15%, rgba(212,168,67,.14) 0%, transparent 55%),
+        radial-gradient(ellipse 40% 50% at 50% 50%, rgba(196,80,42,.07) 0%, transparent 65%);
+    }
+    #hero::after {
+      content:''; position:absolute; inset:0; pointer-events:none;
+      background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),
+                       linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);
+      background-size:56px 56px;
+    }
+    .hero-body {
+      position:relative; z-index:2; text-align:center;
+      padding:130px 24px 90px;
+    }
+    .monk-wrap {
+      position:relative; width:clamp(280px,42vw,520px);
+      margin:0 auto 18px;
+      animation:float 6.5s ease-in-out 1.8s infinite;
+    }
+    .hero-logo {
+      width:100%;
+      animation:heroImgIn 1.6s cubic-bezier(0.25,0.46,0.45,0.94) 0.1s both;
+    }
+    .monk-wrap::before {
+      content:''; position:absolute; top:50%; left:50%;
+      width:65%; aspect-ratio:1; border-radius:50%;
+      border:1.5px solid rgba(61,133,133,.85);
+      box-shadow:0 0 24px rgba(61,133,133,.45),inset 0 0 10px rgba(61,133,133,.2);
+      pointer-events:none; z-index:1;
+      animation:heroRipple 1.0s ease-out 1.85s both;
+    }
+    @keyframes heroImgIn {
+      0%   { opacity:0; filter:blur(28px) brightness(2.5) saturate(0); transform:scale(1.07); }
+      28%  { opacity:1; filter:blur(10px) brightness(1.7) saturate(.3); transform:scale(1.03); }
+      65%  { filter:blur(1.5px) brightness(1.1) saturate(.85); transform:scale(1.005); }
+      100% { filter:blur(0) brightness(1) saturate(1) drop-shadow(0 12px 48px rgba(212,168,67,.4)); transform:scale(1); }
+    }
+    @keyframes heroRipple {
+      0%   { transform:translate(-50%,-50%) scale(.15); opacity:1; }
+      100% { transform:translate(-50%,-50%) scale(2.0); opacity:0; }
+    }
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-14px)} }
+    :root {
+      --te-top:  16%;
+      --te-left: 49.6%;
+      --te-dx:   4px;
+      --te-dy:   30px;
+    }
+    .third-eye {
+      position:absolute; top:var(--te-top); left:var(--te-left); width:6.6%;
+      transform:translate(calc(-50% + var(--te-dx)),calc(-50% - var(--te-dy))) scaleY(0);
+      pointer-events:none; z-index:3;
+      animation:teOpen 1.4s cubic-bezier(0.34,1.56,0.64,1) 1.85s forwards;
+    }
+    @keyframes teOpen {
+      0%  { transform:translate(calc(-50% + var(--te-dx)),calc(-50% - var(--te-dy))) scaleY(0); }
+      60% { transform:translate(calc(-50% + var(--te-dx)),calc(-50% - var(--te-dy))) scaleY(1.18); }
+      100%{ transform:translate(calc(-50% + var(--te-dx)),calc(-50% - var(--te-dy))) scaleY(1); }
+    }
+    h1.hero-t {
+      font-family:var(--fh); font-size:clamp(48px,9vw,108px);
+      color:#75bab8; letter-spacing:-.02em; line-height:1.05;
+      margin-bottom:14px; text-shadow:0 4px 36px rgba(0,0,0,.3);
+      animation:heroTitleIn .95s cubic-bezier(0.25,0.46,0.45,0.94) 3.4s both;
+    }
+    @keyframes heroTitleIn {
+      0%   { opacity:0; filter:blur(16px); letter-spacing:.22em; }
+      55%  { opacity:.85; filter:blur(3px); letter-spacing:.02em; }
+      100% { opacity:1; filter:blur(0); letter-spacing:-.02em; }
+    }
+    h1.hero-t span { color:#fffffe; }
+    .hero-tagline {
+      font-size:clamp(17px,2.2vw,24px);
+      color:#76bab7; letter-spacing:.04em; margin-bottom:0;
+      animation:heroSubIn .75s ease-out 4.05s both;
+    }
+    @keyframes heroSubIn {
+      0%   { opacity:0; filter:blur(12px); transform:translateY(10px); }
+      100% { opacity:1; filter:blur(0); transform:translateY(0); }
+    }
+    .hero-arr {
+      position:absolute; bottom:28px; left:50%; transform:translateX(-50%);
+      color:rgba(255,255,255,.35); z-index:2;
+      animation:bob 2.1s ease-in-out 5.1s infinite,heroFadeIn .5s ease-out 4.85s both;
+    }
+    @keyframes heroFadeIn { from{opacity:0} to{opacity:1} }
+    @keyframes bob { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(9px)} }
+    .smk { position:absolute; top:56%; left:50%; transform:translate(-50%,-50%); z-index:1; pointer-events:none; }
+    .sp { position:absolute; border-radius:50%; filter:blur(11px); animation:smokeUp linear infinite; }
+    .sp1{width:9px;height:9px;left:-4px;background:rgba(210,185,145,.22);animation-duration:5.2s;animation-delay:0s}
+    .sp2{width:13px;height:13px;left:3px;background:rgba(210,185,145,.17);animation-duration:6.4s;animation-delay:1.6s}
+    .sp3{width:7px;height:7px;left:-10px;background:rgba(210,185,145,.2);animation-duration:7s;animation-delay:.9s}
+    .sp4{width:11px;height:11px;left:6px;background:rgba(210,185,145,.15);animation-duration:5.8s;animation-delay:2.8s}
+    .sp5{width:16px;height:16px;left:-1px;background:rgba(210,185,145,.12);animation-duration:8.2s;animation-delay:3.7s}
+    @keyframes smokeUp {
+      0%  {transform:translateY(0) translateX(0) scale(.5); opacity:.65}
+      20% {transform:translateY(-35px) translateX(-8px) scale(.9); opacity:.5}
+      45% {transform:translateY(-85px) translateX(9px) scale(1.5);opacity:.3}
+      70% {transform:translateY(-140px)translateX(-7px) scale(2.1);opacity:.15}
+      100%{transform:translateY(-210px)translateX(5px) scale(3); opacity:0}
+    }
+
+    /* ── VALUE PROP (old hero content) ── */
+    #value-prop {
+      background: var(--teal-dark);
+      position: relative; overflow: hidden;
+    }
+    #value-prop::before {
       content: ''; position: absolute; inset: 0; pointer-events: none;
       background:
         radial-gradient(ellipse 80% 70% at 10% 90%, rgba(45,107,107,.50) 0%, transparent 55%),
         radial-gradient(ellipse 55% 45% at 90% 10%, rgba(212,168,67,.15) 0%, transparent 55%),
         radial-gradient(ellipse 40% 55% at 55% 45%, rgba(196,80,42,.07) 0%, transparent 60%);
     }
-    #hero::after {
+    #value-prop::after {
       content: ''; position: absolute; inset: 0; pointer-events: none;
       background-image:
         linear-gradient(rgba(255,255,255,.016) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255,255,255,.016) 1px, transparent 1px);
       background-size: 60px 60px;
     }
+
+    /* ── IMAGE DIVIDERS ── */
+    .img-divider {
+      width: 100%; height: 420px;
+      overflow: hidden; position: relative;
+    }
+    .img-divider img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center 30%;
+      display: block;
+    }
+
+    /* ── SEO / AEO SECTION ── */
+    #seo-aeo {
+      background: var(--teal-dark);
+      padding: 80px 0;
+      position: relative; overflow: hidden;
+    }
+    #seo-aeo::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse 70% 70% at 50% 50%, rgba(45,107,107,.18) 0%, transparent 65%);
+    }
+    .seo-inner { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; text-align: center; }
+    .seo-eyebrow {
+      display: inline-block; background: rgba(212,168,67,.12); border: 1px solid rgba(212,168,67,.28);
+      padding: 6px 18px; border-radius: 20px;
+      font-size: 12.5px; font-weight: 700; color: var(--gold); letter-spacing: .06em;
+      text-transform: uppercase; margin-bottom: 24px;
+    }
+    .seo-h2 {
+      font-family: var(--fh); font-size: clamp(28px, 4.5vw, 52px);
+      color: var(--white); line-height: 1.1; letter-spacing: -.02em; margin-bottom: 20px;
+    }
+    .seo-h2 em { color: #75bab8; font-style: normal; }
+    .seo-body {
+      font-size: clamp(16px, 1.8vw, 19px);
+      color: rgba(255,255,255,.65); line-height: 1.85; margin-bottom: 36px;
+    }
+    .seo-body strong { color: rgba(255,255,255,.9); }
+    .seo-cta {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--terra); color: var(--white);
+      padding: 14px 32px; border-radius: 50px;
+      font-family: var(--fh); font-size: 16px; font-weight: 700;
+      box-shadow: 0 6px 24px rgba(196,80,42,.38);
+      transition: background var(--ease), transform var(--ease), box-shadow var(--ease);
+    }
+    .seo-cta:hover { background: var(--terra-hi); transform: translateY(-2px); }
+
     .hero-in {
       position: relative; z-index: 2;
       display: grid; grid-template-columns: 1fr 1fr;
@@ -310,7 +468,7 @@
       border-bottom: 1px solid rgba(255,255,255,.06);
     }
     .proof-row {
-      display: grid; grid-template-columns: repeat(4, 1fr);
+      display: grid; grid-template-columns: repeat(3, 1fr);
       gap: 0; text-align: center;
     }
     .proof-item { padding: 8px 20px; position: relative; }
@@ -657,9 +815,14 @@
       .process-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 768px) {
+      .img-divider { height: 260px; }
       .nav-links { display: none; }
       .hbg { display: flex; }
       .section { padding: 72px 0; }
+      .monk-wrap { width: clamp(322px, 86vw, 460px); }
+      h1.hero-t  { font-size: clamp(55px, 14vw, 80px); }
+      .hero-tagline { font-size: 20px; }
+      :root { --te-top: 18.3%; --te-left: 49.4%; }
       .tes-grid { grid-template-columns: 1fr; }
       .pain-grid { grid-template-columns: 1fr; }
       .port-grid { grid-template-columns: repeat(2, 1fr); }
@@ -805,17 +968,43 @@
 <!-- MAIN CONTENT -->
 <main>
 
-<!-- HERO -->
+<!-- HERO (floating monk) -->
 <section id="hero">
+  <div class="hero-body">
+    <div class="monk-wrap">
+      <img src="Images/Assets/monk.webp" alt="טכנורוחניק - אורן כנען" class="hero-logo" fetchpriority="high">
+      <svg class="third-eye" id="thirdEye" viewBox="-18 -13 36 26" xmlns="http://www.w3.org/2000/svg">
+        <path d="M-16 0 Q-3 -8.5 0 -8.5 Q3 -8.5 16 0 Q3 8.5 0 8.5 Q-3 8.5 -16 0 Z" fill="#ecdfc8"/>
+        <g id="teGaze">
+          <circle cx="0" cy="0" r="6.4" fill="#3D8585"/>
+          <circle cx="0" cy="0" r="3"   fill="#0a1e1e"/>
+          <path d="M-16 0 Q-3 -6.5 0 -6.5 Q3 -6.5 16 0 L18 0 L18 -15 L-18 -15 L-18 0 Z" fill="#f3a177"/>
+          <path d="M-16 0 Q-3 -6.5 0 -6.5 Q3 -6.5 16 0" fill="none" stroke="#c47850" stroke-width="0.75" stroke-linecap="round"/>
+          <path d="M-16 0 Q-3  6.5 0  6.5 Q3  6.5 16 0" fill="none" stroke="#c47850" stroke-width="0.55" stroke-linecap="round"/>
+        </g>
+        <path d="M-16 0 Q-13 -2.8 -7 0 Q-13 2.8 -16 0 Z" fill="#f3a177"/>
+        <path d="M 16 0 Q 13 -2.8  7 0 Q 13 2.8  16 0 Z" fill="#f3a177"/>
+      </svg>
+    </div>
+    <h1 class="hero-t">טכנו<span>רוחניק</span></h1>
+    <p class="hero-tagline">בונה לך אתר לרוחך</p>
+  </div>
+  <div class="smk" aria-hidden="true">
+    <div class="sp sp1"></div><div class="sp sp2"></div><div class="sp sp3"></div>
+    <div class="sp sp4"></div><div class="sp sp5"></div>
+  </div>
+  <div class="hero-arr" aria-hidden="true">
+    <svg width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+  </div>
+</section>
+
+<!-- VALUE PROP -->
+<section id="value-prop">
   <div class="container">
     <div class="hero-in">
 
       <div class="hero-txt">
         <div class="hero-badge"><img src="Images/Assets/monk.webp" alt="" class="hero-badge-monk">בניית אתרים ושירותי אינטרנט עבור אנשים מודעים</div>
-        <h1 class="hero-h1">
-          האנשים שצריכים אתכם<br>
-          <em>לא מוצאים אתכם עדיין</em>
-        </h1>
         <p class="hero-sub">
           אורן כנען בונה אתרים לעסקים רוחניים בישראל - אתר שמדבר את השפה שלכם,
           <strong>מושך לקוחות מדויקים</strong> ועובד בשבילכם גם כשאתם ישנים.
@@ -823,7 +1012,7 @@
         </p>
         <div class="hero-proof">
           <div class="stars">★★★★★</div>
-          <div class="proof-txt"><strong>50+ פרויקטים</strong> · 100% שביעות רצון</div>
+          <div class="proof-txt"><strong>100%</strong> שביעות רצון לקוחות</div>
         </div>
         <div class="hero-cta-group">
           <a href="https://api.whatsapp.com/send?phone=972544757906&text=היי%20אורן%2C%20בוא%20נקבע%20שיחת%20ייעוץ%20קצרה." target="_blank" rel="noopener" class="btn-primary">
@@ -841,11 +1030,11 @@
       <div class="hero-visual">
         <div class="hero-img-wrap">
           <div class="hero-slides">
-            <img src="Images/Websites/comp-taliamichaeli.webp" alt="אתר טליה מיכאלי - מנחת סדנאות וקואצ׳ינג" width="730" height="584" class="hero-slide active" fetchpriority="high">
-            <img src="Images/Websites/comp-hooponopono.webp"  alt="אתר הו׳אופונופונו ישראל - מרכז להתפתחות רוחנית" width="730" height="584" class="hero-slide" loading="lazy">
-            <img src="Images/Websites/comp-ohadgalon.webp"    alt="אתר אוהד גלון - ניהול עושר ופיננסים" width="730" height="584" class="hero-slide" loading="lazy">
-            <img src="Images/Websites/comp-childhood.webp"    alt="אתר עולמה של הילדות - חינוך מוקדם וגן ילדים" width="730" height="584" class="hero-slide" loading="lazy">
-            <img src="Images/Websites/comp-tarbut.webp"       alt="אתר תרבות על הסף - תרבות ואמנות" width="730" height="584" class="hero-slide" loading="lazy">
+            <img src="Images/Websites/comp-taliamichaeli.webp" alt="אתר טליה מיכאלי" width="730" height="584" class="hero-slide active" loading="lazy">
+            <img src="Images/Websites/comp-hooponopono.webp"  alt="אתר הו׳אופונופונו ישראל" width="730" height="584" class="hero-slide" loading="lazy">
+            <img src="Images/Websites/comp-ohadgalon.webp"    alt="אתר אוהד גלון" width="730" height="584" class="hero-slide" loading="lazy">
+            <img src="Images/Websites/comp-childhood.webp"    alt="אתר עולמה של הילדות" width="730" height="584" class="hero-slide" loading="lazy">
+            <img src="Images/Websites/comp-tarbut.webp"       alt="אתר תרבות על הסף" width="730" height="584" class="hero-slide" loading="lazy">
           </div>
           <div class="hero-float-card">
             <div class="hfc-n">10+</div>
@@ -859,6 +1048,10 @@
   </div>
 </section>
 
+<!-- IMAGE DIVIDER 1 -->
+<div class="img-divider">
+  <img src="Images/Assets/TechnoSpiritualist-Example-1.jpg" alt="" loading="lazy">
+</div>
 
 <!-- PAIN SECTION -->
 <section id="pain" class="section">
@@ -909,23 +1102,36 @@
 </section>
 
 
+<!-- SEO / AEO -->
+<section id="seo-aeo">
+  <div class="container">
+    <div class="seo-inner rv">
+      <div class="seo-eyebrow">SEO & AEO</div>
+      <h2 class="seo-h2">האנשים שצריכים אתכם<br><em>לא מוצאים אתכם עדיין</em></h2>
+      <p class="seo-body">
+        כשמישהו מחפש בגוגל "מטפלת הוליסטית בתל אביב" - האם הוא מוצא אתכם?<br>
+        <strong>SEO</strong> (אופטימיזציה למנועי חיפוש) ו-<strong>AEO</strong> (אופטימיזציה לתשובות AI)
+        הם הכלים שמבטיחים שהאנשים הנכונים <strong>ימצאו אתכם ראשונים</strong> —
+        עוד לפני שהם מגיעים למתחרים שלכם.
+      </p>
+      <a href="/seo-aeo-guide/" class="seo-cta rv d1">לקריאת המדריך המלא ←</a>
+    </div>
+  </div>
+</section>
+
 <!-- SOCIAL PROOF BAR -->
 <section id="proof-bar">
   <div class="container">
     <div class="proof-row">
       <div class="proof-item rv">
-        <div><span class="proof-num" data-to="50">0</span><span class="proof-unit">+</span></div>
-        <div class="proof-label">פרויקטים שהושלמו</div>
-      </div>
-      <div class="proof-item rv d1">
         <div><span class="proof-num" data-to="100">0</span><span class="proof-unit">%</span></div>
         <div class="proof-label">שביעות רצון לקוחות</div>
       </div>
-      <div class="proof-item rv d2">
+      <div class="proof-item rv d1">
         <div><span class="proof-num" data-to="10">0</span><span class="proof-unit">+</span></div>
         <div class="proof-label">שנות ניסיון</div>
       </div>
-      <div class="proof-item rv d3">
+      <div class="proof-item rv d2">
         <div><span class="proof-num" data-to="8">0</span><span class="proof-unit">ש׳</span></div>
         <div class="proof-label">זמן מענה ממוצע</div>
       </div>
@@ -933,6 +1139,10 @@
   </div>
 </section>
 
+<!-- IMAGE DIVIDER 2 -->
+<div class="img-divider">
+  <img src="Images/Assets/TechnoSpiritualist-Example-2.jpg" alt="" loading="lazy">
+</div>
 
 <!-- PROCESS -->
 <section id="process" class="section">
@@ -967,6 +1177,11 @@
   </div>
 </section>
 
+
+<!-- IMAGE DIVIDER 3 -->
+<div class="img-divider">
+  <img src="Images/Assets/TechnoSpiritualist-Example-3.jpg" alt="" loading="lazy">
+</div>
 
 <!-- PORTFOLIO PREVIEW -->
 <section id="portfolio-preview" class="section">
@@ -1027,6 +1242,11 @@
   </div>
 </section>
 
+
+<!-- IMAGE DIVIDER 4 -->
+<div class="img-divider">
+  <img src="Images/Assets/TechnoSpiritualist-Example-4.jpg" alt="" loading="lazy">
+</div>
 
 <!-- TESTIMONIALS -->
 <section id="testimonials" class="section">
@@ -1124,7 +1344,7 @@
         <h2>מי אני?</h2>
         <div class="about-bar"></div>
         <p class="about-lead">ה<span style="color:var(--terra)">טכנורוחניק</span>: ביום מקטיר קטורות. בלילה בונה אתרים.</p>
-        <p class="about-p">אני אורן כנען - בונה אתרים ומעצב גרפי עם <strong>10+ שנות ניסיון</strong> ו-50+ פרויקטים לעסקים רוחניים וטיפוליים בישראל. עברתי את אותו מסע שאתם עוברים - חיפשתי מישהו שמבין גם את עולם הרוח וגם את הדיגיטל. לא מצאתי - אז הפכתי להיות זה.</p>
+        <p class="about-p">אני אורן כנען - בונה אתרים ומעצב גרפי עם <strong>10+ שנות ניסיון</strong>, מתמחה בעסקים רוחניים וטיפוליים בישראל. עברתי את אותו מסע שאתם עוברים - חיפשתי מישהו שמבין גם את עולם הרוח וגם את הדיגיטל. לא מצאתי - אז הפכתי להיות זה.</p>
         <p class="about-p">אני מלווה כל לקוח מהרעיון ועד לתוצאה - עם סבלנות, יצירתיות ותשומת לב לפרטים הקטנים שעושים את ההבדל הגדול. לכל עסק יש נשמה ייחודית - ותפקידי לעזור לה לזרוח גם בעולם הדיגיטלי.</p>
         <div class="tags">
           <span class="tag">WordPress</span>
@@ -1332,6 +1552,11 @@
   </div>
 </section>
 
+
+<!-- IMAGE DIVIDER 5 -->
+<div class="img-divider">
+  <img src="Images/Assets/TechnoSpiritualist-Example-5.jpg" alt="" loading="lazy">
+</div>
 
 <!-- FINAL CTA -->
 <section id="final-cta">
@@ -1627,6 +1852,54 @@
   }
 }
 </script>
+
+<script>
+  // ── Third-eye cursor tracking ──────────────────────────────────────
+  (function() {
+    const eye  = document.getElementById('thirdEye');
+    const gaze = document.getElementById('teGaze');
+    if (!eye || !gaze) return;
+    const MAX_X = 4.2, MAX_Y = 2.0;
+    let targetX = 0, targetY = 0, curX = 0, curY = 0;
+    window.addEventListener('mousemove', e => {
+      const r = eye.getBoundingClientRect();
+      const cx = r.left + r.width  / 2;
+      const cy = r.top  + r.height / 2;
+      const dx = e.clientX - cx;
+      const dy = e.clientY - cy;
+      const dist = Math.min(Math.hypot(dx, dy) / 130, 1);
+      const angle = Math.atan2(dy, dx);
+      targetX = Math.cos(angle) * dist * MAX_X;
+      targetY = Math.sin(angle) * dist * MAX_Y;
+    }, { passive: true });
+    function tick() {
+      curX += (targetX - curX) * 0.12;
+      curY += (targetY - curY) * 0.12;
+      gaze.setAttribute('transform', `translate(${curX.toFixed(3)},${(curY + 1.5).toFixed(3)})`);
+      requestAnimationFrame(tick);
+    }
+    tick();
+  })();
+
+  // ── Cursor glow ──────────────────────────────────────────────────
+  (function() {
+    const glow = document.getElementById('cursor-glow');
+    if (!glow || matchMedia('(hover:none)').matches) { if(glow) glow.style.display='none'; return; }
+    let mx = window.innerWidth/2, my = window.innerHeight/2;
+    let cx = mx, cy = my;
+    window.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; }, { passive:true });
+    function loop() {
+      cx += (mx - cx) * 0.10;
+      cy += (my - cy) * 0.10;
+      glow.style.left = cx + 'px';
+      glow.style.top  = cy + 'px';
+      glow.style.opacity = '1';
+      requestAnimationFrame(loop);
+    }
+    loop();
+  })();
+</script>
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -1750,5 +2023,6 @@
 }
 </script>
 
+<div id="cursor-glow" aria-hidden="true" style="position:fixed;pointer-events:none;z-index:2;width:480px;height:480px;left:0;top:0;border-radius:50%;background:radial-gradient(circle,rgba(61,133,133,0.12) 0%,rgba(61,133,133,0.03) 42%,transparent 70%);transform:translate(-50%,-50%);opacity:0;will-change:left,top;transition:opacity 0.6s ease;"></div>
 </body>
 </html>
