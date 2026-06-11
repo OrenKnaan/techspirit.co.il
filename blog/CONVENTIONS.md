@@ -197,11 +197,16 @@ All dates must match in **4 places** when updated:
 ## Publishing a future post
 
 1. `mv blog/future-posts/[slug] blog/[slug]`
-2. Update `blog/index.html` — add post object to `posts` array
-3. Update `sitemap.xml` — add `<url>` entry
-4. Update internal links in other posts if needed
-5. Update `article:modified_time` to today's date
-6. Submit URL to Google Search Console for indexing
+2. Fix relative paths — future-posts are one level deeper, so adjust on move:
+   - `../../blog.css` → `../blog.css`
+   - `../../posts.js` → `../posts.js`
+   - `../../../fonts/` → `../../fonts/`
+   - `../../../Images/` → `../../Images/`
+3. Update `blog/posts.js` — set `published:true`, remove `publishDate`
+4. Update `sitemap.xml` — add `<url>` entry
+5. Update internal links in other posts if needed
+6. Update `article:modified_time` to today's date
+7. Submit URL to Google Search Console for indexing
 
 ---
 
