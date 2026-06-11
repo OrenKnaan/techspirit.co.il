@@ -250,11 +250,18 @@
       100%{transform:translateY(-210px)translateX(5px) scale(3); opacity:0}
     }
 
+    /* ── SCROLL SNAP – value-prop only ── */
+    html { scroll-snap-type: y proximity; }
+    #value-prop { scroll-snap-align: start; }
+
     /* ── VALUE PROP (old hero content) ── */
     #value-prop {
       background: var(--teal-dark);
       position: relative; overflow: hidden;
+      min-height: 100vh;
+      display: flex; align-items: center;
     }
+    #value-prop > .container { width: 100%; }
     #value-prop::before {
       content: ''; position: absolute; inset: 0; pointer-events: none;
       background:
@@ -276,10 +283,20 @@
       background-attachment: fixed;
       background-size: cover;
       background-position: center;
+      position: relative;
+    }
+    .img-divider-title {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 48px 32px 32px;
+      background: linear-gradient(to top, rgba(15,28,28,.90) 0%, rgba(15,28,28,.45) 55%, transparent 100%);
+      font-family: var(--fh);
+      font-size: clamp(26px, 4vw, 52px);
+      color: var(--white); text-align: center;
+      letter-spacing: -.02em; line-height: 1.15;
     }
     @media (max-width: 768px) {
-      /* iOS Safari doesn't support background-attachment: fixed */
-      .img-divider { background-attachment: scroll; }
+      .img-divider { background-attachment: scroll; height: 280px; }
+      .img-divider-title { font-size: clamp(22px, 6vw, 36px); padding: 36px 24px 24px; }
     }
 
     /* ── SEO / AEO SECTION ── */
@@ -326,15 +343,12 @@
       padding: 140px 0 100px;
     }
     .hero-txt { text-align: right; }
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(212,168,67,.12); border: 1px solid rgba(212,168,67,.28);
-      padding: 6px 16px; border-radius: 20px; margin-bottom: 28px;
-      font-size: 13px; font-weight: 700; color: var(--gold);
-      letter-spacing: .04em;
+    .value-tagline {
+      font-size: 14px; font-weight: 700; color: var(--gold);
+      letter-spacing: .12em; text-transform: uppercase;
+      margin-bottom: 28px; opacity: .9;
       animation: fadeDown .7s ease .2s both;
     }
-    .hero-badge-monk { width: 20px; height: 20px; object-fit: contain; flex-shrink: 0; }
     @keyframes fadeDown {
       from { transform: translateY(-12px); }
       to   { transform: none; }
@@ -1004,7 +1018,7 @@
     <div class="hero-in">
 
       <div class="hero-txt">
-        <div class="hero-badge"><img src="Images/Assets/monk-hq.webp" alt="" class="hero-badge-monk">בניית אתרים ושירותי אינטרנט עבור אנשים מודעים</div>
+        <p class="value-tagline">בניית אתרים ושירותי אינטרנט עבור אנשים מודעים</p>
         <p class="hero-sub">
           אורן כנען בונה אתרים לעסקים רוחניים בישראל - אתר שמדבר את השפה שלכם,
           <strong>מושך לקוחות מדויקים</strong> ועובד בשבילכם גם כשאתם ישנים.
@@ -1049,13 +1063,14 @@
 </section>
 
 <!-- IMAGE DIVIDER 1 -->
-<div class="img-divider" style="background-image:url('Images/Assets/Sections/section-teaching.webp')"></div>
+<div class="img-divider" style="background-image:url('Images/Assets/Sections/section-teaching.webp')">
+  <div class="img-divider-title">האתר שעובד בשבילכם</div>
+</div>
 
 <!-- PAIN SECTION -->
 <section id="pain" class="section">
   <div class="container">
     <div class="pain-heading rv">
-      <span class="eyebrow">למה אתם כאן?</span>
       <h2 class="section-h2">אם זה מרגיש <em>מוכר</em> -<br>אתם בדיוק במקום הנכון</h2>
       <div class="bar"></div>
     </div>
@@ -1100,11 +1115,15 @@
 </section>
 
 
+<!-- IMAGE DIVIDER SEO/AEO -->
+<div class="img-divider" style="background-image:url('Images/Assets/Sections/section-seo-aeo.webp')">
+  <div class="img-divider-title">קידום בגוגל (SEO) ובבינה מלאכותית (AEO)</div>
+</div>
+
 <!-- SEO / AEO -->
 <section id="seo-aeo">
   <div class="container">
     <div class="seo-inner rv">
-      <div class="seo-eyebrow">SEO & AEO</div>
       <h2 class="seo-h2">האנשים שצריכים אתכם<br><em>לא מוצאים אתכם עדיין</em></h2>
       <p class="seo-body">
         כשמישהו מחפש בגוגל "מטפלת הוליסטית בתל אביב" - האם הוא מוצא אתכם?<br>
@@ -1138,13 +1157,14 @@
 </section>
 
 <!-- IMAGE DIVIDER 2 -->
-<div class="img-divider" style="background-image:url('Images/Assets/Sections/section-building.webp')"></div>
+<div class="img-divider" style="background-image:url('Images/Assets/Sections/section-building.webp')">
+  <div class="img-divider-title">תהליך העבודה</div>
+</div>
 
 <!-- PROCESS -->
 <section id="process" class="section">
   <div class="container">
     <div class="pain-heading rv">
-      <span class="eyebrow">איך זה עובד?</span>
       <h2 class="section-h2">תהליך פשוט, <em>תוצאה אמיתית</em></h2>
       <p class="section-sub">שלושה שלבים - מהשיחה הראשונה עד לאתר שמרגיש בדיוק כמוכם</p>
       <div class="bar"></div>
@@ -1175,13 +1195,14 @@
 
 
 <!-- IMAGE DIVIDER 3 -->
-<div class="img-divider" style="background-image:url('Images/Assets/Sections/section-management-systems.webp')"></div>
+<div class="img-divider" style="background-image:url('Images/Assets/Sections/section-management-systems.webp')">
+  <div class="img-divider-title">בניית אתרים</div>
+</div>
 
 <!-- PORTFOLIO PREVIEW -->
 <section id="portfolio-preview" class="section">
   <div class="container">
     <div class="pain-heading rv">
-      <span class="eyebrow">עבודות נבחרות</span>
       <h2 class="section-h2">כל אחד מהם התחיל<br><em>עם רעיון בדיוק כמוכם</em></h2>
       <div class="bar"></div>
     </div>
@@ -1237,14 +1258,10 @@
 </section>
 
 
-<!-- IMAGE DIVIDER 4 -->
-<div class="img-divider" style="background-image:url('Images/Assets/Sections/section-seo-aeo.webp')"></div>
-
 <!-- TESTIMONIALS -->
 <section id="testimonials" class="section">
   <div class="container">
     <div class="tes-header rv">
-      <span class="eyebrow" style="color:var(--gold)">מה אמרו אחרי שגמרנו</span>
       <h2 class="section-h2">לקוחות מרוצים הם<br><em style="color:#75bab8">ההמלצה הכי טובה</em></h2>
       <div class="bar"></div>
     </div>
@@ -1376,7 +1393,6 @@
 <section id="faq" class="section">
   <div class="container">
     <div class="pain-heading rv">
-      <span class="eyebrow">שאלות נפוצות</span>
       <h2 class="section-h2">מה <em>שאתם שואלים</em> לפני שמתקשרים</h2>
       <div class="bar"></div>
     </div>
@@ -1517,7 +1533,6 @@
 <section class="section" style="background:var(--parchment);padding-bottom:72px">
   <div class="container">
     <div class="pain-heading rv">
-      <span class="eyebrow">מהבלוג</span>
       <h2 class="section-h2">קראו לפני שמחליטים</h2>
       <div class="bar"></div>
     </div>
@@ -1546,13 +1561,14 @@
 
 
 <!-- IMAGE DIVIDER 5 -->
-<div class="img-divider" style="background-image:url('Images/Assets/Sections/section-contact.webp')"></div>
+<div class="img-divider" style="background-image:url('Images/Assets/Sections/section-contact.webp')">
+  <div class="img-divider-title">בואו נדבר</div>
+</div>
 
 <!-- FINAL CTA -->
 <section id="final-cta">
   <div class="container">
     <div class="final-inner">
-      <div class="final-eyebrow rv">מוכנים להתחיל?</div>
       <h2 class="rv d1">
         בואו נבנה לכם<br>
         <em>אתר שעובד בשבילכם</em>
