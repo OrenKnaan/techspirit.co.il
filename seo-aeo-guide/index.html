@@ -1,0 +1,1659 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>מדריך SEO ו-AEO המלא | הטכנורוחניק</title>
+  <meta name="description" content="מדריך SEO ו-AEO מלא בעברית לעסקים רוחניים ומטפלים: מחקר מילות מפתח, תוכן, טכני, AI ועוד.">
+  <link rel="icon" type="image/webp" href="../Images/Assets/monk.webp">
+
+  <style>
+    /* ── FONTS ── */
+    @font-face {
+      font-family: 'Heebo';
+      src: url('../fonts/Heebo/Heebo-VariableFont_wght.woff2') format('woff2-variations');
+      font-weight: 300 900;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Secular One';
+      src: url('../fonts/Secular_One/SecularOne-Regular.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    /* ── TOKENS ── */
+    :root {
+      --teal-dark:  #162828;
+      --teal:       #2D6B6B;
+      --teal-mid:   #3D8585;
+      --teal-pale:  #DFF0F0;
+      --teal-ghost: #EEF8F8;
+      --terra:      #C4502A;
+      --terra-hi:   #E06840;
+      --terra-pale: #FAEEE9;
+      --gold:       #D4A843;
+      --gold-hi:    #E8C870;
+      --gold-pale:  #FDF6E3;
+      --cream:      #F5F0E6;
+      --cream-dk:   #EDE5D6;
+      --parchment:  #FAF7F0;
+      --charcoal:   #2C2420;
+      --brown:      #5C3D2E;
+      --muted:      #8A7A6E;
+      --muted-lt:   #C4B8AE;
+      --white:      #FFFFFF;
+      --fh:         'Secular One', 'Heebo', sans-serif;
+      --fb:         'Heebo', sans-serif;
+      --sh-sm:      0 2px 12px rgba(44,36,32,.08);
+      --sh-md:      0 4px 28px rgba(44,36,32,.13);
+      --sh-lg:      0 10px 52px rgba(44,36,32,.18);
+      --r:          14px;
+      --r-sm:       8px;
+      --r-lg:       20px;
+      --ease:       0.3s ease;
+      --sidebar-w:  260px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-snap-type: y proximity; }
+    body {
+      font-family: var(--fb);
+      background: var(--parchment);
+      color: var(--charcoal);
+      line-height: 1.8;
+      direction: rtl;
+      min-height: 100vh;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { text-decoration: none; color: inherit; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; }
+    ul, ol { list-style: none; }
+
+    /* ── GRAIN ── */
+    body::before {
+      content: ''; position: fixed; inset: 0; z-index: 9998; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 200px 200px; opacity: 0.022;
+    }
+
+    /* ── TOP NAV ── */
+    .top-nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--teal-dark);
+      color: var(--white);
+      padding: 0 20px;
+      height: 56px;
+      display: flex; align-items: center; justify-content: space-between;
+      box-shadow: 0 2px 16px rgba(22,40,40,.35);
+    }
+    .top-nav .logo {
+      font-family: var(--fh);
+      font-size: 1rem;
+      color: var(--gold);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .top-nav .logo img { width: 32px; height: 32px; border-radius: 50%; }
+    .progress-wrap {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 0.82rem; color: var(--teal-pale);
+    }
+    .progress-bar-track {
+      width: 120px; height: 5px;
+      background: rgba(255,255,255,.2);
+      border-radius: 10px; overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 100%; background: var(--gold);
+      border-radius: 10px;
+      transition: width var(--ease);
+    }
+    .menu-btn {
+      display: none;
+      color: var(--white); font-size: 1.3rem;
+      padding: 4px 8px;
+    }
+    @media (max-width: 768px) { .menu-btn { display: block; } }
+
+    /* ── LAYOUT ── */
+    .layout {
+      display: flex;
+      min-height: calc(100vh - 56px);
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      width: var(--sidebar-w);
+      min-width: var(--sidebar-w);
+      background: var(--teal-dark);
+      padding: 24px 0 80px;
+      position: sticky; top: 56px;
+      height: calc(100vh - 56px);
+      overflow-y: auto;
+      transition: transform var(--ease);
+      z-index: 90;
+    }
+    .sidebar::-webkit-scrollbar { width: 4px; }
+    .sidebar::-webkit-scrollbar-thumb { background: var(--teal-mid); border-radius: 4px; }
+
+    .sidebar-title {
+      font-family: var(--fh);
+      font-size: 0.72rem;
+      color: var(--muted-lt);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      padding: 0 20px 12px;
+    }
+
+    .nav-item {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 20px;
+      cursor: pointer;
+      color: rgba(255,255,255,.6);
+      font-size: 0.88rem;
+      transition: all var(--ease);
+      position: relative;
+      border-right: 3px solid transparent;
+    }
+    .nav-item:hover { color: var(--white); background: rgba(255,255,255,.06); }
+    .nav-item.active {
+      color: var(--white);
+      border-right-color: var(--gold);
+      background: rgba(255,255,255,.08);
+    }
+    .nav-item.locked { color: rgba(255,255,255,.3); }
+    .nav-item.locked .nav-icon { opacity: 0.4; }
+    .nav-item.completed { color: rgba(255,255,255,.7); }
+    .nav-item.completed::before {
+      content: '✓';
+      position: absolute;
+      left: 16px;
+      font-size: 0.75rem;
+      color: var(--gold);
+    }
+    .nav-num {
+      width: 24px; height: 24px; border-radius: 50%;
+      background: rgba(255,255,255,.1);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem; font-weight: 700;
+      flex-shrink: 0;
+    }
+    .nav-item.active .nav-num { background: var(--gold); color: var(--teal-dark); }
+    .nav-item.completed .nav-num { background: var(--teal-mid); }
+    .nav-lock { font-size: 0.75rem; margin-right: auto; }
+
+    .sidebar-back {
+      display: flex; align-items: center; gap: 6px;
+      padding: 12px 20px 0;
+      color: var(--muted-lt);
+      font-size: 0.8rem;
+      margin-bottom: 16px;
+    }
+    .sidebar-back a { color: var(--muted-lt); transition: color var(--ease); }
+    .sidebar-back a:hover { color: var(--gold); }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        position: fixed; top: 56px; right: 0;
+        transform: translateX(100%);
+        height: calc(100vh - 56px);
+        box-shadow: var(--sh-lg);
+      }
+      .sidebar.open { transform: translateX(0); }
+      .sidebar-overlay {
+        display: none;
+        position: fixed; inset: 0; top: 56px;
+        background: rgba(0,0,0,.5); z-index: 89;
+      }
+      .sidebar-overlay.open { display: block; }
+    }
+
+    /* ── MAIN WRAPPER ── */
+    .main-wrapper {
+      flex: 1;
+      overflow: hidden;
+    }
+
+    /* ── MAIN ── */
+    .main {
+      max-width: 820px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 40px 48px;
+    }
+    @media (max-width: 768px) { .main { padding: 24px 16px; } }
+
+    /* ── HERO ── */
+    .guide-hero {
+      background: linear-gradient(135deg, var(--teal-dark) 0%, var(--teal) 100%);
+      border-radius: var(--r-lg);
+      padding: 48px 40px;
+      color: var(--white);
+      margin-bottom: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    .guide-hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='28' fill='none' stroke='rgba(255,255,255,.06)' stroke-width='1'/%3E%3C/svg%3E") 20px 20px;
+      pointer-events: none;
+    }
+    .guide-hero .badge {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--teal-dark);
+      font-family: var(--fh);
+      font-size: 0.75rem;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
+    .guide-hero h1 {
+      font-family: var(--fh);
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      line-height: 1.3;
+      margin-bottom: 14px;
+      color: var(--white);
+    }
+    .guide-hero p {
+      font-size: 1rem;
+      color: var(--teal-pale);
+      max-width: 520px;
+      line-height: 1.7;
+    }
+    .guide-hero .hero-meta {
+      display: flex; gap: 20px; flex-wrap: wrap;
+      margin-top: 24px;
+    }
+    .guide-hero .hero-meta span {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 0.85rem; color: var(--teal-pale);
+    }
+
+    /* ── STEP MARKER ── */
+    .step-marker {
+      font-family: var(--fh);
+      font-size: 0.7rem;
+      color: var(--muted-lt);
+      text-transform: uppercase;
+      letter-spacing: 2.5px;
+      padding: 0 4px;
+      margin-bottom: 10px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .step-marker::after { content: ''; flex: 1; height: 1px; background: var(--cream-dk); }
+
+    /* ── STAGE CARD ── */
+    .stage-card {
+      background: var(--white);
+      border-radius: var(--r-lg);
+      box-shadow: var(--sh-sm);
+      margin-bottom: 80px;
+      overflow: hidden;
+      border: 1px solid var(--cream-dk);
+      border-top: 4px solid var(--teal);
+      scroll-margin-top: 72px;
+      scroll-snap-align: start;
+    }
+    .stage-card.locked-card {
+      opacity: 0.6;
+      pointer-events: none;
+      filter: blur(1px);
+    }
+
+    .stage-header {
+      background: var(--cream);
+      padding: 20px 28px;
+      display: flex; align-items: center; gap: 14px;
+      border-bottom: 1px solid var(--cream-dk);
+    }
+    .stage-num-badge {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--teal);
+      color: var(--white);
+      font-family: var(--fh);
+      font-size: 1rem;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .stage-header h2 {
+      font-family: var(--fh);
+      font-size: 1.2rem;
+      color: var(--teal-dark);
+    }
+    .stage-header .stage-tag {
+      margin-right: auto;
+      font-size: 0.75rem;
+      color: var(--teal);
+      background: var(--teal-ghost);
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-weight: 600;
+    }
+    .stage-header .stage-tag.locked-tag {
+      color: var(--muted);
+      background: var(--cream-dk);
+    }
+
+    .stage-body { padding: 28px; }
+
+    /* ── CALLOUTS ── */
+    .callout {
+      border-radius: var(--r-sm);
+      padding: 14px 18px;
+      margin: 18px 0;
+      display: flex; gap: 12px; align-items: flex-start;
+      font-size: 0.92rem;
+    }
+    .callout .icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 2px; }
+    .callout p { margin: 0; line-height: 1.65; }
+    .callout.tip { background: var(--teal-ghost); border-right: 3px solid var(--teal); }
+    .callout.tip .icon::after { content: '💡'; }
+    .callout.warn { background: var(--terra-pale); border-right: 3px solid var(--terra); }
+    .callout.warn .icon::after { content: '⚠️'; }
+    .callout.gold { background: var(--gold-pale); border-right: 3px solid var(--gold); }
+    .callout.gold .icon::after { content: '✨'; }
+    .callout.target { background: #EEF4FF; border-right: 3px solid #4A7EC7; }
+    .callout.target .icon::after { content: '🎯'; }
+
+    /* ── CONTENT TYPOGRAPHY ── */
+    .stage-body h3 {
+      font-family: var(--fh);
+      font-size: 1.05rem;
+      color: var(--teal-dark);
+      margin: 24px 0 10px;
+    }
+    .stage-body h3:first-child { margin-top: 0; }
+    .stage-body p { margin-bottom: 14px; font-size: 0.95rem; }
+    .stage-body ul, .stage-body ol {
+      margin: 10px 0 16px 0;
+      padding-right: 20px;
+    }
+    .stage-body ul li { list-style: disc; margin-bottom: 7px; font-size: 0.93rem; }
+    .stage-body ol li { list-style: decimal; margin-bottom: 7px; font-size: 0.93rem; }
+    .stage-body strong { color: var(--teal-dark); }
+    .stage-body .highlight {
+      background: var(--gold-pale);
+      padding: 1px 5px;
+      border-radius: 3px;
+    }
+
+    /* ── STAT CARDS ── */
+    .stat-row {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 14px; margin: 20px 0;
+    }
+    .stat-card {
+      background: var(--cream);
+      border-radius: var(--r-sm);
+      padding: 16px;
+      text-align: center;
+      border: 1px solid var(--cream-dk);
+    }
+    .stat-card .stat-num {
+      font-family: var(--fh);
+      font-size: 1.8rem;
+      color: var(--teal);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-card .stat-label {
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    /* ── PROMPT BOX ── */
+    .prompt-box {
+      border: 1px solid var(--teal-pale);
+      border-radius: var(--r);
+      overflow: hidden;
+      margin: 20px 0;
+    }
+    .prompt-box-header {
+      background: var(--teal-ghost);
+      padding: 10px 16px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .prompt-box-header .label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--teal);
+      display: flex; align-items: center; gap: 6px;
+    }
+    .prompt-box-header .label::before { content: '🤖'; }
+    .lang-toggle {
+      display: flex; gap: 0;
+      border: 1px solid var(--teal-pale);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .lang-btn {
+      padding: 3px 10px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      font-family: var(--fb);
+      background: transparent;
+      color: var(--teal);
+      transition: all 0.2s;
+    }
+    .lang-btn.active {
+      background: var(--teal);
+      color: var(--white);
+    }
+    .prompt-text {
+      padding: 14px 16px;
+      font-size: 0.88rem;
+      line-height: 1.65;
+      color: var(--charcoal);
+      direction: rtl;
+      white-space: pre-wrap;
+      font-family: var(--fb);
+    }
+    .prompt-text.ltr {
+      direction: ltr;
+      text-align: left;
+    }
+    .prompt-text.en-text { display: none; }
+    .prompt-footer {
+      background: var(--cream);
+      padding: 8px 16px;
+      display: flex; justify-content: flex-start;
+      border-top: 1px solid var(--cream-dk);
+    }
+    .copy-btn {
+      font-size: 0.8rem;
+      color: var(--teal);
+      font-weight: 600;
+      font-family: var(--fb);
+      display: flex; align-items: center; gap: 5px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: var(--white);
+      border: 1px solid var(--teal-pale);
+      transition: all 0.2s;
+    }
+    .copy-btn:hover { background: var(--teal); color: var(--white); }
+    .copy-btn.copied { background: var(--teal); color: var(--white); }
+
+    /* ── QUIZ ── */
+    .quiz-block {
+      background: var(--cream);
+      border-radius: var(--r);
+      padding: 20px 22px;
+      margin: 24px 0;
+      border: 1px solid var(--cream-dk);
+    }
+    .quiz-block .quiz-q {
+      font-family: var(--fh);
+      font-size: 0.95rem;
+      color: var(--teal-dark);
+      margin-bottom: 14px;
+    }
+    .quiz-block .quiz-q::before { content: '🎯 '; }
+    .quiz-options { display: flex; flex-direction: column; gap: 8px; }
+    .quiz-opt {
+      padding: 10px 14px;
+      border-radius: var(--r-sm);
+      border: 1.5px solid var(--cream-dk);
+      background: var(--white);
+      font-size: 0.88rem;
+      text-align: right;
+      cursor: pointer;
+      transition: all 0.2s;
+      color: var(--charcoal);
+      font-family: var(--fb);
+    }
+    .quiz-opt:hover { border-color: var(--teal); color: var(--teal); }
+    .quiz-opt.correct { background: #E8F8EE; border-color: #2EAA5E; color: #1A7840; }
+    .quiz-opt.wrong { background: var(--terra-pale); border-color: var(--terra); color: var(--terra); }
+    .quiz-feedback {
+      margin-top: 12px; padding: 10px 14px;
+      border-radius: var(--r-sm);
+      font-size: 0.85rem;
+      display: none;
+    }
+    .quiz-feedback.correct { background: #E8F8EE; color: #1A7840; display: block; }
+    .quiz-feedback.wrong { background: var(--terra-pale); color: var(--terra); display: block; }
+
+    /* ── STEPS LIST ── */
+    .steps-list { display: flex; flex-direction: column; gap: 14px; margin: 18px 0; }
+    .step-item {
+      display: flex; gap: 14px; align-items: flex-start;
+    }
+    .step-num {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: var(--teal);
+      color: var(--white);
+      font-size: 0.8rem; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 2px;
+    }
+    .step-content { flex: 1; }
+    .step-content strong { font-size: 0.9rem; display: block; margin-bottom: 3px; color: var(--teal-dark); }
+    .step-content p { font-size: 0.87rem; margin: 0; color: var(--brown); }
+
+    /* ── GATE CARD ── */
+    .gate-card {
+      background: linear-gradient(135deg, var(--teal-dark) 0%, var(--teal) 100%);
+      border-radius: var(--r-lg);
+      padding: 44px 40px;
+      color: var(--white);
+      margin: 32px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .gate-card::before {
+      content: '🔓';
+      font-size: 3rem;
+      display: block;
+      margin-bottom: 16px;
+    }
+    .gate-card h2 {
+      font-family: var(--fh);
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      color: var(--gold);
+    }
+    .gate-card p {
+      color: var(--teal-pale);
+      font-size: 0.95rem;
+      max-width: 440px;
+      margin: 0 auto 24px;
+      line-height: 1.7;
+    }
+    .gate-form {
+      display: flex; flex-direction: column; gap: 12px;
+      max-width: 380px; margin: 0 auto;
+    }
+    .gate-form input {
+      padding: 12px 16px;
+      border-radius: var(--r-sm);
+      border: 1.5px solid rgba(255,255,255,.25);
+      background: rgba(255,255,255,.12);
+      color: var(--white);
+      font-size: 0.95rem;
+      font-family: var(--fb);
+      text-align: right;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .gate-form input::placeholder { color: rgba(255,255,255,.45); }
+    .gate-form input:focus { border-color: var(--gold); }
+    .gate-submit {
+      padding: 13px 24px;
+      background: var(--gold);
+      color: var(--teal-dark);
+      font-family: var(--fh);
+      font-size: 1rem;
+      border-radius: var(--r-sm);
+      transition: background 0.2s, transform 0.15s;
+    }
+    .gate-submit:hover { background: var(--gold-hi); transform: translateY(-1px); }
+    .gate-privacy {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,.4);
+      margin-top: 8px;
+    }
+    .gate-success {
+      display: none;
+      text-align: center;
+      padding: 20px;
+    }
+    .gate-success .big-emoji { font-size: 3rem; margin-bottom: 12px; }
+    .gate-success h3 { font-family: var(--fh); font-size: 1.3rem; color: var(--gold); margin-bottom: 8px; }
+    .gate-success p { color: var(--teal-pale); font-size: 0.9rem; }
+
+    /* ── NEXT BUTTON ── */
+    .next-wrap { display: flex; justify-content: flex-end; margin-top: 28px; }
+    .next-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--teal);
+      color: var(--white);
+      font-family: var(--fh);
+      font-size: 0.95rem;
+      padding: 12px 24px;
+      border-radius: var(--r-sm);
+      transition: background 0.2s, transform 0.15s;
+    }
+    .next-btn:hover { background: var(--teal-mid); transform: translateY(-1px); }
+    .next-btn::after { content: ' ←'; }
+
+    /* ── TABLE ── */
+    .styled-table {
+      width: 100%; border-collapse: collapse; margin: 18px 0;
+      font-size: 0.87rem;
+    }
+    .styled-table th {
+      background: var(--teal-dark);
+      color: var(--white);
+      padding: 10px 14px;
+      text-align: right;
+      font-family: var(--fh);
+      font-weight: 400;
+    }
+    .styled-table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--cream-dk);
+      vertical-align: top;
+    }
+    .styled-table tr:nth-child(even) td { background: var(--cream); }
+    .styled-table tr:last-child td { border-bottom: none; }
+
+    /* ── DIVIDER ── */
+    .stage-divider {
+      display: flex; align-items: center; gap: 14px;
+      margin: 8px 0 32px;
+      color: var(--muted-lt);
+      font-size: 0.78rem;
+    }
+    .stage-divider::before,
+    .stage-divider::after {
+      content: ''; flex: 1; height: 1px; background: var(--cream-dk);
+    }
+
+    /* ── FOOTER ── */
+    .guide-footer {
+      margin-top: 60px;
+      padding: 32px 28px;
+      background: var(--cream);
+      border-radius: var(--r-lg);
+      text-align: center;
+      border: 1px solid var(--cream-dk);
+    }
+    .guide-footer .footer-logo {
+      font-family: var(--fh);
+      font-size: 1.1rem;
+      color: var(--teal);
+      margin-bottom: 8px;
+    }
+    .guide-footer p { font-size: 0.83rem; color: var(--muted); }
+    .guide-footer a { color: var(--teal); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .main { padding: 24px 20px; }
+    }
+    @media (max-width: 480px) {
+      .guide-hero { padding: 32px 22px; }
+      .stage-body { padding: 20px 18px; }
+      .stat-row { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* ── PRICE OPTIONS ── */
+    .price-options {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+      max-width: 460px; margin: 0 auto 20px;
+    }
+    .price-option {
+      background: rgba(255,255,255,.1);
+      border: 1.5px solid rgba(255,255,255,.2);
+      border-radius: var(--r);
+      padding: 20px 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+    }
+    .price-option:hover, .price-option.selected {
+      border-color: var(--gold);
+      background: rgba(255,255,255,.15);
+    }
+    .price-option .price-tag {
+      font-family: var(--fh);
+      font-size: 2rem;
+      color: var(--gold);
+      line-height: 1;
+      margin: 6px 0;
+    }
+    .price-option .price-name { font-size: 0.82rem; color: var(--teal-pale); }
+    .price-option .price-desc { font-size: 0.73rem; color: rgba(255,255,255,.5); margin-top: 4px; }
+    .price-best-badge {
+      display: inline-block;
+      background: var(--gold); color: var(--teal-dark);
+      font-family: var(--fh); font-size: 0.65rem;
+      padding: 2px 8px; border-radius: 10px; margin-bottom: 4px;
+    }
+
+    /* ── UNLOCK PROGRESS ── */
+    .unlock-progress {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      margin-bottom: 18px;
+    }
+    .unlock-dot {
+      width: 11px; height: 11px; border-radius: 50%;
+      background: rgba(255,255,255,.22); transition: background 0.3s;
+    }
+    .unlock-dot.filled { background: var(--gold); }
+    .unlock-progress-label { font-size: 0.77rem; color: var(--teal-pale); }
+
+    /* ── MINI GATE ── */
+    .mini-gate {
+      display: none;
+      padding: 14px 24px 18px;
+      background: var(--cream);
+      border-top: 1px solid var(--cream-dk);
+    }
+    .mini-gate-row {
+      display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 8px;
+    }
+    .mini-gate input[type="email"] {
+      flex: 1; min-width: 180px;
+      padding: 8px 12px; border: 1.5px solid var(--teal-pale);
+      border-radius: var(--r-sm); font-family: var(--fb); font-size: 0.88rem;
+      background: var(--white); outline: none; direction: rtl; text-align: right;
+    }
+    .mini-gate input[type="email"]:focus { border-color: var(--teal); }
+    .mini-pay-btn {
+      padding: 8px 18px; background: var(--terra); color: var(--white);
+      font-family: var(--fh); font-size: 0.85rem; border-radius: var(--r-sm);
+      flex-shrink: 0; transition: background 0.2s;
+    }
+    .mini-pay-btn:hover { background: var(--terra-hi); }
+    .mini-gate-note { font-size: 0.72rem; color: var(--muted); }
+    .mini-gate-note a { color: var(--teal); cursor: pointer; }
+    .mini-gate-success { display: none; font-size: 0.85rem; color: var(--teal-dark); font-family: var(--fh); }
+
+    /* ── LOCKED TEASER CARDS ── */
+    .locked-teaser {
+      background: var(--white);
+      border-radius: var(--r-lg);
+      border: 1px solid var(--cream-dk);
+      border-top: 3px solid var(--muted-lt);
+      box-shadow: var(--sh-sm);
+      margin-bottom: 16px;
+      overflow: hidden;
+      scroll-margin-top: 72px;
+      scroll-snap-align: start;
+    }
+    .locked-teaser-header {
+      background: var(--cream);
+      padding: 16px 24px;
+      display: flex; align-items: center; gap: 12px;
+      border-bottom: 1px solid var(--cream-dk);
+    }
+    .locked-teaser-header .num {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--muted-lt); color: var(--white);
+      font-family: var(--fh); font-size: 0.9rem;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .locked-teaser-header h3 {
+      font-family: var(--fh); font-size: 1rem; color: var(--muted);
+    }
+    .locked-teaser-header .lock-tag {
+      margin-right: auto; font-size: 0.72rem;
+      color: var(--muted); background: var(--cream-dk);
+      padding: 2px 9px; border-radius: 20px;
+    }
+    .locked-teaser-body {
+      padding: 16px 24px;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      flex-wrap: wrap;
+    }
+    .locked-teaser-hints {
+      display: flex; flex-wrap: wrap; gap: 8px;
+    }
+    .locked-hint-chip {
+      font-size: 0.78rem; color: var(--muted);
+      background: var(--cream); border: 1px solid var(--cream-dk);
+      padding: 3px 10px; border-radius: 20px;
+    }
+    .unlock-mini-btn {
+      font-family: var(--fh); font-size: 0.82rem;
+      background: var(--teal); color: var(--white);
+      padding: 7px 16px; border-radius: var(--r-sm);
+      flex-shrink: 0;
+      transition: background 0.2s;
+    }
+    .unlock-mini-btn:hover { background: var(--teal-mid); }
+
+    /* ── TRANSITIONS ── */
+    .stage-card { transition: opacity 0.4s, filter 0.4s; }
+    .fade-in { animation: fadeIn 0.5s ease forwards; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- TOP NAV -->
+<nav class="top-nav">
+  <div class="logo">
+    <img src="../Images/Assets/monk.webp" alt="הטכנורוחניק" onerror="this.style.display='none'">
+    הטכנורוחניק
+  </div>
+  <div class="progress-wrap">
+    <span id="progress-label">0 / 10 שלבים</span>
+    <div class="progress-bar-track">
+      <div class="progress-bar-fill" id="progress-fill" style="width:0%"></div>
+    </div>
+  </div>
+  <button class="menu-btn" onclick="toggleSidebar()" aria-label="תפריט">☰</button>
+</nav>
+
+<div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+<div class="layout">
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-back">
+      <a href="../">← חזרה לאתר</a>
+    </div>
+    <div class="sidebar-title">תוכן המדריך</div>
+    <nav id="stage-nav">
+      <div class="nav-item" data-stage="1" onclick="goToStage(1)">
+        <span class="nav-num">1</span>
+        <span>מה זה SEO ו-AEO?</span>
+      </div>
+      <div class="nav-item" data-stage="2" onclick="goToStage(2)">
+        <span class="nav-num">2</span>
+        <span>7 צעדים ראשונים</span>
+      </div>
+      <div class="nav-item" data-stage="3" onclick="goToStage(3)">
+        <span class="nav-num">3</span>
+        <span>מהלך הכוח 🔑</span>
+      </div>
+      <div class="nav-item locked" data-stage="4" onclick="goToStage(4)">
+        <span class="nav-num">4</span>
+        <span>Technical SEO</span>
+        <span class="nav-lock" id="lock-4">🔒</span>
+      </div>
+      <div class="nav-item locked" data-stage="5" onclick="goToStage(5)">
+        <span class="nav-num">5</span>
+        <span>תוכן שגוגל ו-AI אוהבים</span>
+        <span class="nav-lock" id="lock-5">🔒</span>
+      </div>
+      <div class="nav-item locked" data-stage="6" onclick="goToStage(6)">
+        <span class="nav-num">6</span>
+        <span>AEO: מנועי AI</span>
+        <span class="nav-lock" id="lock-6">🔒</span>
+      </div>
+      <div class="nav-item locked" data-stage="7" onclick="goToStage(7)">
+        <span class="nav-num">7</span>
+        <span>Off-Page &amp; Backlinks</span>
+        <span class="nav-lock" id="lock-7">🔒</span>
+      </div>
+      <div class="nav-item locked" data-stage="8" onclick="goToStage(8)">
+        <span class="nav-num">8</span>
+        <span>SEO מקומי: Maps</span>
+        <span class="nav-lock" id="lock-8">🔒</span>
+      </div>
+      <div class="nav-item locked" data-stage="9" onclick="goToStage(9)">
+        <span class="nav-num">9</span>
+        <span>EEAT + כלים</span>
+        <span class="nav-lock" id="lock-9">🔒</span>
+      </div>
+      <div class="nav-item locked" data-stage="10" onclick="goToStage(10)">
+        <span class="nav-num">10</span>
+        <span>תוכנית פעולה חודשית</span>
+        <span class="nav-lock" id="lock-10">🔒</span>
+      </div>
+    </nav>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <div class="main-wrapper">
+  <main class="main">
+
+    <!-- HERO -->
+    <div class="guide-hero fade-in">
+      <span class="badge">מדריך חינמי</span>
+      <h1>מדריך SEO ו-AEO המלא לעסקים רוחניים</h1>
+      <p>מה שהסוכנויות גובות עליו אלפי שקלים, כאן בחינם, בעברית, עם פרומפטים מוכנים לשימוש.</p>
+      <div class="hero-meta">
+        <span>📖 10 שלבים</span>
+        <span>🤖 פרומפטים מוכנים</span>
+        <span>🌐 עברית + אנגלית</span>
+        <span>⏱️ כ-45 דקות</span>
+      </div>
+    </div>
+
+    <!-- ════════════════ STAGE 1 ════════════════ -->
+    <div class="stage-card fade-in" id="stage-1">
+      <div class="stage-header">
+        <div class="stage-num-badge">1</div>
+        <h2>מה זה SEO ולמה זה חשוב?</h2>
+        <span class="stage-tag">חינמי</span>
+      </div>
+      <div class="stage-body">
+
+        <h3>ההגדרה הפשוטה</h3>
+        <p><strong>SEO = Search Engine Optimization = אופטימיזציה למנועי חיפוש.</strong></p>
+        <p>כשמישהו מקליד בגוגל <span class="highlight">"מטפל רגשי בתל אביב"</span>, SEO הוא מה שקובע אם האתר שלך יופיע בתוצאות הראשונות או ייקבר בדף השני.</p>
+
+        <div class="callout warn"><span class="icon"></span><p>91.5% ממשתמשי גוגל לא מגיעים לדף השני. אם אתם לא בדף הראשון, אתם פשוט לא קיימים מבחינת אותם מחפשים.</p></div>
+
+        <div class="stat-row">
+          <div class="stat-card">
+            <div class="stat-num">91.5%</div>
+            <div class="stat-label">לא מגיעים לדף שני</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">0.63%</div>
+            <div class="stat-label">לוחצים בכלל על תוצאה בדף שני</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">3x</div>
+            <div class="stat-label">יותר תנועה לאתרים בעמדה #1 לעומת #3</div>
+          </div>
+        </div>
+
+        <h3>שלושת עמודי התווך של SEO</h3>
+        <div class="steps-list">
+          <div class="step-item">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <strong>On-Page SEO: מה שבתוך האתר</strong>
+              <p>מילות מפתח, כותרות, תוכן, קישורים פנימיים. הכל מה שגוגל קורא ישירות מהדפים שלכם.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <strong>Off-Page SEO: מה שמחוץ לאתר</strong>
+              <p>קישורים נכנסים (backlinks), ציטוטים, ביקורות, אזכורים. מה שמוכיח לגוגל שאתם אמינים.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <strong>Technical SEO: האינסטלציה מאחורי הקלעים</strong>
+              <p>מהירות אתר, עיצוב מותאם לנייד, schema markup. הדברים שהמבקרים לא רואים אבל גוגל כן.</p>
+            </div>
+          </div>
+        </div>
+
+        <h3>SEO, AEO, GEO, AIO: מה ההבדל?</h3>
+        <p>השוק מלא ראשי תיבות שנועדו לבלבל. האמת? כולם בעצם אותו דבר: בסיס SEO טוב.</p>
+
+        <table class="styled-table">
+          <thead>
+            <tr>
+              <th>ראשי תיבות</th>
+              <th>מה זה אומר בפועל</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>SEO</strong></td>
+              <td>להופיע בגוגל כשמחפשים מילות מפתח</td>
+            </tr>
+            <tr>
+              <td><strong>AEO</strong></td>
+              <td>להופיע בתיבת "Featured Snippet" ובתשובות קוליות</td>
+            </tr>
+            <tr>
+              <td><strong>GEO</strong></td>
+              <td>להיאזכר כשAI משווה בין אפשרויות</td>
+            </tr>
+            <tr>
+              <td><strong>AIO</strong></td>
+              <td>שChatGPT וGemini יכירו את העסק שלכם</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="callout gold"><span class="icon"></span><p>SEO נכון מכסה את כל השאר. אין צורך לרדוף אחרי ארבע אסטרטגיות שונות בו-זמנית.</p></div>
+
+        <!-- PROMPT 1.1 -->
+        <div class="prompt-box" id="pb-1-1">
+          <div class="prompt-box-header">
+            <span class="label">פרומפט: הבנת מצב ה-SEO שלכם</span>
+            <div class="lang-toggle">
+              <button class="lang-btn active" onclick="switchLang('pb-1-1','he')">עב</button>
+              <button class="lang-btn" onclick="switchLang('pb-1-1','en')">EN</button>
+            </div>
+          </div>
+          <div class="prompt-text he-text" id="pb-1-1-he">אני מנהל/ת עסק בתחום [תחום העסק שלך] ב[עיר]. עזור לי להבין את מצב ה-SEO של האתר שלי. מה הדברים הבסיסיים שאני צריך/ה לבדוק קודם כל? תן לי רשימת בדיקה של 10 סעיפים עם הסבר קצר לכל אחד.</div>
+          <div class="prompt-text en-text ltr" id="pb-1-1-en">I manage a business in [your field] in [city]. Help me understand the SEO status of my website. What are the basic things I need to check first? Give me a checklist of 10 items with a brief explanation for each.</div>
+          <div class="prompt-footer">
+            <button class="copy-btn">📋 העתקה</button>
+          </div>
+        </div><!-- /.prompt-box -->
+
+      </div><!-- /.stage-body -->
+    </div><!-- /#stage-1 -->
+
+    <!-- ════════════════ STAGE 2 ════════════════ -->
+    <div class="stage-card fade-in" id="stage-2" style="scroll-margin-top:72px">
+      <div class="stage-header">
+        <div class="stage-num-badge">2</div>
+        <h2>7 צעדים ראשונים שתוכל/י לעשות היום</h2>
+        <span class="stage-tag">חינמי</span>
+      </div>
+      <div class="stage-body">
+
+        <p>רוב הצעדים האלה לוקחים פחות מ-30 דקות ולא דורשים תקציב או מומחה. חלקם משנים את הדירוג שלך תוך שבועות.</p>
+
+        <div class="callout target"><span class="icon"></span><p><strong>המטרה:</strong> שגוגל ידע שאתם קיימים, שהמידע שלכם עקבי, ושיש לכם תוכן שעונה על מה שאנשים מחפשים.</p></div>
+
+        <h3>1. הגדר/י Google Business Profile עד הסוף</h3>
+        <p>GBP הוא הכלי המקומי הכי חשוב שגוגל מציע, ובחינם. רוב המטפלים ממלאים רק 40% מהשדות.</p>
+        <div class="steps-list">
+          <div class="step-item">
+            <div class="step-num">✓</div>
+            <div class="step-content">
+              <strong>מלא/י את כל השדות</strong>
+              <p>תיאור עסק עם מילות מפתח, שעות, קטגוריות, שירותים, שאלות ותשובות. כל שדה ריק הוא נוכחות שחסרה.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">✓</div>
+            <div class="step-content">
+              <strong>הוסף/י לפחות 15 תמונות</strong>
+              <p>פנים שלך, מרחב הטיפול, לוגו. תמונות מגדילות קליקים ב-42%. צלם/י עם מיקום פעיל בטלפון, ה-GPS מוטמע בתמונה ומחזק את הסיגנל המקומי.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">✓</div>
+            <div class="step-content">
+              <strong>קשר/י לאתר, לא לפייסבוק</strong>
+              <p>הקישור ב-GBP צריך להוביל לאתר שלך. פייסבוק לא עוזר לדירוג האורגני שלך בגוגל.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">✓</div>
+            <div class="step-content">
+              <strong>הפעל/י מסרים ועדכן/י שבועית</strong>
+              <p>גוגל אוהב עסקים פעילים. פרסם/י עדכון קצר אחת לשבוע: טיפ מקצועי, ציטוט, הצעה עונתית.</p>
+            </div>
+          </div>
+        </div>
+
+        <h3>2. NAP: שם, כתובת, טלפון - עקביות מוחלטת</h3>
+        <p><strong>NAP = Name, Address, Phone.</strong> גוגל בודק שהמידע שלך זהה בדיוק בכל מקום: באתר, ב-GBP, בדפי זהב ובספריות מקומיות. אפילו "רחוב" לעומת "רח׳" יכול לבלבל את האלגוריתם.</p>
+        <div class="callout tip"><span class="icon"></span><p>בדוק/י: האם הטלפון בכותרת האתר זהה לזה ב-GBP? האם הכתובת כוללת מספר דירה? תקן/י כל אי-עקביות, זה לבד יכול לשפר דירוגים מקומיים ב-30%.</p></div>
+
+        <h3>3. מחקר מילות מפתח: מה אנשים באמת מחפשים?</h3>
+        <p>כלל ברזל: תמיד <strong>"[עיר] + [שירות]"</strong>. לא "near me", כי גוגל מחשב מיקום אוטומטית. "near me" לא עוזר לדירוג.</p>
+        <div class="callout gold"><span class="icon"></span><p><strong>כלי חינמי:</strong> answerthepublic.com, הקלד/י את השירות שלך ותקבל/י עשרות שאלות אמיתיות שהמטופלים שלך מחפשים. כל שאלה = פוסט פוטנציאלי.</p></div>
+        <p>חפש/י מילות מפתח עם <strong>קושי נמוך (0–30)</strong>. אלה המילים שאפשר לדרג בהן גם בלי תקציב ענק. 20 מילות מפתח עם 50 חיפושים כל אחת = 1,000 מבקרים פוטנציאלים.</p>
+
+        <h3>4. צור/י דף שירות נפרד לכל שירות</h3>
+        <p>דף אחד לכל שירות, לא "שירותים" גנרי. כל דף מתמקד במילת מפתח אחת.</p>
+        <div class="steps-list">
+          <div class="step-item">
+            <div class="step-num">H1</div>
+            <div class="step-content">
+              <strong>כותרת: "[שירות] ב[עיר]"</strong>
+              <p>למשל: "טיפול זוגי בתל אביב" או "ריפוי אנרגטי ברמת גן".</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">¶1</div>
+            <div class="step-content">
+              <strong>פסקה ראשונה: תשובה ישירה</strong>
+              <p>גוגל ו-AI קוראים את 150 המילים הראשונות קודם כל. אל תסתיר/י את המידע הכי חשוב בפסקה הרביעית.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">FAQ</div>
+            <div class="step-content">
+              <strong>סיים/י עם שאלות ותשובות</strong>
+              <p>10+ שאלות שמטופלים שואלים. AI אוהב FAQ, זה הפורמט שממנו הוא שואב תשובות.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROMPT BOX 2.1 -->
+        <div class="prompt-box" id="pb-2-1">
+          <div class="prompt-box-header">
+            <span class="label">פרומפט: כתיבת דף שירות</span>
+            <div class="lang-toggle">
+              <button class="lang-btn active" onclick="switchLang('pb-2-1','he')">עב</button>
+              <button class="lang-btn" onclick="switchLang('pb-2-1','en')">EN</button>
+            </div>
+          </div>
+          <div class="prompt-text he-text" id="pb-2-1-he">אני [שם העסק], [תפקיד] בתחום [תחום] בעיר [עיר]. כתוב/כתבי לי דף שירות מלא לשירות "[שם השירות]". הדף צריך: (1) לפתוח בתשובה ישירה בפסקה הראשונה, (2) H1 של "[שם השירות] ב[עיר]", (3) H2 לכותרות ביניים, (4) 8 שאלות ותשובות (FAQ) בסוף, (5) CTA ברור בסוף. אורך: 600–800 מילה. עברית טבעית, לא שיווקית.</div>
+          <div class="prompt-text en-text ltr" id="pb-2-1-en">I am [business name], a [role] in [field] in [city]. Write me a complete service page for "[service name]". Requirements: (1) open with a direct answer in the first paragraph, (2) H1 of "[service name] in [city]", (3) H2 subheadings throughout, (4) 8 FAQ questions at the end, (5) a clear CTA at the bottom. Length: 600–800 words. Natural language, not marketing-speak.</div>
+          <div class="prompt-footer">
+            <button class="copy-btn">📋 העתקה</button>
+          </div>
+        </div>
+
+        <h3>5. בקש/י 5 ביקורות גוגל השבוע</h3>
+        <p>ביקורות גוגל משפיעות על דירוג מקומי יותר ממה שרוב המטפלים חושבים, ורוב המטפלים פשוט לא מבקשים אותן.</p>
+        <div class="steps-list">
+          <div class="step-item">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <strong>שלח/י קישור ישיר לדף הביקורות</strong>
+              <p>ב-GBP: "קבל/י קישור לביקורות" ← שלח/י ב-WhatsApp תוך 24 שעות מסוף הפגישה.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <strong>בקש/י שיזכירו את השירות הספציפי</strong>
+              <p>"אם יש לך רגע, מאוד אעריך ביקורת קצרה על הטיפול הזוגי." הביקורת תחזק את דירוג הדף הספציפי הזה.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <strong>הגב/י לכל ביקורת, גם שלילית</strong>
+              <p>גוגל מודד שיעורי תגובה. ביקורת שלילית עם תגובה מכובדת נראית טוב יותר מביקורת שלילית ללא תגובה.</p>
+            </div>
+          </div>
+        </div>
+        <div class="callout warn"><span class="icon"></span><p>ביקורות טריות שוות פי 3 מביקורות ישנות. 10 ביקורות בחודש עדיפות על 50 ביקורות מלפני שנתיים.</p></div>
+
+        <h3>6. בדיקת מהירות ומובייל</h3>
+        <p>פתח/י את האתר עכשיו בטלפון. אפשר לקרוא בלי לזום? הכפתורים לחיצים? האתר נטען תוך 3 שניות?</p>
+        <div class="stat-row">
+          <div class="stat-card">
+            <div class="stat-num">53%</div>
+            <div class="stat-label">עוזבים אם האתר לוקח יותר מ-3 שניות</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">2.5 שניות</div>
+            <div class="stat-label">הזמן המקסימלי ל-LCP (Largest Contentful Paint)</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">70%</div>
+            <div class="stat-label">מהחיפושים מגיעים ממובייל</div>
+          </div>
+        </div>
+        <div class="callout tip"><span class="icon"></span><p><strong>כלי חינמי:</strong> pagespeed.web.dev, הכנס/י את כתובת האתר וקבל/י ציון + רשימת תיקונים מסודרת לפי עדיפות.</p></div>
+
+        <h3>7. הגדר/י Google Search Console</h3>
+        <p>זה המקום שגוגל מדבר אליך ישירות. בחינם לגמרי.</p>
+        <div class="steps-list">
+          <div class="step-item">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <strong>כנס/י לـ search.google.com/search-console</strong>
+              <p>הגדר/י "Domain Property" (מכסה את כל גרסאות האתר) והגש/י את ה-Sitemap.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <strong>בעוד 4 שבועות: בדוק/י Performance → Queries</strong>
+              <p>חפש/י מילות מפתח בעמדות 11–20. אלה "הפירות הנמוכים", שינוי קטן יקפיץ אותן לעמוד ראשון.</p>
+            </div>
+          </div>
+        </div>
+        <div class="callout gold"><span class="icon"></span><p>מעבר ממקום 10 למקום 3 שווה פי 10 יותר קליקים. זה מה שה-Search Console מאפשר לעשות.</p></div>
+
+        <!-- PROMPT BOX 2.2 -->
+        <div class="prompt-box" id="pb-2-2">
+          <div class="prompt-box-header">
+            <span class="label">פרומפט: אופטימיזציית Google Business Profile</span>
+            <div class="lang-toggle">
+              <button class="lang-btn active" onclick="switchLang('pb-2-2','he')">עב</button>
+              <button class="lang-btn" onclick="switchLang('pb-2-2','en')">EN</button>
+            </div>
+          </div>
+          <div class="prompt-text he-text" id="pb-2-2-he">כתוב/כתבי לי תיאור עסק ל-Google Business Profile עבור: [שם העסק], [תחום הטיפול], בעיר [עיר]. התיאור צריך: (1) להיות 750 תווים בדיוק, (2) לכלול את מילות המפתח [מילת מפתח 1], [מילת מפתח 2], (3) להיות כתוב בגוף ראשון, (4) לסיים עם קריאה לפעולה. עברית טבעית וחמה, לא רובוטית.</div>
+          <div class="prompt-text en-text ltr" id="pb-2-2-en">Write me a Google Business Profile description for: [business name], [therapy field], in [city]. Requirements: (1) exactly 750 characters, (2) include the keywords [keyword 1], [keyword 2], (3) written in first person, (4) end with a call to action. Natural and warm language, not robotic.</div>
+          <div class="prompt-footer">
+            <button class="copy-btn">📋 העתקה</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ════════════════ STAGE 3 — CLIFFHANGER ════════════════ -->
+    <div class="stage-card fade-in" id="stage-3" style="scroll-margin-top:72px">
+      <div class="stage-header">
+        <div class="stage-num-badge" style="background:var(--terra)">3</div>
+        <h2>מהלך הכוח שמפריד בין מי שב-#1 לכולם</h2>
+        <span class="stage-tag" style="color:var(--terra);background:var(--terra-pale)">חלקי חינמי</span>
+      </div>
+      <div class="stage-body">
+
+        <p>עשית את ה-7 צעדים. עכשיו יש צעד אחד שרוב המטפלים לעולם לא לוקחים, כי הם פשוט לא יודעים שהוא קיים.</p>
+
+        <h3>Review Velocity: מהירות הביקורות</h3>
+        <p>גוגל לא רק <em>סופר</em> ביקורות, הוא מודד את <strong>הקצב</strong>. 10 ביקורות שנכנסו השבוע שוות יותר מ-50 ביקורות שנצברו לאורך שנה. עסק שמקבל ביקורות בצורה שוטפת נחשב פעיל ורלוונטי.</p>
+        <div class="stat-row">
+          <div class="stat-card">
+            <div class="stat-num">3×</div>
+            <div class="stat-label">ערך של ביקורת טרייה לעומת ביקורת בת שנה</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">88%</div>
+            <div class="stat-label">ממי שרואים אתכם במפות, מתקשרים או מגיעים באותו יום</div>
+          </div>
+        </div>
+
+        <h3>הזדמנות "דף שני": הפרי שתלוי הכי נמוך</h3>
+        <p>ב-Search Console שלך יש מילות מפתח שאתה/את <em>כמעט</em> מדורג/ת בהן: עמדות 11 עד 20. מעבר של מילת מפתח אחת ממקום 10 למקום 3 שווה <strong>פי 10 יותר קליקים</strong>. יש טכניקה של 4 צעדים שעושה בדיוק את זה, והיא בחלק הנעול.</p>
+
+        <div class="callout warn"><span class="icon"></span><p>מה שבא אחרי זה הוא המידע שסוכנויות שיווק גובות עליו אלפי שקלים. אנחנו חושפים אותו ב-30 ש"ח.</p></div>
+
+        <p><strong>מה תמצא/י בחלק הנעול:</strong></p>
+        <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:10px;margin:12px 0 28px">
+          <li style="display:flex;gap:10px;align-items:flex-start"><span style="color:var(--gold);font-size:1.1rem;flex-shrink:0">🔑</span><span><strong>התפריט הנסתר ב-GBP</strong>: השדה שפחות מ-10% מהעסקים מכירים, שמזניק דירוגים מקומיים</span></li>
+          <li style="display:flex;gap:10px;align-items:flex-start"><span style="color:var(--gold);font-size:1.1rem;flex-shrink:0">🔑</span><span><strong>The Three Kings</strong>: שלושת המקומות שמילת המפתח חייבת להופיע בהם (לא רק H1)</span></li>
+          <li style="display:flex;gap:10px;align-items:flex-start"><span style="color:var(--gold);font-size:1.1rem;flex-shrink:0">🔑</span><span><strong>טכניקת "דף שני"</strong>: 4 צעדים להעביר מילת מפתח מדף שני לדף ראשון תוך 4–6 שבועות</span></li>
+          <li style="display:flex;gap:10px;align-items:flex-start"><span style="color:var(--gold);font-size:1.1rem;flex-shrink:0">🔑</span><span><strong>Topical Authority</strong>: איך לגרום ל-ChatGPT ו-Google לראות אותך כסמכות בתחום שלך</span></li>
+          <li style="display:flex;gap:10px;align-items:flex-start"><span style="color:var(--gold);font-size:1.1rem;flex-shrink:0">🔑</span><span><strong>Schema Markup לAI</strong>: הפורמט שגוגל ו-ChatGPT קוראים לפני הכל (ופרומפט שכותב אותו בשבילך)</span></li>
+        </ul>
+
+        <!-- PAYMENT GATE -->
+        <div class="gate-card" id="gate-3">
+          <h2>שחרר/י את המידע הזה</h2>
+          <p>כל שלב עולה ₪30 בנפרד. המדריך המלא עולה ₪150.<br>
+             <strong style="color:var(--gold)">קנית 5 שלבים בנפרד? הכל נפתח אוטומטית.</strong></p>
+
+          <!-- Unlock progress dots -->
+          <div class="unlock-progress" id="gate-progress">
+            <span class="unlock-dot" id="gdot-1"></span>
+            <span class="unlock-dot" id="gdot-2"></span>
+            <span class="unlock-dot" id="gdot-3"></span>
+            <span class="unlock-dot" id="gdot-4"></span>
+            <span class="unlock-dot" id="gdot-5"></span>
+            <span class="unlock-progress-label" id="gate-progress-label">0 / 5 שלבים נרכשו</span>
+          </div>
+
+          <div class="price-options">
+            <div class="price-option" onclick="selectPlan('chapter')" id="plan-chapter">
+              <div class="price-name">שלב זה בלבד</div>
+              <div class="price-tag">₪30</div>
+              <div class="price-desc">גישה מיידית לשלב 3</div>
+            </div>
+            <div class="price-option selected" onclick="selectPlan('full')" id="plan-full">
+              <div class="price-best-badge">הכי שווה</div>
+              <div class="price-name">המדריך המלא</div>
+              <div class="price-tag">₪150</div>
+              <div class="price-desc">כל 8 השלבים הנעולים</div>
+            </div>
+          </div>
+
+          <div class="gate-form" id="gate-form-3">
+            <input type="email" id="gate-email-3" placeholder="כתובת מייל" />
+            <button class="gate-submit" onclick="submitGate(3)">המשך לתשלום ←</button>
+            <p class="gate-privacy">🔒 תשלום חד-פעמי. אין מנוי. אין הפתעות.</p>
+          </div>
+          <div class="gate-success" id="gate-success-3">
+            <div class="big-emoji">🎉</div>
+            <h3>תודה רבה!</h3>
+            <p>שלחנו לך קישור גישה לאימייל. בדוק/י את תיבת הדואר שלך (וגם spam).</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ════════════════ STAGES 4–10 — LOCKED ════════════════ -->
+    <div class="step-marker" style="margin-top:8px">שלבים נעולים: ₪30 לשלב / ₪150 לכל המדריך</div>
+
+    <div class="locked-teaser" id="stage-4">
+      <div class="locked-teaser-header">
+        <div class="num">4</div>
+        <h3>Technical SEO: הבסיס שכולם מדלגים עליו</h3>
+        <span class="lock-tag">🔒 ₪30</span>
+      </div>
+      <div class="locked-teaser-body">
+        <div class="locked-teaser-hints">
+          <span class="locked-hint-chip">Core Web Vitals</span>
+          <span class="locked-hint-chip">Crawlability</span>
+          <span class="locked-hint-chip">Mobile-First</span>
+          <span class="locked-hint-chip">Schema Markup</span>
+          <span class="locked-hint-chip">Internal Linking</span>
+        </div>
+        <button class="unlock-mini-btn" onclick="toggleMiniGate(4)">שחרר שלב זה ←</button>
+      </div>
+      <div class="mini-gate" id="mini-gate-4">
+        <div class="mini-gate-row">
+          <input type="email" id="mini-email-4" placeholder="כתובת מייל" />
+          <button class="mini-pay-btn" onclick="submitMiniGate(4)">שלם ₪30 ←</button>
+        </div>
+        <p class="mini-gate-note">או <a onclick="document.getElementById('gate-3').scrollIntoView({behavior:'smooth'})">קנה את כל המדריך ב-₪150</a> ← זול יותר אם קונים 5+ שלבים</p>
+        <div class="mini-gate-success" id="mini-success-4">✅ תודה! קישור גישה נשלח לאימייל שלך.</div>
+      </div>
+    </div>
+
+    <div class="locked-teaser" id="stage-5">
+      <div class="locked-teaser-header">
+        <div class="num">5</div>
+        <h3>תוכן שגוגל ו-AI אוהבים: מערכת יצירה שלמה</h3>
+        <span class="lock-tag">🔒 ₪30</span>
+      </div>
+      <div class="locked-teaser-body">
+        <div class="locked-teaser-hints">
+          <span class="locked-hint-chip">Content Clusters</span>
+          <span class="locked-hint-chip">Answer-First Formula</span>
+          <span class="locked-hint-chip">Keyword Clustering</span>
+          <span class="locked-hint-chip">10x Better Content</span>
+          <span class="locked-hint-chip">Voice Memo → Blog</span>
+        </div>
+        <button class="unlock-mini-btn" onclick="toggleMiniGate(5)">שחרר שלב זה ←</button>
+      </div>
+      <div class="mini-gate" id="mini-gate-5">
+        <div class="mini-gate-row">
+          <input type="email" id="mini-email-5" placeholder="כתובת מייל" />
+          <button class="mini-pay-btn" onclick="submitMiniGate(5)">שלם ₪30 ←</button>
+        </div>
+        <p class="mini-gate-note">או <a onclick="document.getElementById('gate-3').scrollIntoView({behavior:'smooth'})">קנה את כל המדריך ב-₪150</a> ← זול יותר אם קונים 5+ שלבים</p>
+        <div class="mini-gate-success" id="mini-success-5">✅ תודה! קישור גישה נשלח לאימייל שלך.</div>
+      </div>
+    </div>
+
+    <div class="locked-teaser" id="stage-6">
+      <div class="locked-teaser-header">
+        <div class="num">6</div>
+        <h3>AEO: להופיע ב-ChatGPT, Perplexity וחיפוש קולי</h3>
+        <span class="lock-tag">🔒 ₪30</span>
+      </div>
+      <div class="locked-teaser-body">
+        <div class="locked-teaser-hints">
+          <span class="locked-hint-chip">Schema Markup</span>
+          <span class="locked-hint-chip">FAQ Optimization</span>
+          <span class="locked-hint-chip">Direct Answer Formula</span>
+          <span class="locked-hint-chip">E-E-A-T Signals</span>
+          <span class="locked-hint-chip">Multi-Platform</span>
+        </div>
+        <button class="unlock-mini-btn" onclick="toggleMiniGate(6)">שחרר שלב זה ←</button>
+      </div>
+      <div class="mini-gate" id="mini-gate-6">
+        <div class="mini-gate-row">
+          <input type="email" id="mini-email-6" placeholder="כתובת מייל" />
+          <button class="mini-pay-btn" onclick="submitMiniGate(6)">שלם ₪30 ←</button>
+        </div>
+        <p class="mini-gate-note">או <a onclick="document.getElementById('gate-3').scrollIntoView({behavior:'smooth'})">קנה את כל המדריך ב-₪150</a> ← זול יותר אם קונים 5+ שלבים</p>
+        <div class="mini-gate-success" id="mini-success-6">✅ תודה! קישור גישה נשלח לאימייל שלך.</div>
+      </div>
+    </div>
+
+    <div class="locked-teaser" id="stage-7">
+      <div class="locked-teaser-header">
+        <div class="num">7</div>
+        <h3>Off-Page SEO: קישורים, ציטוטים והזכרות מקומיות</h3>
+        <span class="lock-tag">🔒 ₪30</span>
+      </div>
+      <div class="locked-teaser-body">
+        <div class="locked-teaser-hints">
+          <span class="locked-hint-chip">5 Backlink אסטרטגיות חינמיות</span>
+          <span class="locked-hint-chip">Citation Building</span>
+          <span class="locked-hint-chip">Unlinked Mentions</span>
+          <span class="locked-hint-chip">Guest Posting</span>
+        </div>
+        <button class="unlock-mini-btn" onclick="toggleMiniGate(7)">שחרר שלב זה ←</button>
+      </div>
+      <div class="mini-gate" id="mini-gate-7">
+        <div class="mini-gate-row">
+          <input type="email" id="mini-email-7" placeholder="כתובת מייל" />
+          <button class="mini-pay-btn" onclick="submitMiniGate(7)">שלם ₪30 ←</button>
+        </div>
+        <p class="mini-gate-note">או <a onclick="document.getElementById('gate-3').scrollIntoView({behavior:'smooth'})">קנה את כל המדריך ב-₪150</a> ← זול יותר אם קונים 5+ שלבים</p>
+        <div class="mini-gate-success" id="mini-success-7">✅ תודה! קישור גישה נשלח לאימייל שלך.</div>
+      </div>
+    </div>
+
+    <div class="locked-teaser" id="stage-8">
+      <div class="locked-teaser-header">
+        <div class="num">8</div>
+        <h3>SEO מקומי: לדומיניות במפות גוגל</h3>
+        <span class="lock-tag">🔒 ₪30</span>
+      </div>
+      <div class="locked-teaser-body">
+        <div class="locked-teaser-hints">
+          <span class="locked-hint-chip">Google Maps Ranking</span>
+          <span class="locked-hint-chip">Local Content Strategy</span>
+          <span class="locked-hint-chip">Branded Search</span>
+          <span class="locked-hint-chip">Competitor Audit</span>
+        </div>
+        <button class="unlock-mini-btn" onclick="toggleMiniGate(8)">שחרר שלב זה ←</button>
+      </div>
+      <div class="mini-gate" id="mini-gate-8">
+        <div class="mini-gate-row">
+          <input type="email" id="mini-email-8" placeholder="כתובת מייל" />
+          <button class="mini-pay-btn" onclick="submitMiniGate(8)">שלם ₪30 ←</button>
+        </div>
+        <p class="mini-gate-note">או <a onclick="document.getElementById('gate-3').scrollIntoView({behavior:'smooth'})">קנה את כל המדריך ב-₪150</a> ← זול יותר אם קונים 5+ שלבים</p>
+        <div class="mini-gate-success" id="mini-success-8">✅ תודה! קישור גישה נשלח לאימייל שלך.</div>
+      </div>
+    </div>
+
+    <div class="locked-teaser" id="stage-9">
+      <div class="locked-teaser-header">
+        <div class="num">9</div>
+        <h3>EEAT + כלים חינמיים + ניתוח מתחרים</h3>
+        <span class="lock-tag">🔒 ₪30</span>
+      </div>
+      <div class="locked-teaser-body">
+        <div class="locked-teaser-hints">
+          <span class="locked-hint-chip">Search Console Mastery</span>
+          <span class="locked-hint-chip">Competitor Sitemap Hack</span>
+          <span class="locked-hint-chip">Micro A/B Testing</span>
+          <span class="locked-hint-chip">EEAT Framework</span>
+        </div>
+        <button class="unlock-mini-btn" onclick="toggleMiniGate(9)">שחרר שלב זה ←</button>
+      </div>
+      <div class="mini-gate" id="mini-gate-9">
+        <div class="mini-gate-row">
+          <input type="email" id="mini-email-9" placeholder="כתובת מייל" />
+          <button class="mini-pay-btn" onclick="submitMiniGate(9)">שלם ₪30 ←</button>
+        </div>
+        <p class="mini-gate-note">או <a onclick="document.getElementById('gate-3').scrollIntoView({behavior:'smooth'})">קנה את כל המדריך ב-₪150</a> ← זול יותר אם קונים 5+ שלבים</p>
+        <div class="mini-gate-success" id="mini-success-9">✅ תודה! קישור גישה נשלח לאימייל שלך.</div>
+      </div>
+    </div>
+
+    <div class="locked-teaser" id="stage-10">
+      <div class="locked-teaser-header">
+        <div class="num">10</div>
+        <h3>תוכנית פעולה חודשית: 60 דקות שמשנות הכל</h3>
+        <span class="lock-tag">🔒 ₪30</span>
+      </div>
+      <div class="locked-teaser-body">
+        <div class="locked-teaser-hints">
+          <span class="locked-hint-chip">Weekly Routine</span>
+          <span class="locked-hint-chip">Monthly Checklist</span>
+          <span class="locked-hint-chip">Progress Tracking</span>
+          <span class="locked-hint-chip">Case Studies</span>
+        </div>
+        <button class="unlock-mini-btn" onclick="toggleMiniGate(10)">שחרר שלב זה ←</button>
+      </div>
+      <div class="mini-gate" id="mini-gate-10">
+        <div class="mini-gate-row">
+          <input type="email" id="mini-email-10" placeholder="כתובת מייל" />
+          <button class="mini-pay-btn" onclick="submitMiniGate(10)">שלם ₪30 ←</button>
+        </div>
+        <p class="mini-gate-note">או <a onclick="document.getElementById('gate-3').scrollIntoView({behavior:'smooth'})">קנה את כל המדריך ב-₪150</a> ← זול יותר אם קונים 5+ שלבים</p>
+        <div class="mini-gate-success" id="mini-success-10">✅ תודה! קישור גישה נשלח לאימייל שלך.</div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="guide-footer">
+      <div class="footer-logo">🧘 הטכנורוחניק</div>
+      <p>© 2025 הטכנורוחניק | <a href="../">חזרה לאתר</a></p>
+    </div>
+
+  </main>
+  </div><!-- /.main-wrapper -->
+</div><!-- /.layout -->
+
+<script>
+  /* ── LANG TOGGLE ── */
+  function switchLang(boxId, lang) {
+    const box = document.getElementById(boxId);
+    if (!box) return;
+    const heEl = document.getElementById(boxId + '-he');
+    const enEl = document.getElementById(boxId + '-en');
+    const btns = box.querySelectorAll('.lang-btn');
+    if (heEl) heEl.style.display = lang === 'he' ? 'block' : 'none';
+    if (enEl) enEl.style.display = lang === 'en' ? 'block' : 'none';
+    btns.forEach(btn => {
+      const isHe = btn.textContent.trim() === 'עב';
+      btn.classList.toggle('active', lang === 'he' ? isHe : !isHe);
+    });
+  }
+
+  /* ── SIDEBAR ── */
+  function toggleSidebar() {
+    document.getElementById('sidebar').classList.toggle('open');
+    document.getElementById('sidebar-overlay').classList.toggle('open');
+  }
+
+  /* ── STAGE NAV ── */
+  function goToStage(num) {
+    const target = document.getElementById('stage-' + num);
+    if (target) {
+      const navH = document.querySelector('.top-nav')?.offsetHeight || 56;
+      const top = target.getBoundingClientRect().top + window.scrollY - navH - 16;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+    document.querySelectorAll('.nav-item').forEach(item => {
+      item.classList.toggle('active', parseInt(item.dataset.stage) === num);
+    });
+  }
+
+  /* ── COPY BUTTONS ── */
+  document.addEventListener('click', e => {
+    const btn = e.target.closest('.copy-btn');
+    if (!btn) return;
+    const box = btn.closest('.prompt-box');
+    if (!box) return;
+    const texts = box.querySelectorAll('.prompt-text');
+    let textToCopy = '';
+    texts.forEach(t => { if (t.offsetParent !== null) textToCopy = t.textContent.trim(); });
+    if (!textToCopy && texts[0]) textToCopy = texts[0].textContent.trim();
+    navigator.clipboard.writeText(textToCopy).then(() => {
+      const orig = btn.innerHTML;
+      btn.innerHTML = '✓ הועתק';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.innerHTML = orig; btn.classList.remove('copied'); }, 2000);
+    });
+  });
+
+  /* ── PROGRESS ── */
+  (function () {
+    const unlocked = document.querySelectorAll('.stage-card:not(.locked-card)').length;
+    const total = 10;
+    document.getElementById('progress-label').textContent = unlocked + ' / ' + total + ' שלבים';
+    document.getElementById('progress-fill').style.width = (unlocked / total * 100) + '%';
+  })();
+
+  /* ── UNLOCK TRACKING ── */
+  const MAX_BEFORE_ALL = 5;
+  const store = {
+    get: () => JSON.parse(localStorage.getItem('seo-unlocked') || '[]'),
+    add(step) {
+      const arr = this.get();
+      if (!arr.includes(step)) { arr.push(step); localStorage.setItem('seo-unlocked', JSON.stringify(arr)); }
+      return arr;
+    },
+    count: () => store.get().length
+  };
+
+  function refreshProgress() {
+    const n = store.count();
+    for (let i = 1; i <= MAX_BEFORE_ALL; i++) {
+      const dot = document.getElementById('gdot-' + i);
+      if (dot) dot.classList.toggle('filled', i <= n);
+    }
+    const lbl = document.getElementById('gate-progress-label');
+    if (lbl) {
+      if (n >= MAX_BEFORE_ALL) lbl.textContent = '🎉 כל המדריך פתוח!';
+      else lbl.textContent = n + ' / ' + MAX_BEFORE_ALL + ' שלבים נרכשו, עוד ' + (MAX_BEFORE_ALL - n) + ' ויפתח הכל';
+    }
+  }
+
+  function unlockAll() {
+    // TODO: server-side gate — here just show all teasers as "unlocked"
+    document.querySelectorAll('.locked-teaser').forEach(el => {
+      el.style.borderTopColor = 'var(--teal)';
+      const lockTag = el.querySelector('.lock-tag');
+      if (lockTag) lockTag.textContent = '✅ פתוח';
+    });
+    const gateCard = document.getElementById('gate-3');
+    if (gateCard) gateCard.style.display = 'none';
+  }
+
+  /* ── PAYMENT GATE (main, stage 3) ── */
+  let selectedPlan = 'full';
+  function selectPlan(plan) {
+    selectedPlan = plan;
+    document.getElementById('plan-chapter').classList.toggle('selected', plan === 'chapter');
+    document.getElementById('plan-full').classList.toggle('selected', plan === 'full');
+  }
+  function submitGate(stageNum) {
+    const email = document.getElementById('gate-email-' + stageNum)?.value || '';
+    if (!email || !email.includes('@')) { alert('נא להזין כתובת מייל תקינה'); return; }
+    // TODO: integrate payment provider (Stripe / Payplus)
+    const unlocked = store.add(stageNum);
+    refreshProgress();
+    if (selectedPlan === 'full' || unlocked.length >= MAX_BEFORE_ALL) { unlockAll(); }
+    const form = document.getElementById('gate-form-' + stageNum);
+    const success = document.getElementById('gate-success-' + stageNum);
+    if (form) form.style.display = 'none';
+    if (success) success.style.display = 'block';
+  }
+
+  /* ── MINI GATE (individual steps 4-10) ── */
+  function toggleMiniGate(n) {
+    const gate = document.getElementById('mini-gate-' + n);
+    if (!gate) return;
+    gate.style.display = gate.style.display === 'block' ? 'none' : 'block';
+  }
+  function submitMiniGate(n) {
+    const email = document.getElementById('mini-email-' + n)?.value || '';
+    if (!email || !email.includes('@')) { alert('נא להזין כתובת מייל תקינה'); return; }
+    // TODO: integrate payment provider (Stripe / Payplus)
+    const unlocked = store.add(n);
+    refreshProgress();
+    const row = document.querySelector('#mini-gate-' + n + ' .mini-gate-row');
+    const note = document.querySelector('#mini-gate-' + n + ' .mini-gate-note');
+    const success = document.getElementById('mini-success-' + n);
+    if (row) row.style.display = 'none';
+    if (note) note.style.display = 'none';
+    if (success) success.style.display = 'block';
+    // Update lock tag
+    const lockTag = document.querySelector('#stage-' + n + ' .lock-tag');
+    if (lockTag) lockTag.textContent = '✅ פתוח';
+    if (unlocked.length >= MAX_BEFORE_ALL) unlockAll();
+  }
+
+  /* ── INIT + SCROLL SPY ── */
+  (function () {
+    // Inject step markers before each stage-card
+    document.querySelectorAll('.stage-card').forEach((card, i) => {
+      const marker = document.createElement('div');
+      marker.className = 'step-marker';
+      marker.textContent = 'שלב ' + (i + 1);
+      card.parentNode.insertBefore(marker, card);
+    });
+
+    // Restore progress from localStorage
+    refreshProgress();
+    if (store.count() >= MAX_BEFORE_ALL) unlockAll();
+
+    // Activate stage 1 on load
+    const setActive = num => {
+      document.querySelectorAll('.nav-item').forEach(item => {
+        item.classList.toggle('active', parseInt(item.dataset.stage) === num);
+      });
+    };
+    setActive(1);
+
+    // Update active nav item as stage cards scroll into view
+    const cards = document.querySelectorAll('.stage-card');
+    if ('IntersectionObserver' in window && cards.length) {
+      const obs = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const num = parseInt(entry.target.id.replace('stage-', ''));
+            if (!isNaN(num)) setActive(num);
+          }
+        });
+      }, { threshold: 0.25 });
+      cards.forEach(c => obs.observe(c));
+    }
+  })();
+</script>
+
+</body>
+</html>
