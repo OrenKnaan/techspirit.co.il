@@ -660,6 +660,7 @@
 
     /* ── ABOUT ── */
     .snap-pair { min-height: 100dvh; scroll-snap-align: start; display: flex; flex-direction: column; }
+    #blog-preview { min-height: 100dvh; scroll-snap-align: start; }
     #about { background: var(--parchment); flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 40px 0; }
     .about-grid { display: grid; grid-template-columns: 280px 1fr; gap: 48px; align-items: center; }
     .about-img-wrap { position: relative; }
@@ -705,8 +706,9 @@
     .guarantee-inner p { font-size: 17px; color: rgba(255,255,255,.68); line-height: 1.8; }
 
     /* ── FAQ ── */
-    #faq { background: var(--cream); }
-    .faq-wrap { max-width: 720px; margin: 0 auto; }
+    #faq { background: var(--cream); height: 100dvh; padding: 0; display: flex; flex-direction: column; overflow: hidden; scroll-snap-align: start; }
+    #faq > .container { flex: 1; display: flex; flex-direction: column; padding-top: 52px; padding-bottom: 40px; }
+    .faq-wrap { max-width: 720px; margin: 0 auto; width: 100%; flex: 1; min-height: 0; overflow: hidden; }
     .faq-item {
       border-bottom: 1.5px solid var(--cream-dk); overflow: hidden;
     }
@@ -1537,8 +1539,7 @@
 </section>
 
 
-<!-- FAQ + BLOG (snap pair) -->
-<div class="snap-pair">
+<!-- FAQ -->
 <section id="faq" class="section">
   <div class="container">
     <div class="pain-heading rv">
@@ -1726,7 +1727,6 @@
     <p class="port-more rv" style="margin-top:28px"><a href="/blog/">לכל המאמרים בבלוג ›</a></p>
   </div>
 </section>
-</div><!-- /.snap-pair -->
 
 
 <!-- IMAGE DIVIDER 5 -->
