@@ -877,6 +877,7 @@
     .bp-skel-read{height:13px;width:72px;margin-top:20px}
 
     /* back to top */
+    .btn-chevron { display: inline-block; line-height: 1; }
     #btt {
       position: fixed; bottom: 28px; left: 28px; z-index: 800;
       width: 46px; height: 46px; border-radius: var(--r-lg);
@@ -1671,7 +1672,7 @@
       </div>
 
       <div class="faq-more-wrap">
-        <button class="faq-more-btn" id="faq-more-btn">הצג עוד שאלות ⌄</button>
+        <button class="faq-more-btn" id="faq-more-btn">הצג עוד שאלות <span class="btn-chevron">⌄</span></button>
       </div>
 
     </div>
@@ -1800,7 +1801,7 @@
   </div>
 </footer>
 
-<button id="btt" aria-label="חזרה לראש הדף">⌃</button>
+<button id="btt" aria-label="חזרה לראש הדף"><span class="btn-chevron">⌃</span></button>
 
 <script>
   /* ── Nav scroll reveal ── */
@@ -1870,7 +1871,7 @@
       document.querySelectorAll('.faq-hidden').forEach(el => {
         el.style.display = expanded ? 'block' : 'none';
       });
-      btn.textContent = expanded ? 'הצג פחות ⌃' : 'הצג עוד שאלות ⌄';
+      btn.innerHTML = expanded ? 'הצג פחות <span class="btn-chevron">⌃</span>' : 'הצג עוד שאלות <span class="btn-chevron">⌄</span>';
       if (!expanded) {
         document.getElementById('faq').scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
