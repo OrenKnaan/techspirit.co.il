@@ -660,7 +660,10 @@
 
     /* ── ABOUT ── */
     .snap-pair { min-height: 100dvh; scroll-snap-align: start; display: flex; flex-direction: column; }
-    #blog-preview { min-height: 100dvh; scroll-snap-align: start; }
+    #blog-preview { min-height: 100dvh; scroll-snap-align: start; display: flex; align-items: center; }
+    #blog-preview > .container { width: 100%; }
+    .bp-card:nth-child(n+3), .bp-skel:nth-child(n+3) { display: none; }
+    @media (min-height: 880px) { .bp-card:nth-child(n+3) { display: flex; } .bp-skel:nth-child(n+3) { display: flex; } }
     #about { background: var(--parchment); flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 40px 0; }
     .about-grid { display: grid; grid-template-columns: 280px 1fr; gap: 48px; align-items: center; }
     .about-img-wrap { position: relative; }
@@ -1706,6 +1709,24 @@
         <div class="bp-skel-line bp-skel-p3"></div>
         <div class="bp-skel-line bp-skel-read"></div>
       </div>
+      <div class="bp-skel" aria-hidden="true">
+        <div class="bp-skel-line bp-skel-tag"></div>
+        <div class="bp-skel-line bp-skel-h1"></div>
+        <div class="bp-skel-line bp-skel-h2"></div>
+        <div class="bp-skel-line bp-skel-p1"></div>
+        <div class="bp-skel-line bp-skel-p2"></div>
+        <div class="bp-skel-line bp-skel-p3"></div>
+        <div class="bp-skel-line bp-skel-read"></div>
+      </div>
+      <div class="bp-skel" aria-hidden="true">
+        <div class="bp-skel-line bp-skel-tag"></div>
+        <div class="bp-skel-line bp-skel-h1"></div>
+        <div class="bp-skel-line bp-skel-h2"></div>
+        <div class="bp-skel-line bp-skel-p1"></div>
+        <div class="bp-skel-line bp-skel-p2"></div>
+        <div class="bp-skel-line bp-skel-p3"></div>
+        <div class="bp-skel-line bp-skel-read"></div>
+      </div>
     </div>
     <script src="/blog/posts.js"></script>
     <script>
@@ -1715,7 +1736,7 @@
         return a.d.localeCompare(b.d);
       });
       var g=document.getElementById('hp-blog-grid');
-      if(g)g.innerHTML=pool.slice(0,2).map(function(p,i){
+      if(g)g.innerHTML=pool.slice(0,4).map(function(p,i){
         return'<a href="https://techspirit.co.il/blog/'+p.slug+'/" class="bp-card rv'+(i>0?' d'+i:'')+'">'
           +'<span class="bp-tag">'+p.tag+'</span>'
           +'<h3>'+p.title+'</h3>'
