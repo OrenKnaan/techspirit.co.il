@@ -859,6 +859,16 @@
     .bp-card p{font-size:14.5px;color:var(--muted);line-height:1.75;flex:1}
     .bp-read{display:inline-block;margin-top:18px;color:var(--teal);font-size:13.5px;font-weight:700}
     @media(max-width:640px){.bp-grid{grid-template-columns:1fr}}
+    @keyframes bp-shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+    .bp-skel{display:flex;flex-direction:column;background:var(--white);border-radius:var(--r);padding:28px 30px;border:1.5px solid var(--cream-dk)}
+    .bp-skel-line{border-radius:4px;background:linear-gradient(90deg,rgba(44,36,32,.07) 25%,rgba(44,36,32,.13) 50%,rgba(44,36,32,.07) 75%);background-size:200% 100%;animation:bp-shimmer 1.5s infinite}
+    .bp-skel-tag{height:20px;width:60px;margin-bottom:14px}
+    .bp-skel-h1{height:20px;width:88%;margin-bottom:8px}
+    .bp-skel-h2{height:20px;width:60%;margin-bottom:16px}
+    .bp-skel-p1{height:13px;width:100%;margin-bottom:7px}
+    .bp-skel-p2{height:13px;width:95%;margin-bottom:7px}
+    .bp-skel-p3{height:13px;width:72%;margin-bottom:0}
+    .bp-skel-read{height:13px;width:72px;margin-top:20px}
 
     /* back to top */
     #btt {
@@ -1671,7 +1681,26 @@
       <h2 class="section-h2">קראו לפני שמחליטים</h2>
       <div class="bar"></div>
     </div>
-    <div class="bp-grid" id="hp-blog-grid"></div>
+    <div class="bp-grid" id="hp-blog-grid">
+      <div class="bp-skel" aria-hidden="true">
+        <div class="bp-skel-line bp-skel-tag"></div>
+        <div class="bp-skel-line bp-skel-h1"></div>
+        <div class="bp-skel-line bp-skel-h2"></div>
+        <div class="bp-skel-line bp-skel-p1"></div>
+        <div class="bp-skel-line bp-skel-p2"></div>
+        <div class="bp-skel-line bp-skel-p3"></div>
+        <div class="bp-skel-line bp-skel-read"></div>
+      </div>
+      <div class="bp-skel" aria-hidden="true">
+        <div class="bp-skel-line bp-skel-tag"></div>
+        <div class="bp-skel-line bp-skel-h1"></div>
+        <div class="bp-skel-line bp-skel-h2"></div>
+        <div class="bp-skel-line bp-skel-p1"></div>
+        <div class="bp-skel-line bp-skel-p2"></div>
+        <div class="bp-skel-line bp-skel-p3"></div>
+        <div class="bp-skel-line bp-skel-read"></div>
+      </div>
+    </div>
     <script src="/blog/posts.js"></script>
     <script>
     (function(){
