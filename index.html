@@ -231,9 +231,11 @@
     }
     .hero-arr {
       position:absolute; bottom:28px; left:50%; transform:translateX(-50%);
-      color:rgba(255,255,255,.35); z-index:2;
+      color:rgba(255,255,255,.35); z-index:2; background:none; border:none; cursor:pointer;
+      font-size:32px; line-height:1; padding:0;
       animation:bob 2.1s ease-in-out 5.1s infinite,heroFadeIn .5s ease-out 4.85s both;
     }
+    .hero-arr:hover { color:rgba(255,255,255,.7); }
     @keyframes heroFadeIn { from{opacity:0} to{opacity:1} }
     @keyframes bob { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(9px)} }
     .smk { position:absolute; top:56%; left:50%; transform:translate(-50%,-50%); z-index:1; pointer-events:none; }
@@ -1112,9 +1114,7 @@
     <div class="sp sp1"></div><div class="sp sp2"></div><div class="sp sp3"></div>
     <div class="sp sp4"></div><div class="sp sp5"></div>
   </div>
-  <div class="hero-arr" aria-hidden="true">
-    <svg width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-  </div>
+  <button class="hero-arr" aria-label="לחלק הבא" onclick="document.getElementById('value-prop').scrollIntoView({behavior:'smooth',block:'start'})"><span class="btn-chevron">⌄</span></button>
 </section>
 
 <!-- VALUE PROP -->
@@ -1558,7 +1558,7 @@
 <section id="faq" class="section">
   <div class="container">
     <div class="pain-heading rv">
-      <h2 class="section-h2">מה <em>שאתם שואלים</em> לפני שמתקשרים</h2>
+      <h2 class="section-h2">שאלות <em>שבדרך כלל</em> שואלים</h2>
       <div class="bar"></div>
     </div>
     <div class="faq-wrap">
