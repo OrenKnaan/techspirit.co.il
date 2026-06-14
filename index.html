@@ -27,6 +27,7 @@
   <meta name="twitter:image"       content="https://techspirit.co.il/Images/Assets/techspirit-social.jpg">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide-core.min.css">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PQ99J1QETR"></script>
   <script>
@@ -162,7 +163,7 @@
     #hero {
       min-height: 100vh; background: transparent;
       display: flex; align-items: center; justify-content: center;
-      position: relative;
+      position: relative; scroll-snap-align: start;
     }
     .hero-body {
       position:relative; z-index:2; text-align:center;
@@ -278,13 +279,22 @@
     /* ── IMAGE DIVIDERS ── */
     .img-divider {
       width: 100%; height: 420px;
-      background-attachment: fixed;
-      background-size: cover;
-      background-position: center;
       position: relative;
     }
+    .img-div-bg-wrap {
+      position: absolute; inset: 0; z-index: 0;
+      -webkit-mask-image: linear-gradient(#000, #000);
+      mask-image: linear-gradient(#000, #000);
+    }
+    .img-div-bg {
+      position: fixed; inset: 0;
+      background-image: var(--bg);
+      background-size: cover;
+      background-position: center;
+      pointer-events: none;
+    }
     .img-divider-title {
-      position: absolute; bottom: 0; left: 0; right: 0;
+      position: absolute; bottom: 0; left: 0; right: 0; z-index: 1;
       padding: 48px 32px 32px;
       background: linear-gradient(to top, rgba(15,28,28,.90) 0%, rgba(15,28,28,.45) 55%, transparent 100%);
       font-family: var(--fh);
@@ -293,7 +303,7 @@
       letter-spacing: -.02em; line-height: 1.15;
     }
     @media (max-width: 768px) {
-      .img-divider { background-attachment: scroll; height: 280px; }
+      .img-divider { height: 280px; }
       .img-divider-title { font-size: clamp(22px, 6vw, 36px); padding: 36px 24px 24px; }
     }
 
@@ -302,13 +312,28 @@
       background: var(--teal-dark);
       min-height: 100dvh; scroll-snap-align: start;
       display: flex; align-items: center;
-      position: relative; overflow: hidden;
+      position: relative; overflow: visible;
+      padding-bottom: 240px;
     }
+    .seo-fish {
+      position: absolute; bottom: 0;
+      left: 50%; transform: translateX(-50%);
+      width: 380px; height: auto;
+      pointer-events: none; z-index: 0;
+      margin-bottom: 44px;
+    }
+    .seo-line {
+      position: absolute;
+      top: -420px; left: 0; right: 0; bottom: 0;
+      width: 100%; height: calc(100% + 420px);
+      pointer-events: none; z-index: 0;
+    }
+    #seo-aeo-divider { z-index: 1; }
     #seo-aeo::before {
       content: ''; position: absolute; inset: 0; pointer-events: none;
       background: radial-gradient(ellipse 70% 70% at 50% 50%, rgba(45,107,107,.18) 0%, transparent 65%);
     }
-    .seo-inner { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; text-align: center; padding: 64px 24px; width: 100%; }
+    .seo-inner { position: relative; z-index: 1; max-width: 800px; margin: 20px auto 0; text-align: center; padding: 64px 24px 0; width: 100%; }
     .seo-eyebrow {
       display: inline-block; background: rgba(212,168,67,.12); border: 1px solid rgba(212,168,67,.28);
       padding: 6px 18px; border-radius: var(--r);
@@ -336,7 +361,7 @@
     .seo-cta:hover { background: var(--terra-hi); transform: translateY(-2px); }
     .guide-promo {
       margin-top: 52px; position: relative; overflow: hidden;
-      background: rgba(45,107,107,.18); border: 1px solid rgba(212,168,67,.22);
+      background: #263c3c; border: 1px solid rgba(212,168,67,.22);
       border-radius: var(--r-lg); padding: 36px 40px 36px;
       text-align: center;
     }
@@ -481,7 +506,7 @@
       flex: 1; display: flex; flex-direction: column;
       width: 100%; max-width: 1100px; margin: 0 auto; padding-inline: 24px;
     }
-    .pain-heading { text-align: center; padding: 52px 0 36px; flex-shrink: 0; }
+    .pain-heading { text-align: center; padding: 20px 0 36px; flex-shrink: 0; }
     .eyebrow {
       font-family: var(--fh); font-size: 11px; letter-spacing: .3em;
       color: var(--teal); text-transform: uppercase; opacity: .8;
@@ -493,7 +518,7 @@
       margin-bottom: 16px;
     }
     .section-h2 em { color: var(--teal); font-style: normal; }
-    .section-sub { font-size: 17px; color: var(--muted); max-width: 560px; margin: 0 auto; }
+    .section-sub { font-size: 17px; color: var(--muted); margin: 0 auto; }
     .bar { width: 52px; height: 3px; background: linear-gradient(90deg,var(--terra),var(--gold)); border-radius: var(--r-sm); margin: 18px auto 0; }
     .pain-grid {
       flex: 1; display: flex; flex-direction: column;
@@ -569,30 +594,66 @@
     .step-icon { font-size: 28px; margin-bottom: 10px; color: var(--teal); }
     #management-systems { min-height: 100dvh; scroll-snap-align: start; display: flex; align-items: center; }
     #management-systems > .container { width: 100%; }
+    .msys-top { display: flex; flex-direction: column; align-items: center; gap: 24px; }
+    .msys-img { text-align: center; }
+    .msys-img img { width: 180px; }
+    .msys-main { width: 100%; }
     .msys-grid {
       display: grid; grid-template-columns: repeat(3, 1fr);
       gap: 16px; margin-top: 16px;
     }
     .msys-node {
       background: rgba(45,107,107,.06); border: 1px solid rgba(45,107,107,.18);
-      border-radius: var(--r); padding: 36px 24px; text-align: center;
-      transition: background .2s, border-color .2s;
+      border-radius: var(--r); padding: 28px 24px 20px; text-align: center;
+      display: flex; flex-direction: column;
     }
-    .msys-node:hover { background: rgba(45,107,107,.12); border-color: rgba(45,107,107,.32); }
     .msys-glyph {
       font-size: 28px; color: var(--teal);
       display: block; margin-bottom: 16px;
     }
     .msys-node h3 { font-family: var(--fh); font-size: 18px; color: var(--charcoal); margin-bottom: 8px; }
-    .msys-node p { font-size: 14px; color: var(--muted); line-height: 1.75; margin: 0; }
+    .msys-node > p { font-size: 14px; color: var(--muted); line-height: 1.75; margin: 0; flex: 1; }
+    .msys-expand-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+      margin-top: 18px; align-self: center;
+      background: none; border: 1.5px solid var(--teal); color: var(--teal);
+      font-family: var(--fh); font-size: 13px; font-weight: 700;
+      padding: 7px 20px; border-radius: var(--r-sm);
+      cursor: pointer; transition: background var(--ease), color var(--ease);
+    }
+    .msys-expand-btn:hover { background: var(--teal); color: var(--white); }
+    .msys-expand-btn .msys-arrow { display: inline-block; transition: transform .3s ease; }
+    .msys-expand-btn[aria-expanded="true"] .msys-arrow { transform: rotate(180deg); }
+    .msys-examples {
+      display: grid; grid-template-rows: 0fr;
+      transition: grid-template-rows .35s ease;
+    }
+    .msys-examples.open { grid-template-rows: 1fr; }
+    .msys-examples-inner { overflow: hidden; }
+    .msys-examples-body {
+      margin-top: 16px; padding-top: 16px;
+      border-top: 1px solid rgba(45,107,107,.15);
+      display: flex; flex-direction: column; gap: 0; text-align: right;
+    }
+    .msys-tag {
+      display: block; padding: 5px 14px 5px 0;
+      font-size: 13px; color: var(--charcoal); line-height: 1.5;
+      border-bottom: 1px solid rgba(45,107,107,.08); white-space: nowrap;
+      position: relative;
+    }
+    .msys-tag::before {
+      content: '·'; position: absolute; right: 0;
+      color: var(--teal); font-weight: 700; font-size: 16px; line-height: 1.3;
+    }
+    .msys-tag:last-child { border-bottom: none; }
     .process-note {
       text-align: center; margin-top: 40px;
       font-size: 15px; color: var(--muted); font-style: italic;
     }
 
     /* ── PORTFOLIO PREVIEW ── */
-    #portfolio-preview { background: var(--cream); min-height: 100dvh; scroll-snap-align: start; display: flex; align-items: center; }
-    #portfolio-preview > .container { width: 100%; }
+    #websites { background: var(--cream); height: 100dvh; scroll-snap-align: start; display: flex; align-items: center; overflow: hidden; }
+    #websites > .container { width: 100%; }
     .port-grid {
       display: grid; grid-template-columns: repeat(2, 1fr);
       gap: 18px; margin-top: 16px;
@@ -627,6 +688,23 @@
     .port-more a { color: var(--teal); font-weight: 700; border-bottom: 1.5px solid transparent; transition: border-color var(--ease); }
     .port-more a:hover { border-color: var(--teal); }
 
+    /* ── WEBSITES CAROUSEL (short screens) ── */
+    .port-carousel { display: none; margin-top: 16px; position: relative; }
+    @media (max-height: 939px) {
+      .port-grid { display: none; }
+      .port-carousel { display: block; }
+    }
+    .port-carousel .splide__slide { aspect-ratio: 700/393; max-height: 52dvh; }
+    .port-carousel .port-item { height: 100%; }
+    .port-carousel .port-overlay { opacity: 1; }
+    .port-carousel .splide__arrow { background: rgba(22,40,40,.6); border: 1px solid rgba(22,40,40,.15); opacity: 1; width: 40px; height: 40px; border-radius: 50%; position: absolute; top: 50%; transform: translateY(-50%); display: flex; align-items: center; justify-content: center; padding: 0; cursor: pointer; z-index: 1; }
+    .port-carousel .splide__arrow--prev { right: -2px; }
+    .port-carousel .splide__arrow--next { left: -2px; }
+    .port-carousel .splide__arrow--next svg { transform: scaleX(-1); }
+    .port-carousel .splide__arrow svg { fill: var(--white); width: 14px; height: 14px; flex-shrink: 0; }
+    .port-carousel .splide__arrow:hover { background: rgba(22,40,40,.82); }
+    .port-carousel .splide__arrow:disabled { opacity: .3; }
+
     /* ── TESTIMONIALS ── */
     #testimonials { background: var(--teal-dark); min-height: 100dvh; scroll-snap-align: start; display: flex; align-items: center; }
     #testimonials > .container { width: 100%; }
@@ -642,7 +720,7 @@
       transition: background var(--ease), transform var(--ease);
       display: flex; flex-direction: column;
     }
-    .tc:hover { background: rgba(255,255,255,.1); transform: translateY(-4px); }
+
     .tq { font-size: 64px; color: var(--gold); line-height: .65; margin-bottom: 18px; font-family: Georgia, serif; opacity: .7; }
     .tt { font-size: 15px; color: rgba(255,255,255,.82); line-height: 1.9; flex: 1; margin-bottom: 22px; }
     .ta { display: flex; align-items: center; gap: 12px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,.08); }
@@ -653,6 +731,21 @@
     .av img { width: 100%; height: 100%; object-fit: cover; border-radius: var(--r-lg); }
     .an { font-weight: 700; font-size: 14px; color: var(--gold); }
     .ar { font-size: 12px; color: rgba(255,255,255,.45); margin-top: 2px; }
+    .tes-grid { display: none; }
+    .tes-carousel { display: block; }
+    /* Splide arrow overrides (splide-core has zero arrow CSS — we supply it all) */
+    .tes-carousel .splide__arrow { background: #293636; border: 1px solid rgba(255,255,255,.18); opacity: 1; width: 40px; height: 40px; border-radius: 50%; position: absolute; top: 50%; transform: translateY(-50%); display: flex; align-items: center; justify-content: center; padding: 0; cursor: pointer; z-index: 1; }
+    .tes-carousel .splide__arrow--prev { right: -20px; }
+    .tes-carousel .splide__arrow--next { left: -20px; }
+    .tes-carousel .splide__arrow--next svg { transform: scaleX(-1); }
+    .tes-carousel .splide__arrow svg { fill: var(--white); width: 14px; height: 14px; flex-shrink: 0; }
+    .tes-carousel .splide__arrow:hover { background: #535d5d; }
+    .tes-carousel .splide__arrow:disabled { opacity: .28; }
+    .tes-carousel .splide__track { padding-bottom: 4px; }
+    .tes-carousel .splide__pagination { display: flex; justify-content: center; align-items: center; gap: 8px; margin-top: 18px; padding: 0; list-style: none; }
+    .tes-carousel .splide__pagination__page { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,.3); border: none; cursor: pointer; padding: 0; transition: background .2s, transform .2s; }
+    .tes-carousel .splide__pagination__page.is-active { background: var(--white); transform: scale(1.25); }
+    .tes-carousel .tc { height: 100%; }
 
     /* ── ABOUT ── */
     .snap-pair { min-height: 100dvh; scroll-snap-align: start; display: flex; flex-direction: column; }
@@ -788,13 +881,13 @@
     .final-cta-row { display: flex; flex-direction: column; align-items: center; gap: 20px; }
     .btn-wa {
       display: inline-flex; align-items: center; gap: 12px;
-      background: #25D366; color: var(--white);
+      background: var(--teal); color: var(--white);
       padding: 18px 44px; border-radius: var(--r-lg);
       font-family: var(--fh); font-size: 19px;
-      box-shadow: 0 6px 28px rgba(37,211,102,.36);
+      box-shadow: 0 6px 28px rgba(45,107,107,.36);
       transition: all var(--ease);
     }
-    .btn-wa:hover { background: #1fba58; transform: translateY(-3px); box-shadow: 0 10px 36px rgba(37,211,102,.48); }
+    .btn-wa:hover { background: var(--teal-dark); transform: translateY(-3px); box-shadow: 0 10px 36px rgba(45,107,107,.48); }
     .btn-wa svg { width: 24px; height: 24px; fill: var(--white); flex-shrink: 0; }
     .or-txt { color: rgba(255,255,255,.3); font-size: 13px; }
     .btn-form {
@@ -841,11 +934,11 @@
     .or-div { text-align: center; color: var(--muted); font-size: 13px; margin: 16px 0; }
     .wa {
       display: flex; align-items: center; justify-content: center; gap: 10px;
-      background: #25D366; color: var(--white);
+      background: var(--teal); color: var(--white);
       padding: 14px 28px; border-radius: var(--r-lg); font-size: 16px; font-weight: 700;
       box-shadow: 0 4px 18px rgba(37,211,102,.32); transition: all var(--ease);
     }
-    .wa:hover { transform: translateY(-2px); box-shadow: 0 6px 26px rgba(37,211,102,.42); }
+    .wa:hover { transform: translateY(-2px); box-shadow: 0 6px 26px rgba(45,107,107,.42); }
     .wa svg { width: 22px; height: 22px; fill: var(--white); flex-shrink: 0; }
     .con-r img { width: 100%; border-radius: var(--r); box-shadow: var(--sh-lg); }
 
@@ -939,6 +1032,7 @@
       .pain-card { flex-direction: column; gap: 10px; }
       .pain-card-h { border-inline-start: none; padding-inline-start: 0; }
       .pain-card-h h3 { font-size: clamp(17px, 5vw, 22px); }
+      .msys-img img { width: 110px; }
       .msys-grid { grid-template-columns: 1fr; }
       .port-grid { grid-template-columns: repeat(2, 1fr); }
       /* About: image floats beside heading+lead only */
@@ -953,23 +1047,26 @@
       .about-txt .about-bar { margin-right: 114px; margin-bottom: 10px; }
       .about-txt .about-p,
       .about-txt .tags { clear: both; }
-      /* Ganesha peeking into FAQ section */
+      #seo-aeo { padding-bottom: 170px; }
+      .seo-fish { width: 260px; }
+      .seo-line { top: -280px; height: calc(100% + 280px); }
+      #proof-bar { padding: 32px 0; }
+      .proof-row { grid-template-columns: repeat(3, 1fr); gap: 0; }
+      .proof-item { padding: 8px 4px; background: none; border: none; border-radius: 0; }
+      .proof-item + .proof-item::before { display: block; }
+      .con-g { gap: 16px; }
       .con-r {
         display: block;
         order: -1;
         text-align: center;
-        margin-top: -80px;
-        position: relative;
-        z-index: 5;
-        pointer-events: none;
       }
       .con-r img {
-        width: 62%;
-        max-width: 230px;
-        margin: 0 auto;
+        width: 110px;
+        margin: 0 auto 4px;
       }
-      #contact { padding-top: 20px; }
-      #contact .container { overflow: visible; }
+      .con-l h2 { text-align: center; }
+      .con-bar { margin-right: auto; margin-left: auto; }
+      .con-desc { text-align: center; font-size: 15px; }
     }
     @media (max-width: 480px) {
       .port-grid { grid-template-columns: 1fr; }
@@ -1047,11 +1144,12 @@
 <!-- MOBILE MENU -->
 <div id="mob">
   <button class="mob-x" id="mobX">✕</button>
-  <a href="#pain">איך אני עוזר</a>
-  <a href="#process">התהליך</a>
-  <a href="#portfolio-preview">עבודות</a>
+  <a href="#value-prop">שירותים</a>
+  <a href="#seo-aeo">קידום</a>
+  <a href="#websites">אתרים</a>
+  <a href="#management-systems">אוטומט</a>
   <a href="#testimonials">המלצות</a>
-  <a href="#contact">צור קשר</a>
+  <a href="#contact">שנדבר?</a>
   <a href="/blog/" style="border:1px solid rgba(255,255,255,.25);border-radius:var(--r);padding:8px 20px;margin-top:4px">בלוג</a>
 </div>
 
@@ -1063,10 +1161,12 @@
       טכנורוחניק
     </a>
     <ul class="nav-links">
-      <li><a href="#process">התהליך</a></li>
-      <li><a href="#portfolio-preview">עבודות</a></li>
+      <li><a href="#value-prop">שירותים</a></li>
+      <li><a href="#seo-aeo">קידום</a></li>
+      <li><a href="#websites">אתרים</a></li>
+      <li><a href="#management-systems">אוטומט</a></li>
       <li><a href="#testimonials">המלצות</a></li>
-      <li><a href="#faq">שאלות</a></li>
+      <li><a href="#contact">שנדבר?</a></li>
       <li><a href="/blog/" class="nav-blog">בלוג</a></li>
       <li>
         <a href="https://api.whatsapp.com/send?phone=972544757906&text=היי%20אורן%2C%20בוא%20נקבע%20שיחת%20ייעוץ%20קצרה." target="_blank" rel="noopener" class="nav-cta-link">
@@ -1209,12 +1309,19 @@
 
 
 <!-- IMAGE DIVIDER SEO/AEO -->
-<div class="img-divider" style="background-image:url('Images/Assets/Sections/section-seo-aeo.webp')">
+<div id="seo-aeo-divider" class="img-divider" style="--bg:url('Images/Assets/Sections/section-seo-aeo.webp')">
+  <div class="img-div-bg-wrap"><div class="img-div-bg"></div></div>
   <div class="img-divider-title">קידום בגוגל (SEO) ובבינה מלאכותית (AEO)</div>
 </div>
 
 <!-- SEO / AEO -->
 <section id="seo-aeo">
+  <!-- Fishing line -->
+  <svg class="seo-line" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+    <path id="fish-line-path" stroke="#b52e11" stroke-width="2" fill="none" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+  </svg>
+  <!-- Fish icon -->
+  <img class="seo-fish" src="Images/Assets/fish.webp" alt="" width="800" height="502" loading="lazy">
   <div class="container">
     <div class="seo-inner rv">
       <h2 class="seo-h2">האנשים שצריכים אתכם<br><em>לא מוצאים אתכם עדיין</em></h2>
@@ -1233,12 +1340,13 @@
 </section>
 
 <!-- IMAGE DIVIDER: בניית אתרים -->
-<div class="img-divider" style="background-image:url('Images/Assets/Sections/section-building.webp')">
+<div class="img-divider" style="--bg:url('Images/Assets/Sections/section-building.webp')">
+  <div class="img-div-bg-wrap"><div class="img-div-bg"></div></div>
   <div class="img-divider-title">בניית אתרים</div>
 </div>
 
 <!-- PORTFOLIO PREVIEW -->
-<section id="portfolio-preview" class="section">
+<section id="websites" class="section">
   <div class="container">
     <div class="pain-heading rv">
       <h2 class="section-h2">כל אחד מהם התחיל<br><em>עם רעיון בדיוק כמוכם</em></h2>
@@ -1286,6 +1394,40 @@
         <a href="https://tarbutalhasaf.co.il/" target="_blank" rel="noopener" class="port-link" aria-label="תרבות על הסף"><span class="sr-only">אתר תרבות על הסף - תרבות ואמנות</span></a>
       </div>
     </div>
+    <div class="port-carousel splide" id="port-splide">
+      <div class="splide__track">
+        <ul class="splide__list">
+          <li class="splide__slide">
+            <div class="port-item">
+              <img src="Images/Websites/taliamichaeli.webp" alt="בניית אתר לטליה מיכאלי - מנחת סדנאות וקואצ׳ינג" width="700" height="393" loading="lazy">
+              <div class="port-overlay"><div><div class="port-name">טליה מיכאלי</div><div class="port-role">מנחת סדנאות וקואצ׳ינג</div></div></div>
+              <a href="https://taliamichaeli.com/" target="_blank" rel="noopener" class="port-link" aria-label="טליה מיכאלי"><span class="sr-only">אתר טליה מיכאלי</span></a>
+            </div>
+          </li>
+          <li class="splide__slide">
+            <div class="port-item">
+              <img src="Images/Websites/hooponopono.webp" alt="בניית אתר להו׳אופונופונו ישראל - מרכז להתפתחות רוחנית" width="700" height="393" loading="lazy">
+              <div class="port-overlay"><div><div class="port-name">הו׳אופונופונו ישראל</div><div class="port-role">מרכז להתפתחות רוחנית</div></div></div>
+              <a href="https://hooponopono-israel.co.il/" target="_blank" rel="noopener" class="port-link" aria-label="הו׳אופונופונו ישראל"><span class="sr-only">אתר הו׳אופונופונו ישראל</span></a>
+            </div>
+          </li>
+          <li class="splide__slide">
+            <div class="port-item">
+              <img src="Images/Websites/ohadgalon.webp" alt="בניית אתר לאוהד גלון - ניהול עושר ופיננסים" width="700" height="393" loading="lazy">
+              <div class="port-overlay"><div><div class="port-name">אוהד גלון</div><div class="port-role">ניהול עושר ופיננסים</div></div></div>
+              <a href="https://ohadgalon.com/" target="_blank" rel="noopener" class="port-link" aria-label="אוהד גלון"><span class="sr-only">אתר אוהד גלון</span></a>
+            </div>
+          </li>
+          <li class="splide__slide">
+            <div class="port-item">
+              <img src="Images/Websites/tarbut.webp" alt="בניית אתר לתרבות על הסף - ארגון תרבות ואמנות" width="700" height="393" loading="lazy">
+              <div class="port-overlay"><div><div class="port-name">תרבות על הסף</div><div class="port-role">תרבות ואמנות</div></div></div>
+              <a href="https://tarbutalhasaf.co.il/" target="_blank" rel="noopener" class="port-link" aria-label="תרבות על הסף"><span class="sr-only">אתר תרבות על הסף</span></a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
     <p class="port-more rv d1">
       וגם
       <a href="https://antro-seminar.org/" target="_blank" rel="noopener">סופיה - מדרשה למדע הרוח</a>,
@@ -1297,33 +1439,80 @@
 
 
 <!-- IMAGE DIVIDER: מערכות מידע ואוטומציות -->
-<div class="img-divider" style="background-image:url('Images/Assets/Sections/section-management-systems.webp')">
+<div class="img-divider" style="--bg:url('Images/Assets/Sections/section-management-systems.webp')">
+  <div class="img-div-bg-wrap"><div class="img-div-bg"></div></div>
   <div class="img-divider-title">מערכות מידע ואוטומציות</div>
 </div>
 
 <!-- MANAGEMENT SYSTEMS -->
 <section id="management-systems" class="section">
   <div class="container">
-    <div class="pain-heading rv">
-      <h2 class="section-h2">הכלים שמנהלים את העסק<br><em>בזמן שאתם עושים את מה שבאתם לעשות</em></h2>
-      <p class="section-sub">מערכות CRM, אוטומציות, טפסים חכמים ומערכות הזמנות - הכל מחובר, הכל עובד לבד</p>
-      <div class="bar"></div>
-    </div>
-    <div class="msys-grid rv">
-      <div class="msys-node">
-        <div class="msys-glyph"><i class="fa-solid fa-address-book"></i></div>
-        <h3>ניהול לקוחות</h3>
-        <p>מרכז את הפניות, הלקוחות והתשלומים. תמיד תדעו מה המצב ומי ממתין לחזרה — בלי פתקים ובלי בלגן.</p>
+    <div class="msys-top">
+      <div class="msys-img rv">
+        <img src="Images/Assets/abacus.webp" alt="חשבונייה - מערכות ניהול עסקי" width="600" height="600" style="border-radius:0;box-shadow:none;" loading="lazy">
       </div>
-      <div class="msys-node d1">
-        <div class="msys-glyph"><i class="fa-solid fa-bolt-lightning"></i></div>
-        <h3>אוטומציות</h3>
-        <p>מיילים, תזכורות וקבלת פנים שקורים מעצמם. מפנה את הזמן שלכם לעבודה האמיתית.</p>
-      </div>
-      <div class="msys-node d2">
-        <div class="msys-glyph"><i class="fa-solid fa-calendar-check"></i></div>
-        <h3>הזמנות ותשלומים</h3>
-        <p>שלחו קישור. הלקוח בוחר מועד, משלם ומקבל אישור — הכל נסגר לבד, בלי שתגעו.</p>
+      <div class="msys-main">
+        <div class="pain-heading rv">
+          <h2 class="section-h2">הכלים שמנהלים את העסק<br><em>בזמן שאתם עושים את מה שבאתם לעשות</em></h2>
+          <p class="section-sub">מערכות CRM, אוטומציות, טפסים חכמים ומערכות הזמנות - הכל מחובר, הכל עובד לבד</p>
+          <div class="bar"></div>
+        </div>
+        <div class="msys-grid rv">
+          <div class="msys-node">
+            <div class="msys-glyph"><i class="fa-solid fa-layer-group"></i></div>
+            <h3>ניהול מידע</h3>
+            <p>נכסים, תקציב, אנשי קשר, חדרים ומלאי — כל מה שצריך לסדר, למיין ולהציג כדי שהעסק יתנהל בצלילות.</p>
+            <button class="msys-expand-btn" aria-expanded="false">דוגמאות <i class="fa-solid fa-chevron-down ch msys-arrow"></i></button>
+            <div class="msys-examples" role="region">
+              <div class="msys-examples-inner">
+                <div class="msys-examples-body">
+                  <span class="msys-tag">כרטיס לקוח - שיחות, תשלומים, היסטוריה</span>
+                  <span class="msys-tag">כמה נכנס וכמה יצא - בטבלה חיה</span>
+                  <span class="msys-tag">מה יש ומה חסר במלאי</span>
+                  <span class="msys-tag">חדרים - מי תפוס ומי פנוי</span>
+                  <span class="msys-tag">חוזים וטפסים במקום אחד</span>
+                  <span class="msys-tag">מבט כולל על כל העסק</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="msys-node d1">
+            <div class="msys-glyph"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+            <h3>AI ואוטומציות</h3>
+            <p>לגרום לדברים לקרות מעצמם — מיילים, תזכורות, ניסוח. ועכשיו גם חכם יותר עם בינה מלאכותית.</p>
+            <button class="msys-expand-btn" aria-expanded="false">דוגמאות <i class="fa-solid fa-chevron-down ch msys-arrow"></i></button>
+            <div class="msys-examples" role="region">
+              <div class="msys-examples-inner">
+                <div class="msys-examples-body">
+                  <span class="msys-tag">מייל ברוכים הבאים אוטומטי</span>
+                  <span class="msys-tag">תזכורת וואטסאפ יום לפני פגישה</span>
+                  <span class="msys-tag">AI שכותב הצעות מחיר בשבילכם</span>
+                  <span class="msys-tag">פניות שממוינות לבד לפי נושא</span>
+                  <span class="msys-tag">סיכום שבועי שמגיע למייל לבד</span>
+                  <span class="msys-tag">פוסטים שמתפרסמים לבד לפי תוכנית</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="msys-node d2">
+            <div class="msys-glyph"><i class="fa-solid fa-puzzle-piece"></i></div>
+            <h3>אינטגרציות</h3>
+            <p>לחבר שירותים חיצוניים לאתר שלכם — תשלומים, אנליטיקה, צ׳אטבוטים ומערכות הזמנות.</p>
+            <button class="msys-expand-btn" aria-expanded="false">דוגמאות <i class="fa-solid fa-chevron-down ch msys-arrow"></i></button>
+            <div class="msys-examples" role="region">
+              <div class="msys-examples-inner">
+                <div class="msys-examples-body">
+                  <span class="msys-tag">תשלום באתר + חשבונית שיוצאת לבד</span>
+                  <span class="msys-tag">הלקוח קובע תור בעצמו באתר</span>
+                  <span class="msys-tag">בוט שעונה ללקוחות גם בלילה</span>
+                  <span class="msys-tag">כמה ביקרו ומה חיפשו בגוגל</span>
+                  <span class="msys-tag">פרסום שמגיע רק למי שמתעניין</span>
+                  <span class="msys-tag">כפתור וואטסאפ ישיר מהאתר</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1331,7 +1520,8 @@
 
 
 <!-- IMAGE DIVIDER: ייעוץ והדרכה -->
-<div class="img-divider" style="background-image:url('Images/Assets/Sections/section-teaching.webp')">
+<div class="img-divider" style="--bg:url('Images/Assets/Sections/section-teaching.webp')">
+  <div class="img-div-bg-wrap"><div class="img-div-bg"></div></div>
   <div class="img-divider-title">ייעוץ והדרכה</div>
 </div>
 
@@ -1415,7 +1605,7 @@
 
       <div class="tc rv d3">
         <div class="tq">❝</div>
-        <p class="tt">שירות נעים, סובלני, קשוב ואיכפתי מאורן. מי שמחפש מישהו שיבנה לו נוכחות דיגיטלית שמרגישה אמיתית - לא צריך לחפש רחוק. <strong>תודה ❤</strong></p>
+        <p class="tt">שירות נעים, סובלני, קשוב ואיכפתי מאורן, תודה ❤</p>
         <div class="ta">
           <div class="av"><img src="Images/Endorsers/Nevo-Shevach.webp" alt="נבו שבח - אמן תנועה ומרפא הוליסטי, לקוח של הטכנורוחניק" width="96" height="96" loading="lazy"></div>
           <div>
@@ -1425,6 +1615,62 @@
         </div>
       </div>
 
+    </div>
+    <div class="tes-carousel splide" id="tes-splide">
+      <div class="splide__track">
+        <ul class="splide__list">
+          <li class="splide__slide">
+            <div class="tc">
+              <div class="tq">❝</div>
+              <p class="tt">נפגשתי באורן דרך המדיה בפייסבוק - משהו בפשטות שהוא שידר נראה לי בול. אורן הכין לי דף נחיתה לאירוע שהפקתי ומהרגע הראשון נראה היה שאכפת לו ביחד איתי שהכל יתקתק. הכל היה לפני הזמן, מעבר לבקשתי, ואפילו ניסוח החזון שלי הוא הצליח להניח במילים יותר מדויקות. <strong>ממליצה מכל הלב.</strong></p>
+              <div class="ta">
+                <div class="av"><img src="Images/Endorsers/Mia-Dolinger.webp" alt="מיה דולינגר - אמנית ומנחת סדנאות, לקוחה של הטכנורוחניק" width="96" height="96" loading="lazy"></div>
+                <div><div class="an">מיה דולינגר</div><div class="ar">אמנית ומנחת סדנאות</div></div>
+              </div>
+            </div>
+          </li>
+          <li class="splide__slide">
+            <div class="tc">
+              <div class="tq">❝</div>
+              <p class="tt">אורן בנה לי אתר ואני מאוד שמחה על החיבור בינינו. היה לי מאוד נעים לעבוד עם אורן - נהנתי גם מהתהליך עצמו וגם מהתוצאה. הוא רגיש, אכפתי, מקצועי מאוד וסבלני. היה בקשר איתי כל הזמן וליווה אותי. <strong>עבודה מהלב.</strong></p>
+              <div class="ta">
+                <div class="av"><img src="Images/Endorsers/Aleksandra-Gendelman.webp" alt="אלכסנדרה גנדלמן - מטפלת הוליסטית, לקוחה של הטכנורוחניק" width="96" height="96" loading="lazy"></div>
+                <div><div class="an">אלכסנדרה גנדלמן</div><div class="ar">מטפלת הוליסטית</div></div>
+              </div>
+            </div>
+          </li>
+          <li class="splide__slide">
+            <div class="tc">
+              <div class="tq">❝</div>
+              <p class="tt">אורן עיצב לי את הכריכה לספר השני שלי. עברנו תהליך טוב שכלל התייעצות, גיבוש קונספט והעיצוב שהוא יצר. <strong>אני ממליץ בחום לכל מי שצריך ורוצה שירות מסוג זה.</strong></p>
+              <div class="ta">
+                <div class="av"><img src="Images/Endorsers/Shahar-Ben-Porath.webp" alt="שחר בן פורת - מתקשר, סופר ועיתונאי, לקוח של הטכנורוחניק" width="96" height="96" loading="lazy"></div>
+                <div><div class="an">שחר בן פורת</div><div class="ar">מתקשר, סופר ועיתונאי</div></div>
+              </div>
+            </div>
+          </li>
+          <li class="splide__slide">
+            <div class="tc">
+              <div class="tq">❝</div>
+              <p class="tt">שירות נעים, סובלני, קשוב ואיכפתי מאורן, תודה ❤</p>
+              <div class="ta">
+                <div class="av"><img src="Images/Endorsers/Nevo-Shevach.webp" alt="נבו שבח - אמן תנועה ומרפא הוליסטי, לקוח של הטכנורוחניק" width="96" height="96" loading="lazy"></div>
+                <div><div class="an">נבו שבח</div><div class="ar">אמן תנועה ומרפא הוליסטי</div></div>
+              </div>
+            </div>
+          </li>
+          <li class="splide__slide">
+            <div class="tc">
+              <div class="tq">❝</div>
+              <p class="tt">ממליץ בחום על אורן כנען כבונה אתרים. עבדתי אתו ופגשתי מקצועיות, פתיחות ושיח כנה. התוצאה היתה מצוינת.‎</p>
+              <div class="ta">
+                <div class="av"><img src="Images/Endorsers/Gilad-Goldschmidt.webp" alt="גלעד גולדשמידט, לקוח של הטכנורוחניק" width="96" height="96" loading="lazy"></div>
+                <div><div class="an">גלעד גולדשמידט</div><div class="ar">ממייסדי חינוך וולדורף בישראל</div></div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
@@ -1760,7 +2006,8 @@
 
 
 <!-- IMAGE DIVIDER 5 -->
-<div class="img-divider" style="background-image:url('Images/Assets/Sections/section-contact.webp')">
+<div id="contact-divider" class="img-divider" style="--bg:url('Images/Assets/Sections/section-contact-4x3.webp')">
+  <div class="img-div-bg-wrap"><div class="img-div-bg"></div></div>
   <div class="img-divider-title">בואו נדבר</div>
 </div>
 
@@ -1798,7 +2045,7 @@
         </a>
       </div>
       <div class="con-r rv d1">
-        <img src="Images/Assets/contact-ganesha.webp" alt="גנש - שלחו הודעה" width="1054" height="1181" style="border-radius:0;box-shadow:none;" loading="lazy">
+        <img src="Images/Assets/scroll.webp" alt="מגילה - שלחו הודעה" width="600" height="600" style="border-radius:0;box-shadow:none;" loading="lazy">
       </div>
     </div>
   </div>
@@ -1814,12 +2061,14 @@
     <div class="f-brand">טכנורוחניק</div>
     <p class="f-tag">ביום מקטיר קטורות, בלילה בונה אתרים.</p>
     <ul class="f-links">
-      <li><a href="#process">התהליך</a></li>
-      <li><a href="#portfolio-preview">עבודות</a></li>
+      <li><a href="#value-prop">שירותים</a></li>
+      <li><a href="#seo-aeo">קידום</a></li>
+      <li><a href="#websites">אתרים</a></li>
+      <li><a href="#management-systems">אוטומט</a></li>
       <li><a href="#testimonials">המלצות</a></li>
       <li><a href="#about">אודות</a></li>
       <li><a href="#faq">שאלות</a></li>
-      <li><a href="#contact">צור קשר</a></li>
+      <li><a href="#contact">שנדבר?</a></li>
       <li><a href="/blog/">בלוג</a></li>
     </ul>
     <ul class="f-links" style="margin-top:8px;font-size:13px;opacity:.7">
@@ -1914,7 +2163,7 @@
     const steps = [
       { id: 'pain',              event: 'section_pain' },
       { id: 'process',           event: 'section_process' },
-      { id: 'portfolio-preview', event: 'section_portfolio' },
+      { id: 'websites', event: 'section_portfolio' },
       { id: 'testimonials',      event: 'section_testimonials' },
       { id: 'faq',               event: 'section_faq' },
       { id: 'contact',           event: 'section_contact' },
@@ -1993,6 +2242,59 @@
       }, 4000);
     }
   });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var el = document.getElementById('tes-splide');
+  if (!el) return;
+  var splide = new Splide(el, {
+    type: 'loop',
+    direction: 'rtl',
+    perPage: 3,
+    perMove: 1,
+    gap: '16px',
+    arrows: true,
+    pagination: false,
+    breakpoints: { 1024: { perPage: 2 }, 640: { perPage: 1 } },
+  }).mount();
+
+  // Custom pagination: always 1 dot per slide regardless of perPage
+  var totalSlides = el.querySelectorAll('.splide__slide:not(.splide__slide--clone)').length;
+  var nav = document.createElement('ul');
+  nav.className = 'splide__pagination';
+  el.appendChild(nav);
+  var dots = [];
+  for (var i = 0; i < totalSlides; i++) {
+    var li = document.createElement('li');
+    var btn = document.createElement('button');
+    btn.className = 'splide__pagination__page' + (i === 0 ? ' is-active' : '');
+    btn.setAttribute('aria-label', 'המלצה ' + (i + 1));
+    (function(idx) { btn.addEventListener('click', function() { splide.go(idx); }); })(i);
+    li.appendChild(btn);
+    nav.appendChild(li);
+    dots.push(btn);
+  }
+  splide.on('moved', function(newIndex) {
+    var real = ((newIndex % totalSlides) + totalSlides) % totalSlides;
+    dots.forEach(function(d, i) { d.classList.toggle('is-active', i === real); });
+  });
+
+  // Websites carousel (short screens only)
+  var portEl = document.getElementById('port-splide');
+  if (portEl) {
+    new Splide(portEl, {
+      type: 'loop',
+      direction: 'rtl',
+      perPage: 1,
+      perMove: 1,
+      gap: '0',
+      arrows: true,
+      pagination: false,
+    }).mount();
+  }
+});
 </script>
 
 <!-- Structured Data -->
@@ -2195,6 +2497,108 @@
     }
   ]
 }
+</script>
+
+<script>
+(function () {
+  // Frozen anchor + angle values; updated on layout change, read every frame
+  var lineState = null;
+  var rafId = null;
+
+  function computeLineState() {
+    var section = document.getElementById('seo-aeo');
+    var fish = document.querySelector('.seo-fish');
+    var svgEl = section ? section.querySelector('.seo-line') : null;
+    if (!section || !fish || !svgEl) return;
+    var fr = fish.getBoundingClientRect();
+    if (fr.width === 0) return;
+
+    // Use the SVG element's own rect — it already extends above the section
+    var vr = svgEl.getBoundingClientRect();
+    var vw = vr.width, vh = vr.height;
+
+    // Fish anchor: top-center of fish in SVG coords (0–100 over SVG element)
+    var ax = ((fr.left - vr.left) + fr.width * 0.5) / vw * 100;
+    var ay = (fr.top  - vr.top)                      / vh * 100;
+
+    // Where the section top falls inside the SVG (fraction of SVG height)
+    var sr = section.getBoundingClientRect();
+    var sectionTopInSVG = (sr.top - vr.top) / vh * 100;
+
+    // Endpoint: inside the img-divider area, ~40% up from section top
+    var tx = 50;
+    var ty = sectionTopInSVG * 0.4;
+
+    // CP1 encodes the 75° departure — never changes during animation
+    var angleRad = 75 * Math.PI / 180;
+    var dist = Math.sqrt(
+      Math.pow((tx - ax) / 100 * vw, 2) +
+      Math.pow((ty - ay) / 100 * vh, 2)
+    );
+    var armLen = dist * 0.35;
+    var cp1x = ax + (Math.cos(angleRad) * armLen / vw * 100);
+    var cp1y = ay + (-Math.sin(angleRad) * armLen / vh * 100);
+
+    // CP2 base position (will be offset by the swing)
+    var cp2x = tx + 1;
+    var cp2y = ty + (ay - ty) * 0.2;
+
+    lineState = { ax: ax, ay: ay, cp1x: cp1x, cp1y: cp1y, cp2x: cp2x, cp2y: cp2y, tx: tx, ty: ty };
+  }
+
+  function startSwing() {
+    var AMPLITUDE = 6;  // SVG units of horizontal swing
+    var PERIOD    = 4000; // ms per full left-right-left cycle
+    var t0 = null;
+
+    function frame(ts) {
+      if (!t0) t0 = ts;
+      if (lineState) {
+        var offset = AMPLITUDE * Math.sin(2 * Math.PI * (ts - t0) / PERIOD);
+        var path = document.getElementById('fish-line-path');
+        if (path) {
+          var s = lineState;
+          path.setAttribute('d',
+            'M '  + s.ax.toFixed(1)  + ',' + s.ay.toFixed(1) +
+            ' C ' + s.cp1x.toFixed(1) + ',' + s.cp1y.toFixed(1) +
+            ' '   + (s.cp2x + offset).toFixed(1) + ',' + s.cp2y.toFixed(1) +
+            ' '   + s.tx + ',' + s.ty
+          );
+        }
+      }
+      rafId = requestAnimationFrame(frame);
+    }
+    rafId = requestAnimationFrame(frame);
+  }
+
+  function init() {
+    computeLineState();
+    if (!rafId) startSwing();
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    init();
+    var fish = document.querySelector('.seo-fish');
+    if (fish) fish.addEventListener('load', init);
+  });
+  window.addEventListener('load', init);
+  // On resize, just recompute state — the running loop picks it up next frame
+  window.addEventListener('resize', computeLineState);
+})();
+</script>
+
+<script>
+(function() {
+  var btns = document.querySelectorAll('.msys-expand-btn');
+  var boxes = document.querySelectorAll('.msys-examples');
+  btns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var opening = this.getAttribute('aria-expanded') !== 'true';
+      btns.forEach(function(b) { b.setAttribute('aria-expanded', opening); });
+      boxes.forEach(function(box) { box.classList.toggle('open', opening); });
+    });
+  });
+})();
 </script>
 
 <div id="cursor-glow" aria-hidden="true" style="position:fixed;pointer-events:none;z-index:2;width:480px;height:480px;left:0;top:0;border-radius:var(--r-lg);background:radial-gradient(circle,rgba(61,133,133,0.12) 0%,rgba(61,133,133,0.03) 42%,transparent 70%);transform:translate(-50%,-50%);opacity:0;will-change:left,top;transition:opacity 0.6s ease;"></div>
