@@ -82,8 +82,8 @@
       --ease:       0.3s ease;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { font-family: var(--fb); background: var(--parchment); color: var(--charcoal); line-height: 1.75; direction: rtl; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body { font-family: var(--fb); background: var(--parchment); color: var(--charcoal); line-height: 1.75; direction: rtl; overflow-x: hidden; }
     img { max-width: 100%; height: auto; display: block; }
     a { text-decoration: none; color: inherit; }
     button { cursor: pointer; border: none; background: none; font-family: inherit; }
@@ -329,6 +329,7 @@
       pointer-events: none; z-index: 0;
     }
     #seo-aeo-divider { z-index: 1; }
+    #contact-divider .img-div-bg { background-position: center calc(50% - 70px); }
     #seo-aeo::before {
       content: ''; position: absolute; inset: 0; pointer-events: none;
       background: radial-gradient(ellipse 70% 70% at 50% 50%, rgba(45,107,107,.18) 0%, transparent 65%);
@@ -1067,6 +1068,24 @@
       .con-l h2 { text-align: center; }
       .con-bar { margin-right: auto; margin-left: auto; }
       .con-desc { text-align: center; font-size: 15px; }
+
+      /* [1] value-prop: compress vertical gaps to fit in screen height */
+      .hero-in { padding: 72px 0 20px; gap: 24px; }
+      .value-h2 { margin-bottom: 14px; }
+      .hero-sub { margin-bottom: 20px; }
+      .hero-proof { margin-bottom: 14px; }
+      .vp-cta-row { padding: 12px 24px 32px; }
+      /* float cards extend outside bounds — hide on mobile */
+      .hero-float-card, .hero-float-card2 { display: none; }
+
+      /* [2] img-divider: position:fixed breaks in iOS Safari; use absolute so image fills the divider correctly */
+      .img-div-bg { position: absolute; }
+
+      /* [3] excessive margins on mobile */
+      .tes-header { margin-bottom: 28px; }
+      .guarantee-icon { font-size: 36px; margin-bottom: 12px; }
+      .final-inner p { margin-bottom: 24px; }
+      .pain-cta-row { padding: 20px 0 32px; }
     }
     @media (max-width: 480px) {
       .port-grid { grid-template-columns: 1fr; }
