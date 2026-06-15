@@ -1041,6 +1041,7 @@
       .about-img-wrap {
         float: right;
         width: 100px;
+        margin-top: 7px;
         margin-left: 14px;
         margin-bottom: 8px;
       }
@@ -1069,6 +1070,10 @@
       .con-bar { margin-right: auto; margin-left: auto; }
       .con-desc { text-align: center; font-size: 15px; }
 
+      /* [1] hero: fixed height + center content vertically */
+      #hero { height: 100dvh; }
+      .hero-body { padding: 56px 24px; }
+
       /* [1] value-prop: compress vertical gaps to fit in screen height */
       .hero-in { padding: 72px 0 20px; gap: 24px; }
       .value-h2 { margin-bottom: 14px; }
@@ -1092,10 +1097,8 @@
       .guide-promo-title { margin-bottom: 12px; }
       .guide-promo-chapters { margin-bottom: 18px; }
 
-      /* port-carousel: full display width, swipe-only (arrows overlap image) */
-      #websites > .container { padding-left: 0; padding-right: 0; }
-      #websites .pain-heading { padding-left: 24px; padding-right: 24px; }
-      #websites .port-more { padding-left: 24px; padding-right: 24px; }
+      /* port-carousel: full display width via negative margins, swipe-only */
+      .port-carousel { margin-left: -24px; margin-right: -24px; width: calc(100% + 48px); }
       .port-carousel .splide__arrow { display: none; }
       .port-carousel .port-item { border-radius: 0; }
     }
@@ -2642,6 +2645,34 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   });
+})();
+
+// [2] Mobile img-divider parallax: simulate position:fixed using scroll updates
+(function() {
+  if (window.innerWidth > 768) return;
+  var dividers = document.querySelectorAll('.img-divider');
+  if (!dividers.length) return;
+
+  function update() {
+    var scrollY = window.scrollY;
+    var vh = window.innerHeight;
+    dividers.forEach(function(d) {
+      var bg = d.querySelector('.img-div-bg');
+      if (!bg) return;
+      // offsetTop is distance from document top — stays constant
+      var top = scrollY - d.offsetTop;
+      bg.style.position = 'absolute';
+      bg.style.top = top + 'px';
+      bg.style.bottom = 'auto';
+      bg.style.height = vh + 'px';
+      bg.style.width = '100%';
+    });
+  }
+
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('scrollend', update, { passive: true });
+  window.addEventListener('resize', update, { passive: true });
+  update();
 })();
 </script>
 
