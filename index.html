@@ -312,6 +312,21 @@
         will-change: transform;
       }
     }
+    /* compositor-driven, no JS, no scroll-listener lag — replaces the rAF fallback below where supported (Safari 26+/Chrome/Edge) */
+    @supports (animation-timeline: view()) {
+      @media (max-width: 768px) {
+        .img-divider { view-timeline: --divider-vt block; }
+        .img-div-bg {
+          animation: img-divider-fixed-sim 1ms linear both;
+          animation-timeline: --divider-vt;
+          animation-range: cover;
+        }
+      }
+    }
+    @keyframes img-divider-fixed-sim {
+      0%   { transform: translateY(calc(280px - 100vh)); }
+      100% { transform: translateY(280px); }
+    }
 
     /* ── SEO / AEO SECTION ── */
     #seo-aeo {
@@ -695,22 +710,42 @@
     .port-more a { color: var(--teal); font-weight: 700; border-bottom: 1.5px solid transparent; transition: border-color var(--ease); }
     .port-more a:hover { border-color: var(--teal); }
 
-    /* ── WEBSITES CAROUSEL (short screens) ── */
-    .port-carousel { display: none; margin-top: 16px; position: relative; }
+    /* ── WEBSITES CAROUSEL (short screens) — native CSS scroll-snap, no JS library ── */
+    .port-carousel {
+      display: none; margin-top: 16px; position: relative;
+      margin-left: -24px; margin-right: -24px; width: calc(100% + 48px);
+    }
     @media (max-height: 939px) {
       .port-grid { display: none; }
       .port-carousel { display: block; }
     }
-    .port-carousel .splide__slide { aspect-ratio: 700/393; max-height: 52dvh; }
-    .port-carousel .port-item { height: 100%; }
-    .port-carousel .port-overlay { opacity: 1; }
-    .port-carousel .splide__arrow { background: rgba(22,40,40,.6); border: 1px solid rgba(22,40,40,.15); opacity: 1; width: 40px; height: 40px; border-radius: 50%; position: absolute; top: 50%; transform: translateY(-50%); display: flex; align-items: center; justify-content: center; padding: 0; cursor: pointer; z-index: 1; }
-    .port-carousel .splide__arrow--prev { right: -2px; }
-    .port-carousel .splide__arrow--next { left: -2px; }
-    .port-carousel .splide__arrow--next svg { transform: scaleX(-1); }
-    .port-carousel .splide__arrow svg { fill: var(--white); width: 14px; height: 14px; flex-shrink: 0; }
-    .port-carousel .splide__arrow:hover { background: rgba(22,40,40,.82); }
-    .port-carousel .splide__arrow:disabled { opacity: .3; }
+    .port-carousel-track {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .port-carousel-track::-webkit-scrollbar { display: none; }
+    .port-carousel-track .port-item {
+      flex: 0 0 100%;
+      width: 100%;
+      scroll-snap-align: start;
+      aspect-ratio: 700/393;
+      max-height: 52dvh;
+      border-radius: 0;
+    }
+    .port-carousel-track .port-overlay { opacity: 1; }
+    .port-carousel-dots {
+      display: flex; justify-content: center; align-items: center; gap: 8px;
+      margin-top: 14px;
+    }
+    .port-carousel-dots button {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: rgba(44,36,32,.22); border: none; padding: 0; cursor: pointer;
+      transition: background .2s, transform .2s;
+    }
+    .port-carousel-dots button.is-active { background: var(--teal); transform: scale(1.25); }
 
     /* ── TESTIMONIALS ── */
     #testimonials { background: var(--teal-dark); min-height: 100dvh; scroll-snap-align: start; display: flex; align-items: center; }
@@ -1103,11 +1138,6 @@
       .guide-promo { margin-top: 20px; padding: 20px 16px; }
       .guide-promo-title { margin-bottom: 12px; }
       .guide-promo-chapters { margin-bottom: 18px; }
-
-      /* port-carousel: full display width via negative margins, swipe-only */
-      .port-carousel { margin-left: -24px; margin-right: -24px; width: calc(100% + 48px); }
-      .port-carousel .splide__arrow { display: none; }
-      .port-carousel .port-item { border-radius: 0; }
     }
     @media (max-width: 480px) {
       .port-grid { grid-template-columns: 1fr; }
@@ -1435,39 +1465,30 @@
         <a href="https://tarbutalhasaf.co.il/" target="_blank" rel="noopener" class="port-link" aria-label="תרבות על הסף"><span class="sr-only">אתר תרבות על הסף - תרבות ואמנות</span></a>
       </div>
     </div>
-    <div class="port-carousel splide" id="port-splide">
-      <div class="splide__track">
-        <ul class="splide__list">
-          <li class="splide__slide">
-            <div class="port-item">
-              <img src="Images/Websites/taliamichaeli.webp" alt="בניית אתר לטליה מיכאלי - מנחת סדנאות וקואצ׳ינג" width="700" height="393" loading="lazy">
-              <div class="port-overlay"><div><div class="port-name">טליה מיכאלי</div><div class="port-role">מנחת סדנאות וקואצ׳ינג</div></div></div>
-              <a href="https://taliamichaeli.com/" target="_blank" rel="noopener" class="port-link" aria-label="טליה מיכאלי"><span class="sr-only">אתר טליה מיכאלי</span></a>
-            </div>
-          </li>
-          <li class="splide__slide">
-            <div class="port-item">
-              <img src="Images/Websites/hooponopono.webp" alt="בניית אתר להו׳אופונופונו ישראל - מרכז להתפתחות רוחנית" width="700" height="393" loading="lazy">
-              <div class="port-overlay"><div><div class="port-name">הו׳אופונופונו ישראל</div><div class="port-role">מרכז להתפתחות רוחנית</div></div></div>
-              <a href="https://hooponopono-israel.co.il/" target="_blank" rel="noopener" class="port-link" aria-label="הו׳אופונופונו ישראל"><span class="sr-only">אתר הו׳אופונופונו ישראל</span></a>
-            </div>
-          </li>
-          <li class="splide__slide">
-            <div class="port-item">
-              <img src="Images/Websites/ohadgalon.webp" alt="בניית אתר לאוהד גלון - ניהול עושר ופיננסים" width="700" height="393" loading="lazy">
-              <div class="port-overlay"><div><div class="port-name">אוהד גלון</div><div class="port-role">ניהול עושר ופיננסים</div></div></div>
-              <a href="https://ohadgalon.com/" target="_blank" rel="noopener" class="port-link" aria-label="אוהד גלון"><span class="sr-only">אתר אוהד גלון</span></a>
-            </div>
-          </li>
-          <li class="splide__slide">
-            <div class="port-item">
-              <img src="Images/Websites/tarbut.webp" alt="בניית אתר לתרבות על הסף - ארגון תרבות ואמנות" width="700" height="393" loading="lazy">
-              <div class="port-overlay"><div><div class="port-name">תרבות על הסף</div><div class="port-role">תרבות ואמנות</div></div></div>
-              <a href="https://tarbutalhasaf.co.il/" target="_blank" rel="noopener" class="port-link" aria-label="תרבות על הסף"><span class="sr-only">אתר תרבות על הסף</span></a>
-            </div>
-          </li>
-        </ul>
+    <div class="port-carousel" id="port-carousel">
+      <div class="port-carousel-track" id="port-carousel-track">
+        <div class="port-item">
+          <img src="Images/Websites/taliamichaeli.webp" alt="בניית אתר לטליה מיכאלי - מנחת סדנאות וקואצ׳ינג" width="700" height="393" loading="lazy">
+          <div class="port-overlay"><div><div class="port-name">טליה מיכאלי</div><div class="port-role">מנחת סדנאות וקואצ׳ינג</div></div></div>
+          <a href="https://taliamichaeli.com/" target="_blank" rel="noopener" class="port-link" aria-label="טליה מיכאלי"><span class="sr-only">אתר טליה מיכאלי</span></a>
+        </div>
+        <div class="port-item">
+          <img src="Images/Websites/hooponopono.webp" alt="בניית אתר להו׳אופונופונו ישראל - מרכז להתפתחות רוחנית" width="700" height="393" loading="lazy">
+          <div class="port-overlay"><div><div class="port-name">הו׳אופונופונו ישראל</div><div class="port-role">מרכז להתפתחות רוחנית</div></div></div>
+          <a href="https://hooponopono-israel.co.il/" target="_blank" rel="noopener" class="port-link" aria-label="הו׳אופונופונו ישראל"><span class="sr-only">אתר הו׳אופונופונו ישראל</span></a>
+        </div>
+        <div class="port-item">
+          <img src="Images/Websites/ohadgalon.webp" alt="בניית אתר לאוהד גלון - ניהול עושר ופיננסים" width="700" height="393" loading="lazy">
+          <div class="port-overlay"><div><div class="port-name">אוהד גלון</div><div class="port-role">ניהול עושר ופיננסים</div></div></div>
+          <a href="https://ohadgalon.com/" target="_blank" rel="noopener" class="port-link" aria-label="אוהד גלון"><span class="sr-only">אתר אוהד גלון</span></a>
+        </div>
+        <div class="port-item">
+          <img src="Images/Websites/tarbut.webp" alt="בניית אתר לתרבות על הסף - ארגון תרבות ואמנות" width="700" height="393" loading="lazy">
+          <div class="port-overlay"><div><div class="port-name">תרבות על הסף</div><div class="port-role">תרבות ואמנות</div></div></div>
+          <a href="https://tarbutalhasaf.co.il/" target="_blank" rel="noopener" class="port-link" aria-label="תרבות על הסף"><span class="sr-only">אתר תרבות על הסף</span></a>
+        </div>
       </div>
+      <div class="port-carousel-dots" id="port-carousel-dots"></div>
     </div>
     <p class="port-more rv d1">
       וגם
@@ -2322,19 +2343,35 @@ document.addEventListener('DOMContentLoaded', function() {
     dots.forEach(function(d, i) { d.classList.toggle('is-active', i === real); });
   });
 
-  // Websites carousel (short screens only)
-  var portEl = document.getElementById('port-splide');
-  if (portEl) {
-    new Splide(portEl, {
-      type: 'loop',
-      direction: 'rtl',
-      perPage: 1,
-      perMove: 1,
-      gap: '0',
-      arrows: true,
-      pagination: false,
-    }).mount();
-  }
+  // Websites carousel (short screens only) — native scroll-snap, dots sync via IntersectionObserver
+  (function() {
+    var track = document.getElementById('port-carousel-track');
+    var dotsWrap = document.getElementById('port-carousel-dots');
+    if (!track || !dotsWrap) return;
+    var slides = Array.prototype.slice.call(track.children);
+    var dots = slides.map(function(_, i) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.setAttribute('aria-label', 'תמונה ' + (i + 1));
+      if (i === 0) b.classList.add('is-active');
+      b.addEventListener('click', function() {
+        slides[i].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+      });
+      dotsWrap.appendChild(b);
+      return b;
+    });
+
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting && entry.intersectionRatio > 0.6) {
+          var idx = slides.indexOf(entry.target);
+          dots.forEach(function(d, i) { d.classList.toggle('is-active', i === idx); });
+        }
+      });
+    }, { root: track, threshold: [0.6] });
+
+    slides.forEach(function(slide) { observer.observe(slide); });
+  })();
 });
 </script>
 
@@ -2655,8 +2692,10 @@ document.addEventListener('DOMContentLoaded', function() {
 })();
 
 // [2] Mobile img-divider parallax: simulate position:fixed via transform (compositor-only, rAF-throttled)
+// Skip entirely where CSS scroll-driven animations are supported — the @supports(animation-timeline:view()) rule above handles it with zero JS lag
 (function() {
   if (window.innerWidth > 768) return;
+  if (window.CSS && CSS.supports && CSS.supports('animation-timeline: view()')) return;
   var dividers = document.querySelectorAll('.img-divider');
   if (!dividers.length) return;
 
