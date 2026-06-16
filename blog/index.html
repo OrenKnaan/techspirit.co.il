@@ -53,6 +53,7 @@
     .pcb{padding:26px;flex:1;display:flex;flex-direction:column}
     .ptag{display:inline-block;background:rgba(45,107,107,.1);color:var(--t);font-size:11px;font-weight:700;padding:3px 12px;border-radius:20px;margin-bottom:12px;letter-spacing:.06em}
     .pc h2{font-family:var(--fh);font-size:18px;color:var(--td);line-height:1.35;margin-bottom:10px;flex:1}
+    .pc h2 a{color:inherit;transition:color var(--e)}.pc h2 a:hover{color:var(--t)}
     .pe{font-size:14px;color:var(--mu);line-height:1.7;margin-bottom:18px}
     .pm{display:flex;align-items:center;justify-content:space-between;font-size:12px;color:var(--mu);padding-top:14px;border-top:1px solid var(--cr)}
     .pml{display:flex;align-items:center;gap:10px}
@@ -119,7 +120,7 @@ function render(filter){
     <article class="pc${p.feat&&filter==='all'?' feat':''}" data-cat="${p.cat}">
       <div class="pcb">
         <span class="ptag">${p.tag}</span>
-        <h2>${p.title}</h2>
+        <h2><a href="https://techspirit.co.il/blog/${p.slug}/">${p.title}</a></h2>
         <p class="pe">${p.excerpt}</p>
         <div class="pm">
           <div class="pml">
