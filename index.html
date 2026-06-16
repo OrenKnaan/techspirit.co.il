@@ -305,6 +305,12 @@
     @media (max-width: 768px) {
       .img-divider { height: 280px; }
       .img-divider-title { font-size: clamp(22px, 6vw, 36px); padding: 36px 24px 24px; }
+      /* sized with lvh (not JS-read innerHeight) so the address-bar show/hide doesn't resize this layer */
+      .img-div-bg {
+        position: absolute; top: 0; left: 0; right: 0; bottom: auto;
+        width: 100%; height: 100vh; height: 100lvh;
+        will-change: transform;
+      }
     }
 
     /* ── SEO / AEO SECTION ── */
@@ -1027,10 +1033,11 @@
       .monk-wrap { width: min(86vw, calc(100vw - 48px)); }
       h1.hero-t  { font-size: clamp(55px, 14vw, 80px); }
       .hero-tagline { font-size: 20px; }
-      :root { --te-top: 13.5%; --te-left: 50.5%; }
+      :root { --te-top: 13.5%; --te-left: 50.5%; --te-dy: 12px; }
+      .hero-arr { bottom: 58px; }
       .tes-grid { grid-template-columns: 1fr; }
       #pain { height: auto; min-height: 100dvh; }
-      .pain-card { flex-direction: column; gap: 10px; }
+      .pain-card { flex-direction: column; align-items: stretch; gap: 6px; padding: 18px 0; }
       .pain-card-h { border-inline-start: none; padding-inline-start: 0; }
       .pain-card-h h3 { font-size: clamp(17px, 5vw, 22px); }
       .msys-img img { width: 110px; }
@@ -1070,9 +1077,9 @@
       .con-bar { margin-right: auto; margin-left: auto; }
       .con-desc { text-align: center; font-size: 15px; }
 
-      /* [1] hero: fixed height + center content vertically */
+      /* [1] hero: fixed height + center content vertically, shifted up */
       #hero { height: 100dvh; }
-      .hero-body { padding: 56px 24px; }
+      .hero-body { padding: 56px 24px; transform: translateY(-50px); }
 
       /* [1] value-prop: compress vertical gaps to fit in screen height */
       .hero-in { padding: 72px 0 20px; gap: 24px; }
@@ -2647,32 +2654,37 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 })();
 
-// [2] Mobile img-divider parallax: simulate position:fixed using scroll updates
+// [2] Mobile img-divider parallax: simulate position:fixed via transform (compositor-only, rAF-throttled)
 (function() {
   if (window.innerWidth > 768) return;
   var dividers = document.querySelectorAll('.img-divider');
   if (!dividers.length) return;
 
-  function update() {
+  var items = Array.prototype.map.call(dividers, function(d) {
+    return { el: d, bg: d.querySelector('.img-div-bg') };
+  }).filter(function(o) { return o.bg; });
+
+  var ticking = false;
+
+  function apply() {
     var scrollY = window.scrollY;
-    var vh = window.innerHeight;
-    dividers.forEach(function(d) {
-      var bg = d.querySelector('.img-div-bg');
-      if (!bg) return;
-      // offsetTop is distance from document top — stays constant
-      var top = scrollY - d.offsetTop;
-      bg.style.position = 'absolute';
-      bg.style.top = top + 'px';
-      bg.style.bottom = 'auto';
-      bg.style.height = vh + 'px';
-      bg.style.width = '100%';
+    items.forEach(function(o) {
+      // offsetTop is distance from document top — stays constant regardless of address-bar resize
+      var offset = scrollY - o.el.offsetTop;
+      o.bg.style.transform = 'translate3d(0,' + offset + 'px,0)';
     });
+    ticking = false;
   }
 
-  window.addEventListener('scroll', update, { passive: true });
-  window.addEventListener('scrollend', update, { passive: true });
-  window.addEventListener('resize', update, { passive: true });
-  update();
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(apply);
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+  apply();
 })();
 </script>
 
