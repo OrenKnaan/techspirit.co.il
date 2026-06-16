@@ -179,11 +179,13 @@
       animation:heroImgIn 1.6s cubic-bezier(0.25,0.46,0.45,0.94) 0.1s both;
     }
     .monk-wrap::before {
-      content:''; position:absolute; top:50%; left:50%;
-      width:65%; aspect-ratio:1; border-radius: var(--r-lg);
+      content:''; position:absolute; top:var(--te-top); left:var(--te-left);
+      translate: calc(-50% + var(--te-dx)) calc(-50% - var(--te-dy));
+      width:12%; aspect-ratio:1; border-radius:50%;
       border:1.5px solid rgba(61,133,133,.85);
       box-shadow:0 0 24px rgba(61,133,133,.45),inset 0 0 10px rgba(61,133,133,.2);
       pointer-events:none; z-index:1;
+      opacity:0;
       animation:heroRipple 1.0s ease-out 1.85s both;
     }
     @keyframes heroImgIn {
@@ -199,8 +201,9 @@
       100% { opacity:1; filter:brightness(1); }
     }
     @keyframes heroRipple {
-      0%   { transform:translate(-50%,-50%) scale(.15); opacity:1; }
-      100% { transform:translate(-50%,-50%) scale(2.0); opacity:0; }
+      0%   { scale:.5; opacity:0; }
+      18%  { opacity:1; }
+      100% { scale:2.2; opacity:0; }
     }
     @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-14px)} }
     :root {
@@ -1100,7 +1103,12 @@
         animation-name: heroImgInMobile; animation-duration: .8s;
         animation-timing-function: ease-out; animation-delay: .1s; animation-fill-mode: both;
       }
-      .hero-arr { bottom: 58px; }
+      /* pulse must play in sync with the third eye, which appears earlier on mobile (no separate opening motion) */
+      .monk-wrap::before {
+        animation-name: heroRipple; animation-duration: .8s;
+        animation-timing-function: ease-out; animation-delay: .1s; animation-fill-mode: both;
+      }
+      .hero-arr { bottom: 100px; }
       .tes-grid { grid-template-columns: 1fr; }
       #pain { height: auto; min-height: 100dvh; }
       .pain-card { flex-direction: column; align-items: stretch; gap: 6px; padding: 18px 0; }
@@ -1471,7 +1479,7 @@
     </div>
     <div class="port-grid">
       <div class="port-item rv">
-        <img src="Images/Websites/taliamichaeli.webp" alt="בניית אתר לטליה מיכאלי - מנחת סדנאות וקואצ׳ינג, עבודה של אורן כנען הטכנורוחניק" width="700" height="393" loading="lazy">
+        <img src="Images/Websites/taliamichaeli.webp" alt="בניית אתר לטליה מיכאלי - מנחת סדנאות ומטפלת, עבודה של אורן כנען הטכנורוחניק" width="700" height="393" loading="lazy">
         <div class="port-overlay">
           <div>
             <div class="port-name">טליה מיכאלי</div>
