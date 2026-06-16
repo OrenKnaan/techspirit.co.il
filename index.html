@@ -1024,7 +1024,7 @@
     .f-monk { width: 90px; height: 90px; object-fit: contain; margin: 0 auto 14px; display: block; }
     .f-brand { font-family: var(--fh); font-size: 24px; color: var(--white); margin-bottom: 4px; }
     .f-tag { font-size: 13px; color: rgba(255,255,255,.62); margin-bottom: 24px; }
-    .f-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 18px; }
+    .f-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 14px 24px; margin: 0 0 18px; padding: 0; }
     .f-links a { font-size: 13.5px; color: rgba(255,255,255,.62); transition: color var(--ease); }
     .f-links a:hover { color: var(--gold); }
     .f-copy { font-size: 12px; color: rgba(255,255,255,.55); }
@@ -1181,6 +1181,11 @@
       .guide-promo { margin-top: 20px; padding: 20px 16px; }
       .guide-promo-title { margin-bottom: 12px; }
       .guide-promo-chapters { margin-bottom: 18px; }
+
+      /* footer: extra bottom clearance so the fixed back-to-top button (46px + 28px offset)
+         never overlaps the copyright line when scrolled to the page end */
+      footer { padding: 40px 0 100px; }
+      .f-links { gap: 10px 18px; }
     }
     @media (max-width: 480px) {
       .port-grid { grid-template-columns: 1fr; }
