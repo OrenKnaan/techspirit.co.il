@@ -27,7 +27,7 @@ const BLOG_POSTS = [
     slug:'אתר-אינטרנט-לעסק',
     title:'אתר אינטרנט לעסק: למה להסתמך רק על רשתות חברתיות זו טעות',
     excerpt:'הרשתות החברתיות שלך שייכות לרשתות החברתיות, לא לך. האתר שלך שייך לך. ההבדל הזה חשוב יותר ממה שחושבים.',
-    date:'24 ביוני 2026',d:'2026-06-24',read:'5 דק׳',tag:'בניית אתרים',cat:'website',feat:false,published:false,publishDate:'2026-06-24',weeklyViews:0
+    date:'16 ביוני 2026',d:'2026-06-16',read:'5 דק׳',tag:'בניית אתרים',cat:'website',feat:false,published:true,weeklyViews:0
   },
   {
     slug:'כתיבת-תוכן-לאתר',
