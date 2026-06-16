@@ -192,6 +192,12 @@
       65%  { filter:blur(1.5px) brightness(1.1) saturate(.85); transform:scale(1.005); }
       100% { filter:blur(0) brightness(1) saturate(1) drop-shadow(0 12px 48px rgba(212,168,67,.4)); transform:scale(1); }
     }
+    /* Mobile: drop blur/saturate/scale/drop-shadow (expensive repaints on mobile GPUs) — fade + brightness only.
+       The eye also rides this exact animation so it appears together with the monk, with no separate opening motion. */
+    @keyframes heroImgInMobile {
+      0%   { opacity:0; filter:brightness(2.2); }
+      100% { opacity:1; filter:brightness(1); }
+    }
     @keyframes heroRipple {
       0%   { transform:translate(-50%,-50%) scale(.15); opacity:1; }
       100% { transform:translate(-50%,-50%) scale(2.0); opacity:0; }
@@ -1084,6 +1090,16 @@
       h1.hero-t  { font-size: clamp(55px, 14vw, 80px); }
       .hero-tagline { font-size: 20px; }
       :root { --te-top: 13.5%; --te-left: 50.5%; --te-dy: 12px; }
+      /* longhand (not the `animation` shorthand) so animation-play-state stays under the hero-ready gate above */
+      .hero-logo {
+        animation-name: heroImgInMobile; animation-duration: .8s;
+        animation-timing-function: ease-out; animation-delay: .1s; animation-fill-mode: both;
+      }
+      .third-eye {
+        transform: translate(calc(-50% + var(--te-dx)),calc(-50% - var(--te-dy))) scaleY(1);
+        animation-name: heroImgInMobile; animation-duration: .8s;
+        animation-timing-function: ease-out; animation-delay: .1s; animation-fill-mode: both;
+      }
       .hero-arr { bottom: 58px; }
       .tes-grid { grid-template-columns: 1fr; }
       #pain { height: auto; min-height: 100dvh; }
