@@ -335,6 +335,9 @@
     @media (max-width: 768px) {
       .img-divider { height: 280px; }
       .img-divider-title { font-size: clamp(22px, 6vw, 36px); padding: 36px 24px 24px; }
+      /* inset:0 stretches between top and bottom, which tracks the dynamic (toolbar-aware) viewport and
+         resizes as the address bar shows/hides on scroll. Fix the height with lvh (largest viewport) instead. */
+      .img-div-bg { bottom: auto; height: 100vh; height: 100lvh; }
     }
 
     /* ── SEO / AEO SECTION ── */
@@ -863,17 +866,20 @@
     /* ── FAQ ── */
     #faq { background: var(--cream); min-height: 100dvh; padding: 0; display: flex; flex-direction: column; scroll-snap-align: start; }
     #faq > .container { flex: 1; display: flex; flex-direction: column; padding-top: 52px; padding-bottom: 40px; }
-    /* Reveal faq-hidden items based on viewport height (each question = 72px, +1 per step) */
-    @media (min-height: 750px)  { .faq-item.faq-hidden:nth-child(-n+6)  { display: block; } }
-    @media (min-height: 822px)  { .faq-item.faq-hidden:nth-child(-n+7)  { display: block; } }
-    @media (min-height: 894px)  { .faq-item.faq-hidden:nth-child(-n+8)  { display: block; } }
-    @media (min-height: 966px)  { .faq-item.faq-hidden:nth-child(-n+9)  { display: block; } }
-    @media (min-height: 1038px) { .faq-item.faq-hidden:nth-child(-n+10) { display: block; } }
-    @media (min-height: 1110px) { .faq-item.faq-hidden:nth-child(-n+11) { display: block; } }
-    @media (min-height: 1182px) { .faq-item.faq-hidden:nth-child(-n+12) { display: block; } }
-    @media (min-height: 1254px) { .faq-item.faq-hidden:nth-child(-n+13) { display: block; } }
-    @media (min-height: 1326px) { .faq-item.faq-hidden:nth-child(-n+14) { display: block; } }
-    @media (min-height: 1398px) { .faq-item.faq-hidden                  { display: block; } .faq-more-wrap { display: none; } }
+    /* Reveal faq-hidden items based on viewport height (each question = 72px, +1 per step).
+       Gated to min-width:769px — on mobile, window.innerHeight changes live as the address
+       bar shows/hides while scrolling, which made these re-fire and reveal/hide items mid-scroll
+       (the "section gets shorter" bug). Mobile always shows the default set + the more-button. */
+    @media (min-height: 750px)  and (min-width: 769px) { .faq-item.faq-hidden:nth-child(-n+6)  { display: block; } }
+    @media (min-height: 822px)  and (min-width: 769px) { .faq-item.faq-hidden:nth-child(-n+7)  { display: block; } }
+    @media (min-height: 894px)  and (min-width: 769px) { .faq-item.faq-hidden:nth-child(-n+8)  { display: block; } }
+    @media (min-height: 966px)  and (min-width: 769px) { .faq-item.faq-hidden:nth-child(-n+9)  { display: block; } }
+    @media (min-height: 1038px) and (min-width: 769px) { .faq-item.faq-hidden:nth-child(-n+10) { display: block; } }
+    @media (min-height: 1110px) and (min-width: 769px) { .faq-item.faq-hidden:nth-child(-n+11) { display: block; } }
+    @media (min-height: 1182px) and (min-width: 769px) { .faq-item.faq-hidden:nth-child(-n+12) { display: block; } }
+    @media (min-height: 1254px) and (min-width: 769px) { .faq-item.faq-hidden:nth-child(-n+13) { display: block; } }
+    @media (min-height: 1326px) and (min-width: 769px) { .faq-item.faq-hidden:nth-child(-n+14) { display: block; } }
+    @media (min-height: 1398px) and (min-width: 769px) { .faq-item.faq-hidden                  { display: block; } .faq-more-wrap { display: none; } }
     .faq-wrap { max-width: 720px; margin: 0 auto; width: 100%; }
     .faq-item {
       border-bottom: 1.5px solid var(--cream-dk); overflow: hidden;
@@ -1176,6 +1182,7 @@
          making the section visibly grow/shrink. 100svh stays fixed at the smallest
          (address-bar-visible) viewport size — the "shorter" version the user wants. */
       #websites { height: 100svh; }
+      #faq { min-height: 100svh; }
 
       /* footer: extra bottom clearance so the fixed back-to-top button (46px + 28px offset)
          never overlaps the copyright line when scrolled to the page end */
