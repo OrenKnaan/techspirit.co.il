@@ -200,6 +200,10 @@
       0%   { opacity:0; filter:brightness(2.2); }
       100% { opacity:1; filter:brightness(1); }
     }
+    @keyframes teInMobile {
+      0%   { opacity:0; transform: translate(calc(-50% + var(--te-dx)),calc(-50% - var(--te-dy))) scale(.4); }
+      100% { opacity:1; transform: translate(calc(-50% + var(--te-dx)),calc(-50% - var(--te-dy))) scale(1); }
+    }
     @keyframes heroRipple {
       0%   { scale:.5; opacity:0; }
       18%  { opacity:1; }
@@ -1098,15 +1102,15 @@
         animation-name: heroImgInMobile; animation-duration: .8s;
         animation-timing-function: ease-out; animation-delay: .1s; animation-fill-mode: both;
       }
+      /* eye appears 500ms after the monk finishes (monk: .1s delay + .8s duration = .9s done) */
       .third-eye {
-        transform: translate(calc(-50% + var(--te-dx)),calc(-50% - var(--te-dy))) scaleY(1);
-        animation-name: heroImgInMobile; animation-duration: .8s;
-        animation-timing-function: ease-out; animation-delay: .1s; animation-fill-mode: both;
+        animation-name: teInMobile; animation-duration: .8s;
+        animation-timing-function: ease-out; animation-delay: 1.4s; animation-fill-mode: both;
       }
-      /* pulse must play in sync with the third eye, which appears earlier on mobile (no separate opening motion) */
+      /* pulse must play in sync with the third eye */
       .monk-wrap::before {
         animation-name: heroRipple; animation-duration: .8s;
-        animation-timing-function: ease-out; animation-delay: .1s; animation-fill-mode: both;
+        animation-timing-function: ease-out; animation-delay: 1.4s; animation-fill-mode: both;
       }
       .hero-arr { bottom: 100px; }
       .tes-grid { grid-template-columns: 1fr; }
