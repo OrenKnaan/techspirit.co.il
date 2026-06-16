@@ -258,6 +258,21 @@
       70% {transform:translateY(-140px)translateX(-7px) scale(2.1);opacity:.15}
       100%{transform:translateY(-210px)translateX(5px) scale(3); opacity:0}
     }
+    /* Entrance animations use a fixed animation-delay measured from navigation start, which
+       assumes near-instant load. On slow connections the delay can elapse before first paint,
+       so the animation appears to have already finished ("just appears"). Hold them paused until
+       JS confirms the hero image has actually loaded, then let the same delays play out from there. */
+    .hero-logo, .monk-wrap::before, .third-eye, h1.hero-t, .hero-tagline, .hero-arr {
+      animation-play-state: paused;
+    }
+    .hero-ready .hero-logo,
+    .hero-ready .monk-wrap::before,
+    .hero-ready .third-eye,
+    .hero-ready h1.hero-t,
+    .hero-ready .hero-tagline,
+    .hero-ready .hero-arr {
+      animation-play-state: running;
+    }
 
     /* ── SCROLL SNAP – value-prop only ── */
     html { scroll-snap-type: y proximity; }
@@ -1282,6 +1297,21 @@
   </div>
   <button class="hero-arr" aria-label="לחלק הבא" onclick="document.getElementById('value-prop').scrollIntoView({behavior:'smooth',block:'start'})"><i class="fa-solid fa-chevron-down"></i></button>
 </section>
+<script>
+  // Start the hero entrance choreography once the monk image is actually visible, not on a blind
+  // navigation-start timer — otherwise slow loads make the animation finish before paint (see CSS above)
+  (function() {
+    var heroImg = document.querySelector('.hero-logo');
+    function reveal() { document.documentElement.classList.add('hero-ready'); }
+    if (!heroImg) { reveal(); return; }
+    if (heroImg.complete) reveal();
+    else {
+      heroImg.addEventListener('load', reveal, { once: true });
+      heroImg.addEventListener('error', reveal, { once: true });
+      setTimeout(reveal, 4000);
+    }
+  })();
+</script>
 
 <!-- VALUE PROP -->
 <section id="value-prop">
