@@ -39,7 +39,7 @@ const BLOG_POSTS = [
     slug:'נוכחות-אינטרנטית',
     title:'לבנות נוכחות אינטרנטית: מה שלמדתי מיצירת מציאות',
     excerpt:'ההבדל בין אתר שעובד לאתר שלא הוא לרוב לא בכלים. הוא בכוונה שמאחוריו.',
-    date:'8 ביולי 2026',d:'2026-07-08',read:'5 דק׳',tag:'אסטרטגיה',cat:'strategy',feat:false,published:false,publishDate:'2026-07-08',weeklyViews:0
+    date:'19 ביוני 2026',d:'2026-06-19',read:'5 דק׳',tag:'אסטרטגיה',cat:'strategy',feat:false,published:true,weeklyViews:0
   },
   {
     slug:'אתר-לעסק-רוחני',
