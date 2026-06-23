@@ -196,6 +196,8 @@ All dates must match in **4 places** when updated:
 
 ## Publishing a future post
 
+"Publish" means the full flow ending in `git push`. Do not stop at commit and call it published.
+
 1. `mv blog/future-posts/[slug] blog/[slug]`
 2. Fix relative paths — future-posts are one level deeper, so adjust on move:
    - `../../blog.css` → `../blog.css`
@@ -206,7 +208,8 @@ All dates must match in **4 places** when updated:
 4. Update `sitemap.xml` — add `<url>` entry
 5. Update internal links in other posts if needed
 6. Update `article:modified_time` to today's date
-7. Submit URL to Google Search Console for indexing
+7. `git add`, `git commit`, `git push`
+8. Submit URL to Google Search Console for indexing
 
 ---
 
