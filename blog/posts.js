@@ -33,7 +33,7 @@ const BLOG_POSTS = [
     slug:'כתיבת-תוכן-לאתר',
     title:'כתיבת תוכן לאתר: שיעור מתקשורת מקרבת',
     excerpt:'הבעיה הכי נפוצה באתרים של מטפלים: הם כותבים על עצמם, לא על הלקוח. שיעור אחד מ-NVC ישנה את זה.',
-    date:'1 ביולי 2026',d:'2026-07-01',read:'5 דק׳',tag:'תוכן',cat:'seo',feat:false,published:false,publishDate:'2026-07-01',weeklyViews:0
+    date:'23 ביוני 2026',d:'2026-06-23',read:'5 דק׳',tag:'תוכן',cat:'seo',feat:false,published:true,weeklyViews:0
   },
   {
     slug:'נוכחות-אינטרנטית',
