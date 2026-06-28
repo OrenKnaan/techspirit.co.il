@@ -61,3 +61,17 @@ const BLOG_POSTS = [
   }
 ];
 if (typeof module !== 'undefined') module.exports = BLOG_POSTS;
+
+document.querySelectorAll('details.fi').forEach(function(d){
+  d.addEventListener('click',function(e){
+    if(!e.target.closest('summary'))return;
+    e.preventDefault();
+    if(d.classList.contains('is-open')){
+      d.classList.remove('is-open');
+      setTimeout(function(){d.removeAttribute('open');},110);
+    }else{
+      d.setAttribute('open','');
+      requestAnimationFrame(function(){d.classList.add('is-open');});
+    }
+  });
+});
