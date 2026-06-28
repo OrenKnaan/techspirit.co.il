@@ -45,7 +45,7 @@ const BLOG_POSTS = [
     slug:'אתר-לעסק-רוחני',
     title:'בניית אתר לעסק רוחני: 5 דברים שלמדתי בפרויקטים',
     excerpt:'אתר לעסק רוחני שונה. הוא צריך לבנות אמון, לשקף אישיות, ולדבר לקהל שמחפש תהודה לא פיצ׳רים.',
-    date:'15 ביולי 2026',d:'2026-07-15',read:'5 דק׳',tag:'בניית אתרים',cat:'website',feat:false,published:false,publishDate:'2026-07-15',weeklyViews:0
+    date:'28 ביוני 2026',d:'2026-06-28',read:'5 דק׳',tag:'בניית אתרים',cat:'website',feat:false,published:true,weeklyViews:0
   },
   {
     slug:'מחיר-בניית-אתר',
