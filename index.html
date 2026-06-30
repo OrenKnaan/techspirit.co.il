@@ -685,6 +685,52 @@
       font-size: 15px; color: var(--muted); font-style: italic;
     }
 
+    /* ── CONSULTATION ── */
+    #consultation { background: var(--cream); min-height: 100dvh; scroll-snap-align: start; display: flex; align-items: center; }
+    #consultation > .container { width: 100%; }
+    .consult-cards {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 24px; margin-top: 40px;
+    }
+    .consult-card {
+      background: var(--white); border: 1.5px solid var(--cream-dk);
+      border-radius: var(--r); padding: 36px 28px;
+      box-shadow: var(--sh-sm); position: relative; overflow: hidden;
+    }
+    .consult-card::before {
+      content: ''; position: absolute; top: 0; right: 0; left: 0; height: 3px;
+    }
+    .consult-card:nth-child(1)::before { background: var(--teal); }
+    .consult-card:nth-child(2)::before { background: var(--terra); }
+    .consult-card:nth-child(3)::before { background: var(--gold); }
+    .consult-icon { font-size: 28px; color: var(--teal); margin-bottom: 14px; }
+    .consult-card h3 { font-family: var(--fh); font-size: 20px; color: var(--charcoal); margin-bottom: 10px; }
+    .consult-card p { font-size: 14.5px; color: var(--muted); line-height: 1.8; margin: 0; }
+    .consult-cta { text-align: center; margin-top: 48px; }
+    .consult-pricing {
+      display: flex; gap: 20px; justify-content: center;
+      align-items: stretch; flex-wrap: wrap;
+    }
+    .consult-price-opt {
+      flex: 1; min-width: 220px; max-width: 300px;
+      border: 1.5px solid var(--cream-dk); border-radius: var(--r);
+      padding: 28px 24px; background: var(--white);
+      box-shadow: var(--sh-sm); display: flex;
+      flex-direction: column; align-items: center; gap: 10px;
+    }
+    .consult-price-label { font-family: var(--fh); font-size: 17px; color: var(--charcoal); font-weight: 700; }
+    .consult-price-amount { font-size: 30px; font-weight: 800; color: var(--teal); font-family: var(--fh); line-height: 1.1; }
+    .consult-price-per { font-size: 13px; color: var(--muted); font-weight: 400; display: block; }
+    .consult-price-sub { font-size: 14px; color: var(--muted); }
+    .btn-outline {
+      display: inline-flex; align-items: center;
+      border: 2px solid var(--teal); color: var(--teal);
+      padding: 13px 24px; border-radius: var(--r-lg);
+      font-family: var(--fh); font-size: 16px; font-weight: 700;
+      transition: background var(--ease), color var(--ease);
+    }
+    .btn-outline:hover { background: var(--teal); color: var(--white); }
+
     /* ── PORTFOLIO PREVIEW ── */
     #websites { background: var(--cream); height: 100dvh; scroll-snap-align: start; display: flex; align-items: center; overflow: hidden; }
     #websites > .container { width: 100%; }
@@ -1087,6 +1133,7 @@
       }
       .proof-item + .proof-item::before { display: none; }
       .process-grid { grid-template-columns: 1fr; }
+      .consult-cards { grid-template-columns: 1fr; }
     }
     @media (max-width: 768px) {
       .nav-links { display: none; }
@@ -1572,6 +1619,38 @@
   </div>
 </section>
 
+<!-- PROCESS -->
+<section id="process" class="section">
+  <div class="container">
+    <div class="pain-heading rv">
+      <h2 class="section-h2">תהליך פשוט, <em>תוצאה אמיתית</em></h2>
+      <p class="section-sub">שלושה שלבים - מהשיחה הראשונה עד לאתר שמרגיש בדיוק כמוכם</p>
+      <div class="bar"></div>
+    </div>
+    <div class="process-grid">
+      <div class="step rv">
+        <div class="step-num">01</div>
+        <div class="step-icon"><i class="fa-solid fa-mug-hot"></i></div>
+        <h3>שיחת היכרות</h3>
+        <p>20 דקות בוואצאפ או בזום - מבינים מה אתם עושים, מי הלקוחות שלכם ומה חשוב לכם שהאתר יעשה. ללא עלות, ללא התחייבות.</p>
+      </div>
+      <div class="step rv d1">
+        <div class="step-num">02</div>
+        <div class="step-icon"><i class="fa-solid fa-pen-ruler"></i></div>
+        <h3>בנייה ועיצוב</h3>
+        <p>אני בונה לכם את האתר - מהמבנה, העיצוב והתמונות ועד הטקסטים ה-SEO. אתם מקבלים עדכונים בדרך ואחראים על אישור הכיוון.</p>
+      </div>
+      <div class="step rv d2">
+        <div class="step-num">03</div>
+        <div class="step-icon"><i class="fa-solid fa-rocket"></i></div>
+        <h3>עלייה לאוויר + ליווי</h3>
+        <p>האתר עולה לאוויר. אתם מקבלים סרטון הדרכה, גישה מלאה, וליווי לשבועיים הראשונים - כי אני רוצה שתרגישו שאתם בשליטה.</p>
+      </div>
+    </div>
+    <p class="process-note rv d2">רוב הפרויקטים מסתיימים תוך 2-3 שבועות מהשיחה הראשונה.</p>
+  </div>
+</section>
+
 
 <!-- IMAGE DIVIDER: מערכות מידע ואוטומציות -->
 <div class="img-divider" style="--bg:url('Images/Assets/Sections/section-management-systems-4x3.webp')">
@@ -1660,35 +1739,49 @@
   <div class="img-divider-title">ייעוץ והדרכה</div>
 </div>
 
-<!-- PROCESS -->
-<section id="process" class="section">
+<!-- CONSULTATION -->
+<section id="consultation">
   <div class="container">
     <div class="pain-heading rv">
-      <h2 class="section-h2">תהליך פשוט, <em>תוצאה אמיתית</em></h2>
-      <p class="section-sub">שלושה שלבים - מהשיחה הראשונה עד לאתר שמרגיש בדיוק כמוכם</p>
+      <span class="eyebrow">הדרכות ויעוץ</span>
+      <h2 class="section-h2">לדעת מה עושים — <em>לפני</em> שעושים</h2>
+      <p class="section-sub">הדרכות אישיות או קבוצתיות (וובינר) בשיחת וידאו, בשלושה נושאים שכל עסק מודע צריך להבין</p>
       <div class="bar"></div>
     </div>
-    <div class="process-grid">
-      <div class="step rv">
-        <div class="step-num">01</div>
-        <div class="step-icon"><i class="fa-solid fa-mug-hot"></i></div>
-        <h3>שיחת היכרות</h3>
-        <p>20 דקות בוואצאפ או בזום - מבינים מה אתם עושים, מי הלקוחות שלכם ומה חשוב לכם שהאתר יעשה. ללא עלות, ללא התחייבות.</p>
+    <div class="consult-cards">
+      <div class="consult-card rv">
+        <div class="consult-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+        <h3>בנייה ועיצוב עם AI</h3>
+        <p>איך לבנות דף, לעצב חומרים ולכתוב תוכן בעזרת כלי בינה מלאכותית — בלי להיות מפתח ובלי להוציא תקציב גדול על מעצבים.</p>
       </div>
-      <div class="step rv d1">
-        <div class="step-num">02</div>
-        <div class="step-icon"><i class="fa-solid fa-pen-ruler"></i></div>
-        <h3>בנייה ועיצוב</h3>
-        <p>אני בונה לכם את האתר - מהמבנה, העיצוב והתמונות ועד הטקסטים ה-SEO. אתם מקבלים עדכונים בדרך ואחראים על אישור הכיוון.</p>
+      <div class="consult-card rv d1">
+        <div class="consult-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+        <h3>קידום בגוגל ובמנועי AI</h3>
+        <p>SEO ו-AEO בעולם של היום — איך הלקוחות שלכם מוצאים אתכם בגוגל, ועכשיו גם בתשובות של ChatGPT, Gemini ו-Perplexity.</p>
       </div>
-      <div class="step rv d2">
-        <div class="step-num">03</div>
-        <div class="step-icon"><i class="fa-solid fa-rocket"></i></div>
-        <h3>עלייה לאוויר + ליווי</h3>
-        <p>האתר עולה לאוויר. אתם מקבלים סרטון הדרכה, גישה מלאה, וליווי לשבועיים הראשונים - כי אני רוצה שתרגישו שאתם בשליטה.</p>
+      <div class="consult-card rv d2">
+        <div class="consult-icon"><i class="fa-solid fa-compass"></i></div>
+        <h3>ייעוץ אסטרטגי</h3>
+        <p>אתר שלם? דף נחיתה? קידום? אוטומציות? — שיחה אחת שמסדרת את הראש ומציבה סדרי עדיפויות ברורים לפני שמחליטים על כלום.</p>
       </div>
     </div>
-    <p class="process-note rv d2">רוב הפרויקטים מסתיימים תוך 2-3 שבועות מהשיחה הראשונה.</p>
+    <div class="consult-cta rv d2">
+      <div class="consult-pricing">
+        <div class="consult-price-opt">
+          <span class="consult-price-label">פגישה אישית</span>
+          <div class="consult-price-amount">450 ₪ <span class="consult-price-per">לשעה</span></div>
+          <a href="https://api.whatsapp.com/send?phone=972544757906&text=היי%20אורן%2C%20אשמח%20לתאם%20פגישת%20הדרכה%20אישית." target="_blank" rel="noopener" class="btn-primary" style="display:inline-flex;padding:13px 22px;font-size:16px">
+            <svg class="wa-ico" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            לתיאום פגישה
+          </a>
+        </div>
+        <div class="consult-price-opt">
+          <span class="consult-price-label">פגישה קבוצתית</span>
+          <span class="consult-price-sub">וובינר</span>
+          <a href="#contact" class="btn-outline">ליצירת קשר לפרטים</a>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
