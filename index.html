@@ -2386,14 +2386,18 @@
   (function() {
     var section = document.getElementById('consultation');
     var panel = section && section.querySelector('.consult-panel');
-    if (!section || !panel || window.matchMedia('(max-width: 768px)').matches || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    var STRENGTH = 70;
+    if (!section || !panel || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var STRENGTH = 200;
+    var OFFSET = 80;
+    var mq = window.matchMedia('(max-width: 768px)');
     function updateParallax() {
+      if (mq.matches) { panel.style.transform = ''; return; }
       var rect = section.getBoundingClientRect();
       var progress = rect.top / window.innerHeight;
-      panel.style.transform = 'translateY(' + (-progress * STRENGTH).toFixed(1) + 'px)';
+      panel.style.transform = 'translateY(' + (OFFSET + -progress * STRENGTH).toFixed(1) + 'px)';
     }
     window.addEventListener('scroll', updateParallax, { passive: true });
+    window.addEventListener('resize', updateParallax, { passive: true });
     updateParallax();
   })();
 
