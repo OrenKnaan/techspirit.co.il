@@ -208,8 +208,9 @@ All dates must match in **4 places** when updated:
 4. Update `sitemap.xml` — add `<url>` entry
 5. Update internal links in other posts if needed
 6. Update `article:modified_time` to today's date
-7. `git add`, `git commit`, `git push`
-8. Submit URL to Google Search Console for indexing
+7. Run `node blog/generate-static.js` — regenerates the `<noscript>` bot fallback in `blog/index.html`
+8. `git add`, `git commit`, `git push`
+9. Submit URL to Google Search Console for indexing
 
 ---
 

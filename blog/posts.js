@@ -62,7 +62,7 @@ const BLOG_POSTS = [
 ];
 if (typeof module !== 'undefined') module.exports = BLOG_POSTS;
 
-document.querySelectorAll('details.fi').forEach(function(d){
+if (typeof document !== 'undefined') document.querySelectorAll('details.fi').forEach(function(d){
   d.addEventListener('click',function(e){
     if(!e.target.closest('summary'))return;
     e.preventDefault();
