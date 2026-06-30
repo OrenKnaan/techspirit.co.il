@@ -705,21 +705,38 @@
       gap: 48px;
       align-items: start;
     }
-    #consultation .consult-panel {
-      position: sticky;
-      top: 72px;
-    }
+    #consultation .consult-panel { will-change: transform; }
     @media (max-width: 768px) {
       #consultation > .consult-grid {
         grid-template-columns: 1fr;
         gap: 28px;
         padding: 52px 20px 44px;
       }
-      #consultation .consult-panel {
-        position: static;
-        top: auto;
-      }
     }
+    /* consult panel option blocks */
+    .consult-opt { padding: 18px 0; }
+    .consult-opt-label { font-size: 10.5px; font-weight: 700; color: rgba(212,168,67,0.78); letter-spacing: .18em; text-transform: uppercase; margin-bottom: 8px; }
+    .consult-opt-price { font-family: 'Secular One', sans-serif; font-size: 44px; color: #75bab8; line-height: 1; letter-spacing: -.02em; display: block; margin-bottom: 4px; }
+    .consult-opt-sub { font-size: 13px; color: rgba(255,255,255,0.36); margin-bottom: 14px; }
+    .consult-opt-divider { display: flex; align-items: center; gap: 8px; margin: 0; }
+    .consult-opt-divider span { font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,0.22); }
+    .consult-opt-divider div { flex: 1; height: 1px; background: rgba(255,255,255,0.1); }
+    .consult-wa-btn {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      background: #C4502A; color: #fff; padding: 13px 20px; border-radius: 50px;
+      font-family: 'Secular One', sans-serif; font-size: 15px;
+      text-decoration: none; transition: background .2s, transform .2s, box-shadow .2s;
+    }
+    .consult-wa-btn:hover { background: #b5421f; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(196,80,42,.45); }
+    .consult-wa-btn svg { width: 18px; height: 18px; fill: #fff; flex-shrink: 0; }
+    .consult-group-btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      border: 1px solid rgba(255,255,255,0.22); color: rgba(255,255,255,0.6);
+      padding: 13px 20px; border-radius: 50px; width: 100%;
+      font-family: 'Secular One', sans-serif; font-size: 15px;
+      text-decoration: none; transition: border-color .2s, color .2s, background .2s;
+    }
+    .consult-group-btn:hover { border-color: rgba(255,255,255,0.5); color: rgba(255,255,255,0.9); background: rgba(255,255,255,0.07); }
 
     /* ── PORTFOLIO PREVIEW ── */
     #websites { background: var(--cream); height: 100dvh; scroll-snap-align: start; display: flex; align-items: center; overflow: hidden; }
@@ -1742,7 +1759,7 @@
     <!-- Left col: heading + stacked service cards -->
     <div>
 
-      <header style="margin-bottom: 36px;">
+      <header class="rv" style="margin-bottom: 36px;">
         <span style="font-size: 11px; font-weight: 700; color: #2D6B6B; letter-spacing: .25em; text-transform: uppercase; display: block; margin-bottom: 14px;">הדרכות ויעוץ</span>
         <h2 style="font-family: 'Secular One', sans-serif; font-size: 36px; color: #2C2420; letter-spacing: -.015em; line-height: 1.12; margin-bottom: 14px;">לדעת מה עושים —<br><em style="color: #2D6B6B; font-style: normal;">לפני</em> שעושים</h2>
         <p style="font-size: 15.5px; color: #8A7A6E; line-height: 1.8; max-width: 400px;">הדרכות אישיות או קבוצתיות בשיחת וידאו, בשלושה נושאים שכל עסק מודע צריך להבין</p>
@@ -1751,7 +1768,7 @@
 
       <div style="display: flex; flex-direction: column; gap: 12px;">
 
-        <div style="background: #ffffff; border: 1.5px solid #EDE5D6; border-inline-start: 3px solid #2D6B6B; border-radius: 12px; padding: 22px; display: flex; align-items: flex-start; gap: 16px; box-shadow: 0 2px 12px rgba(44,36,32,0.055);">
+        <div class="rv d1" style="background: #ffffff; border: 1.5px solid #EDE5D6; border-inline-start: 3px solid #2D6B6B; border-radius: 12px; padding: 22px; display: flex; align-items: flex-start; gap: 16px; box-shadow: 0 2px 12px rgba(44,36,32,0.055);">
           <div style="width: 46px; height: 46px; border-radius: 50%; background: #DFF0F0; display: flex; align-items: center; justify-content: center; color: #2D6B6B; font-size: 19px; flex-shrink: 0;">
             <i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i>
           </div>
@@ -1761,7 +1778,7 @@
           </div>
         </div>
 
-        <div style="background: #ffffff; border: 1.5px solid #EDE5D6; border-inline-start: 3px solid #C4502A; border-radius: 12px; padding: 22px; display: flex; align-items: flex-start; gap: 16px; box-shadow: 0 2px 12px rgba(44,36,32,0.055);">
+        <div class="rv d2" style="background: #ffffff; border: 1.5px solid #EDE5D6; border-inline-start: 3px solid #C4502A; border-radius: 12px; padding: 22px; display: flex; align-items: flex-start; gap: 16px; box-shadow: 0 2px 12px rgba(44,36,32,0.055);">
           <div style="width: 46px; height: 46px; border-radius: 50%; background: #fce9e3; display: flex; align-items: center; justify-content: center; color: #C4502A; font-size: 19px; flex-shrink: 0;">
             <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
           </div>
@@ -1771,7 +1788,7 @@
           </div>
         </div>
 
-        <div style="background: #ffffff; border: 1.5px solid #EDE5D6; border-inline-start: 3px solid #D4A843; border-radius: 12px; padding: 22px; display: flex; align-items: flex-start; gap: 16px; box-shadow: 0 2px 12px rgba(44,36,32,0.055);">
+        <div class="rv d3" style="background: #ffffff; border: 1.5px solid #EDE5D6; border-inline-start: 3px solid #D4A843; border-radius: 12px; padding: 22px; display: flex; align-items: flex-start; gap: 16px; box-shadow: 0 2px 12px rgba(44,36,32,0.055);">
           <div style="width: 46px; height: 46px; border-radius: 50%; background: #fdf5e0; display: flex; align-items: center; justify-content: center; color: #D4A843; font-size: 19px; flex-shrink: 0;">
             <i class="fa-solid fa-compass" aria-hidden="true"></i>
           </div>
@@ -1789,44 +1806,31 @@
 
       <div aria-hidden="true" style="position: absolute; top: -60px; left: 50%; transform: translateX(-50%); width: 260px; height: 160px; background: radial-gradient(ellipse, rgba(212,168,67,0.16) 0%, transparent 70%); pointer-events: none;"></div>
 
-      <div style="position: relative; z-index: 1; text-align: center;">
+      <div class="rv d2" style="position: relative; z-index: 1; text-align: center;">
 
-        <p style="font-size: 10.5px; font-weight: 700; color: rgba(212,168,67,0.78); letter-spacing: .18em; text-transform: uppercase; margin-bottom: 14px;">פגישה אישית</p>
-
-        <span style="font-family: 'Secular One', sans-serif; font-size: 48px; color: #75bab8; line-height: 1; letter-spacing: -.02em; display: block; margin-bottom: 4px;">450 ₪</span>
-        <p style="font-size: 13px; color: rgba(255,255,255,0.36); margin-bottom: 22px;">לשעה · שיחת וידאו</p>
-
-        <div style="background: rgba(255,255,255,0.04); border-radius: 10px; padding: 14px 16px; margin-bottom: 22px; text-align: right;">
-          <div style="display: flex; flex-direction: column; gap: 9px;">
-            <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: rgba(255,255,255,0.68);">
-              <span style="color: #D4A843; font-size: 10px; flex-shrink: 0;">✓</span>
-              <span>60 דקות מרוכזות 1:1</span>
-            </div>
-            <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: rgba(255,255,255,0.68);">
-              <span style="color: #D4A843; font-size: 10px; flex-shrink: 0;">✓</span>
-              <span>תכנית פעולה בכתב</span>
-            </div>
-            <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: rgba(255,255,255,0.68);">
-              <span style="color: #D4A843; font-size: 10px; flex-shrink: 0;">✓</span>
-              <span>ללא התחייבות להמשך</span>
-            </div>
-          </div>
+        <!-- Personal session -->
+        <div class="consult-opt">
+          <p class="consult-opt-label">פגישה אישית</p>
+          <span class="consult-opt-price">450 ₪</span>
+          <p class="consult-opt-sub">לשעה · שיחת וידאו</p>
+          <a class="consult-wa-btn" href="https://api.whatsapp.com/send?phone=972544757906&text=היי%20אורן%2C%20אשמח%20לתאם%20פגישת%20הדרכה%20אישית." target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            שלחו הודעה ונתאם
+          </a>
         </div>
 
-        <a href="https://api.whatsapp.com/send?phone=972544757906&text=היי%20אורן%2C%20אשמח%20לתאם%20פגישת%20הדרכה%20אישית." target="_blank" rel="noopener" style="display: flex; align-items: center; justify-content: center; gap: 8px; background: #C4502A; color: #fff; padding: 14px 20px; border-radius: 50px; font-family: 'Secular One', sans-serif; font-size: 15px; margin-bottom: 18px; text-decoration: none;">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="width:18px;height:18px;fill:#fff;flex-shrink:0;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-          שלחו הודעה ונתאם
-        </a>
-
-        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 16px;">
-          <div style="flex: 1; height: 1px; background: rgba(255,255,255,0.1);"></div>
-          <span style="font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,0.22);">או</span>
-          <div style="flex: 1; height: 1px; background: rgba(255,255,255,0.1);"></div>
+        <div class="consult-opt-divider">
+          <div></div>
+          <span>או</span>
+          <div></div>
         </div>
 
-        <p style="font-family: 'Secular One', sans-serif; font-size: 13.5px; color: rgba(255,255,255,0.6); margin-bottom: 4px;">פגישה קבוצתית · וובינר</p>
-        <p style="font-size: 11.5px; color: rgba(255,255,255,0.3); margin-bottom: 14px;">תאריכים לפי ביקוש</p>
-        <a href="#contact" style="display: inline-flex; align-items: center; border: 1px solid rgba(255,255,255,0.18); color: rgba(255,255,255,0.52); padding: 8px 18px; border-radius: 50px; font-family: 'Secular One', sans-serif; font-size: 12.5px;">ליצירת קשר לפרטים</a>
+        <!-- Group / Webinar -->
+        <div class="consult-opt">
+          <p class="consult-opt-label">פגישה קבוצתית · וובינר</p>
+          <p class="consult-opt-sub">שיחת וידאו</p>
+          <a class="consult-group-btn" href="#contact">ליצירת קשר לפרטים</a>
+        </div>
 
       </div>
     </div>
@@ -2377,6 +2381,21 @@
   document.getElementById('hbg').addEventListener('click', () => document.getElementById('mob').classList.add('open'));
   document.getElementById('mobX').addEventListener('click', () => document.getElementById('mob').classList.remove('open'));
   document.querySelectorAll('#mob a').forEach(a => a.addEventListener('click', () => document.getElementById('mob').classList.remove('open')));
+
+  /* ── Consultation panel parallax ── */
+  (function() {
+    var section = document.getElementById('consultation');
+    var panel = section && section.querySelector('.consult-panel');
+    if (!section || !panel || window.matchMedia('(max-width: 768px)').matches || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var STRENGTH = 70;
+    function updateParallax() {
+      var rect = section.getBoundingClientRect();
+      var progress = rect.top / window.innerHeight;
+      panel.style.transform = 'translateY(' + (-progress * STRENGTH).toFixed(1) + 'px)';
+    }
+    window.addEventListener('scroll', updateParallax, { passive: true });
+    updateParallax();
+  })();
 
   /* ── Scroll reveal ── */
   const obs = new IntersectionObserver(entries => {
