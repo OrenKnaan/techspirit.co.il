@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<!--
+  Downscript landing page.
+  i18n notes: all copy lives in markup (no text in JS/CSS). Layout uses CSS logical
+  properties throughout, so translating to an RTL language only requires switching
+  <html lang dir> — e.g. lang="he" dir="rtl" — and replacing the strings.
+-->
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Downscript — Turn any social media profile into transcripts</title>
+<meta name="description" content="Downscript is a free Chrome extension that finds every video on a social media profile and transcribes them all on your Mac. One click, one Markdown file per video, nothing sent to the cloud.">
+<link rel="canonical" href="https://downscript.com/">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://downscript.com/">
+<meta property="og:title" content="Downscript — Turn any social media profile into transcripts">
+<meta property="og:description" content="Downscript is a free Chrome extension that finds every video on a social media profile and transcribes them all on your Mac. One click, one Markdown file per video, nothing sent to the cloud.">
+<meta property="og:image" content="https://downscript.com/assets/logo-downscript-horizontal.webp">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Downscript">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Downscript — Turn any social media profile into transcripts">
+<meta name="twitter:description" content="Downscript is a free Chrome extension that finds every video on a social media profile and transcribes them all on your Mac. One click, one Markdown file per video, nothing sent to the cloud.">
+<meta name="twitter:image" content="https://downscript.com/assets/logo-downscript-horizontal.webp">
+
+<link rel="icon" type="image/png" href="assets/icon-254.png">
+<link rel="apple-touch-icon" href="assets/icon-254.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Secular+One&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --teal-dark:#162828;
+    --teal:#2D6B6B;
+    --teal-mid:#3D8585;
+    --teal-pale:#DFF0F0;
+    --terra:#C4502A;
+    --terra-hi:#E06840;
+    --gold:#D4A843;
+    --gold-hi:#E8C870;
+    --cream:#F5F0E6;
+    --cream-dk:#EDE5D6;
+    --parchment:#FAF7F0;
+    --charcoal:#2C2420;
+    --brown:#5C3D2E;
+    --muted:#6B5D52;          /* darkened from brand #8A7A6E for 4.5:1 body contrast */
+    --white:#FFFFFF;
+    --fh:'Secular One',sans-serif;
+    --fb:'Heebo',sans-serif;
+    --fm:ui-monospace,'SF Mono',Menlo,Consolas,monospace;
+    --sh-sm:0 2px 12px rgba(44,36,32,.08);
+    --sh-md:0 4px 28px rgba(44,36,32,.13);
+    --sh-lg:0 10px 52px rgba(44,36,32,.18);
+    --r-lg:50px;
+    --r:12px;
+    --r-sm:6px;
+    --ease:.3s ease;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--fb);
+    background:var(--cream);
+    color:var(--charcoal);
+    line-height:1.65;
+    font-size:1.0625rem;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block}
+  a{color:var(--teal)}
+  :focus-visible{outline:3px solid var(--teal-mid);outline-offset:3px;border-radius:var(--r-sm)}
+  ::selection{background:var(--teal-pale)}
+
+  h1,h2,h3{font-family:var(--fh);font-weight:400;line-height:1.18;letter-spacing:.01em}
+  h1{font-size:clamp(2.3rem,5.2vw,3.6rem)}
+  h2{font-size:clamp(1.8rem,3.6vw,2.5rem)}
+  h3{font-size:1.25rem}
+  .accent{color:var(--terra);font-style:italic}
+  .cycle{display:inline-block;white-space:nowrap;transition:opacity .3s ease,width .35s ease}
+  .cycle.is-out{opacity:0}
+  @media (prefers-reduced-motion:reduce){.cycle{transition:none}}
+
+  .wrap{max-width:1120px;margin-inline:auto;padding-inline:24px}
+  section{padding-block:88px}
+  .kicker{
+    display:inline-block;
+    font-family:var(--fh);
+    font-size:.85rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--teal);
+    background:var(--teal-pale);
+    border-radius:var(--r-lg);
+    padding:.35em 1.1em;
+    margin-block-end:18px;
+  }
+  .lead{color:var(--muted);max-width:60ch}
+
+  /* ---------- header ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(250,247,240,.92);
+    backdrop-filter:blur(10px);
+    border-block-end:1px solid var(--cream-dk);
+  }
+  .nav{display:flex;align-items:center;gap:28px;padding-block:14px}
+  .nav .logo img{height:34px;width:auto}
+  .nav ul{display:flex;gap:26px;list-style:none;margin-inline-start:auto}
+  .nav ul a{
+    text-decoration:none;color:var(--charcoal);font-weight:500;font-size:.95rem;
+    transition:color var(--ease);
+  }
+  .nav ul a:hover{color:var(--terra)}
+  .btn{
+    display:inline-flex;align-items:center;gap:.5em;
+    font-family:var(--fh);font-size:1rem;text-decoration:none;
+    border-radius:var(--r-lg);padding:.7em 1.6em;cursor:pointer;
+    transition:transform var(--ease),box-shadow var(--ease),background var(--ease);
+  }
+  .btn-primary{background:var(--terra);color:var(--white);box-shadow:var(--sh-sm)}
+  .btn-primary:hover{background:var(--terra-hi);transform:translateY(-2px);box-shadow:var(--sh-md)}
+  .btn-ghost{color:var(--teal);border:2px solid var(--teal)}
+  .btn-ghost:hover{background:var(--teal-pale);transform:translateY(-2px)}
+  .nav .btn{padding:.5em 1.3em;font-size:.92rem}
+  .nav-toggle{display:none}
+
+  /* ---------- hero ---------- */
+  .hero{padding-block:72px 96px;overflow:hidden}
+  .hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+  .hero p.lead{margin-block:20px 30px;font-size:1.15rem}
+  .hero-ctas{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+  .hero-note{
+    margin-block-start:22px;display:flex;align-items:center;gap:.6em;
+    color:var(--muted);font-size:.95rem;
+  }
+  .hero-note svg{flex:none;color:var(--teal)}
+
+  /* hero visual: enso + popup mock + transcript card */
+  .hero-visual{position:relative;min-height:460px}
+  .enso{
+    position:absolute;inset-block-start:-40px;inset-inline-end:-30px;
+    width:420px;height:420px;color:var(--gold);opacity:.55;pointer-events:none;
+  }
+  .enso path{
+    stroke:currentColor;fill:none;stroke-width:10;stroke-linecap:round;
+    stroke-dasharray:1300;stroke-dashoffset:1300;
+    animation:draw 2.2s ease-out .3s forwards;
+  }
+  @keyframes draw{to{stroke-dashoffset:130}}
+
+  .popup{
+    position:relative;z-index:2;width:min(360px,100%);
+    background:var(--parchment);border:1px solid var(--cream-dk);
+    border-radius:var(--r);box-shadow:var(--sh-lg);
+    font-size:.85rem;
+  }
+  .popup-head{
+    display:flex;align-items:center;gap:10px;
+    padding:12px 16px;border-block-end:1px solid var(--cream-dk);
+  }
+  .popup-head img{width:118px;height:22px}
+  .popup-head strong{font-family:var(--fh);font-weight:400;font-size:.95rem}
+  .popup-head span{margin-inline-start:auto;color:var(--muted)}
+  .popup-body{padding:16px}
+  .popup-account{display:flex;justify-content:space-between;margin-block-end:10px}
+  .popup-account b{font-weight:700}
+  .pill{
+    font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--teal);background:var(--teal-pale);border-radius:var(--r-lg);padding:.15em .8em;
+  }
+  .bar{height:10px;background:var(--cream-dk);border-radius:var(--r-lg);overflow:hidden}
+  .bar i{
+    display:block;height:100%;width:41%;border-radius:inherit;
+    background:linear-gradient(90deg,var(--teal),var(--teal-mid));
+    animation:fill 6s ease-in-out infinite alternate;
+  }
+  @keyframes fill{from{width:32%}to{width:78%}}
+  .popup-stats{display:flex;justify-content:space-between;color:var(--muted);margin-block:8px 14px;font-size:.8rem}
+  .log{
+    background:var(--teal-dark);color:var(--teal-pale);border-radius:var(--r-sm);
+    font-family:var(--fm);font-size:.72rem;line-height:1.9;padding:10px 12px;
+  }
+  .log .ok{color:var(--gold-hi)}
+
+  .mdcard{
+    position:absolute;z-index:1;inset-block-end:0;inset-inline-end:0;
+    width:min(330px,88%);
+    background:var(--white);border:1px solid var(--cream-dk);
+    border-radius:var(--r);box-shadow:var(--sh-md);
+    transform:rotate(2.5deg);
+    font-size:.8rem;
+  }
+  .mdcard-head{
+    display:flex;align-items:center;gap:8px;
+    padding:10px 14px;border-block-end:1px solid var(--cream-dk);
+    font-family:var(--fm);font-size:.72rem;color:var(--muted);
+  }
+  .mdcard-head svg{color:var(--terra)}
+  .mdcard pre{
+    padding:12px 16px;font-family:var(--fm);font-size:.72rem;line-height:1.75;
+    color:var(--brown);white-space:pre-wrap;
+  }
+  .mdcard pre b{color:var(--charcoal)}
+
+  /* ---------- how it works ---------- */
+  .how{background:var(--parchment)}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-block-start:48px;list-style:none}
+  .step{
+    background:var(--white);border:1px solid var(--cream-dk);border-radius:var(--r);
+    padding:30px 26px;box-shadow:var(--sh-sm);position:relative;
+  }
+  .step-num{
+    font-family:var(--fh);font-size:.95rem;color:var(--white);
+    background:var(--teal);border-radius:50%;
+    width:44px;height:44px;display:grid;place-items:center;
+    margin-block-end:18px;
+  }
+  .step h3{margin-block-end:10px}
+  .step p{color:var(--muted);font-size:.98rem}
+  .step p code{font-family:var(--fm);font-size:.85em;background:var(--cream);padding:.1em .4em;border-radius:var(--r-sm)}
+
+  .pipeline{
+    margin-block-start:56px;
+    background:var(--teal-dark);border-radius:var(--r);box-shadow:var(--sh-md);
+    padding:34px 40px;
+    display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;
+  }
+  .pipe-node{display:flex;flex-direction:column;align-items:center;gap:10px;color:var(--teal-pale);min-width:110px}
+  .pipe-node svg{color:var(--gold)}
+  .pipe-node small{font-family:var(--fm);font-size:.7rem;opacity:.75}
+  .pipe-node span{font-family:var(--fh);font-size:.95rem}
+  .pipe-arrow{color:var(--teal-mid);flex:none}
+  .pipeline-caption{
+    text-align:center;color:var(--muted);font-size:.9rem;margin-block-start:16px;
+  }
+
+  /* ---------- features ---------- */
+  .features .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-block-start:48px}
+  .feature{
+    background:var(--parchment);border:1px solid var(--cream-dk);border-radius:var(--r);
+    padding:28px 26px;transition:transform var(--ease),box-shadow var(--ease);
+  }
+  .feature:hover{transform:translateY(-4px);box-shadow:var(--sh-md)}
+  .feature .icon{
+    width:48px;height:48px;border-radius:var(--r-sm);
+    background:var(--teal-pale);color:var(--teal);
+    display:grid;place-items:center;margin-block-end:16px;
+  }
+  .feature h3{font-size:1.15rem;margin-block-end:8px}
+  .feature p{color:var(--muted);font-size:.97rem}
+
+  /* ---------- output ---------- */
+  .output{background:var(--teal-dark);color:var(--parchment)}
+  .output .kicker{background:rgba(223,240,240,.12);color:var(--gold-hi)}
+  .output .lead{color:rgba(250,247,240,.75)}
+  .output-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:36px;margin-block-start:44px;align-items:start}
+  .term{
+    background:#0E1D1D;border:1px solid rgba(223,240,240,.14);border-radius:var(--r);
+    font-family:var(--fm);font-size:.82rem;line-height:2;padding:22px 26px;overflow-x:auto;
+  }
+  .term .dir{color:var(--gold-hi)}
+  .term .dim{color:rgba(223,240,240,.45)}
+  .term .file{color:var(--teal-pale)}
+  .output-copy h3{color:var(--gold-hi);margin-block:18px 6px;font-size:1.05rem}
+  .output-copy p{color:rgba(250,247,240,.78);font-size:.98rem}
+
+  /* ---------- setup ---------- */
+  .setup .cols{display:grid;grid-template-columns:.85fr 1.15fr;gap:48px;margin-block-start:44px;align-items:start}
+  .prereqs{
+    background:var(--parchment);border:1px solid var(--cream-dk);border-radius:var(--r);
+    padding:28px;box-shadow:var(--sh-sm);
+  }
+  .prereqs h3{margin-block-end:14px}
+  .prereqs ul{list-style:none}
+  .prereqs li{
+    display:flex;gap:.7em;align-items:baseline;padding-block:.45em;
+    color:var(--muted);font-size:.97rem;
+  }
+  .prereqs li::before{content:"✓";color:var(--teal);font-weight:700;flex:none}
+  .prereqs li code{font-family:var(--fm);font-size:.88em;color:var(--charcoal)}
+  .prereqs p{margin-block-start:12px;font-size:.88rem;color:var(--muted)}
+  .install-steps{list-style:none;counter-reset:inst}
+  .install-steps li{
+    counter-increment:inst;position:relative;
+    padding-inline-start:58px;padding-block-end:30px;
+  }
+  .install-steps li::before{
+    content:counter(inst,decimal-leading-zero);
+    position:absolute;inset-inline-start:0;inset-block-start:0;
+    font-family:var(--fh);color:var(--gold);font-size:1.5rem;
+  }
+  .install-steps li:not(:last-child)::after{
+    content:"";position:absolute;
+    inset-inline-start:16px;inset-block-start:44px;inset-block-end:8px;
+    border-inline-start:2px dashed var(--cream-dk);
+  }
+  .install-steps h3{margin-block-end:6px}
+  .install-steps p{color:var(--muted);font-size:.98rem}
+  .install-steps pre{
+    margin-block-start:10px;background:var(--teal-dark);color:var(--teal-pale);
+    font-family:var(--fm);font-size:.82rem;line-height:1.8;
+    border-radius:var(--r-sm);padding:12px 16px;overflow-x:auto;
+  }
+
+  /* ---------- faq ---------- */
+  .faq{background:var(--parchment)}
+  .faq-list{max-width:780px;margin-block-start:40px}
+  .faq-item{border-block-end:1px solid var(--cream-dk)}
+  .faq-item button{
+    width:100%;display:flex;align-items:center;gap:16px;
+    background:none;border:none;cursor:pointer;text-align:start;
+    font-family:var(--fh);font-size:1.1rem;color:var(--charcoal);
+    padding-block:20px;
+  }
+  .faq-item button:hover{color:var(--terra)}
+  .faq-item button .plus{
+    margin-inline-start:auto;flex:none;color:var(--terra);
+    transition:transform var(--ease);
+  }
+  .faq-item button[aria-expanded="true"] .plus{transform:rotate(45deg)}
+  .faq-a{
+    overflow:hidden;max-height:0;transition:max-height .35s ease;
+  }
+  .faq-a p{color:var(--muted);padding-block-end:22px;max-width:65ch}
+  .faq-a code{font-family:var(--fm);font-size:.88em;background:var(--cream);padding:.1em .4em;border-radius:var(--r-sm)}
+
+  /* ---------- cta band ---------- */
+  .cta-band{padding-block:80px;text-align:center}
+  .cta-band h2{max-width:22ch;margin-inline:auto}
+  .cta-band p{color:var(--muted);margin-block:16px 30px}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--teal-dark);color:rgba(250,247,240,.8);padding-block:48px;font-size:.95rem}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between}
+  /* footer img{height:26px;width:auto;filter:brightness(0) invert(.95);opacity:.9} */
+  .credit a{color:var(--gold-hi);text-decoration:none;font-weight:500}
+  .credit a:hover{text-decoration:underline}
+  .credit .he{font-weight:700}
+  footer small{display:block;margin-block-start:6px;opacity:.55}
+
+  /* ---------- reveal on scroll ---------- */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .enso path{animation:none;stroke-dashoffset:130}
+    .bar i{animation:none}
+    .reveal{opacity:1;transform:none;transition:none}
+    .btn,.feature{transition:none}
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width:960px){
+    .hero .wrap{grid-template-columns:1fr;gap:56px}
+    .hero-visual{min-height:430px;max-width:520px;margin-inline:auto;width:100%}
+    .steps,.features .grid{grid-template-columns:1fr 1fr}
+    .output-grid,.setup .cols{grid-template-columns:1fr}
+    .pipeline{justify-content:center}
+    .pipe-arrow{transform:rotate(90deg)}
+  }
+  @media (max-width:640px){
+    section{padding-block:64px}
+    .nav ul{display:none}
+    .steps,.features .grid{grid-template-columns:1fr}
+    .enso{width:300px;height:300px;inset-block-start:-20px}
+    .mdcard{position:relative;inset:auto;margin-block-start:-30px;margin-inline-start:auto}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#top" aria-label="Downscript home">
+      <img src="assets/logo-downscript-horizontal.webp" alt="Downscript" width="170" height="34">
+    </a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="#how">How it works</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#output">Output</a></li>
+        <li><a href="#setup">Setup</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-primary" href="#setup">Get started</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap">
+      <div>
+        <span class="kicker">Free Chrome extension · runs on your Mac</span>
+        <h1 id="hero-title">Turn a <span class="accent">whole <span class="cycle" id="cycle-word">TikTok</span> profile</span> into readable transcripts.</h1>
+        <p class="lead">Downscript finds every video on a profile — even the ones that get hidden as you scroll — and transcribes them all with Whisper, right on your machine. One click, one Markdown file per video.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="#setup">Install in five minutes</a>
+          <a class="btn btn-ghost" href="#how">See how it works</a>
+        </div>
+        <p class="hero-note">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          Everything stays on your computer. No cloud, no account, no API keys.
+        </p>
+      </div>
+
+      <div class="hero-visual" aria-hidden="true">
+        <svg class="enso" viewBox="0 0 200 200">
+          <path d="M 108 22 A 82 82 0 1 0 172 74"/>
+        </svg>
+
+        <!-- mock of the extension popup mid-run -->
+        <div class="popup">
+          <div class="popup-head">
+            <img src="assets/logo-downscript-horizontal.webp" alt="">
+            <!-- <strong>Downscript</strong> --> 
+            <span>⌘⇧E</span>
+          </div>
+          <div class="popup-body">
+            <div class="popup-account"><b>@influencer</b> <span class="pill">Extracting</span></div>
+            <div class="bar"><i></i></div>
+            <div class="popup-stats"><span>17 of 42 videos</span><span>2 skipped · 0 failed</span></div>
+            <div class="log">
+              <div><span class="ok">✓</span> transcript_7312…_morning_routine.md</div>
+              <div><span class="ok">✓</span> transcript_7298…_supplement_stack.md</div>
+              <div>↓ downloading 7285…_cold_plunge_truth</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- a finished transcript file -->
+        <div class="mdcard">
+          <div class="mdcard-head">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+            transcript_7312…_morning_routine.md
+          </div>
+          <pre><b># Morning routine that changed my life</b>
+<b>Video:</b> tiktok.com/@influencer/video/7312…
+
+So here's the thing nobody tells
+you about waking up at five a.m. —
+it's not about the hour, it's about
+what you protect with it…</pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HOW IT WORKS ============ -->
+  <section class="how" id="how" aria-labelledby="how-title">
+    <div class="wrap">
+      <span class="kicker">How it works</span>
+      <h2 id="how-title" class="reveal">You click once. <span class="accent">It does the rest.</span></h2>
+      <p class="lead reveal">Downscript is two small tools working together: an extension that browses like you do, and a quiet companion on your Mac that does the heavy lifting.</p>
+
+      <ol class="steps">
+        <li class="step reveal">
+          <span class="step-num" aria-hidden="true">01</span>
+          <h3>Open a profile, press Start</h3>
+          <p>Visit any TikTok profile and click the Downscript icon (or press <code>⌘⇧E</code>). That's the last thing you have to do.</p>
+        </li>
+        <li class="step reveal">
+          <span class="step-num" aria-hidden="true">02</span>
+          <h3>The extension gathers every video</h3>
+          <p>It scrolls the whole grid for you, collecting each video as it appears — including ones TikTok unloads from the page as you go.</p>
+        </li>
+        <li class="step reveal">
+          <span class="step-num" aria-hidden="true">03</span>
+          <h3>Your Mac writes the transcripts</h3>
+          <p>A local companion downloads each video, converts the audio, and transcribes it with Whisper — then saves a clean Markdown file to your Downloads folder.</p>
+        </li>
+      </ol>
+
+      <div class="pipeline reveal" role="img" aria-label="Pipeline: video is downloaded with yt-dlp, converted to audio with ffmpeg, transcribed to text with Whisper, and saved as Markdown.">
+        <div class="pipe-node">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="m10 9 5 3-5 3z"/></svg>
+          <span>Video</span><small>yt-dlp</small>
+        </div>
+        <svg class="pipe-arrow" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+        <div class="pipe-node">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12h3l2-7 3 14 3-9 2 4h3"/><path d="M20 12h2"/></svg>
+          <span>Audio</span><small>ffmpeg</small>
+        </div>
+        <svg class="pipe-arrow" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+        <div class="pipe-node">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a4 4 0 0 0-4 4v6a4 4 0 0 0 8 0V6a4 4 0 0 0-4-4z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v3"/></svg>
+          <span>Text</span><small>Whisper — on-device</small>
+        </div>
+        <svg class="pipe-arrow" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+        <div class="pipe-node">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg>
+          <span>Markdown</span><small>~/Downloads</small>
+        </div>
+      </div>
+      <p class="pipeline-caption reveal">The whole pipeline runs locally. Your videos and transcripts never touch a server that isn't TikTok's own.</p>
+    </div>
+  </section>
+
+  <!-- ============ FEATURES ============ -->
+  <section class="features" id="features" aria-labelledby="features-title">
+    <div class="wrap">
+      <span class="kicker">Why Downscript</span>
+      <h2 id="features-title" class="reveal">Built for <span class="accent">whole profiles</span>, not single videos.</h2>
+      <p class="lead reveal">Copy-pasting one caption at a time doesn't scale. Downscript treats a creator's entire body of work as one job.</p>
+
+      <div class="grid">
+        <article class="feature reveal">
+          <span class="icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span>
+          <h3>Every video, one run</h3>
+          <p>Point it at a profile and it captures the full grid — hundreds of videos if that's what's there — without you babysitting the scroll.</p>
+        </article>
+        <article class="feature reveal">
+          <span class="icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+          <h3>Private by design</h3>
+          <p>Downloading, audio conversion, and transcription all happen on your Mac. Nothing is uploaded, logged, or shared — there's no server to send it to.</p>
+        </article>
+        <article class="feature reveal">
+          <span class="icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg></span>
+          <h3>Picks up where it left off</h3>
+          <p>Cancel any time, close the popup, even restart Chrome — the next run skips finished transcripts and resumes the rest.</p>
+        </article>
+        <article class="feature reveal">
+          <span class="icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.9 4.9l2.9 2.9M16.2 16.2l2.9 2.9M2 12h4M18 12h4M4.9 19.1l2.9-2.9M16.2 7.8l2.9-2.9"/></svg></span>
+          <h3>Gentle with social networks</h3>
+          <p>Downloads are paced with pauses and patient retries, so long runs finish quietly without causing issues on the platform.</p>
+        </article>
+        <article class="feature reveal">
+          <span class="icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg></span>
+          <h3>Clean Markdown files</h3>
+          <p>Each transcript is a tidy <code>.md</code> file with the title, link, and caption — ready for Obsidian, Notion, an AI workflow, or plain reading.</p>
+        </article>
+        <article class="feature reveal">
+          <span class="icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span>
+          <h3>Live progress, always</h3>
+          <p>A badge on the toolbar icon, a live log in the popup, and a notification when the batch is done. You always know where a run stands.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ OUTPUT ============ -->
+  <section class="output" id="output" aria-labelledby="output-title">
+    <div class="wrap">
+      <span class="kicker">The output</span>
+      <h2 id="output-title" class="reveal">A folder you'll actually use.</h2>
+      <p class="lead reveal">No exports to untangle, no database to query. Just files, organized by account, in a format every tool understands.</p>
+
+      <div class="output-grid">
+        <div class="term reveal" aria-label="Example of the output folder structure">
+<span class="dir">~/Downloads/transcripts/influencer/tiktok/</span>
+   <p class="dim">├─</span> <span class="file">transcript_7312…_morning_routine.md</p>
+   <p class="dim">├─</span> <span class="file">transcript_7298…_supplement_stack.md</p>
+   <p class="dim">├─</span> <span class="file">transcript_7285…_cold_plunge_truth.md</p>
+   <p class="dim">└─</span> <span class="file">… one file per video</p>
+        </div>
+        <div class="output-copy reveal">
+          <h3>Predictable names</h3>
+          <p>Every file is <code>transcript_&lt;video-id&gt;_&lt;slug&gt;.md</code> — the ID makes it traceable, the slug makes it findable.</p>
+          <h3>Searchable forever</h3>
+          <p>Markdown works with Spotlight, grep, Obsidian, and every AI tool. A creator's entire voice becomes a searchable knowledge base.</p>
+          <h3>Safe to re-run</h3>
+          <p>Running the same profile again only transcribes what's new. Your folder simply grows as the creator posts.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SETUP ============ -->
+  <section class="setup" id="setup" aria-labelledby="setup-title">
+    <div class="wrap">
+      <span class="kicker">Setup</span>
+      <h2 id="setup-title" class="reveal">A one-time, <span class="accent">five-minute</span> setup.</h2>
+      <p class="lead reveal">Downscript is a local tool, so it's installed by hand rather than from a store. In exchange, nothing about it is hidden — you can read every line it runs.</p>
+
+      <div class="cols">
+        <aside class="prereqs reveal">
+          <h3>You'll need on your Mac</h3>
+          <ul>
+            <li>Google Chrome, signed in to TikTok</li>
+            <li><code>yt-dlp</code> — fetches the videos</li>
+            <li><code>ffmpeg</code> — converts audio</li>
+            <li><code>whisper-cli</code> + a Whisper model — transcription</li>
+            <li>Python 3 (ships with macOS)</li>
+          </ul>
+          <p>The extension's settings page has a "Check setup" button that verifies all of these for you, with a green light per row.</p>
+        </aside>
+
+        <ol class="install-steps">
+          <li class="reveal">
+            <h3>Load the extension</h3>
+            <p>Open <code>chrome://extensions</code>, switch on <em>Developer mode</em>, choose <em>Load unpacked</em>, and select the <code>extension</code> folder.</p>
+          </li>
+          <li class="reveal">
+            <h3>Register the companion</h3>
+            <p>One command connects Chrome to the local transcription pipeline:</p>
+            <pre>cd downscript/companion
+./install.sh</pre>
+          </li>
+          <li class="reveal">
+            <h3>Check, then run</h3>
+            <p>Open the extension's settings, press <em>Check setup</em>, and wait for four green rows. Then visit any TikTok profile and press <em>Start Extraction</em>.</p>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="faq" id="faq" aria-labelledby="faq-title">
+    <div class="wrap">
+      <span class="kicker">Questions</span>
+      <h2 id="faq-title" class="reveal">Asked and <span class="accent">answered</span>.</h2>
+
+      <div class="faq-list">
+        <div class="faq-item reveal">
+          <button type="button" aria-expanded="false" aria-controls="faq1">
+            Does anything leave my computer?
+            <svg class="plus" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
+          <div class="faq-a" id="faq1" hidden>
+            <p>No. The only network traffic is between your Mac and the social network itself, to fetch the videos. Transcription runs on your own processor, and the transcripts are written straight to your Downloads folder. There is no central server.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal">
+          <button type="button" aria-expanded="false" aria-controls="faq2">
+            Why does it need a companion app?
+            <svg class="plus" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
+          <div class="faq-a" id="faq2" hidden>
+            <p>Chrome extensions cannot run programs or write files on your computer directly. This is a deliberate safety rule. The extension does the browsing, and a small local companion runs the downloading and transcribing. Chrome connects the two through its official native messaging channel.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal">
+          <button type="button" aria-expanded="false" aria-controls="faq3">
+            Which platforms does it support?
+            <svg class="plus" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
+          <div class="faq-a" id="faq3" hidden>
+            <p>The system is built to support TikTok, Instagram, Facebook, and YouTube profiles. The extension uses a platform adapter design to ensure consistent extraction across all supported sites.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal">
+          <button type="button" aria-expanded="false" aria-controls="faq4">
+            How does downloading and transcribing work?
+            <svg class="plus" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
+          <div class="faq-a" id="faq4" hidden>
+            <p>downscript extracts transcripts through a local multi-step pipeline. The browser extension collects video permalinks from the target profile. It forwards these links to the native companion. The companion uses yt-dlp to download the high-quality audio stream to a local temporary folder. Next, ffmpeg transcodes this audio into a 16 kHz mono PCM WAV format. The locally installed whisper-cli binary processes this WAV file on your device CPU. It generates plain text transcripts. Finally, the companion formats this text into a clean Markdown file with metadata frontmatter and a table of contents.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal">
+          <button type="button" aria-expanded="false" aria-controls="faq5">
+            Does it work on Windows or Linux?
+            <svg class="plus" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
+          <div class="faq-a" id="faq5" hidden>
+            <p>Not yet. The installer and file paths assume macOS. The pipeline tools themselves are cross-platform, so ports are possible, but macOS is the currently tested and supported environment.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal">
+          <button type="button" aria-expanded="false" aria-controls="faq6">
+            Is it free?
+            <svg class="plus" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
+          <div class="faq-a" id="faq6" hidden>
+            <p>downscript uses a freemium pricing structure. The free tier lets you extract one video transcript every two minutes without any purchase. To bypass this cooldown wait timer and run extractions at about ten times the speed, you can unlock instant extraction. This premium option costs 1 USD per 5 video transcripts. You can purchase these credit packages directly inside the extension popup interface.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FINAL CTA ============ -->
+  <section class="cta-band" aria-labelledby="cta-title">
+    <div class="wrap">
+      <h2 id="cta-title" class="reveal">A creator's whole archive, <span class="accent">in writing</span>.</h2>
+      <p class="reveal">Five minutes of setup, then it's one click per profile — forever.</p>
+      <a class="btn btn-primary reveal" href="#setup">Set up Downscript</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <img src="assets/logo-downscript-horizontal-footer.webp" alt="Downscript" width="130" height="26">
+      <small>English edition — more languages on the way, including right-to-left.</small>
+    </div>
+    <p class="credit">
+      Developed with care (and a little incense) by
+      <a href="https://techspirit.co.il/" rel="author">the Technospiritualist — <span class="he" lang="he" dir="rtl">טכנורוחניק</span></a>
+    </p>
+  </div>
+</footer>
+
+<script>
+  // FAQ accordion
+  document.querySelectorAll('.faq-item button').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var panel = document.getElementById(btn.getAttribute('aria-controls'));
+      var open = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!open));
+      if (open) {
+        panel.style.maxHeight = '0';
+        panel.addEventListener('transitionend', function h() {
+          panel.hidden = true; panel.removeEventListener('transitionend', h);
+        });
+      } else {
+        panel.hidden = false;
+        panel.style.maxHeight = panel.scrollHeight + 'px';
+      }
+    });
+  });
+
+  // Scroll reveals (skipped when the user prefers reduced motion — CSS shows all)
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
+  }
+
+  // Hero platform word cycler (skipped when the user prefers reduced motion)
+  (function () {
+    var el = document.getElementById('cycle-word');
+    if (!el || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var words = ['TikTok', 'Facebook', 'Instagram', 'YouTube'];
+    var i = 0;
+    setInterval(function () {
+      el.classList.add('is-out');
+      setTimeout(function () {
+        var from = el.offsetWidth;
+        i = (i + 1) % words.length;
+        el.textContent = words[i];
+        el.style.width = 'auto';
+        var to = el.offsetWidth;
+        el.style.width = from + 'px';
+        void el.offsetWidth;
+        el.style.width = to + 'px';
+        el.classList.remove('is-out');
+      }, 300);
+    }, 2600);
+  })();
+</script>
+
+</body>
+</html>
