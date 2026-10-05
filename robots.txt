@@ -2,6 +2,7 @@
 Allow: /
 Disallow: /analytics/
 Disallow: /thank-you/
+Disallow: /en/thank-you/
 
 # AI crawlers — explicitly welcomed
 User-agent: GPTBot

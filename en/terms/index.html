@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <script>if(location.protocol==='http:')location.replace(location.href.replace('http:','https:'));</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/webp" href="/Images/Assets/monk.webp">
+  <link rel="apple-touch-icon" href="/Images/Assets/monk.webp">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Terms of Use | Technospiritualist</title>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PQ99J1QETR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-PQ99J1QETR');
+  </script>
+
+  <style>
+    @font-face {
+      font-family: 'Heebo';
+      src: url('../../fonts/Heebo/Heebo-VariableFont_wght.woff2') format('woff2-variations');
+      font-weight: 300 900;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Secular One';
+      src: url('../../fonts/Secular_One/SecularOne-Regular.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    :root {
+      --teal-dark: #162828;
+      --teal:      #2D6B6B;
+      --teal-mid:  #3D8585;
+      --terra:     #C4502A;
+      --gold:      #D4A843;
+      --cream:     #F5F0E6;
+      --parchment: #FAF7F0;
+      --charcoal:  #2C2420;
+      --white:     #FFFFFF;
+      --fh:        'Secular One', sans-serif;
+      --fb:        'Heebo', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--fb); background: var(--parchment); color: var(--charcoal); }
+
+    .site-nav {
+      background: var(--teal-dark);
+      padding: 14px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .site-nav .brand {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none;
+      color: var(--white);
+      font-family: var(--fh);
+      font-size: 18px;
+    }
+    .site-nav .brand img { width: 34px; height: 34px; border-radius: 50%; }
+    .site-nav .back {
+      font-size: 14px;
+      color: rgba(255,255,255,.55);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .site-nav .back:hover { color: var(--white); }
+
+    .page-hero {
+      background: var(--teal-dark);
+      padding: 56px 32px 44px;
+      text-align: center;
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 60% 80% at 90% 110%, rgba(45,107,107,.5) 0%, transparent 55%),
+        radial-gradient(ellipse 40% 50% at 10% 0%, rgba(196,80,42,.12) 0%, transparent 50%);
+    }
+    .page-hero h1 {
+      font-family: var(--fh);
+      font-size: clamp(26px, 5vw, 42px);
+      margin-bottom: 12px;
+      position: relative;
+    }
+    .page-hero .subtitle {
+      font-size: 15px;
+      color: rgba(255,255,255,.45);
+      position: relative;
+    }
+    .divider {
+      width: 44px; height: 3px;
+      background: linear-gradient(90deg, var(--terra), var(--gold));
+      border-radius: 2px;
+      margin: 14px auto 16px;
+    }
+
+    .content {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 52px 32px 88px;
+    }
+
+    .section { margin-bottom: 44px; }
+    .section h2 {
+      font-family: var(--fh);
+      font-size: 20px;
+      color: var(--teal);
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(45,107,107,.18);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section h2 .num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px; height: 28px;
+      background: var(--teal);
+      color: var(--white);
+      border-radius: 50%;
+      font-size: 13px;
+      flex-shrink: 0;
+    }
+    .section p {
+      font-size: 16px;
+      line-height: 2;
+      color: #3a3530;
+      margin-bottom: 14px;
+    }
+    .section p:last-child { margin-bottom: 0; }
+    .section ul {
+      padding-left: 22px;
+      margin-bottom: 14px;
+    }
+    .section ul li {
+      font-size: 16px;
+      line-height: 2;
+      color: #3a3530;
+      margin-bottom: 4px;
+    }
+    .section a { color: var(--teal); }
+    .section a:hover { color: var(--teal-mid); }
+
+    .highlight {
+      background: rgba(45,107,107,.07);
+      border-left: 3px solid var(--teal);
+      padding: 14px 18px;
+      border-radius: 0 6px 6px 0;
+      margin: 4px 0 14px;
+      font-size: 15px;
+      line-height: 1.9;
+      color: #2e2825;
+    }
+    .highlight.terra {
+      background: rgba(196,80,42,.06);
+      border-left-color: var(--terra);
+    }
+
+    .price-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 14px;
+      font-size: 15px;
+    }
+    .price-table th {
+      background: var(--teal-dark);
+      color: var(--white);
+      padding: 10px 14px;
+      text-align: left;
+      font-family: var(--fh);
+      font-weight: 400;
+      font-size: 14px;
+    }
+    .price-table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid rgba(45,107,107,.12);
+      color: #3a3530;
+      line-height: 1.6;
+    }
+    .price-table tr:nth-child(even) td { background: rgba(45,107,107,.04); }
+    .price-table td strong { color: var(--charcoal); }
+
+    .site-footer {
+      background: var(--teal-dark);
+      color: rgba(255,255,255,.5);
+      text-align: center;
+      padding: 36px 24px;
+      font-size: 14px;
+    }
+    .f-links {
+      display: flex;
+      justify-content: center;
+      gap: 8px 24px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+      list-style: none;
+    }
+    .f-links a { color: rgba(255,255,255,.6); text-decoration: none; transition: color .2s; }
+    .f-links a:hover { color: var(--white); }
+    .f-sep { color: rgba(255,255,255,.2); }
+
+    @media (max-width: 600px) {
+      .site-nav { padding: 12px 20px; }
+      .content { padding: 36px 20px 64px; }
+      .page-hero { padding: 40px 20px 32px; }
+      .price-table { font-size: 14px; }
+      .price-table th, .price-table td { padding: 8px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="/en/" class="brand">
+    <img src="/Images/Assets/monk.webp" alt="Technospiritualist">
+    Technospiritualist
+  </a>
+  <a href="/en/" class="back">← Back to home</a>
+</nav>
+
+<div class="page-hero">
+  <h1>Terms of Use and Service Policy</h1>
+  <div class="divider"></div>
+  <p class="subtitle">Last updated: June 2026</p>
+</div>
+
+<div class="content">
+
+  <div class="section">
+    <h2><span class="num">1</span> General</h2>
+    <p>Welcome to the <strong>Technospiritualist</strong> website (techspirit.co.il), operated by <strong>Oren Knaan</strong>, an exempt dealer (osek patur, business no. 038741278).</p>
+    <p>Using the website and getting in touch through it constitutes agreement to the terms set out below. Please read them carefully.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">2</span> Description of the service</h2>
+    <p>Oren Knaan offers website building, digital design and online strategy services, intended mainly for spiritual business owners, therapists, facilitators and community members.</p>
+    <p>The services include, among others: website design and development, form and analytics integration, mobile adaptation and accessibility.</p>
+    <div class="highlight">Every project is conducted on the basis of a written price quote agreed in advance between the parties.</div>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">3</span> Payment terms</h2>
+    <table class="price-table">
+      <thead>
+        <tr>
+          <th>Stage</th>
+          <th>Payment terms</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Deposit</strong></td>
+          <td>50% of the agreed one-time cost, before work begins</td>
+        </tr>
+        <tr>
+          <td><strong>Balance</strong></td>
+          <td>The remaining 50% within one week of project completion</td>
+        </tr>
+        <tr>
+          <td><strong>Annual maintenance</strong></td>
+          <td>Annual payment in advance, according to the contract renewal date</td>
+        </tr>
+        <tr>
+          <td><strong>Additional work</strong></td>
+          <td>250 ILS per hour, or according to agreed project pricing</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="highlight">All amounts are exclusive of VAT. Oren Knaan is an exempt dealer (osek patur) and does not charge VAT.</div>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">4</span> Timelines</h2>
+    <p>The timeline for each project is agreed in advance in the price quote. Meeting the timeline depends on cooperation from both sides:</p>
+    <ul>
+      <li>The client commits to provide content, comments and approvals within two days of receiving them.</li>
+      <li>A delay on the client's side will result in a corresponding postponement of the timeline, at no additional charge.</li>
+      <li>The work schedule begins upon receipt of the deposit.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">5</span> Project cancellation</h2>
+    <p>If the client asks to cancel the engagement after work has begun:</p>
+    <ul>
+      <li>A transaction invoice will be issued for the hours actually worked, at 250 ILS per hour.</li>
+      <li>The deposit already paid will be deducted from the final amount.</li>
+      <li>All completed project materials will be handed to the client once payment is complete.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">6</span> Intellectual property</h2>
+    <p>Upon completion of full payment:</p>
+    <ul>
+      <li>The finished website and all the code written for it become the client's full property.</li>
+      <li>The code may be transferred to any other developer without restriction.</li>
+      <li>Oren Knaan reserves the right to display the project in the portfolio.</li>
+    </ul>
+    <p>Images, fonts and assets purchased for a specific project are licensed for use in that project only.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">7</span> The price does not include</h2>
+    <ul>
+      <li>Content writing, translation or language editing</li>
+      <li>Paid promotion (advertising) or ongoing SEO</li>
+      <li>Purchasing images from stock libraries</li>
+      <li>Ongoing costs of external providers (hosting, domain, third-party services)</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">8</span> Liability and limitations</h2>
+    <p>Oren Knaan commits to professional quality of work and to meeting accepted industry standards.</p>
+    <div class="highlight terra">Oren Knaan does not guarantee specific marketing results, search engine rankings, or the number of inquiries that will be received through the website.</div>
+    <p>No liability will apply for indirect damages, loss of income, or consequential damages arising from use of the website that was built.</p>
+    <p>Responsibility for the website's proper functioning after it is handed to the client is limited to the ongoing maintenance period as detailed in the price quote.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">9</span> Changes to the terms</h2>
+    <p>Oren Knaan may update these terms from time to time. Terms for existing projects are set in the specific price quote and are not affected by future changes.</p>
+    <p>Continued use of the website after the terms are updated constitutes agreement to the updated version.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">10</span> Contact</h2>
+    <p>For questions, clarifications or requests about these terms:</p>
+    <p>
+      <strong>Oren Knaan</strong><br>
+      Email: <a href="mailto:oren@techspirit.co.il">oren@techspirit.co.il</a><br>
+      Phone: <a href="tel:+972544757906">054-4757906</a><br>
+      Business no. 038741278
+    </p>
+  </div>
+
+</div>
+
+<footer class="site-footer">
+  <ul class="f-links">
+    <li><a href="/en/">Home</a></li>
+    <li class="f-sep">·</li>
+    <li><a href="/en/privacy">Privacy Policy</a></li>
+    <li class="f-sep">·</li>
+    <li><a href="/en/terms">Terms of Use</a></li>
+    <li class="f-sep">·</li>
+    <li><a href="mailto:oren@techspirit.co.il">oren@techspirit.co.il</a></li>
+  </ul>
+  <p>&copy; 2026 Oren Knaan - The Technospiritualist. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

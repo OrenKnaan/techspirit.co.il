@@ -1,0 +1,2939 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <script>if(location.protocol==='http:')location.replace(location.href.replace('http:','https:'));if(location.pathname==='/en/index.html')history.replaceState(null,'','/en/');</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preload" as="font" type="font/woff2" href="../fonts/Heebo/Heebo-VariableFont_wght.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="../fonts/Secular_One/SecularOne-Regular.woff2" crossorigin>
+  <link rel="preload" as="image" href="../Images/Websites/comp-taliamichaeli.webp" fetchpriority="high">
+  <link rel="icon" type="image/webp" href="../Images/Assets/monk-hq.webp">
+  <link rel="apple-touch-icon" href="../Images/Assets/monk-hq.webp">
+  <meta name="description" content="A website that speaks your language - for spiritual business owners, therapists and facilitators. Websites with soul, by Oren Knaan - the Technospiritualist.">
+  <title>A Website for Your Spirit | Oren Knaan - The Technospiritualist</title>
+  <link rel="canonical" href="https://techspirit.co.il/en/">
+  <link rel="alternate" hreflang="he" href="https://techspirit.co.il/">
+  <link rel="alternate" hreflang="en" href="https://techspirit.co.il/en/">
+  <link rel="alternate" hreflang="x-default" href="https://techspirit.co.il/">
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website">
+  <meta property="og:url"         content="https://techspirit.co.il/en/">
+  <meta property="og:title"       content="A Website for Your Spirit | Oren Knaan - The Technospiritualist">
+  <meta property="og:description" content="A website that speaks your language - for spiritual business owners, therapists and facilitators. Websites with soul, by Oren Knaan - the Technospiritualist.">
+  <meta property="og:image"       content="https://techspirit.co.il/Images/Assets/techspirit-social.jpg">
+  <meta property="og:locale"      content="en_US">
+  <meta property="og:site_name"   content="The Technospiritualist">
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="A Website for Your Spirit | Oren Knaan - The Technospiritualist">
+  <meta name="twitter:description" content="A website that speaks your language - for spiritual business owners, therapists and facilitators. Websites with soul.">
+  <meta name="twitter:image"       content="https://techspirit.co.il/Images/Assets/techspirit-social.jpg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide-core.min.css">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PQ99J1QETR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-PQ99J1QETR');
+  </script>
+
+  <style>
+    /* ── FONTS ── */
+    @font-face {
+      font-family: 'Heebo';
+      src: url('../fonts/Heebo/Heebo-VariableFont_wght.woff2') format('woff2-variations');
+      font-weight: 300 900;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Secular One';
+      src: url('../fonts/Secular_One/SecularOne-Regular.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    /* ── TOKENS ── */
+    :root {
+      --teal-dark:  #162828;
+      --teal:       #2D6B6B;
+      --teal-mid:   #3D8585;
+      --teal-pale:  #DFF0F0;
+      --terra:      #C4502A;
+      --terra-hi:   #E06840;
+      --gold:       #D4A843;
+      --gold-hi:    #E8C870;
+      --cream:      #F5F0E6;
+      --cream-dk:   #EDE5D6;
+      --parchment:  #FAF7F0;
+      --charcoal:   #2C2420;
+      --brown:      #5C3D2E;
+      --muted:      #8A7A6E;
+      --white:      #FFFFFF;
+      --fh:         'Secular One', sans-serif;
+      --fb:         'Heebo', sans-serif;
+      --sh-sm:      0 2px 12px rgba(44,36,32,.08);
+      --sh-md:      0 4px 28px rgba(44,36,32,.13);
+      --sh-lg:      0 10px 52px rgba(44,36,32,.18);
+      --r-lg:       50px;
+      --r:          12px;
+      --r-sm:       6px;
+      --ease:       0.3s ease;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body { font-family: var(--fb); background: var(--parchment); color: var(--charcoal); line-height: 1.75; direction: ltr; overflow-x: hidden; position: relative; max-width: 100vw; }
+    img { max-width: 100%; height: auto; display: block; }
+    a { text-decoration: none; color: inherit; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; }
+    ul { list-style: none; }
+    .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+    .section { padding: 96px 0; }
+
+    /* noise grain */
+    body::before {
+      content: ''; position: fixed; inset: 0; z-index: 9998; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 200px 200px; opacity: 0.025;
+    }
+
+    /* scroll reveal */
+    .rv { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+    .rv.on { opacity: 1; transform: none; }
+    .d1 { transition-delay: .1s } .d2 { transition-delay: .2s } .d3 { transition-delay: .3s }
+
+    /* ── NAV ── */
+    #nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+      padding: 14px 0;
+      background: rgba(22,40,40,.95);
+      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 2px 24px rgba(0,0,0,.22);
+      transform: translateY(-100%); opacity: 0; pointer-events: none;
+      transition: transform .4s cubic-bezier(0.22,1,0.36,1), opacity .4s ease;
+    }
+    #nav.show { transform: translateY(0); opacity: 1; pointer-events: auto; }
+    .nav-in { display: flex; align-items: center; justify-content: space-between; }
+    .nav-brand {
+      display: flex; align-items: center; gap: 10px;
+      font-family: var(--fh); font-size: 19px; color: var(--white);
+    }
+    .nav-brand img { width: 36px; height: 36px; object-fit: contain; }
+    .nav-links { display: flex; align-items: center; gap: 28px; }
+    .nav-links a { color: rgba(255,255,255,.75); font-size: 14.5px; font-weight: 500; transition: color var(--ease); }
+    .nav-links a:hover { color: var(--gold-hi); }
+    .nav-cta-link {
+      background: var(--terra); color: var(--white) !important; padding: 8px 22px;
+      border-radius: var(--r); font-weight: 700 !important; font-size: 14px !important;
+      transition: background var(--ease), transform var(--ease) !important;
+    }
+    .nav-cta-link:hover { background: var(--terra-hi) !important; transform: translateY(-1px); }
+    .nav-blog { border: 1px solid rgba(255,255,255,.3); padding: 5px 14px; border-radius: var(--r); color: rgba(255,255,255,.8) !important; transition: border-color var(--ease), background var(--ease); }
+    .nav-blog:hover { border-color: var(--gold-hi) !important; background: rgba(212,168,67,.1); color: var(--gold-hi) !important; }
+    .hbg { display: none; flex-direction: column; gap: 5px; padding: 4px; }
+    .hbg span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: var(--r-sm); }
+    #mob {
+      display: none; position: fixed; inset: 0; background: var(--teal-dark);
+      z-index: 950; flex-direction: column; align-items: center; justify-content: center; gap: 40px;
+    }
+    #mob.open { display: flex; }
+    #mob a { font-family: var(--fh); font-size: 28px; color: var(--white); }
+    .mob-x { position: absolute; top: 22px; right: 22px; color: var(--white); font-size: 32px; cursor: pointer; }
+
+    /* ── HERO (floating monk) ── */
+    .hero-vp-wrap {
+      background: var(--teal-dark);
+      background-image:
+        linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px);
+      background-size: 56px 56px;
+      position: relative;
+    }
+    .hero-vp-wrap::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 0;
+      background:
+        radial-gradient(ellipse 65% 28% at 15% 44%, rgba(45,107,107,.48) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 20% at 85% 8%,  rgba(212,168,67,.14) 0%, transparent 55%),
+        radial-gradient(ellipse 40% 22% at 50% 27%, rgba(196,80,42,.07) 0%, transparent 65%),
+        radial-gradient(ellipse 70% 28% at 10% 95%, rgba(45,107,107,.50) 0%, transparent 55%),
+        radial-gradient(ellipse 55% 20% at 88% 58%, rgba(212,168,67,.13) 0%, transparent 55%),
+        radial-gradient(ellipse 40% 24% at 55% 74%, rgba(196,80,42,.07) 0%, transparent 60%);
+    }
+    #hero {
+      min-height: 100vh; background: transparent;
+      display: flex; align-items: center; justify-content: center;
+      position: relative; scroll-snap-align: start;
+    }
+    .hero-body {
+      position:relative; z-index:2; text-align:center;
+      padding:130px 24px 90px;
+    }
+    .monk-wrap {
+      position:relative; width:clamp(280px,42vw,520px);
+      margin:0 auto 18px;
+      animation:float 6.5s ease-in-out 1.8s infinite;
+    }
+    .hero-logo {
+      width:100%;
+      animation:heroImgIn 1.6s cubic-bezier(0.25,0.46,0.45,0.94) 0.1s both;
+    }
+    .monk-wrap::before {
+      content:''; position:absolute; top:var(--te-top); left:var(--te-left);
+      translate: calc(-50% + var(--te-dx)) calc(-50% - var(--te-dy));
+      width:12%; aspect-ratio:1; border-radius:50%;
+      border:1.5px solid rgba(61,133,133,.85);
+      box-shadow:0 0 24px rgba(61,133,133,.45),inset 0 0 10px rgba(61,133,133,.2);
+      pointer-events:none; z-index:1;
+      opacity:0;
+      animation:heroRipple 1.0s ease-out 1.85s both;
+    }
+    @keyframes heroImgIn {
+      0%   { opacity:0; filter:blur(28px) brightness(2.5) saturate(0); transform:scale(1.07); }
+      28%  { opacity:1; filter:blur(10px) brightness(1.7) saturate(.3); transform:scale(1.03); }
+      65%  { filter:blur(1.5px) brightness(1.1) saturate(.85); transform:scale(1.005); }
+      100% { filter:blur(0) brightness(1) saturate(1) drop-shadow(0 12px 48px rgba(212,168,67,.4)); transform:scale(1); }
+    }
+    /* Mobile: drop blur/saturate/scale/drop-shadow (expensive repaints on mobile GPUs) — fade + brightness only.
+       The eye also rides this exact animation so it appears together with the monk, with no separate opening motion. */
+    @keyframes heroImgInMobile {
+      0%   { opacity:0; filter:brightness(2.2); }
+      100% { opacity:1; filter:brightness(1); }
+    }
+    @keyframes teInMobile {
+      0%   { opacity:0; transform: translate(calc(-50% + var(--te-dx)),calc(-50% - var(--te-dy))) scale(.4); }
+      100% { opacity:1; transform: translate(calc(-50% + var(--te-dx)),calc(-50% - var(--te-dy))) scale(1); }
+    }
+    @keyframes heroRipple {
+      0%   { scale:.5; opacity:0; }
+      18%  { opacity:1; }
+      100% { scale:2.2; opacity:0; }
+    }
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-14px)} }
+    :root {
+      --te-top:  12.5%;
+      --te-left: 50.5%;
+      --te-dx:   0px;
+      --te-dy:   22px;
+    }
+    .third-eye {
+      position:absolute; top:var(--te-top); left:var(--te-left); width:6.6%;
+      transform:translate(calc(-50% + var(--te-dx)),calc(-50% - var(--te-dy))) scaleY(0);
+      pointer-events:none; z-index:3;
+      animation:teOpen 1.4s cubic-bezier(0.34,1.56,0.64,1) 1.85s forwards;
+    }
+    @keyframes teOpen {
+      0%  { transform:translate(calc(-50% + var(--te-dx)),calc(-50% - var(--te-dy))) scaleY(0); }
+      60% { transform:translate(calc(-50% + var(--te-dx)),calc(-50% - var(--te-dy))) scaleY(1.18); }
+      100%{ transform:translate(calc(-50% + var(--te-dx)),calc(-50% - var(--te-dy))) scaleY(1); }
+    }
+    h1.hero-t {
+      font-family:var(--fh); font-size:clamp(34px,6.6vw,92px);
+      color:#75bab8; letter-spacing:-.02em; line-height:1.05;
+      margin-bottom:14px; text-shadow:0 4px 36px rgba(0,0,0,.3);
+      animation:heroTitleIn .95s cubic-bezier(0.25,0.46,0.45,0.94) 3.4s both;
+    }
+    @keyframes heroTitleIn {
+      0%   { opacity:0; filter:blur(16px); letter-spacing:.22em; }
+      55%  { opacity:.85; filter:blur(3px); letter-spacing:.02em; }
+      100% { opacity:1; filter:blur(0); letter-spacing:-.02em; }
+    }
+    h1.hero-t span { color:#fffffe; }
+    .hero-tagline {
+      font-size:clamp(17px,2.2vw,24px);
+      color:#76bab7; letter-spacing:.04em; margin-bottom:0;
+      animation:heroSubIn .75s ease-out 4.05s both;
+    }
+    @keyframes heroSubIn {
+      0%   { opacity:0; filter:blur(12px); transform:translateY(10px); }
+      100% { opacity:1; filter:blur(0); transform:translateY(0); }
+    }
+    .hero-arr {
+      position:absolute; bottom:28px; left:50%; transform:translateX(-50%);
+      color:rgba(255,255,255,.35); z-index:2; background:none; border:none; cursor:pointer;
+      font-size:32px; line-height:1; padding:0;
+      animation:bob 2.1s ease-in-out 5.1s infinite,heroFadeIn .5s ease-out 4.85s both;
+    }
+    .hero-arr:hover { color:rgba(255,255,255,.7); }
+    @keyframes heroFadeIn { from{opacity:0} to{opacity:1} }
+    @keyframes bob { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(9px)} }
+    .smk { position:absolute; top:56%; left:50%; transform:translate(-50%,-50%); z-index:1; pointer-events:none; }
+    .sp { position:absolute; border-radius: var(--r-lg); filter:blur(11px); animation:smokeUp linear infinite; }
+    .sp1{width:9px;height:9px;left:-4px;background:rgba(210,185,145,.22);animation-duration:5.2s;animation-delay:0s}
+    .sp2{width:13px;height:13px;left:3px;background:rgba(210,185,145,.17);animation-duration:6.4s;animation-delay:1.6s}
+    .sp3{width:7px;height:7px;left:-10px;background:rgba(210,185,145,.2);animation-duration:7s;animation-delay:.9s}
+    .sp4{width:11px;height:11px;left:6px;background:rgba(210,185,145,.15);animation-duration:5.8s;animation-delay:2.8s}
+    .sp5{width:16px;height:16px;left:-1px;background:rgba(210,185,145,.12);animation-duration:8.2s;animation-delay:3.7s}
+    @keyframes smokeUp {
+      0%  {transform:translateY(0) translateX(0) scale(.5); opacity:.65}
+      20% {transform:translateY(-35px) translateX(-8px) scale(.9); opacity:.5}
+      45% {transform:translateY(-85px) translateX(9px) scale(1.5);opacity:.3}
+      70% {transform:translateY(-140px)translateX(-7px) scale(2.1);opacity:.15}
+      100%{transform:translateY(-210px)translateX(5px) scale(3); opacity:0}
+    }
+    /* Entrance animations use a fixed animation-delay measured from navigation start, which
+       assumes near-instant load. On slow connections the delay can elapse before first paint,
+       so the animation appears to have already finished ("just appears"). Hold them paused until
+       JS confirms the hero image has actually loaded, then let the same delays play out from there. */
+    .hero-logo, .monk-wrap::before, .third-eye, h1.hero-t, .hero-tagline, .hero-arr {
+      animation-play-state: paused;
+    }
+    .hero-ready .hero-logo,
+    .hero-ready .monk-wrap::before,
+    .hero-ready .third-eye,
+    .hero-ready h1.hero-t,
+    .hero-ready .hero-tagline,
+    .hero-ready .hero-arr {
+      animation-play-state: running;
+    }
+
+    /* ── SCROLL SNAP – value-prop only ── */
+    html { scroll-snap-type: y proximity; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-snap-type: none; } }
+    #value-prop { scroll-snap-align: start; }
+
+    /* ── VALUE PROP ── */
+    #value-prop {
+      background: transparent;
+      position: relative;
+      min-height: 100vh;
+      display: flex; align-items: center; flex-direction: column; justify-content: center;
+    }
+    #value-prop > .container { width: 100%; position: relative; z-index: 1; }
+    .vp-cta-row { display: flex; flex-direction: column; align-items: center; padding: 40px 24px 60px; position: relative; z-index: 1; }
+    .vp-cta-row .hero-cta-group { align-items: center; }
+    .vp-cta-row .fud-row { justify-content: center; }
+
+    /* ── IMAGE DIVIDERS ── */
+    .img-divider {
+      width: 100%; height: 420px;
+      position: relative;
+    }
+    .img-div-bg-wrap {
+      position: absolute; inset: 0; z-index: 0;
+      /* clip-path (not overflow/mask) crops a position:fixed child to this box without breaking it —
+         mask-image makes Safari give fixed children a local containing block instead of the viewport,
+         which is what forced the old absolute+JS workaround and its scroll-listener stutter on mobile */
+      clip-path: inset(0);
+    }
+    .img-div-bg {
+      position: fixed; inset: 0;
+      background-image: var(--bg);
+      background-size: cover;
+      background-position: center;
+      pointer-events: none;
+    }
+    .img-divider-title {
+      position: absolute; bottom: 0; left: 0; right: 0; z-index: 1;
+      padding: 48px 32px 32px;
+      background: linear-gradient(to top, rgba(15,28,28,.90) 0%, rgba(15,28,28,.45) 55%, transparent 100%);
+      font-family: var(--fh);
+      font-size: clamp(26px, 4vw, 52px);
+      color: var(--white); text-align: center;
+      letter-spacing: -.02em; line-height: 1.15;
+    }
+    @media (max-width: 768px) {
+      .img-divider { height: 280px; }
+      .img-divider-title { font-size: clamp(22px, 6vw, 36px); padding: 36px 24px 24px; }
+      /* inset:0 stretches between top and bottom, which tracks the dynamic (toolbar-aware) viewport and
+         resizes as the address bar shows/hides on scroll. Fix the height with lvh (largest viewport) instead. */
+      .img-div-bg { bottom: auto; height: 100vh; height: 100lvh; }
+    }
+
+    /* ── SEO / AEO SECTION ── */
+    #seo-aeo {
+      background: var(--teal-dark);
+      min-height: 100dvh; scroll-snap-align: start;
+      display: flex; align-items: center;
+      position: relative; overflow: visible;
+      padding-bottom: 240px;
+    }
+    .seo-fish {
+      position: absolute; bottom: 0;
+      left: 50%; transform: translateX(-50%);
+      width: 380px; height: auto;
+      pointer-events: none; z-index: 0;
+      margin-bottom: 44px;
+    }
+    .seo-line {
+      position: absolute;
+      top: -420px; left: 0; right: 0; bottom: 0;
+      width: 100%; height: calc(100% + 420px);
+      pointer-events: none; z-index: 0;
+    }
+    #seo-aeo-divider { z-index: 1; }
+    #contact-divider .img-div-bg { background-position: center calc(50% - 70px); }
+    #seo-aeo::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse 70% 70% at 50% 50%, rgba(45,107,107,.18) 0%, transparent 65%);
+    }
+    .seo-inner { position: relative; z-index: 1; max-width: 800px; margin: 20px auto 0; text-align: center; padding: 64px 24px 0; width: 100%; }
+    .seo-eyebrow {
+      display: inline-block; background: rgba(212,168,67,.12); border: 1px solid rgba(212,168,67,.28);
+      padding: 6px 18px; border-radius: var(--r);
+      font-size: 12.5px; font-weight: 700; color: var(--gold); letter-spacing: .06em;
+      text-transform: uppercase; margin-bottom: 24px;
+    }
+    .seo-h2 {
+      font-family: var(--fh); font-size: clamp(28px, 4.5vw, 52px);
+      color: var(--white); line-height: 1.1; letter-spacing: -.02em; margin-bottom: 20px;
+    }
+    .seo-h2 em { color: #75bab8; font-style: normal; }
+    .seo-body {
+      font-size: clamp(16px, 1.8vw, 19px);
+      color: rgba(255,255,255,.65); line-height: 1.85; margin-bottom: 36px;
+    }
+    .seo-body strong { color: rgba(255,255,255,.9); }
+    .seo-cta {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--terra); color: var(--white);
+      padding: 14px 32px; border-radius: var(--r-lg);
+      font-family: var(--fh); font-size: 16px; font-weight: 700;
+      box-shadow: 0 6px 24px rgba(196,80,42,.38);
+      transition: background var(--ease), transform var(--ease), box-shadow var(--ease);
+    }
+    .seo-cta:hover { background: var(--terra-hi); transform: translateY(-2px); }
+    .guide-promo {
+      margin-top: 52px; position: relative; overflow: hidden;
+      background: #263c3c; border: 1px solid rgba(212,168,67,.22);
+      border-radius: var(--r-lg); padding: 36px 40px 36px;
+      text-align: center;
+    }
+    .guide-promo-label {
+      font-size: 11px; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 10px;
+    }
+    .guide-promo-title {
+      font-family: var(--fh); font-size: clamp(20px, 2.5vw, 30px);
+      color: var(--white); line-height: 1.2; margin-bottom: 18px;
+    }
+    .guide-promo-chapters {
+      display: flex; flex-wrap: wrap; gap: 8px 28px;
+      margin-bottom: 28px; justify-content: center;
+    }
+    .guide-promo-chapters span {
+      font-size: 14px; color: rgba(255,255,255,.6);
+    }
+    .guide-promo-chapters span::before { content: '‹ '; color: var(--gold); }
+    .guide-promo-cta {
+      display: inline-block; background: var(--terra); color: var(--white);
+      padding: 13px 30px; border-radius: var(--r-lg);
+      font-family: var(--fh); font-size: 15px; font-weight: 700;
+      box-shadow: 0 4px 24px rgba(196,80,42,.4);
+      transition: background var(--ease), transform var(--ease), box-shadow var(--ease);
+    }
+    .guide-promo-cta:hover {
+      background: var(--terra-hi); transform: translateY(-2px);
+      box-shadow: 0 6px 30px rgba(196,80,42,.5);
+    }
+
+    .hero-in {
+      position: relative; z-index: 2;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 64px; align-items: center;
+      padding: 140px 0 100px;
+    }
+    .hero-txt { text-align: left; }
+    .value-tagline {
+      font-size: 14px; font-weight: 700; color: var(--gold);
+      letter-spacing: .12em; text-transform: uppercase;
+      margin-bottom: 28px; opacity: .9;
+      animation: fadeDown .7s ease .2s both;
+    }
+    .value-h2 {
+      font-family: var(--fh); font-size: clamp(26px, 3.5vw, 50px);
+      color: var(--white); line-height: 1.15; letter-spacing: -.01em;
+      margin-bottom: 24px; animation: fadeDown .7s ease .2s both;
+    }
+    @keyframes fadeDown {
+      from { transform: translateY(-12px); }
+      to   { transform: none; }
+    }
+    .hero-h1 {
+      font-family: var(--fh);
+      font-size: clamp(36px, 5.5vw, 68px);
+      color: var(--white); line-height: 1.1; letter-spacing: -.02em;
+      margin-bottom: 20px;
+      animation: fadeUp .8s cubic-bezier(0.25,0.46,0.45,0.94) .4s both;
+    }
+    .hero-h1 em { color: #75bab8; font-style: normal; }
+    @keyframes fadeUp {
+      from { transform: translateY(22px); }
+      to   { transform: none; }
+    }
+    .hero-sub {
+      font-size: clamp(16px, 2vw, 20px);
+      color: rgba(255,255,255,.68); line-height: 1.75; margin-bottom: 36px;
+      animation: fadeUp .8s cubic-bezier(0.25,0.46,0.45,0.94) .6s both;
+    }
+    .hero-sub strong { color: rgba(255,255,255,.9); font-weight: 700; }
+    .hero-cta-group {
+      display: flex; flex-direction: column; align-items: flex-end; gap: 14px;
+      animation: fadeUp .8s ease .8s both;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--terra); color: var(--white);
+      padding: 16px 36px; border-radius: var(--r-lg);
+      font-family: var(--fh); font-size: 18px; font-weight: 700;
+      box-shadow: 0 6px 28px rgba(196,80,42,.40);
+      transition: background var(--ease), transform var(--ease), box-shadow var(--ease);
+    }
+    .btn-primary:hover { background: var(--terra-hi); transform: translateY(-3px); box-shadow: 0 10px 36px rgba(196,80,42,.52); }
+    .btn-primary svg { width: 20px; height: 20px; fill: var(--white); flex-shrink: 0; }
+    .fud-row {
+      display: flex; align-items: center; gap: 16px; flex-wrap: wrap; justify-content: flex-end;
+      font-size: 13px; color: rgba(255,255,255,.5);
+    }
+    .fud-item { display: flex; align-items: center; gap: 5px; }
+    .fud-item::before { content: '✓'; color: var(--gold); font-weight: 700; }
+    .hero-proof {
+      display: flex; align-items: center; gap: 14px; margin-bottom: 32px;
+      animation: fadeUp .8s ease .7s both;
+    }
+    .stars { color: var(--gold); font-size: 18px; letter-spacing: 2px; }
+    .proof-txt { font-size: 14px; color: rgba(255,255,255,.6); }
+    .proof-txt strong { color: var(--white); }
+    .hero-visual {
+      display: flex; justify-content: center; align-items: center;
+      animation: fadeUp .9s ease .5s both;
+    }
+    .hero-img-wrap {
+      position: relative; width: 100%; max-width: 460px;
+    }
+    .hero-slides {
+      position: relative; width: 100%; aspect-ratio: 4/3;
+      filter: drop-shadow(0 24px 64px rgba(0,0,0,.5));
+    }
+    .hero-slide {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%; object-fit: cover;
+      opacity: 0; transition: opacity 1.2s ease;
+    }
+    .hero-slide.active { opacity: 1; }
+    .hero-float-card {
+      position: absolute; bottom: -20px; left: -20px;
+      background: rgba(22,40,40,.95); border: 1px solid rgba(255,255,255,.1);
+      border-radius: var(--r-sm); padding: 14px 20px;
+      backdrop-filter: blur(10px);
+      box-shadow: var(--sh-lg);
+      text-align: center; min-width: 140px;
+    }
+    .hfc-n { font-family: var(--fh); font-size: 32px; color: #75bab8; line-height: 1; }
+    .hfc-l { font-size: 11px; color: rgba(255,255,255,.5); margin-top: 4px; letter-spacing: .06em; text-transform: uppercase; }
+    .hero-float-card2 {
+      position: absolute; top: -16px; right: -16px;
+      background: var(--terra); border-radius: var(--r-sm); padding: 10px 16px;
+      box-shadow: 0 4px 18px rgba(196,80,42,.38);
+      font-size: 12.5px; color: var(--white); font-weight: 700;
+      display: flex; align-items: center; gap: 7px;
+    }
+    .hero-float-card2::before { content: '✦'; font-size: 11px; }
+
+    /* ── PAIN SECTION ── */
+    #pain {
+      background: var(--cream); height: 100dvh;
+      scroll-snap-align: start;
+      display: flex; flex-direction: column; overflow: hidden;
+    }
+    #pain > .container {
+      flex: 1; display: flex; flex-direction: column;
+      width: 100%; max-width: 1100px; margin: 0 auto; padding-inline: 24px;
+    }
+    .pain-heading { text-align: center; padding: 20px 0 36px; flex-shrink: 0; }
+    .eyebrow {
+      font-family: var(--fh); font-size: 11px; letter-spacing: .3em;
+      color: var(--teal); text-transform: uppercase; opacity: .8;
+      display: block; margin-bottom: 14px;
+    }
+    .section-h2 {
+      font-family: var(--fh); font-size: clamp(28px, 4vw, 48px);
+      color: var(--charcoal); letter-spacing: -.015em; line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .section-h2 em { color: var(--teal); font-style: normal; }
+    .section-sub { font-size: 17px; color: var(--muted); margin: 0 auto; }
+    .bar { width: 52px; height: 3px; background: linear-gradient(90deg,var(--terra),var(--gold)); border-radius: var(--r-sm); margin: 18px auto 0; }
+    .pain-grid {
+      flex: 1; display: flex; flex-direction: column;
+      max-width: 820px; margin: 0 auto; width: 100%;
+    }
+    .pain-card {
+      flex: 1; display: flex; gap: 48px; align-items: center;
+      border-top: 1px solid rgba(44,36,32,.1);
+    }
+    .pain-card:last-child { border-bottom: 1px solid rgba(44,36,32,.1); }
+    .pain-card-h {
+      flex: 3; min-width: 0;
+      border-inline-start: 3px solid var(--gold);
+      padding-inline-start: 20px;
+    }
+    .pain-card-h h3 {
+      font-family: var(--fh); font-size: clamp(16px, 1.6vw, 21px);
+      color: var(--charcoal); font-weight: 700;
+      line-height: 1.35; letter-spacing: -.01em; margin: 0;
+    }
+    .pain-card-b { flex: 2; min-width: 0; }
+    .pain-card-b p { font-size: 14px; color: var(--muted); line-height: 1.8; margin: 0; }
+    .pain-cta-row { text-align: center; padding: 24px 0 44px; flex-shrink: 0; }
+    .pain-cta-lead { font-size: 18px; font-weight: 700; color: var(--charcoal); margin-bottom: 20px; }
+    .pain-cta-lead span { color: var(--terra); }
+
+    /* ── SOCIAL PROOF BAR ── */
+    #proof-bar {
+      background: var(--teal-dark); padding: 52px 0;
+      border-top: 1px solid rgba(255,255,255,.06);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .proof-row {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 0; text-align: center;
+    }
+    .proof-item { padding: 8px 20px; position: relative; }
+    .proof-item + .proof-item::before {
+      content: ''; position: absolute; left: 0; top: 15%; bottom: 15%;
+      width: 1px; background: rgba(255,255,255,.1);
+    }
+    .proof-num {
+      font-family: var(--fh); font-size: clamp(36px, 5vw, 56px);
+      color: #75bab8; line-height: 1; letter-spacing: -.02em;
+    }
+    .proof-unit { font-family: var(--fh); font-size: clamp(20px, 2.5vw, 30px); color: var(--teal-mid); }
+    .proof-label { font-size: 12px; color: rgba(255,255,255,.45); letter-spacing: .08em; text-transform: uppercase; margin-top: 8px; font-weight: 700; }
+
+    /* ── PROCESS ── */
+    #process { background: var(--parchment); min-height: 100dvh; scroll-snap-align: start; display: flex; align-items: center; }
+    #process > .container { width: 100%; }
+    .process-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 32px; margin-top: 16px;
+    }
+    .step {
+      text-align: center; padding: 36px 28px; background: var(--white);
+      border-radius: var(--r-sm); border: 1.5px solid var(--cream-dk);
+      box-shadow: var(--sh-sm); position: relative; overflow: hidden;
+    }
+    .step::before {
+      content: ''; position: absolute; top: 0; right: 0; left: 0; height: 3px;
+    }
+    .step:nth-child(1)::before { background: var(--teal); }
+    .step:nth-child(2)::before { background: var(--terra); }
+    .step:nth-child(3)::before { background: var(--gold); }
+    .step-num {
+      font-family: var(--fh); font-size: 64px; color: var(--cream-dk);
+      line-height: 1; margin-bottom: 16px; letter-spacing: -.03em;
+    }
+    .step h3 { font-family: var(--fh); font-size: 20px; margin-bottom: 10px; }
+    .step p { font-size: 14.5px; color: var(--muted); line-height: 1.8; }
+    .step-icon { font-size: 28px; margin-bottom: 10px; color: var(--teal); }
+    #management-systems { min-height: 100dvh; scroll-snap-align: start; display: flex; align-items: center; }
+    #management-systems > .container { width: 100%; }
+    .msys-top { display: flex; flex-direction: column; align-items: center; gap: 24px; }
+    .msys-img { text-align: center; }
+    .msys-img img { width: 180px; }
+    .msys-main { width: 100%; }
+    .msys-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 16px; margin-top: 16px;
+    }
+    .msys-node {
+      background: rgba(45,107,107,.06); border: 1px solid rgba(45,107,107,.18);
+      border-radius: var(--r); padding: 28px 24px 20px; text-align: center;
+      display: flex; flex-direction: column;
+    }
+    .msys-glyph {
+      font-size: 28px; color: var(--teal);
+      display: block; margin-bottom: 16px;
+    }
+    .msys-node h3 { font-family: var(--fh); font-size: 18px; color: var(--charcoal); margin-bottom: 8px; }
+    .msys-node > p { font-size: 14px; color: var(--muted); line-height: 1.75; margin: 0; flex: 1; }
+    .msys-expand-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+      margin-top: 18px; align-self: center;
+      background: none; border: 1.5px solid var(--teal); color: var(--teal);
+      font-family: var(--fh); font-size: 13px; font-weight: 700;
+      padding: 7px 20px; border-radius: var(--r-sm);
+      cursor: pointer; transition: background var(--ease), color var(--ease);
+    }
+    .msys-expand-btn:hover { background: var(--teal); color: var(--white); }
+    .msys-expand-btn .msys-arrow { display: inline-block; transition: transform .3s ease; }
+    .msys-expand-btn[aria-expanded="true"] .msys-arrow { transform: rotate(180deg); }
+    .msys-examples {
+      display: grid; grid-template-rows: 0fr;
+      transition: grid-template-rows .35s ease;
+    }
+    .msys-examples.open { grid-template-rows: 1fr; }
+    .msys-examples-inner { overflow: hidden; }
+    .msys-examples-body {
+      margin-top: 16px; padding-top: 16px;
+      border-top: 1px solid rgba(45,107,107,.15);
+      display: flex; flex-direction: column; gap: 0; text-align: left;
+    }
+    .msys-tag {
+      display: block; padding: 5px 0 5px 14px;
+      font-size: 13px; color: var(--charcoal); line-height: 1.5;
+      border-bottom: 1px solid rgba(45,107,107,.08); white-space: nowrap;
+      position: relative;
+    }
+    .msys-tag::before {
+      content: '·'; position: absolute; left: 0;
+      color: var(--teal); font-weight: 700; font-size: 16px; line-height: 1.3;
+    }
+    .msys-tag:last-child { border-bottom: none; }
+    .process-note {
+      text-align: center; margin-top: 40px;
+      font-size: 15px; color: var(--muted); font-style: italic;
+    }
+
+    /* ── CONSULTATION (redesign) ── */
+    #consultation {
+      background: var(--parchment);
+      min-height: 100dvh;
+      scroll-snap-align: start;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    #consultation > .consult-grid {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 84px 36px;
+      display: grid;
+      grid-template-columns: 1fr 252px;
+      gap: 48px;
+      align-items: start;
+    }
+    #consultation .consult-panel { will-change: transform; }
+    @media (max-width: 768px) {
+      #consultation > .consult-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        padding: 52px 20px 44px;
+      }
+    }
+    /* consult panel option blocks */
+    .consult-opt { padding: 18px 0; }
+    .consult-opt-label { font-size: 10.5px; font-weight: 700; color: rgba(212,168,67,0.78); letter-spacing: .18em; text-transform: uppercase; margin-bottom: 8px; }
+    .consult-opt-price { font-family: 'Secular One', sans-serif; font-size: 44px; color: #75bab8; line-height: 1; letter-spacing: -.02em; display: block; margin-bottom: 4px; }
+    .consult-opt-sub { font-size: 13px; color: rgba(255,255,255,0.36); margin-bottom: 14px; }
+    .consult-opt-divider { display: flex; align-items: center; gap: 8px; margin: 0; }
+    .consult-opt-divider span { font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,0.22); }
+    .consult-opt-divider div { flex: 1; height: 1px; background: rgba(255,255,255,0.1); }
+    .consult-wa-btn {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      background: #C4502A; color: #fff; padding: 13px 20px; border-radius: 50px;
+      font-family: 'Secular One', sans-serif; font-size: 15px;
+      text-decoration: none; transition: background .2s, transform .2s, box-shadow .2s;
+    }
+    .consult-wa-btn:hover { background: #b5421f; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(196,80,42,.45); }
+    .consult-wa-btn svg { width: 18px; height: 18px; fill: #fff; flex-shrink: 0; }
+    .consult-group-btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      border: 1px solid rgba(255,255,255,0.22); color: rgba(255,255,255,0.6);
+      padding: 13px 20px; border-radius: 50px; width: 100%;
+      font-family: 'Secular One', sans-serif; font-size: 15px;
+      text-decoration: none; transition: border-color .2s, color .2s, background .2s;
+    }
+    .consult-group-btn:hover { border-color: rgba(255,255,255,0.5); color: rgba(255,255,255,0.9); background: rgba(255,255,255,0.07); }
+
+    /* ── PORTFOLIO PREVIEW ── */
+    #websites { background: var(--cream); height: 100dvh; scroll-snap-align: start; display: flex; align-items: center; overflow: hidden; }
+    #websites > .container { width: 100%; }
+    .port-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 18px; margin-top: 16px;
+    }
+    .port-item {
+      position: relative; border-radius: var(--r-sm);
+      overflow: hidden;
+      box-shadow: var(--sh-md);
+    }
+    .port-item img {
+      width: 100%; height: 100%; object-fit: cover; object-position: top;
+      transition: transform .5s ease;
+    }
+    .port-item:hover img { transform: scale(1.06); }
+    .port-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(22,40,40,.88) 0%, transparent 55%);
+      opacity: 0; transition: opacity var(--ease);
+      display: flex; align-items: flex-end; padding: 16px 18px;
+    }
+    .port-item:hover .port-overlay { opacity: 1; }
+    .port-name { color: var(--white); font-size: 14px; font-weight: 700; }
+    .port-role { font-size: 12px; color: rgba(255,255,255,.65); margin-top: 2px; }
+    .port-link {
+      position: absolute; inset: 0;
+    }
+    .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+    .port-more {
+      text-align: center; margin-top: 36px;
+      font-size: 15px; color: var(--muted);
+    }
+    .port-more a { color: var(--teal); font-weight: 700; border-bottom: 1.5px solid transparent; transition: border-color var(--ease); }
+    .port-more a:hover { border-color: var(--teal); }
+
+    /* ── WEBSITES CAROUSEL (short screens) — native CSS scroll-snap, no JS library ── */
+    .port-carousel {
+      display: none; margin-top: 16px; position: relative;
+      margin-left: -24px; margin-right: -24px; width: calc(100% + 48px);
+    }
+    @media (max-height: 939px) {
+      .port-grid { display: none; }
+      .port-carousel { display: block; }
+    }
+    .port-carousel-track {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .port-carousel-track::-webkit-scrollbar { display: none; }
+    .port-carousel-track .port-item {
+      flex: 0 0 100%;
+      width: 100%;
+      box-sizing: border-box;
+      scroll-snap-align: start;
+      aspect-ratio: 700/393;
+      max-height: 52dvh;
+      padding: 0 14px;
+      border-radius: 0; overflow: visible; box-shadow: none;
+    }
+    .port-carousel-track .port-card {
+      position: relative; width: 100%; height: 100%;
+      border-radius: var(--r-sm); overflow: hidden; box-shadow: var(--sh-md);
+    }
+    /* gradient + name/role fade in 1s after the slide's image is on screen */
+    .port-carousel-track .port-overlay {
+      opacity: 0; transition: opacity .6s ease;
+    }
+    .port-carousel-track .port-overlay.is-visible {
+      opacity: 1; transition-delay: 1s;
+    }
+    .port-carousel-dots {
+      display: flex; justify-content: center; align-items: center; gap: 8px;
+      margin-top: 14px;
+    }
+    .port-carousel-dots button {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: rgba(44,36,32,.22); border: none; padding: 0; cursor: pointer;
+      transition: background .2s, transform .2s;
+    }
+    .port-carousel-dots button.is-active { background: var(--teal); transform: scale(1.25); }
+
+    /* ── TESTIMONIALS ── */
+    #testimonials { background: var(--teal-dark); min-height: 100dvh; scroll-snap-align: start; display: flex; align-items: center; }
+    #testimonials > .container { width: 100%; }
+    .tes-header { text-align: center; margin-bottom: 56px; }
+    .tes-header .section-h2 { color: var(--white); }
+    .tes-header .section-sub { color: rgba(255,255,255,.5); }
+    .tes-header .bar { background: linear-gradient(90deg, var(--gold), var(--terra)); }
+    .tes-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .tc {
+      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1);
+      border-radius: var(--r); padding: 36px 38px;
+      backdrop-filter: blur(8px);
+      transition: background var(--ease), transform var(--ease);
+      display: flex; flex-direction: column;
+    }
+
+    .tq { font-size: 64px; color: var(--gold); line-height: .65; margin-bottom: 18px; font-family: Georgia, serif; opacity: .7; }
+    .tt { font-size: 15px; color: rgba(255,255,255,.82); line-height: 1.9; flex: 1; margin-bottom: 22px; }
+    .ta { display: flex; align-items: center; gap: 12px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,.08); }
+    .av {
+      width: 48px; height: 48px; border-radius: var(--r-lg); overflow: hidden;
+      background: var(--teal-mid); flex-shrink: 0;
+    }
+    .av img { width: 100%; height: 100%; object-fit: cover; border-radius: var(--r-lg); }
+    .an { font-weight: 700; font-size: 14px; color: var(--gold); }
+    .ar { font-size: 12px; color: rgba(255,255,255,.45); margin-top: 2px; }
+    .tes-grid { display: none; }
+    .tes-carousel { display: block; }
+    /* Splide arrow overrides (splide-core has zero arrow CSS — we supply it all) */
+    .tes-carousel .splide__arrow { background: #293636; border: 1px solid rgba(255,255,255,.18); opacity: 1; width: 40px; height: 40px; border-radius: 50%; position: absolute; top: 50%; transform: translateY(-50%); display: flex; align-items: center; justify-content: center; padding: 0; cursor: pointer; z-index: 1; }
+    .tes-carousel .splide__arrow--prev { left: -20px; }
+    .tes-carousel .splide__arrow--next { right: -20px; }
+    .tes-carousel .splide__arrow--prev svg { transform: scaleX(-1); }
+    .tes-carousel .splide__arrow svg { fill: var(--white); width: 14px; height: 14px; flex-shrink: 0; }
+    .tes-carousel .splide__arrow:hover { background: #535d5d; }
+    .tes-carousel .splide__arrow:disabled { opacity: .28; }
+    .tes-carousel .splide__track { padding-bottom: 4px; }
+    .tes-carousel .splide__pagination { display: flex; justify-content: center; align-items: center; gap: 8px; margin-top: 18px; padding: 0; list-style: none; }
+    .tes-carousel .splide__pagination__page { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,.3); border: none; cursor: pointer; padding: 0; transition: background .2s, transform .2s; }
+    .tes-carousel .splide__pagination__page.is-active { background: var(--white); transform: scale(1.25); }
+    .tes-carousel .tc { height: 100%; }
+
+    /* ── ABOUT ── */
+    .snap-pair { min-height: 100dvh; scroll-snap-align: start; display: flex; flex-direction: column; }
+    #blog-preview { min-height: 100dvh; scroll-snap-align: start; display: flex; align-items: center; }
+    #blog-preview > .container { width: 100%; }
+    .bp-card:nth-child(n+3), .bp-skel:nth-child(n+3) { display: none; }
+    @media (min-height: 880px) { .bp-card:nth-child(n+3) { display: flex; } .bp-skel:nth-child(n+3) { display: flex; } }
+    #about { background: var(--parchment); flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 40px 0; }
+    .about-grid { display: grid; grid-template-columns: 280px 1fr; gap: 48px; align-items: center; }
+    .about-img-wrap { position: relative; }
+    .about-img-wrap::before {
+      content: ''; position: absolute; inset: -8px; border-radius: var(--r); z-index: -1;
+      background: linear-gradient(135deg, var(--teal) 0%, var(--gold) 60%, var(--terra) 100%);
+      opacity: .18;
+    }
+    .about-img-wrap img { width: 100%; border-radius: var(--r); box-shadow: var(--sh-lg); }
+    .about-badge {
+      position: absolute; bottom: -18px; right: -18px;
+      background: var(--terra); color: var(--white);
+      padding: 14px 22px; border-radius: var(--r); text-align: center;
+      box-shadow: var(--sh-md);
+    }
+    .about-badge .n { font-family: var(--fh); font-size: 30px; line-height: 1; }
+    .about-badge .l { font-size: 11px; margin-top: 3px; opacity: .9; }
+    .about-txt h2 { font-family: var(--fh); font-size: clamp(26px, 3.5vw, 40px); margin-bottom: 10px; }
+    .about-bar { width: 56px; height: 3.5px; background: linear-gradient(90deg,var(--terra),var(--gold)); border-radius: var(--r-sm); margin-bottom: 24px; }
+    .about-lead { font-size: 19px; font-weight: 700; color: var(--teal); margin-bottom: 18px; line-height: 1.55; }
+    .about-p { font-size: 16px; color: var(--brown); line-height: 1.9; margin-bottom: 14px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+    .tag {
+      background: transparent; color: var(--teal); padding: 5px 14px; border-radius: var(--r);
+      font-size: 13px; font-weight: 600; border: 1.5px solid rgba(45,107,107,.25);
+      transition: background var(--ease), border-color var(--ease);
+    }
+    .tag:hover { background: var(--teal-pale); border-color: var(--teal); }
+
+    /* ── GUARANTEE ── */
+    #guarantee {
+      background: linear-gradient(135deg, var(--teal-dark) 0%, #1a3232 100%);
+      padding: 80px 0; text-align: center; position: relative; overflow: hidden;
+    }
+    #guarantee::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(45,107,107,.2) 0%, transparent 65%);
+    }
+    .guarantee-inner { position: relative; z-index: 1; max-width: 660px; margin: 0 auto; }
+    .guarantee-icon { font-size: 48px; margin-bottom: 16px; color: var(--gold); }
+    .guarantee-inner h2 { font-family: var(--fh); font-size: clamp(26px, 3.5vw, 42px); color: var(--white); margin-bottom: 16px; line-height: 1.2; }
+    .guarantee-inner h2 em { color: var(--gold); font-style: normal; }
+    .guarantee-inner p { font-size: 17px; color: rgba(255,255,255,.68); line-height: 1.8; }
+
+    /* ── FAQ ── */
+    #faq { background: var(--cream); min-height: 100dvh; padding: 0; display: flex; flex-direction: column; scroll-snap-align: start; }
+    #faq > .container { flex: 1; display: flex; flex-direction: column; padding-top: 52px; padding-bottom: 40px; }
+    /* Reveal faq-hidden items based on viewport height (each question = 72px, +1 per step).
+       Gated to min-width:769px — on mobile, window.innerHeight changes live as the address
+       bar shows/hides while scrolling, which made these re-fire and reveal/hide items mid-scroll
+       (the "section gets shorter" bug). Mobile always shows the default set + the more-button. */
+    @media (min-height: 750px)  and (min-width: 769px) { .faq-item.faq-hidden:nth-child(-n+6)  { display: block; } }
+    @media (min-height: 822px)  and (min-width: 769px) { .faq-item.faq-hidden:nth-child(-n+7)  { display: block; } }
+    @media (min-height: 894px)  and (min-width: 769px) { .faq-item.faq-hidden:nth-child(-n+8)  { display: block; } }
+    @media (min-height: 966px)  and (min-width: 769px) { .faq-item.faq-hidden:nth-child(-n+9)  { display: block; } }
+    @media (min-height: 1038px) and (min-width: 769px) { .faq-item.faq-hidden:nth-child(-n+10) { display: block; } }
+    @media (min-height: 1110px) and (min-width: 769px) { .faq-item.faq-hidden:nth-child(-n+11) { display: block; } }
+    @media (min-height: 1182px) and (min-width: 769px) { .faq-item.faq-hidden:nth-child(-n+12) { display: block; } }
+    @media (min-height: 1254px) and (min-width: 769px) { .faq-item.faq-hidden:nth-child(-n+13) { display: block; } }
+    @media (min-height: 1326px) and (min-width: 769px) { .faq-item.faq-hidden:nth-child(-n+14) { display: block; } }
+    @media (min-height: 1398px) and (min-width: 769px) { .faq-item.faq-hidden                  { display: block; } .faq-more-wrap { display: none; } }
+    .faq-wrap { max-width: 720px; margin: 0 auto; width: 100%; }
+    .faq-item {
+      border-bottom: 1.5px solid var(--cream-dk); overflow: hidden;
+    }
+    .faq-item:first-child { border-top: 1.5px solid var(--cream-dk); }
+    .faq-q {
+      width: 100%; display: flex; justify-content: space-between; align-items: center;
+      padding: 22px 4px; background: none; color: var(--charcoal);
+      font-family: var(--fh); font-size: 17px; text-align: left;
+      cursor: pointer; gap: 16px;
+      transition: color var(--ease);
+    }
+    .faq-q:hover { color: var(--teal); }
+    .faq-icon {
+      width: 28px; height: 28px; border-radius: var(--r-lg); flex-shrink: 0;
+      background: var(--cream-dk); display: flex; align-items: center; justify-content: center;
+      font-size: 18px; color: var(--teal); font-family: monospace; font-weight: 700;
+      transition: background var(--ease), transform .3s ease;
+    }
+    .faq-item.open .faq-icon { background: var(--teal); color: var(--white); transform: rotate(45deg); }
+    .faq-a {
+      font-size: 15.5px; color: var(--brown); line-height: 1.85;
+      max-height: 0; overflow: hidden; padding: 0 4px;
+      transition: max-height .4s ease, padding .3s ease;
+    }
+    .faq-item.open .faq-a { max-height: 360px; padding-bottom: 22px; }
+    .faq-short { font-weight: 700; color: var(--charcoal); margin-bottom: 8px; line-height: 1.6; }
+    .faq-detail { color: var(--brown); line-height: 1.85; }
+    .faq-hidden { display: none; }
+    .faq-more-wrap { text-align: center; margin-top: 28px; }
+    .faq-more-btn { background: none; border: 1.5px solid var(--teal); color: var(--teal); font-family: var(--fh); font-size: 15px; font-weight: 700; padding: 10px 28px; border-radius: var(--r-sm); cursor: pointer; transition: background var(--ease), color var(--ease); }
+    .faq-more-btn:hover { background: var(--teal); color: var(--white); }
+
+    /* ── FINAL CTA ── */
+    #final-cta {
+      background: var(--teal-dark); min-height: 100dvh;
+      display: flex; align-items: center;
+      text-align: center; position: relative; overflow: hidden;
+      scroll-snap-align: start;
+    }
+    #final-cta > .container { width: 100%; }
+    #final-cta::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 70% 80% at 20% 80%, rgba(45,107,107,.38) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 50% at 80% 20%, rgba(212,168,67,.1) 0%, transparent 55%);
+    }
+    #final-cta::after {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.015) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .final-inner { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
+    .final-eyebrow {
+      display: inline-block; background: rgba(212,168,67,.12); border: 1px solid rgba(212,168,67,.28);
+      padding: 6px 18px; border-radius: var(--r);
+      font-size: 12.5px; font-weight: 700; color: var(--gold); letter-spacing: .06em;
+      text-transform: uppercase; margin-bottom: 28px;
+    }
+    .final-inner h2 {
+      font-family: var(--fh); font-size: clamp(32px, 5vw, 58px);
+      color: var(--white); line-height: 1.1; letter-spacing: -.02em; margin-bottom: 18px;
+    }
+    .final-inner h2 em { color: #75bab8; font-style: normal; }
+    .final-inner p { font-size: 18px; color: rgba(255,255,255,.65); margin-bottom: 40px; line-height: 1.75; }
+    .final-cta-row { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+    .btn-wa {
+      display: inline-flex; align-items: center; gap: 12px;
+      background: var(--teal); color: var(--white);
+      padding: 18px 44px; border-radius: var(--r-lg);
+      font-family: var(--fh); font-size: 19px;
+      box-shadow: 0 6px 28px rgba(45,107,107,.36);
+      transition: all var(--ease);
+    }
+    .btn-wa:hover { background: var(--teal-dark); transform: translateY(-3px); box-shadow: 0 10px 36px rgba(45,107,107,.48); }
+    .btn-wa svg { width: 24px; height: 24px; fill: var(--white); flex-shrink: 0; }
+    .or-txt { color: rgba(255,255,255,.3); font-size: 13px; }
+    .btn-form {
+      display: inline-flex; align-items: center; gap: 10px;
+      border: 2px solid rgba(255,255,255,.22); color: rgba(255,255,255,.75);
+      padding: 14px 36px; border-radius: var(--r-lg);
+      font-family: var(--fh); font-size: 16px;
+      transition: all var(--ease);
+    }
+    .btn-form:hover { background: rgba(255,255,255,.07); border-color: rgba(255,255,255,.4); color: var(--white); }
+    .final-fud {
+      display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-top: 24px;
+      font-size: 13px; color: rgba(255,255,255,.4);
+    }
+    .final-fud span { display: flex; align-items: center; gap: 5px; }
+    .final-fud span::before { content: '✓'; color: var(--gold); font-weight: 700; }
+
+    /* ── CONTACT FORM ── */
+    #contact { background: var(--parchment); min-height: 100dvh; scroll-snap-align: start; display: flex; align-items: center; }
+    #contact > .container { width: 100%; }
+    .con-g { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+    .con-l h2 { font-family: var(--fh); font-size: clamp(26px, 3.5vw, 40px); margin-bottom: 10px; }
+    .con-bar { width: 56px; height: 3.5px; background: linear-gradient(90deg,var(--terra),var(--gold)); border-radius: var(--r-sm); margin-bottom: 24px; }
+    .con-desc { font-size: 16px; color: var(--brown); line-height: 1.9; margin-bottom: 28px; }
+    .con-detail { display: flex; align-items: center; gap: 10px; font-size: 14.5px; color: var(--muted); margin-bottom: 10px; }
+    .con-detail strong { color: var(--charcoal); }
+    .fg { margin-bottom: 16px; }
+    .fg label { display: block; font-size: 13px; font-weight: 700; margin-bottom: 5px; color: var(--charcoal); }
+    .fg input, .fg textarea, .fg select {
+      width: 100%; padding: 12px 15px; border: 2px solid var(--cream-dk);
+      border-radius: var(--r-sm); font-family: var(--fb); font-size: 15.5px;
+      color: var(--charcoal); background: var(--white); direction: ltr;
+      outline: none; transition: border-color var(--ease);
+    }
+    .fg input:focus, .fg textarea:focus, .fg select:focus { border-color: var(--teal); }
+    .fg textarea { height: 110px; resize: vertical; }
+    .frow { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .sub-btn {
+      width: 100%; padding: 15px; background: var(--terra); color: var(--white);
+      border-radius: var(--r-sm); font-size: 17px; font-weight: 700;
+      font-family: var(--fb); transition: all var(--ease); border: none; cursor: pointer;
+    }
+    .sub-btn:hover { background: var(--terra-hi); transform: translateY(-2px); }
+    .or-div { text-align: center; color: var(--muted); font-size: 13px; margin: 16px 0; }
+    .wa {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      background: var(--teal); color: var(--white);
+      padding: 14px 28px; border-radius: var(--r-lg); font-size: 16px; font-weight: 700;
+      box-shadow: 0 4px 18px rgba(37,211,102,.32); transition: all var(--ease);
+    }
+    .wa:hover { transform: translateY(-2px); box-shadow: 0 6px 26px rgba(45,107,107,.42); }
+    .wa svg { width: 22px; height: 22px; fill: var(--white); flex-shrink: 0; }
+    .con-r img { width: 100%; border-radius: var(--r); box-shadow: var(--sh-lg); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--charcoal); color: rgba(255,255,255,.6);
+      padding: 48px 0; text-align: center; position: relative;
+    }
+    footer::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.08) 30%, rgba(212,168,67,.2) 50%, rgba(255,255,255,.08) 70%, transparent);
+    }
+    .f-monk { width: 90px; height: 90px; object-fit: contain; margin: 0 auto 14px; display: block; }
+    .f-brand { font-family: var(--fh); font-size: 24px; color: var(--white); margin-bottom: 4px; }
+    .f-tag { font-size: 13px; color: rgba(255,255,255,.62); margin-bottom: 24px; }
+    .f-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 14px 24px; margin: 0 0 18px; padding: 0; }
+    .f-links a { font-size: 13.5px; color: rgba(255,255,255,.62); transition: color var(--ease); }
+    .f-links a:hover { color: var(--gold); }
+    .f-copy { font-size: 12px; color: rgba(255,255,255,.55); }
+
+    /* ── BLOG PREVIEW ── */
+    .bp-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:16px}
+    .bp-card{display:flex;flex-direction:column;background:var(--white);border-radius:var(--r);padding:28px 30px;border:1.5px solid var(--cream-dk);box-shadow:var(--sh-sm);transition:box-shadow var(--ease),transform var(--ease)}
+    .bp-card:hover{box-shadow:var(--sh-md);transform:translateY(-3px)}
+    .bp-tag{display:inline-block;background:rgba(45,107,107,.1);color:var(--teal);font-size:11px;font-weight:700;padding:3px 12px;border-radius:var(--r);margin-bottom:12px;letter-spacing:.06em;align-self:flex-start}
+    .bp-card h3{font-family:var(--fh);font-size:18px;color:var(--charcoal);margin-bottom:10px;line-height:1.35}
+    .bp-card p{font-size:14.5px;color:var(--muted);line-height:1.75;flex:1}
+    .bp-read{display:inline-block;margin-top:18px;color:var(--teal);font-size:13.5px;font-weight:700}
+    @media(max-width:640px){.bp-grid{grid-template-columns:1fr}}
+    @keyframes bp-shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+    .bp-skel{display:flex;flex-direction:column;background:var(--white);border-radius:var(--r);padding:28px 30px;border:1.5px solid var(--cream-dk)}
+    .bp-skel-line{border-radius:4px;background:linear-gradient(90deg,rgba(44,36,32,.07) 25%,rgba(44,36,32,.13) 50%,rgba(44,36,32,.07) 75%);background-size:200% 100%;animation:bp-shimmer 1.5s infinite}
+    .bp-skel-tag{height:20px;width:60px;margin-bottom:14px}
+    .bp-skel-h1{height:20px;width:88%;margin-bottom:8px}
+    .bp-skel-h2{height:20px;width:60%;margin-bottom:16px}
+    .bp-skel-p1{height:13px;width:100%;margin-bottom:7px}
+    .bp-skel-p2{height:13px;width:95%;margin-bottom:7px}
+    .bp-skel-p3{height:13px;width:72%;margin-bottom:0}
+    .bp-skel-read{height:13px;width:72px;margin-top:20px}
+
+    /* back to top */
+    .ch { font-size: .8em; vertical-align: -0.05em; margin-inline-start: 3px; }
+    #btt {
+      position: fixed; bottom: 28px; right: 28px; z-index: 800;
+      width: 46px; height: 46px; border-radius: var(--r-lg);
+      background: var(--terra); color: var(--white);
+      font-size: 20px; font-weight: 700; border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: var(--sh-md);
+      opacity: 0; pointer-events: none; transform: translateY(10px);
+      transition: opacity .3s, transform .3s, background var(--ease);
+    }
+    #btt.show { opacity: 1; pointer-events: auto; transform: none; }
+    #btt:hover { background: var(--terra-hi); transform: translateY(-3px); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero-in { grid-template-columns: 1fr; gap: 40px; padding: 120px 0 80px; }
+      .hero-visual { order: -1; }
+      .hero-txt { text-align: center; }
+      .hero-cta-group { align-items: center; }
+      .hero-proof { justify-content: center; }
+      .fud-row { justify-content: center; }
+      .hero-float-card { bottom: -14px; left: -8px; }
+      .hero-float-card2 { top: -10px; right: -8px; }
+      .about-grid { grid-template-columns: 130px 1fr; gap: 20px; align-items: start; }
+      .about-badge { display: none; }
+      .about-img-wrap::before { display: none; }
+      .con-g { grid-template-columns: 1fr; }
+      .con-r { display: none; }
+      .proof-row { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .proof-item {
+        padding: 24px 12px;
+        background: rgba(255,255,255,.04);
+        border: 1px solid rgba(255,255,255,.08);
+        border-radius: var(--r-sm);
+      }
+      .proof-item + .proof-item::before { display: none; }
+      .process-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hbg { display: flex; }
+      .section { padding: 72px 0; }
+      .monk-wrap { width: min(86vw, calc(100vw - 48px)); }
+      h1.hero-t  { font-size: clamp(30px, 8.6vw, 56px); }
+      .hero-tagline { font-size: 20px; }
+      :root { --te-top: 13.5%; --te-left: 50.5%; --te-dy: 12px; }
+      /* longhand (not the `animation` shorthand) so animation-play-state stays under the hero-ready gate above */
+      .hero-logo {
+        animation-name: heroImgInMobile; animation-duration: .8s;
+        animation-timing-function: ease-out; animation-delay: .1s; animation-fill-mode: both;
+      }
+      /* eye appears 500ms after the monk finishes (monk: .1s delay + .8s duration = .9s done) */
+      .third-eye {
+        animation-name: teInMobile; animation-duration: .8s;
+        animation-timing-function: ease-out; animation-delay: 1.4s; animation-fill-mode: both;
+      }
+      /* pulse must play in sync with the third eye */
+      .monk-wrap::before {
+        animation-name: heroRipple; animation-duration: .8s;
+        animation-timing-function: ease-out; animation-delay: 1.4s; animation-fill-mode: both;
+      }
+      .hero-arr { bottom: 100px; }
+      .tes-grid { grid-template-columns: 1fr; }
+      #pain { height: auto; min-height: 100dvh; }
+      .pain-card { flex-direction: column; align-items: stretch; gap: 6px; padding: 18px 0; }
+      .pain-card-h { border-inline-start: none; padding-inline-start: 0; }
+      .pain-card-h h3 { font-size: clamp(17px, 5vw, 22px); }
+      .msys-img img { width: 110px; }
+      .msys-grid { grid-template-columns: 1fr; }
+      .port-grid { grid-template-columns: repeat(2, 1fr); }
+      /* About: image floats beside heading+lead only */
+      .about-grid { display: block; }
+      .about-img-wrap {
+        float: left;
+        width: 100px;
+        margin-top: 7px;
+        margin-right: 14px;
+        margin-bottom: 8px;
+      }
+      /* Bar is start aligned (left), which lands under the float - push it into the text column */
+      .about-txt .about-bar { margin-left: 114px; margin-bottom: 10px; }
+      .about-txt .about-p,
+      .about-txt .tags { clear: both; }
+      #seo-aeo { padding-bottom: 240px; }
+      .seo-fish { width: 260px; }
+      .seo-line { top: -280px; height: calc(100% + 280px); }
+      #proof-bar { padding: 32px 0; }
+      .proof-row { grid-template-columns: repeat(3, 1fr); gap: 0; }
+      .proof-item { padding: 8px 4px; background: none; border: none; border-radius: 0; }
+      .proof-item + .proof-item::before { display: block; }
+      .con-g { gap: 16px; }
+      .con-r {
+        display: block;
+        order: -1;
+        text-align: center;
+      }
+      .con-r img {
+        width: 110px;
+        margin: 0 auto 4px;
+      }
+      .con-l h2 { text-align: center; }
+      .con-bar { margin-right: auto; margin-left: auto; }
+      .con-desc { text-align: center; font-size: 15px; }
+
+      /* [1] hero: fixed height + center content vertically, shifted up */
+      #hero { height: 100dvh; }
+      .hero-body { padding: 56px 24px; transform: translateY(-50px); }
+
+      /* [1] value-prop: compress vertical gaps to fit in screen height */
+      .hero-in { padding: 72px 0 20px; gap: 24px; }
+      .value-h2 { margin-bottom: 14px; }
+      .hero-sub { margin-bottom: 20px; }
+      .hero-proof { margin-bottom: 14px; }
+      .vp-cta-row { padding: 12px 24px 32px; }
+      /* float cards extend outside bounds — hide on mobile */
+      .hero-float-card, .hero-float-card2 { display: none; }
+
+      /* [3] excessive margins on mobile */
+      .tes-header { margin-bottom: 28px; }
+      .guarantee-icon { font-size: 36px; margin-bottom: 12px; }
+      .final-inner p { margin-bottom: 24px; }
+      .pain-cta-row { padding: 20px 0 32px; }
+
+      /* guide-promo: compact to avoid overlapping fish */
+      .guide-promo { margin-top: 20px; padding: 20px 16px; }
+      .guide-promo-title { margin-bottom: 12px; }
+      .guide-promo-chapters { margin-bottom: 18px; }
+
+      /* #websites: 100dvh resizes live as the address bar shows/hides on scroll,
+         making the section visibly grow/shrink. 100svh stays fixed at the smallest
+         (address-bar-visible) viewport size — the "shorter" version the user wants. */
+      #websites { height: 100svh; }
+      #faq { min-height: 100svh; }
+
+      /* footer: extra bottom clearance so the fixed back-to-top button (46px + 28px offset)
+         never overlaps the copyright line when scrolled to the page end */
+      footer { padding: 40px 0 100px; }
+      .f-links { gap: 10px 18px; }
+    }
+    @media (max-width: 480px) {
+      .port-grid { grid-template-columns: 1fr; }
+      .frow { grid-template-columns: 1fr; }
+      .final-fud { gap: 12px; }
+    }
+    #appears-on { background: var(--cream); padding: 32px 0; border-top: 1px solid var(--teal-pale); }
+    .appears-inner { display: flex; align-items: center; justify-content: center; gap: 40px; flex-wrap: wrap; }
+    .appears-label { font-family: var(--fh); font-size: 14px; color: var(--muted); letter-spacing: .05em; white-space: nowrap; margin: 0; }
+    .appears-logo { display: flex; align-items: center; opacity: .75; transition: opacity .2s; }
+    .appears-logo:hover { opacity: 1; }
+    .appears-logo img {
+      height: 36px; width: auto;
+      filter: sepia(1) hue-rotate(145deg) saturate(1.6) brightness(0.75);
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://techspirit.co.il/#oren",
+        "name": "Oren Knaan",
+        "alternateName": ["The Technospiritualist", "Technospiritualist"],
+        "url": "https://techspirit.co.il/en/",
+        "email": "oren@techspirit.co.il",
+        "sameAs": ["https://orenknaan.co.il/"]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://ohadgalon.com/#website",
+        "url": "https://ohadgalon.com/",
+        "name": "Ohad Galon",
+        "creator": { "@id": "https://techspirit.co.il/#oren" }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://tarbutalhasaf.co.il/#website",
+        "url": "https://tarbutalhasaf.co.il/",
+        "name": "Tarbut Al HaSaf",
+        "sameAs": [
+          "https://tarbutalhasaf.co.il/en/homepage/",
+          "https://tarbutalhasaf.co.il/de/startseite/"
+        ],
+        "creator": { "@id": "https://techspirit.co.il/#oren" }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://hooponopono-israel.co.il/#website",
+        "url": "https://hooponopono-israel.co.il/",
+        "name": "Ho'oponopono Israel",
+        "creator": { "@id": "https://techspirit.co.il/#oren" }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://childhoodworld.co.il/#website",
+        "url": "https://childhoodworld.co.il/",
+        "name": "The World of Childhood",
+        "creator": { "@id": "https://techspirit.co.il/#oren" }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://orenknaan.co.il/#website",
+        "url": "https://orenknaan.co.il/",
+        "name": "Oren Knaan",
+        "creator": { "@id": "https://techspirit.co.il/#oren" }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+<!-- MOBILE MENU -->
+<div id="mob">
+  <button class="mob-x" id="mobX">✕</button>
+  <a href="#value-prop">Web Services</a>
+  <a href="#seo-aeo">Website Promotion</a>
+  <a href="#websites">Website Building</a>
+  <a href="#management-systems">AI &amp; Automations</a>
+  <a href="#testimonials">Testimonials</a>
+  <a href="#contact">Contact Us</a>
+  <a href="/en/blog/" style="border:1px solid rgba(255,255,255,.25);border-radius:var(--r);padding:8px 20px;margin-top:4px">Blog</a>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="container nav-in">
+    <a href="#hero" class="nav-brand">
+      <img src="../Images/Assets/monk-hq.webp" alt="Technospiritualist logo">
+      Technospiritualist
+    </a>
+    <ul class="nav-links">
+      <li><a href="#value-prop">Services</a></li>
+      <li><a href="#seo-aeo">SEO</a></li>
+      <li><a href="#websites">Websites</a></li>
+      <li><a href="#management-systems">Automation</a></li>
+      <li><a href="#testimonials">Testimonials</a></li>
+      <li><a href="#contact">Let's talk?</a></li>
+      <li><a href="/en/blog/" class="nav-blog">Blog</a></li>
+      <li>
+        <a href="https://api.whatsapp.com/send?phone=972544757906&text=Hi%20Oren%2C%20let%27s%20schedule%20a%20short%20consultation%20call." target="_blank" rel="noopener" class="nav-cta-link">
+          Free consultation call
+        </a>
+      </li>
+    </ul>
+    <button class="hbg" id="hbg" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MAIN CONTENT -->
+<main>
+
+<!-- HERO (floating monk) -->
+<div class="hero-vp-wrap">
+<section id="hero">
+  <div class="hero-body">
+    <div class="monk-wrap">
+      <img src="../Images/Assets/monk-hq.webp" alt="Technospiritualist - Oren Knaan" class="hero-logo" fetchpriority="high">
+      <svg class="third-eye" id="thirdEye" viewBox="-18 -13 36 26" xmlns="http://www.w3.org/2000/svg">
+        <path d="M-16 0 Q-3 -8.5 0 -8.5 Q3 -8.5 16 0 Q3 8.5 0 8.5 Q-3 8.5 -16 0 Z" fill="#ecdfc8"/>
+        <g id="teGaze">
+          <circle cx="0" cy="0" r="6.4" fill="#3D8585"/>
+          <circle cx="0" cy="0" r="3"   fill="#0a1e1e"/>
+          <path d="M-16 0 Q-3 -6.5 0 -6.5 Q3 -6.5 16 0 L18 0 L18 -15 L-18 -15 L-18 0 Z" fill="#f3a177"/>
+          <path d="M-16 0 Q-3 -6.5 0 -6.5 Q3 -6.5 16 0" fill="none" stroke="#c47850" stroke-width="0.75" stroke-linecap="round"/>
+          <path d="M-16 0 Q-3  6.5 0  6.5 Q3  6.5 16 0" fill="none" stroke="#c47850" stroke-width="0.55" stroke-linecap="round"/>
+        </g>
+        <path d="M-16 0 Q-13 -2.8 -7 0 Q-13 2.8 -16 0 Z" fill="#f3a177"/>
+        <path d="M 16 0 Q 13 -2.8  7 0 Q 13 2.8  16 0 Z" fill="#f3a177"/>
+      </svg>
+    </div>
+    <h1 class="hero-t">Techno<span>spiritualist</span></h1>
+    <p class="hero-tagline">Building you a website for your spirit</p>
+  </div>
+  <div class="smk" aria-hidden="true">
+    <div class="sp sp1"></div><div class="sp sp2"></div><div class="sp sp3"></div>
+    <div class="sp sp4"></div><div class="sp sp5"></div>
+  </div>
+  <button class="hero-arr" aria-label="Next section" onclick="document.getElementById('value-prop').scrollIntoView({behavior:'smooth',block:'start'})"><i class="fa-solid fa-chevron-down"></i></button>
+</section>
+<script>
+  // Start the hero entrance choreography once the monk image is actually visible, not on a blind
+  // navigation-start timer — otherwise slow loads make the animation finish before paint (see CSS above)
+  (function() {
+    var heroImg = document.querySelector('.hero-logo');
+    function reveal() { document.documentElement.classList.add('hero-ready'); }
+    if (!heroImg) { reveal(); return; }
+    if (heroImg.complete) reveal();
+    else {
+      heroImg.addEventListener('load', reveal, { once: true });
+      heroImg.addEventListener('error', reveal, { once: true });
+      setTimeout(reveal, 4000);
+    }
+  })();
+</script>
+
+<!-- VALUE PROP -->
+<section id="value-prop">
+  <div class="container">
+    <div class="hero-in">
+
+      <div class="hero-txt">
+        <h2 class="value-h2">Websites<br>and web services<br>for conscious people</h2>
+        <p class="hero-sub">
+          A website that speaks your language<br><strong>attracts the right clients</strong><br>and works for you even while you sleep.
+          <br>Without you having to understand technology.
+        </p>
+        <div class="hero-proof">
+          <div class="stars">★★★★★</div>
+          <div class="proof-txt"><strong>100%</strong> client satisfaction</div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-img-wrap">
+          <div class="hero-slides">
+            <img src="../Images/Websites/comp-taliamichaeli.webp" alt="Talia Michaeli's website" width="730" height="584" class="hero-slide active" loading="lazy">
+            <img src="../Images/Websites/comp-hooponopono.webp"  alt="Ho'oponopono Israel website" width="730" height="584" class="hero-slide" loading="lazy">
+            <img src="../Images/Websites/comp-ohadgalon.webp"    alt="Ohad Galon's website" width="730" height="584" class="hero-slide" loading="lazy">
+            <img src="../Images/Websites/comp-childhood.webp"    alt="The World of Childhood website" width="730" height="584" class="hero-slide" loading="lazy">
+            <img src="../Images/Websites/comp-tarbut.webp"       alt="Tarbut Al HaSaf website" width="730" height="584" class="hero-slide" loading="lazy">
+          </div>
+          <div class="hero-float-card">
+            <div class="hfc-n">10+</div>
+            <div class="hfc-l">years of experience</div>
+          </div>
+          <div class="hero-float-card2">A website that speaks your language</div>
+        </div>
+      </div>
+
+    </div>
+    <div class="vp-cta-row">
+      <div class="hero-cta-group">
+        <a href="https://api.whatsapp.com/send?phone=972544757906&text=Hi%20Oren%2C%20let%27s%20schedule%20a%20short%20consultation%20call." target="_blank" rel="noopener" class="btn-primary">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Free consultation call
+        </a>
+        <div class="fud-row">
+          <span class="fud-item">No cost</span>
+          <span class="fud-item">No commitment</span>
+          <span class="fud-item">20 minutes only</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</div><!-- /.hero-vp-wrap -->
+
+<!-- PAIN SECTION -->
+<section id="pain" class="section">
+  <div class="container">
+    <div class="pain-heading rv">
+      <h2 class="section-h2">If this feels <em>familiar</em><br>you're in exactly the right place</h2>
+      <div class="bar"></div>
+    </div>
+    <div class="pain-grid">
+      <div class="pain-card rv">
+        <div class="pain-card-h">
+          <h3>Your current website doesn't represent you</h3>
+        </div>
+        <div class="pain-card-b">
+          <p>You built a website once, but it doesn't feel like you. New clients can't understand what you offer or why they should turn to you in particular.</p>
+        </div>
+      </div>
+      <div class="pain-card rv d1">
+        <div class="pain-card-h">
+          <h3>Technology is confusing and scary</h3>
+        </div>
+        <div class="pain-card-b">
+          <p>WordPress, SEO, Elementor, hosting... every time you try to move forward there's another technical term and another vendor trying to sell you something you're not sure you need.</p>
+        </div>
+      </div>
+      <div class="pain-card rv d2">
+        <div class="pain-card-h">
+          <h3>Social media doesn't bring steady clients</h3>
+        </div>
+        <div class="pain-card-b">
+          <p>You post, you invest hours, and still every client comes from a personal recommendation. There's no steady presence working for you 24 hours a day.</p>
+        </div>
+      </div>
+    </div>
+    <div class="pain-cta-row rv d1">
+      <p class="pain-cta-lead">It's time for your website to <span>work for you,</span> not the other way around.</p>
+      <a href="https://api.whatsapp.com/send?phone=972544757906&text=Hi%20Oren%2C%20let%27s%20schedule%20a%20short%20consultation%20call." target="_blank" rel="noopener" class="btn-primary" style="display:inline-flex">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:18px;height:18px;fill:white;flex-shrink:0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Let's talk
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- IMAGE DIVIDER SEO/AEO -->
+<div id="seo-aeo-divider" class="img-divider" style="--bg:url('../Images/Assets/Sections/section-seo-aeo.webp')">
+  <div class="img-div-bg-wrap"><div class="img-div-bg"></div></div>
+  <div class="img-divider-title">Promotion on Google (SEO) and in AI (AEO)</div>
+</div>
+
+<!-- SEO / AEO -->
+<section id="seo-aeo">
+  <!-- Fishing line -->
+  <svg class="seo-line" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+    <path id="fish-line-path" stroke="#b52e11" stroke-width="2" fill="none" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+  </svg>
+  <!-- Fish icon -->
+  <img class="seo-fish" src="../Images/Assets/fish.webp" alt="" width="800" height="502" loading="lazy">
+  <div class="container">
+    <div class="seo-inner rv">
+      <h2 class="seo-h2">The people who need you<br><em>haven't found you yet</em></h2>
+      <p class="seo-body">
+        When someone searches Google for "holistic therapist in Tel Aviv" - do they find you?<br>
+        <strong>SEO</strong> (search engine optimization) and <strong>AEO</strong> (AI answer optimization)
+        are the tools that make sure the right people <strong>find you first</strong>,
+        before they ever reach your competitors.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- IMAGE DIVIDER: website building -->
+<div class="img-divider" style="--bg:url('../Images/Assets/Sections/section-building-4x3.webp')">
+  <div class="img-div-bg-wrap"><div class="img-div-bg"></div></div>
+  <div class="img-divider-title">Website Building</div>
+</div>
+
+<!-- PORTFOLIO PREVIEW -->
+<section id="websites" class="section">
+  <div class="container">
+    <div class="pain-heading rv">
+      <h2 class="section-h2">Each of them started<br><em>with an idea just like yours</em></h2>
+      <div class="bar"></div>
+    </div>
+    <div class="port-grid">
+      <div class="port-item rv">
+        <img src="../Images/Websites/taliamichaeli.webp" alt="Website built for Talia Michaeli - workshop facilitator and therapist, a project by Oren Knaan, the Technospiritualist" width="700" height="393" loading="lazy">
+        <div class="port-overlay">
+          <div>
+            <div class="port-name">Talia Michaeli</div>
+            <div class="port-role">Workshop facilitator &amp; coach</div>
+          </div>
+        </div>
+        <a href="https://taliamichaeli.com/" target="_blank" rel="noopener" class="port-link" aria-label="Talia Michaeli"><span class="sr-only">Talia Michaeli's website - workshop facilitator and coach</span></a>
+      </div>
+      <div class="port-item rv d1">
+        <img src="../Images/Websites/hooponopono.webp" alt="Website built for Ho'oponopono Israel - spiritual development center, a project by Oren Knaan, the Technospiritualist" width="700" height="393" loading="lazy">
+        <div class="port-overlay">
+          <div>
+            <div class="port-name">Ho'oponopono Israel</div>
+            <div class="port-role">Spiritual development center</div>
+          </div>
+        </div>
+        <a href="https://hooponopono-israel.co.il/" target="_blank" rel="noopener" class="port-link" aria-label="Ho'oponopono Israel"><span class="sr-only">Ho'oponopono Israel website - spiritual development center</span></a>
+      </div>
+      <div class="port-item rv d2">
+        <img src="../Images/Websites/ohadgalon.webp" alt="Website built for Ohad Galon - wealth management and finance, a project by Oren Knaan, the Technospiritualist" width="700" height="393" loading="lazy">
+        <div class="port-overlay">
+          <div>
+            <div class="port-name">Ohad Galon</div>
+            <div class="port-role">Wealth management &amp; finance</div>
+          </div>
+        </div>
+        <a href="https://ohadgalon.com/" target="_blank" rel="noopener" class="port-link" aria-label="Ohad Galon"><span class="sr-only">Ohad Galon's website - wealth management and finance</span></a>
+      </div>
+      <div class="port-item rv d3">
+        <img src="../Images/Websites/tarbut.webp" alt="Website built for Tarbut Al HaSaf - culture and arts organization, a project by Oren Knaan, the Technospiritualist" width="700" height="393" loading="lazy">
+        <div class="port-overlay">
+          <div>
+            <div class="port-name">Tarbut Al HaSaf</div>
+            <div class="port-role">Culture &amp; arts</div>
+          </div>
+        </div>
+        <a href="https://tarbutalhasaf.co.il/" target="_blank" rel="noopener" class="port-link" aria-label="Tarbut Al HaSaf"><span class="sr-only">Tarbut Al HaSaf website - culture and arts</span></a>
+      </div>
+    </div>
+    <div class="port-carousel" id="port-carousel">
+      <div class="port-carousel-track" id="port-carousel-track">
+        <div class="port-item">
+          <div class="port-card">
+            <img src="../Images/Websites/taliamichaeli.webp" alt="Website built for Talia Michaeli - workshop facilitator and coach" width="700" height="393" loading="lazy">
+            <div class="port-overlay"><div><div class="port-name">Talia Michaeli</div><div class="port-role">Workshop facilitator &amp; coach</div></div></div>
+            <a href="https://taliamichaeli.com/" target="_blank" rel="noopener" class="port-link" aria-label="Talia Michaeli"><span class="sr-only">Talia Michaeli's website</span></a>
+          </div>
+        </div>
+        <div class="port-item">
+          <div class="port-card">
+            <img src="../Images/Websites/hooponopono.webp" alt="Website built for Ho'oponopono Israel - spiritual development center" width="700" height="393" loading="lazy">
+            <div class="port-overlay"><div><div class="port-name">Ho'oponopono Israel</div><div class="port-role">Spiritual development center</div></div></div>
+            <a href="https://hooponopono-israel.co.il/" target="_blank" rel="noopener" class="port-link" aria-label="Ho'oponopono Israel"><span class="sr-only">Ho'oponopono Israel website</span></a>
+          </div>
+        </div>
+        <div class="port-item">
+          <div class="port-card">
+            <img src="../Images/Websites/ohadgalon.webp" alt="Website built for Ohad Galon - wealth management and finance" width="700" height="393" loading="lazy">
+            <div class="port-overlay"><div><div class="port-name">Ohad Galon</div><div class="port-role">Wealth management &amp; finance</div></div></div>
+            <a href="https://ohadgalon.com/" target="_blank" rel="noopener" class="port-link" aria-label="Ohad Galon"><span class="sr-only">Ohad Galon's website</span></a>
+          </div>
+        </div>
+        <div class="port-item">
+          <div class="port-card">
+            <img src="../Images/Websites/tarbut.webp" alt="Website built for Tarbut Al HaSaf - culture and arts organization" width="700" height="393" loading="lazy">
+            <div class="port-overlay"><div><div class="port-name">Tarbut Al HaSaf</div><div class="port-role">Culture &amp; arts</div></div></div>
+            <a href="https://tarbutalhasaf.co.il/" target="_blank" rel="noopener" class="port-link" aria-label="Tarbut Al HaSaf"><span class="sr-only">Tarbut Al HaSaf website</span></a>
+          </div>
+        </div>
+      </div>
+      <div class="port-carousel-dots" id="port-carousel-dots"></div>
+    </div>
+    <p class="port-more rv d1">
+      And also
+      <a href="https://antro-seminar.org/" target="_blank" rel="noopener">Sophia - Seminar for the Science of Spirit</a>,
+      <a href="https://childhoodworld.co.il/" target="_blank" rel="noopener">The World of Childhood</a>,
+      <a href="https://dr-talmon.co.il/" target="_blank" rel="noopener">Dr. Talmon</a>, and more
+    </p>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process" class="section">
+  <div class="container">
+    <div class="pain-heading rv">
+      <h2 class="section-h2">A simple process, <em>a real result</em></h2>
+      <p class="section-sub">Three steps - from the first conversation to a website that feels exactly like you</p>
+      <div class="bar"></div>
+    </div>
+    <div class="process-grid">
+      <div class="step rv">
+        <div class="step-num">01</div>
+        <div class="step-icon"><i class="fa-solid fa-mug-hot"></i></div>
+        <h3>Intro call</h3>
+        <p>20 minutes on WhatsApp or Zoom - we figure out what you do, who your clients are and what matters most for your website to do. No cost, no commitment.</p>
+      </div>
+      <div class="step rv d1">
+        <div class="step-num">02</div>
+        <div class="step-icon"><i class="fa-solid fa-pen-ruler"></i></div>
+        <h3>Building &amp; design</h3>
+        <p>I build your website - from the structure, design and images to the SEO copy. You get updates along the way and you approve the direction.</p>
+      </div>
+      <div class="step rv d2">
+        <div class="step-num">03</div>
+        <div class="step-icon"><i class="fa-solid fa-rocket"></i></div>
+        <h3>Going live + support</h3>
+        <p>Your website goes live. You get a tutorial video, full access, and support for the first two weeks - because I want you to feel in control.</p>
+      </div>
+    </div>
+    <p class="process-note rv d2">Most projects are done within 2-3 weeks of the first call.</p>
+  </div>
+</section>
+
+
+<!-- IMAGE DIVIDER: information systems & automations -->
+<div class="img-divider" style="--bg:url('../Images/Assets/Sections/section-management-systems-4x3.webp')">
+  <div class="img-div-bg-wrap"><div class="img-div-bg"></div></div>
+  <div class="img-divider-title">Information Systems &amp; Automations</div>
+</div>
+
+<!-- MANAGEMENT SYSTEMS -->
+<section id="management-systems" class="section">
+  <div class="container">
+    <div class="msys-top">
+      <div class="msys-img rv">
+        <img src="../Images/Assets/abacus.webp" alt="Abacus - business management systems" width="600" height="600" style="border-radius:0;box-shadow:none;" loading="lazy">
+      </div>
+      <div class="msys-main">
+        <div class="pain-heading rv">
+          <h2 class="section-h2">The tools that run your business<br><em>while you do your thing</em></h2>
+          <p class="section-sub">CRM systems, automations, smart forms and booking systems - everything connected, everything runs on its own</p>
+          <div class="bar"></div>
+        </div>
+        <div class="msys-grid rv">
+          <div class="msys-node">
+            <div class="msys-glyph"><i class="fa-solid fa-layer-group"></i></div>
+            <h3>Information management</h3>
+            <p>Assets, budget, contacts, rooms and inventory: everything that needs to be organized, sorted and displayed so your business runs with clarity.</p>
+            <button class="msys-expand-btn" aria-expanded="false">Examples <i class="fa-solid fa-chevron-down ch msys-arrow"></i></button>
+            <div class="msys-examples" role="region">
+              <div class="msys-examples-inner">
+                <div class="msys-examples-body">
+                  <span class="msys-tag">Client card - conversations, payments, history</span>
+                  <span class="msys-tag">What came in and what went out - in a live table</span>
+                  <span class="msys-tag">What's in stock and what's missing</span>
+                  <span class="msys-tag">Rooms - who's booked and who's free</span>
+                  <span class="msys-tag">Contracts and forms in one place</span>
+                  <span class="msys-tag">A full view of the whole business</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="msys-node d1">
+            <div class="msys-glyph"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+            <h3>AI &amp; automations</h3>
+            <p>Making things happen on their own: emails, reminders, drafting. And now smarter too, with artificial intelligence.</p>
+            <button class="msys-expand-btn" aria-expanded="false">Examples <i class="fa-solid fa-chevron-down ch msys-arrow"></i></button>
+            <div class="msys-examples" role="region">
+              <div class="msys-examples-inner">
+                <div class="msys-examples-body">
+                  <span class="msys-tag">Automatic welcome email</span>
+                  <span class="msys-tag">WhatsApp reminder the day before a meeting</span>
+                  <span class="msys-tag">AI that writes price quotes for you</span>
+                  <span class="msys-tag">Inquiries that sort themselves by topic</span>
+                  <span class="msys-tag">A weekly summary that lands in your inbox on its own</span>
+                  <span class="msys-tag">Posts that go out on their own according to a plan</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="msys-node d2">
+            <div class="msys-glyph"><i class="fa-solid fa-puzzle-piece"></i></div>
+            <h3>Integrations</h3>
+            <p>Connecting external services to your website: payments, analytics, chatbots and booking systems.</p>
+            <button class="msys-expand-btn" aria-expanded="false">Examples <i class="fa-solid fa-chevron-down ch msys-arrow"></i></button>
+            <div class="msys-examples" role="region">
+              <div class="msys-examples-inner">
+                <div class="msys-examples-body">
+                  <span class="msys-tag">Payment on the site + an invoice that issues itself</span>
+                  <span class="msys-tag">Clients book their own appointment on the site</span>
+                  <span class="msys-tag">A bot that answers clients at night too</span>
+                  <span class="msys-tag">How many visited and what they searched on Google</span>
+                  <span class="msys-tag">Advertising that reaches only those who are interested</span>
+                  <span class="msys-tag">A direct WhatsApp button from the site</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- IMAGE DIVIDER: consulting & guidance -->
+<div class="img-divider" style="--bg:url('../Images/Assets/Sections/section-teaching-4x3.webp')">
+  <div class="img-div-bg-wrap"><div class="img-div-bg"></div></div>
+  <div class="img-divider-title">Consulting &amp; Guidance</div>
+</div>
+
+<!-- CONSULTATION -->
+<section id="consultation">
+
+  <!-- Top accent bar -->
+  <div aria-hidden="true" style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(to right, #2D6B6B 0%, #C4502A 48%, #D4A843 100%);"></div>
+
+  <!-- Ambient warm circle -->
+  <div aria-hidden="true" style="position: absolute; bottom: -160px; right: -160px; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(45,107,107,0.055) 0%, transparent 65%); pointer-events: none;"></div>
+
+  <div class="consult-grid">
+
+    <!-- Left col: heading + stacked service cards -->
+    <div>
+
+      <header class="rv" style="margin-bottom: 36px;">
+        <span style="font-size: 11px; font-weight: 700; color: #2D6B6B; letter-spacing: .25em; text-transform: uppercase; display: block; margin-bottom: 14px;">Guidance &amp; consulting</span>
+        <h2 style="font-family: 'Secular One', sans-serif; font-size: 36px; color: #2C2420; letter-spacing: -.015em; line-height: 1.12; margin-bottom: 14px;">Know what to do<br><em style="color: #2D6B6B; font-style: normal;">before</em> you do it</h2>
+        <p style="font-size: 15.5px; color: #8A7A6E; line-height: 1.8; max-width: 400px;">Personal or group guidance over video call, on three topics every conscious business needs to understand</p>
+        <div style="width: 52px; height: 3px; background: linear-gradient(90deg, #C4502A, #D4A843); border-radius: 4px; margin-top: 18px;"></div>
+      </header>
+
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+
+        <div class="rv d1" style="background: #ffffff; border: 1.5px solid #EDE5D6; border-inline-start: 3px solid #2D6B6B; border-radius: 12px; padding: 22px; display: flex; align-items: flex-start; gap: 16px; box-shadow: 0 2px 12px rgba(44,36,32,0.055);">
+          <div style="width: 46px; height: 46px; border-radius: 50%; background: #DFF0F0; display: flex; align-items: center; justify-content: center; color: #2D6B6B; font-size: 19px; flex-shrink: 0;">
+            <i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i>
+          </div>
+          <div style="flex: 1; min-width: 0;">
+            <h3 style="font-family: 'Secular One', sans-serif; font-size: 17px; color: #2C2420; margin-bottom: 5px; line-height: 1.3;">Building &amp; design with AI</h3>
+            <p style="font-size: 13.5px; color: #8A7A6E; line-height: 1.75; margin: 0;">Build pages, design materials and write content with AI tools, without being a developer and without paying a designer.</p>
+          </div>
+        </div>
+
+        <div class="rv d2" style="background: #ffffff; border: 1.5px solid #EDE5D6; border-inline-start: 3px solid #C4502A; border-radius: 12px; padding: 22px; display: flex; align-items: flex-start; gap: 16px; box-shadow: 0 2px 12px rgba(44,36,32,0.055);">
+          <div style="width: 46px; height: 46px; border-radius: 50%; background: #fce9e3; display: flex; align-items: center; justify-content: center; color: #C4502A; font-size: 19px; flex-shrink: 0;">
+            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+          </div>
+          <div style="flex: 1; min-width: 0;">
+            <h3 style="font-family: 'Secular One', sans-serif; font-size: 17px; color: #2C2420; margin-bottom: 5px; line-height: 1.3;">Promotion on Google &amp; AI engines</h3>
+            <p style="font-size: 13.5px; color: #8A7A6E; line-height: 1.75; margin: 0;">SEO and AEO for today's world: so Google, ChatGPT, Gemini and Perplexity find you.</p>
+          </div>
+        </div>
+
+        <div class="rv d3" style="background: #ffffff; border: 1.5px solid #EDE5D6; border-inline-start: 3px solid #D4A843; border-radius: 12px; padding: 22px; display: flex; align-items: flex-start; gap: 16px; box-shadow: 0 2px 12px rgba(44,36,32,0.055);">
+          <div style="width: 46px; height: 46px; border-radius: 50%; background: #fdf5e0; display: flex; align-items: center; justify-content: center; color: #D4A843; font-size: 19px; flex-shrink: 0;">
+            <i class="fa-solid fa-compass" aria-hidden="true"></i>
+          </div>
+          <div style="flex: 1; min-width: 0;">
+            <h3 style="font-family: 'Secular One', sans-serif; font-size: 17px; color: #2C2420; margin-bottom: 5px; line-height: 1.3;">Strategic consulting</h3>
+            <p style="font-size: 13.5px; color: #8A7A6E; line-height: 1.75; margin: 0;">One conversation to find the right path for you, so your time and money bring real results.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Right col: pricing panel -->
+    <div class="consult-panel" style="background: #162828; border-radius: 16px; padding: 28px 24px; overflow: hidden; position: relative;">
+
+      <div aria-hidden="true" style="position: absolute; top: -60px; left: 50%; transform: translateX(-50%); width: 260px; height: 160px; background: radial-gradient(ellipse, rgba(212,168,67,0.16) 0%, transparent 70%); pointer-events: none;"></div>
+
+      <div class="rv d2" style="position: relative; z-index: 1; text-align: center;">
+
+        <!-- Personal session -->
+        <div class="consult-opt">
+          <p class="consult-opt-label">Personal session</p>
+          <span class="consult-opt-price">₪450</span>
+          <p class="consult-opt-sub">per hour · video call</p>
+          <a class="consult-wa-btn" href="https://api.whatsapp.com/send?phone=972544757906&text=Hi%20Oren%2C%20I%27d%20like%20to%20schedule%20a%20personal%20guidance%20session." target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            Send a message and we'll schedule
+          </a>
+        </div>
+
+        <div class="consult-opt-divider">
+          <div></div>
+          <span>or</span>
+          <div></div>
+        </div>
+
+        <!-- Group / Webinar -->
+        <div class="consult-opt">
+          <p class="consult-opt-label">Group session · Webinar</p>
+          <p class="consult-opt-sub"></p> <!-- cancelled -->
+          <a class="consult-group-btn" href="#contact">Contact us for details</a>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" class="section">
+  <div class="container">
+    <div class="tes-header rv">
+      <h2 class="section-h2">Happy clients are<br><em style="color:#75bab8">the best recommendation</em></h2>
+      <div class="bar"></div>
+    </div>
+    <div class="tes-grid">
+
+      <div class="tc rv">
+        <div class="tq">❝</div>
+        <p class="tt">I met Oren through Facebook - there was something in the simplicity that came across that felt exactly right to me. Oren built me a landing page for an event I was producing, and from the very first moment it was clear that making everything run smoothly mattered as much to Oren as it did to me. Everything was ahead of schedule, beyond what I asked for, and Oren even managed to put my vision into more precise words. <strong>Highly recommended, from the heart.</strong></p>
+        <div class="ta">
+          <div class="av"><img src="../Images/Endorsers/Mia-Dolinger.webp" alt="Mia Dolinger - artist and workshop facilitator, a client of the Technospiritualist" width="96" height="96" loading="lazy"></div>
+          <div>
+            <div class="an">Mia Dolinger</div>
+            <div class="ar">Artist &amp; workshop facilitator</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tc rv d1">
+        <div class="tq">❝</div>
+        <p class="tt">Oren built me a website and I'm very happy with the connection between us. It was a pleasure to work with Oren - I enjoyed both the process itself and the result. Sensitive, caring, very professional and patient. Oren stayed in touch with me the whole time and guided me throughout. <strong>Work from the heart.</strong></p>
+        <div class="ta">
+          <div class="av"><img src="../Images/Endorsers/Aleksandra-Gendelman.webp" alt="Aleksandra Gendelman - holistic therapist, a client of the Technospiritualist" width="96" height="96" loading="lazy"></div>
+          <div>
+            <div class="an">Aleksandra Gendelman</div>
+            <div class="ar">Holistic therapist</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tc rv d2">
+        <div class="tq">❝</div>
+        <p class="tt">Oren designed the cover for my second book. We went through a good process that included consultation, shaping a concept, and the design Oren created. <strong>I warmly recommend this to anyone who needs and wants this kind of service.</strong></p>
+        <div class="ta">
+          <div class="av"><img src="../Images/Endorsers/Shahar-Ben-Porath.webp" alt="Shahar Ben Porat - channeler, author and journalist, a client of the Technospiritualist" width="96" height="96" loading="lazy"></div>
+          <div>
+            <div class="an">Shahar Ben Porat</div>
+            <div class="ar">Channeler, author &amp; journalist</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tc rv d3">
+        <div class="tq">❝</div>
+        <p class="tt">Pleasant, patient, attentive and caring service from Oren, thank you ❤</p>
+        <div class="ta">
+          <div class="av"><img src="../Images/Endorsers/Nevo-Shevach.webp" alt="Nevo Shevach - movement artist and holistic healer, a client of the Technospiritualist" width="96" height="96" loading="lazy"></div>
+          <div>
+            <div class="an">Nevo Shevach</div>
+            <div class="ar">Movement artist &amp; holistic healer</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="tes-carousel splide" id="tes-splide">
+      <div class="splide__track">
+        <ul class="splide__list">
+          <li class="splide__slide">
+            <div class="tc">
+              <div class="tq">❝</div>
+              <p class="tt">I met Oren through Facebook - there was something in the simplicity that came across that felt exactly right to me. Oren built me a landing page for an event I was producing, and from the very first moment it was clear that making everything run smoothly mattered as much to Oren as it did to me. Everything was ahead of schedule, beyond what I asked for, and Oren even managed to put my vision into more precise words. <strong>Highly recommended, from the heart.</strong></p>
+              <div class="ta">
+                <div class="av"><img src="../Images/Endorsers/Mia-Dolinger.webp" alt="Mia Dolinger - artist and workshop facilitator, a client of the Technospiritualist" width="96" height="96" loading="lazy"></div>
+                <div><div class="an">Mia Dolinger</div><div class="ar">Artist &amp; workshop facilitator</div></div>
+              </div>
+            </div>
+          </li>
+          <li class="splide__slide">
+            <div class="tc">
+              <div class="tq">❝</div>
+              <p class="tt">Oren built me a website and I'm very happy with the connection between us. It was a pleasure to work with Oren - I enjoyed both the process itself and the result. Sensitive, caring, very professional and patient. Oren stayed in touch with me the whole time and guided me throughout. <strong>Work from the heart.</strong></p>
+              <div class="ta">
+                <div class="av"><img src="../Images/Endorsers/Aleksandra-Gendelman.webp" alt="Aleksandra Gendelman - holistic therapist, a client of the Technospiritualist" width="96" height="96" loading="lazy"></div>
+                <div><div class="an">Aleksandra Gendelman</div><div class="ar">Holistic therapist</div></div>
+              </div>
+            </div>
+          </li>
+          <li class="splide__slide">
+            <div class="tc">
+              <div class="tq">❝</div>
+              <p class="tt">Oren designed the cover for my second book. We went through a good process that included consultation, shaping a concept, and the design Oren created. <strong>I warmly recommend this to anyone who needs and wants this kind of service.</strong></p>
+              <div class="ta">
+                <div class="av"><img src="../Images/Endorsers/Shahar-Ben-Porath.webp" alt="Shahar Ben Porat - channeler, author and journalist, a client of the Technospiritualist" width="96" height="96" loading="lazy"></div>
+                <div><div class="an">Shahar Ben Porat</div><div class="ar">Channeler, author &amp; journalist</div></div>
+              </div>
+            </div>
+          </li>
+          <li class="splide__slide">
+            <div class="tc">
+              <div class="tq">❝</div>
+              <p class="tt">Pleasant, patient, attentive and caring service from Oren, thank you ❤</p>
+              <div class="ta">
+                <div class="av"><img src="../Images/Endorsers/Nevo-Shevach.webp" alt="Nevo Shevach - movement artist and holistic healer, a client of the Technospiritualist" width="96" height="96" loading="lazy"></div>
+                <div><div class="an">Nevo Shevach</div><div class="ar">Movement artist &amp; holistic healer</div></div>
+              </div>
+            </div>
+          </li>
+          <li class="splide__slide">
+            <div class="tc">
+              <div class="tq">❝</div>
+              <p class="tt">I warmly recommend Oren Knaan as a website builder. Working together I found professionalism, openness and honest dialogue. The result was excellent.</p>
+              <div class="ta">
+                <div class="av"><img src="../Images/Endorsers/Gilad-Goldschmidt.webp" alt="Gilad Goldschmidt, a client of the Technospiritualist" width="96" height="96" loading="lazy"></div>
+                <div><div class="an">Gilad Goldschmidt</div><div class="ar">A founder of Waldorf education in Israel</div></div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF BAR -->
+<section id="proof-bar">
+  <div class="container">
+    <div class="proof-row">
+      <div class="proof-item rv">
+        <div><span class="proof-num" data-to="100">0</span><span class="proof-unit">%</span></div>
+        <div class="proof-label">Client satisfaction</div>
+      </div>
+      <div class="proof-item rv d1">
+        <div><span class="proof-num" data-to="10">0</span><span class="proof-unit">+</span></div>
+        <div class="proof-label">Years of experience</div>
+      </div>
+      <div class="proof-item rv d2">
+        <div><span class="proof-num" data-to="8">0</span><span class="proof-unit">h</span></div>
+        <div class="proof-label">To get a price quote</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT + APPEARS-ON (snap pair) -->
+<div class="snap-pair">
+<section id="about" class="section">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img-wrap rv">
+        <img src="../Images/Oren-Knaan.webp" alt="Oren Knaan - the Technospiritualist" width="560" height="676" loading="lazy">
+        <div class="about-badge">
+          <div class="n">10+</div>
+          <div class="l">years of experience</div>
+        </div>
+      </div>
+      <div class="about-txt rv d1">
+        <h2>Who am I?</h2>
+        <div class="about-bar"></div>
+        <p class="about-lead">The <span style="color:var(--terra)">Technospiritualist</span>: by day burning incense. By night building websites.</p>
+        <p class="about-p">I'm Oren Knaan - a website builder and graphic designer with <strong>10+ years of experience</strong>, specializing in spiritual and therapeutic businesses in Israel. I've been through the same journey you're on - I looked for someone who understands both the world of spirit and the digital world. I couldn't find one - so I became that person.</p>
+        <p class="about-p">I accompany every client from the idea to the result - with patience, creativity and attention to the small details that make the big difference. Every business has a unique soul - and my role is to help it shine in the digital world too.</p>
+        <div class="tags">
+          <span class="tag">WordPress</span>
+          <span class="tag">Graphic design</span>
+          <span class="tag">Branding</span>
+          <span class="tag">SEO</span>
+          <span class="tag">Automations</span>
+          <span class="tag">Elementor</span>
+        </div>
+        <p class="about-p" style="margin-top:20px">I also write about these topics <a href="/en/blog/" style="color:var(--teal);font-weight:700;">on the blog <i class="fa-solid fa-chevron-right ch"></i></a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPEARS ON -->
+<section id="appears-on">
+  <div class="container">
+    <div class="appears-inner">
+      <p class="appears-label">Also featured on:</p>
+      <a href="https://maps.app.goo.gl/kpdjThQQpELAWhMB9" target="_blank" rel="noopener" class="appears-logo">
+        <img src="../Images/appears-on/google-business.webp" alt="Google Business" width="300" height="300" loading="lazy">
+      </a>
+      <a href="https://www.facebook.com/TechnoSpiritualist" target="_blank" rel="noopener" class="appears-logo">
+        <img src="../Images/appears-on/facebook.webp" alt="Facebook" width="300" height="300" loading="lazy">
+      </a>
+      <a href="http://b144.ws/jbjwr4" target="_blank" rel="noopener" class="appears-logo">
+        <img src="../Images/appears-on/bezeq144.webp" alt="Bezeq 144" width="300" height="300" loading="lazy">
+      </a>
+    </div>
+  </div>
+</section>
+</div><!-- /.snap-pair -->
+
+
+<!-- GUARANTEE -->
+<section id="guarantee">
+  <div class="container">
+    <div class="guarantee-inner rv">
+      <div class="guarantee-icon"><i class="fa-solid fa-shield-halved"></i></div>
+      <h2>You're not taking <em>any risk</em></h2>
+      <p>
+        The first consultation call is completely free - no cost, no commitment.
+        Before we start, you get a clear proposal with a final price.
+        No surprises. No pressure.
+        <br><br>
+        And if, after seeing the first version of the website, you feel it's not the right direction -
+        <strong>we'll fix it until it's exactly right.</strong>
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- FINAL CTA -->
+<section id="final-cta" style="display:none">
+  <div class="container">
+    <div class="final-inner">
+      <h2 class="rv d1">
+        Let's build you<br>
+        <em>a website that works for you</em>
+      </h2>
+      <p class="rv d2">
+        A 20-minute consultation call - and together we'll know if this is the right direction.<br>
+        No cost. No commitment. Just a good conversation.
+      </p>
+      <div class="final-cta-row rv d3">
+        <a href="https://api.whatsapp.com/send?phone=972544757906&text=Hi%20Oren%2C%20let%27s%20schedule%20a%20short%20consultation%20call." target="_blank" rel="noopener" class="btn-wa">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Message me on WhatsApp <i class="fa-solid fa-chevron-right ch"></i>
+        </a>
+        <span class="or-txt">- or -</span>
+        <a href="#contact" class="btn-form">Fill out the contact form</a>
+      </div>
+      <div class="final-fud rv d3">
+        <span>No cost</span>
+        <span>No commitment</span>
+        <span>Reply within 24 hours</span>
+        <span>Conversation in English</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- FAQ -->
+<section id="faq" class="section">
+  <div class="container">
+    <div class="pain-heading rv">
+      <h2 class="section-h2">Questions <em>people usually</em> ask</h2>
+      <div class="bar"></div>
+    </div>
+    <div class="faq-wrap">
+
+      <div class="faq-item rv">
+        <button class="faq-q"><span>How much does it cost to build a website?</span><div class="faq-icon">+</div></button>
+        <div class="faq-a">
+          <p class="faq-short">Most clients pay between ₪2,500 and ₪6,500 for a full website, and payments can be split.</p>
+          <p class="faq-detail">Every project is different - it depends on how many pages you need, what you want to include and your specific needs. After a short intro call I prepare a clear price quote, with no surprises.</p>
+        </div>
+      </div>
+
+      <div class="faq-item rv d1">
+        <button class="faq-q"><span>How long does the build take?</span><div class="faq-icon">+</div></button>
+        <div class="faq-a">
+          <p class="faq-short">A full website is usually ready within three weeks of the first call.</p>
+          <p class="faq-detail">A landing page - sometimes a week to ten days. The pace depends on you too: the faster you respond and the sooner you bring content and images, the faster everything moves.</p>
+        </div>
+      </div>
+
+      <div class="faq-item rv d2">
+        <button class="faq-q"><span>I'm not a technology person - will that be a problem?</span><div class="faq-icon">+</div></button>
+        <div class="faq-a">
+          <p class="faq-short">Not at all - that's actually the reason we work well together.</p>
+          <p class="faq-detail">The whole technical side is on me, from the domain to security. After the website goes live you get a short tutorial video so you can update content yourself whenever you want - and if you don't want to, that's fine too.</p>
+        </div>
+      </div>
+
+      <div class="faq-item rv d3">
+        <button class="faq-q"><span>I already have a website - should I renovate or rebuild?</span><div class="faq-icon">+</div></button>
+        <div class="faq-a">
+          <p class="faq-short">It depends - there's no generic answer, I look at each case on its own merits.</p>
+          <p class="faq-detail">I look at what you have and tell you straight what I recommend - even if that means there's no point investing right now. Sometimes a few focused changes do more good than rebuilding. Sometimes the opposite. We'll check together.</p>
+        </div>
+      </div>
+
+      <div class="faq-item rv">
+        <button class="faq-q"><span>What happens after the website goes live?</span><div class="faq-icon">+</div></button>
+        <div class="faq-a">
+          <p class="faq-short">I don't let go - there's support for the first two weeks.</p>
+          <p class="faq-detail">You get two weeks of support - questions, small fixes, whatever you need. Want to continue with ongoing maintenance? That's an option. Prefer to be fully independent? I prepare you for that from day one.</p>
+        </div>
+      </div>
+
+      <!-- 10 additional items - hidden until "Show more questions" -->
+
+      <div class="faq-item rv faq-hidden">
+        <button class="faq-q"><span>What's the difference between Wix and a website built by a professional?</span><div class="faq-icon">+</div></button>
+        <div class="faq-a">
+          <p class="faq-short">Wix is good for trying things out; a professional website is built around your goal.</p>
+          <p class="faq-detail">With Wix you'll spend money every month, run into limitations, and the result usually looks like a template. A professional website is built around your story, is faster, and isn't "locked" into any platform. Once you have a website like that, you'll feel the difference.</p>
+        </div>
+      </div>
+
+      <div class="faq-item rv faq-hidden">
+        <button class="faq-q"><span>How will a website bring me clients?</span><div class="faq-icon">+</div></button>
+        <div class="faq-a">
+          <p class="faq-short">The website doesn't bring clients - it converts interest into contact.</p>
+          <p class="faq-detail">Clients arrive through Google, recommendations or social media. The website is what turns "interesting" into "I want to book". That's why design, content and SEO work together - one without the others doesn't do much.</p>
+        </div>
+      </div>
+
+      <div class="faq-item rv faq-hidden">
+        <button class="faq-q"><span>Will the website be mobile-friendly?</span><div class="faq-icon">+</div></button>
+        <div class="faq-a">
+          <p class="faq-short">Yes - and designed for mobile first.</p>
+          <p class="faq-detail">More than 70% of browsing in Israel is on mobile. Every website I build is planned from the start for small screens - the design, the speed and the UX.</p>
+        </div>
+      </div>
+
+      <div class="faq-item rv faq-hidden">
+        <button class="faq-q"><span>Do you also write the content?</span><div class="faq-icon">+</div></button>
+        <div class="faq-a">
+          <p class="faq-short">It's possible - writing is part of what I bring to the table.</p>
+          <p class="faq-detail">You can bring raw content and I'll design it, we can write together, or I can write everything based on a conversation between us. I don't copy-paste generic wording - the writing is tailored to your voice.</p>
+        </div>
+      </div>
+
+      <div class="faq-item rv faq-hidden">
+        <button class="faq-q"><span>Do you work with WordPress?</span><div class="faq-icon">+</div></button>
+        <div class="faq-a">
+          <p class="faq-short">Yes, but not necessarily - it depends on what suits you.</p>
+          <p class="faq-detail">WordPress is a great fit for blogs, stores and websites that are updated often. For small spiritual businesses I sometimes recommend static HTML - fast, cheap to maintain, and more secure. We'll decide together what the right tool is.</p>
+        </div>
+      </div>
+
+      <div class="faq-item rv faq-hidden">
+        <button class="faq-q"><span>How much does monthly maintenance cost?</span><div class="faq-icon">+</div></button>
+        <div class="faq-a">
+          <p class="faq-short">Maintenance costs ₪20 a month.</p>
+          <p class="faq-detail">Hosting, backups, security updates, and availability for questions and small fixes. If you want ongoing content updates - that's possible too, in an expanded plan. I lay out the options clearly and don't push what you don't need.</p>
+        </div>
+      </div>
+
+      <div class="faq-item rv faq-hidden">
+        <button class="faq-q"><span>Do I need to buy a domain and hosting myself?</span><div class="faq-icon">+</div></button>
+        <div class="faq-a">
+          <p class="faq-short">No - I take care of all that if you like.</p>
+          <p class="faq-detail">I can take hosting and a domain in your name, and you simply receive a working website. Or you can hold everything in your own name while I only build - whatever is comfortable for you.</p>
+        </div>
+      </div>
+
+      <div class="faq-item rv faq-hidden">
+        <button class="faq-q"><span>What is SEO and how does it relate to my website?</span><div class="faq-icon">+</div></button>
+        <div class="faq-a">
+          <p class="faq-short">SEO = showing up on Google when someone searches for what you offer.</p>
+          <p class="faq-detail">Every website I build includes basic SEO - proper structure, headings, descriptions, speed. Advanced SEO with content writing and link building is a separate service. Not everyone needs it, and I'll tell you honestly if it's relevant for you.</p>
+        </div>
+      </div>
+
+      <div class="faq-item rv faq-hidden">
+        <button class="faq-q"><span>Do I need a website in Hebrew, English, or both?</span><div class="faq-icon">+</div></button>
+        <div class="faq-a">
+          <p class="faq-short">Most spiritual businesses in Israel do just fine with Hebrew only.</p>
+          <p class="faq-detail">If some of your clients speak English - an English version can be added. But it doubles the cost of writing and maintenance. I recommend starting with Hebrew, and seeing whether there's real demand for English.</p>
+        </div>
+      </div>
+
+      <div class="faq-item rv faq-hidden">
+        <button class="faq-q"><span>What makes you stand out as a website builder for spiritual businesses?</span><div class="faq-icon">+</div></button>
+        <div class="faq-a">
+          <p class="faq-short">I understand the field from the inside - not just technically.</p>
+          <p class="faq-detail">I've worked with coaches, therapists, workshop facilitators and spiritual centers. I know your challenge isn't "putting information on the internet" - it's building trust with people who are looking for resonance. The websites I build don't look like insurance and they don't look like a store - they look like you.</p>
+        </div>
+      </div>
+
+      <div class="faq-more-wrap">
+        <button class="faq-more-btn" id="faq-more-btn">Show more questions <i class="fa-solid fa-chevron-down ch"></i></button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- BLOG PREVIEW -->
+<section id="blog-preview" class="section" style="background:var(--parchment);padding-bottom:72px">
+  <div class="container">
+    <div class="pain-heading rv">
+      <h2 class="section-h2">Read before you decide</h2>
+      <div class="bar"></div>
+    </div>
+    <div class="bp-grid" id="hp-blog-grid">
+      <div class="bp-skel" aria-hidden="true">
+        <div class="bp-skel-line bp-skel-tag"></div>
+        <div class="bp-skel-line bp-skel-h1"></div>
+        <div class="bp-skel-line bp-skel-h2"></div>
+        <div class="bp-skel-line bp-skel-p1"></div>
+        <div class="bp-skel-line bp-skel-p2"></div>
+        <div class="bp-skel-line bp-skel-p3"></div>
+        <div class="bp-skel-line bp-skel-read"></div>
+      </div>
+      <div class="bp-skel" aria-hidden="true">
+        <div class="bp-skel-line bp-skel-tag"></div>
+        <div class="bp-skel-line bp-skel-h1"></div>
+        <div class="bp-skel-line bp-skel-h2"></div>
+        <div class="bp-skel-line bp-skel-p1"></div>
+        <div class="bp-skel-line bp-skel-p2"></div>
+        <div class="bp-skel-line bp-skel-p3"></div>
+        <div class="bp-skel-line bp-skel-read"></div>
+      </div>
+      <div class="bp-skel" aria-hidden="true">
+        <div class="bp-skel-line bp-skel-tag"></div>
+        <div class="bp-skel-line bp-skel-h1"></div>
+        <div class="bp-skel-line bp-skel-h2"></div>
+        <div class="bp-skel-line bp-skel-p1"></div>
+        <div class="bp-skel-line bp-skel-p2"></div>
+        <div class="bp-skel-line bp-skel-p3"></div>
+        <div class="bp-skel-line bp-skel-read"></div>
+      </div>
+      <div class="bp-skel" aria-hidden="true">
+        <div class="bp-skel-line bp-skel-tag"></div>
+        <div class="bp-skel-line bp-skel-h1"></div>
+        <div class="bp-skel-line bp-skel-h2"></div>
+        <div class="bp-skel-line bp-skel-p1"></div>
+        <div class="bp-skel-line bp-skel-p2"></div>
+        <div class="bp-skel-line bp-skel-p3"></div>
+        <div class="bp-skel-line bp-skel-read"></div>
+      </div>
+    </div>
+    <script src="/en/blog/posts.js"></script>
+    <script>
+    (function(){
+      var pool=BLOG_POSTS.filter(function(p){return p.published;}).sort(function(a,b){
+        if(b.weeklyViews!==a.weeklyViews)return b.weeklyViews-a.weeklyViews;
+        return a.d.localeCompare(b.d);
+      });
+      var g=document.getElementById('hp-blog-grid');
+      if(g)g.innerHTML=pool.slice(0,4).map(function(p,i){
+        return'<a href="https://techspirit.co.il/en/blog/'+p.slug+'/" class="bp-card rv'+(i>0?' d'+i:'')+'">'
+          +'<span class="bp-tag">'+p.tag+'</span>'
+          +'<h3>'+p.title+'</h3>'
+          +'<p>'+p.excerpt+'</p>'
+          +'<span class="bp-read">Read more <i class="fa-solid fa-chevron-right ch"></i></span>'
+          +'</a>';
+      }).join('');
+    })();
+    </script>
+    <p class="port-more rv" style="margin-top:28px"><a href="/en/blog/">All blog articles <i class="fa-solid fa-chevron-right ch"></i></a></p>
+  </div>
+</section>
+
+
+<!-- IMAGE DIVIDER 5 -->
+<div id="contact-divider" class="img-divider" style="--bg:url('../Images/Assets/Sections/section-contact-4x3.webp')">
+  <div class="img-div-bg-wrap"><div class="img-div-bg"></div></div>
+  <div class="img-divider-title">Let's talk</div>
+</div>
+
+<!-- CONTACT FORM -->
+<section id="contact" class="section">
+  <div class="container">
+    <div class="con-g">
+      <div class="con-l rv">
+        <h2>Let's talk</h2>
+        <div class="con-bar"></div>
+        <p class="con-desc">Got an idea? A project? A question?<br>Send a message and I'll get back to you soon.</p>
+        <form id="cf" novalidate>
+          <input type="hidden" name="_subject" value="New lead from the website - Technospiritualist">
+          <input type="hidden" name="_language" value="en">
+          <div class="frow">
+            <div class="fg">
+              <input type="text" id="fn" name="name" placeholder="Your name" required>
+            </div>
+            <div class="fg">
+              <input type="email" id="em" name="email" placeholder="your@email.com" required>
+            </div>
+          </div>
+          <div class="fg">
+            <input type="tel" id="ph" name="phone" placeholder="Phone (optional)">
+          </div>
+          <div class="fg">
+            <textarea id="msg" name="message" placeholder="Who you are, what you offer, and what you need..." required></textarea>
+          </div>
+          <button type="submit" class="sub-btn" id="sbtn">Send message</button>
+        </form>
+        <div class="or-div">or</div>
+        <a href="https://api.whatsapp.com/send?phone=972544757906&text=Hi%20Oren%2C%20let%27s%20schedule%20a%20short%20consultation%20call." target="_blank" rel="noopener noreferrer" class="wa">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Message me on WhatsApp
+        </a>
+      </div>
+      <div class="con-r rv d1">
+        <img src="../Images/Assets/scroll.webp" alt="Scroll - send a message" width="600" height="600" style="border-radius:0;box-shadow:none;" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <img src="../Images/Assets/monk-hq.webp" alt="Technospiritualist" class="f-monk">
+    <div class="f-brand">Technospiritualist</div>
+    <p class="f-tag">By day burning incense, by night building websites.</p>
+    <ul class="f-links">
+      <li><a href="#value-prop">Services</a></li>
+      <li><a href="#seo-aeo">SEO</a></li>
+      <li><a href="#websites">Websites</a></li>
+      <li><a href="#management-systems">Automation</a></li>
+      <li><a href="#testimonials">Testimonials</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact">Let's talk?</a></li>
+      <li><a href="/en/blog/">Blog</a></li>
+    </ul>
+    <ul class="f-links" style="margin-top:8px;font-size:13px;opacity:.7">
+      <li><a href="/en/privacy">Privacy Policy</a></li>
+      <li><a href="/en/terms">Terms of Use</a></li>
+    </ul>
+    <p class="f-copy">&copy; 2026 Technospiritualist - Oren Knaan. All rights reserved.</p>
+  </div>
+</footer>
+
+<button id="btt" aria-label="Back to top"><i class="fa-solid fa-chevron-up"></i></button>
+
+<script>
+  /* ── Nav scroll reveal ── */
+  const navEl = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    navEl.classList.toggle('show', window.scrollY >= window.innerHeight * 0.2);
+  }, { passive: true });
+
+  /* ── Back to top ── */
+  const btt = document.getElementById('btt');
+  window.addEventListener('scroll', () => {
+    const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+    btt.classList.toggle('show', pct >= 0.35);
+  }, { passive: true });
+  btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  /* ── Mobile menu ── */
+  document.getElementById('hbg').addEventListener('click', () => document.getElementById('mob').classList.add('open'));
+  document.getElementById('mobX').addEventListener('click', () => document.getElementById('mob').classList.remove('open'));
+  document.querySelectorAll('#mob a').forEach(a => a.addEventListener('click', () => document.getElementById('mob').classList.remove('open')));
+
+  /* ── Consultation panel parallax ── */
+  (function() {
+    var section = document.getElementById('consultation');
+    var panel = section && section.querySelector('.consult-panel');
+    if (!section || !panel || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var STRENGTH = 200;
+    var OFFSET = 110;
+    var mq = window.matchMedia('(max-width: 768px)');
+    function updateParallax() {
+      if (mq.matches) { panel.style.transform = ''; return; }
+      var rect = section.getBoundingClientRect();
+      var progress = rect.top / window.innerHeight;
+      panel.style.transform = 'translateY(' + (OFFSET + -progress * STRENGTH).toFixed(1) + 'px)';
+    }
+    window.addEventListener('scroll', updateParallax, { passive: true });
+    window.addEventListener('resize', updateParallax, { passive: true });
+    updateParallax();
+  })();
+
+  /* ── Scroll reveal ── */
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('on'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.rv').forEach(el => obs.observe(el));
+
+  /* ── Counter animation ── */
+  function animateCounter(el, target, duration) {
+    let start = null;
+    function step(ts) {
+      if (!start) start = ts;
+      const progress = Math.min((ts - start) / duration, 1);
+      el.textContent = Math.floor(progress * target);
+      if (progress < 1) requestAnimationFrame(step);
+      else el.textContent = target;
+    }
+    requestAnimationFrame(step);
+  }
+  const counterObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const target = parseInt(e.target.dataset.to, 10);
+        animateCounter(e.target, target, 1600);
+        counterObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('[data-to]').forEach(el => counterObs.observe(el));
+
+  /* ── FAQ accordion ── */
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.querySelector('.faq-q').addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  /* ── FAQ show more / less ── */
+  (function() {
+    const btn = document.getElementById('faq-more-btn');
+    if (!btn) return;
+    let expanded = false;
+    btn.addEventListener('click', () => {
+      expanded = !expanded;
+      document.querySelectorAll('.faq-hidden').forEach(el => {
+        el.style.display = expanded ? 'block' : '';
+      });
+      btn.innerHTML = expanded ? 'Show fewer <i class="fa-solid fa-chevron-up ch"></i>' : 'Show more questions <i class="fa-solid fa-chevron-down ch"></i>';
+      if (!expanded) {
+        document.getElementById('faq').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  })();
+
+  /* ── Funnel section tracking ── */
+  (function() {
+    if (typeof gtag === 'undefined') return;
+
+    const steps = [
+      { id: 'pain',              event: 'section_pain' },
+      { id: 'process',           event: 'section_process' },
+      { id: 'websites', event: 'section_portfolio' },
+      { id: 'testimonials',      event: 'section_testimonials' },
+      { id: 'faq',               event: 'section_faq' },
+      { id: 'contact',           event: 'section_contact' },
+    ];
+
+    const fired = new Set();
+    const sectionObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (!e.isIntersecting || fired.has(e.target.id)) return;
+        fired.add(e.target.id);
+        const step = steps.find(s => s.id === e.target.id);
+        if (step) gtag('event', step.event);
+      });
+    }, { threshold: 0.3 });
+
+    steps.forEach(s => {
+      const el = document.getElementById(s.id);
+      if (el) sectionObs.observe(el);
+    });
+
+    // WhatsApp CTA clicks - track position in page
+    document.querySelectorAll('a[href*="wa.me"]').forEach(el => {
+      el.addEventListener('click', () => {
+        const section = el.closest('section');
+        gtag('event', 'cta_whatsapp_click', {
+          cta_location: section ? section.id : 'nav'
+        });
+      });
+    });
+  })();
+
+  /* ── Hero slideshow ── */
+  (function() {
+    const slides = document.querySelectorAll('.hero-slide');
+    let cur = 0;
+    setInterval(() => {
+      slides[cur].classList.remove('active');
+      cur = (cur + 1) % slides.length;
+      slides[cur].classList.add('active');
+    }, 3500);
+  })();
+
+  /* ── Contact form (Formspree) ── */
+  const FORMSPREE_ID = 'xbdbnwwb';
+  document.getElementById('cf').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const form = e.target;
+    const btn  = document.getElementById('sbtn');
+    const orig = btn.textContent;
+
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+    btn.style.opacity = '0.75';
+
+    try {
+      const res = await fetch('https://formspree.io/f/' + FORMSPREE_ID, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (res.ok) {
+        window.location.href = '/en/thank-you';
+      } else {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || 'server error');
+      }
+    } catch (err) {
+      btn.textContent = 'Something went wrong - try again';
+      btn.style.background = 'var(--terra-hi)';
+      btn.style.opacity = '1';
+      btn.disabled = false;
+      setTimeout(() => {
+        btn.textContent = orig;
+        btn.style.background = '';
+      }, 4000);
+    }
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var el = document.getElementById('tes-splide');
+  if (!el) return;
+  var splide = new Splide(el, {
+    type: 'loop',
+    direction: 'ltr',
+    perPage: 3,
+    perMove: 1,
+    gap: '16px',
+    arrows: true,
+    pagination: false,
+    breakpoints: { 1024: { perPage: 2 }, 640: { perPage: 1 } },
+  }).mount();
+
+  // Custom pagination: always 1 dot per slide regardless of perPage
+  var totalSlides = el.querySelectorAll('.splide__slide:not(.splide__slide--clone)').length;
+  var nav = document.createElement('ul');
+  nav.className = 'splide__pagination';
+  el.appendChild(nav);
+  var dots = [];
+  for (var i = 0; i < totalSlides; i++) {
+    var li = document.createElement('li');
+    var btn = document.createElement('button');
+    btn.className = 'splide__pagination__page' + (i === 0 ? ' is-active' : '');
+    btn.setAttribute('aria-label', 'Testimonial ' + (i + 1));
+    (function(idx) { btn.addEventListener('click', function() { splide.go(idx); }); })(i);
+    li.appendChild(btn);
+    nav.appendChild(li);
+    dots.push(btn);
+  }
+  splide.on('moved', function(newIndex) {
+    var real = ((newIndex % totalSlides) + totalSlides) % totalSlides;
+    dots.forEach(function(d, i) { d.classList.toggle('is-active', i === real); });
+  });
+
+  // Websites carousel (short screens only) — native scroll-snap, dots sync via IntersectionObserver
+  (function() {
+    var track = document.getElementById('port-carousel-track');
+    var dotsWrap = document.getElementById('port-carousel-dots');
+    if (!track || !dotsWrap) return;
+    var slides = Array.prototype.slice.call(track.children);
+    var dots = slides.map(function(_, i) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.setAttribute('aria-label', 'Image ' + (i + 1));
+      if (i === 0) b.classList.add('is-active');
+      b.addEventListener('click', function() {
+        slides[i].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+      });
+      dotsWrap.appendChild(b);
+      return b;
+    });
+
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        var overlay = entry.target.querySelector('.port-overlay');
+        if (entry.isIntersecting && entry.intersectionRatio > 0.6) {
+          var idx = slides.indexOf(entry.target);
+          dots.forEach(function(d, i) { d.classList.toggle('is-active', i === idx); });
+          if (overlay) overlay.classList.add('is-visible');
+        } else if (overlay) {
+          overlay.classList.remove('is-visible');
+        }
+      });
+    }, { root: track, threshold: [0.6] });
+
+    slides.forEach(function(slide) { observer.observe(slide); });
+  })();
+});
+</script>
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "The Technospiritualist - Oren Knaan",
+  "alternateName": "Technospiritualist",
+  "url": "https://techspirit.co.il/en/",
+  "logo": "https://techspirit.co.il/Images/Assets/monk-hq.webp",
+  "image": "https://techspirit.co.il/Images/Assets/techspirit-social.jpg",
+  "description": "Website building and graphic design for spiritual business owners, therapists and facilitators in Israel - websites that speak the language of the community and bring the right clients.",
+  "telephone": "+972-54-475-7906",
+  "email": "oren@techspirit.co.il",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "IL"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "Israel"
+  },
+  "priceRange": "₪₪",
+  "sameAs": ["https://wa.me/972544757906"],
+  "founder": {
+    "@type": "Person",
+    "name": "Oren Knaan",
+    "jobTitle": "Designer and website builder",
+    "url": "https://techspirit.co.il/en/#about"
+  }
+}
+</script>
+
+<script>
+  // ── Third-eye cursor tracking ──────────────────────────────────────
+  (function() {
+    const eye  = document.getElementById('thirdEye');
+    const gaze = document.getElementById('teGaze');
+    if (!eye || !gaze) return;
+    const MAX_X = 4.2, MAX_Y = 2.0;
+    let targetX = 0, targetY = 0, curX = 0, curY = 0;
+    window.addEventListener('mousemove', e => {
+      const r = eye.getBoundingClientRect();
+      const cx = r.left + r.width  / 2;
+      const cy = r.top  + r.height / 2;
+      const dx = e.clientX - cx;
+      const dy = e.clientY - cy;
+      const dist = Math.min(Math.hypot(dx, dy) / 130, 1);
+      const angle = Math.atan2(dy, dx);
+      targetX = Math.cos(angle) * dist * MAX_X;
+      targetY = Math.sin(angle) * dist * MAX_Y;
+    }, { passive: true });
+    function tick() {
+      curX += (targetX - curX) * 0.12;
+      curY += (targetY - curY) * 0.12;
+      gaze.setAttribute('transform', `translate(${curX.toFixed(3)},${(curY + 1.5).toFixed(3)})`);
+      requestAnimationFrame(tick);
+    }
+    tick();
+  })();
+
+  // ── Cursor glow ──────────────────────────────────────────────────
+  (function() {
+    const glow = document.getElementById('cursor-glow');
+    if (!glow || matchMedia('(hover:none)').matches) { if(glow) glow.style.display='none'; return; }
+    let mx = window.innerWidth/2, my = window.innerHeight/2;
+    let cx = mx, cy = my;
+    window.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; }, { passive:true });
+    function loop() {
+      cx += (mx - cx) * 0.10;
+      cy += (my - cy) * 0.10;
+      glow.style.left = cx + 'px';
+      glow.style.top  = cy + 'px';
+      glow.style.opacity = '1';
+      requestAnimationFrame(loop);
+    }
+    loop();
+  })();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much does it cost to build a website?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Most clients in the spiritual and therapeutic field pay between ₪2,500 and ₪6,500 for a full website, and payments can be split. Every project is different - it depends on how many pages you need and your specific needs. After a short intro call a clear price quote is prepared, with no surprises." }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does it take to build a website?",
+      "acceptedAnswer": { "@type": "Answer", "text": "A full website is usually ready within three weeks of the first call. A landing page - sometimes a week to ten days. The pace depends on the client too: the faster they respond and the sooner they bring content and images, the faster everything moves." }
+    },
+    {
+      "@type": "Question",
+      "name": "I'm not a technology person - will that be a problem?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Not at all - that's actually the reason we work well together. The whole technical side - from the domain to security - is on Oren. After the website goes live you get a short tutorial video for updating content yourself whenever you want." }
+    },
+    {
+      "@type": "Question",
+      "name": "I already have a website - should I renovate or rebuild?",
+      "acceptedAnswer": { "@type": "Answer", "text": "It depends - there's no generic answer, each case is looked at on its own merits. We look at what you have and give a straight recommendation - even if that means there's no point investing right now. Sometimes a few focused changes do more good than rebuilding. We check together." }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens after the website goes live?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No letting go - there's support for the first two weeks. Questions, small fixes, whatever you need. Want to continue with ongoing maintenance? That's an option. Prefer to be fully independent? You're prepared for that from day one." }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the difference between Wix and a website built by a professional?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Wix is good for trying things out; a professional website is built around your goal. With Wix you'll spend money every month, run into limitations, and the result usually looks like a template. A professional website is built around your story, is faster, and isn't locked into any platform." }
+    },
+    {
+      "@type": "Question",
+      "name": "How will a website bring me clients?",
+      "acceptedAnswer": { "@type": "Answer", "text": "The website doesn't bring clients - it converts interest into contact. Clients arrive through Google, recommendations or social media. The website is what turns 'interesting' into 'I want to book'. That's why design, content and SEO work together - one without the others doesn't do much." }
+    },
+    {
+      "@type": "Question",
+      "name": "Will the website be mobile-friendly?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes - and designed for mobile first. More than 70% of browsing in Israel is on mobile. Every website built here is planned from the start for small screens - the design, the speed and the UX." }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you also write the content?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes - writing is part of what is brought to the table. You can bring raw content and I'll design it, we can write together, or I can write everything based on a conversation. The writing is tailored to your voice, not generic wording." }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you work with WordPress?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes, but not necessarily - it depends on what suits you. WordPress is a good fit for blogs, stores and websites that are updated often. For small spiritual businesses I sometimes recommend static HTML - fast, cheap to maintain, and more secure. We'll decide together." }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does monthly maintenance cost?",
+      "acceptedAnswer": { "@type": "Answer", "text": "₪20 a month. Includes hosting, backups, security updates, and availability for questions and small fixes. The options are laid out clearly and nothing unnecessary is pushed." }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need to buy a domain and hosting myself?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No - I can take care of all that. I can take hosting and a domain in your name, and you simply receive a working website. Or you can hold everything in your own name while I only build - whatever is comfortable for you." }
+    },
+    {
+      "@type": "Question",
+      "name": "What is SEO and how does it relate to my website?",
+      "acceptedAnswer": { "@type": "Answer", "text": "SEO is showing up on Google when someone searches for what you offer. Every website built includes basic SEO - proper structure, headings, descriptions, speed. Advanced SEO with content writing and link building is a separate service." }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need a website in Hebrew, English, or both?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Most spiritual businesses in Israel do just fine with Hebrew only. If some of your clients speak English - an English version can be added, but it doubles the cost of writing and maintenance. I recommend starting with Hebrew and seeing whether there's real demand." }
+    },
+    {
+      "@type": "Question",
+      "name": "What makes you stand out as a website builder for spiritual businesses?",
+      "acceptedAnswer": { "@type": "Answer", "text": "An understanding of the field from the inside - not just technical. I've worked with coaches, therapists, workshop facilitators and spiritual centers. Your challenge isn't putting information on the internet - it's building trust with people who are looking for resonance. The websites built here look like you." }
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How the website building process works with the Technospiritualist",
+  "description": "A simple three-step process - from the first conversation to a website that feels exactly like you",
+  "totalTime": "P3W",
+  "estimatedCost": {
+    "@type": "MonetaryAmount",
+    "currency": "ILS",
+    "minValue": "2500",
+    "maxValue": "6500"
+  },
+  "step": [
+    {
+      "@type": "HowToStep",
+      "position": 1,
+      "name": "Intro call",
+      "text": "20 minutes on WhatsApp or Zoom - we figure out what you do, who your clients are and what matters most for your website to do. No cost, no commitment.",
+      "url": "https://techspirit.co.il/en/#process"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 2,
+      "name": "Building and design",
+      "text": "I build your website - from the structure, design and images to the SEO copy. You get updates along the way and you approve the direction.",
+      "url": "https://techspirit.co.il/en/#process"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 3,
+      "name": "Going live + support",
+      "text": "Your website goes live. You get a tutorial video, full access, and support for the first two weeks - because I want you to feel in control.",
+      "url": "https://techspirit.co.il/en/#process"
+    }
+  ]
+}
+</script>
+
+<script>
+(function () {
+  // Frozen anchor + angle values; updated on layout change, read every frame
+  var lineState = null;
+  var rafId = null;
+
+  function computeLineState() {
+    var section = document.getElementById('seo-aeo');
+    var fish = document.querySelector('.seo-fish');
+    var svgEl = section ? section.querySelector('.seo-line') : null;
+    if (!section || !fish || !svgEl) return;
+    var fr = fish.getBoundingClientRect();
+    if (fr.width === 0) return;
+
+    // Use the SVG element's own rect — it already extends above the section
+    var vr = svgEl.getBoundingClientRect();
+    var vw = vr.width, vh = vr.height;
+
+    // Fish anchor: top-center of fish in SVG coords (0–100 over SVG element)
+    var ax = ((fr.left - vr.left) + fr.width * 0.5) / vw * 100;
+    var ay = (fr.top  - vr.top)                      / vh * 100;
+
+    // Where the section top falls inside the SVG (fraction of SVG height)
+    var sr = section.getBoundingClientRect();
+    var sectionTopInSVG = (sr.top - vr.top) / vh * 100;
+
+    // Endpoint: inside the img-divider area, ~40% up from section top
+    var tx = 50;
+    var ty = sectionTopInSVG * 0.4;
+
+    // CP1 encodes the 75° departure — never changes during animation
+    var angleRad = 75 * Math.PI / 180;
+    var dist = Math.sqrt(
+      Math.pow((tx - ax) / 100 * vw, 2) +
+      Math.pow((ty - ay) / 100 * vh, 2)
+    );
+    var armLen = dist * 0.35;
+    var cp1x = ax + (Math.cos(angleRad) * armLen / vw * 100);
+    var cp1y = ay + (-Math.sin(angleRad) * armLen / vh * 100);
+
+    // CP2 base position (will be offset by the swing)
+    var cp2x = tx + 1;
+    var cp2y = ty + (ay - ty) * 0.2;
+
+    lineState = { ax: ax, ay: ay, cp1x: cp1x, cp1y: cp1y, cp2x: cp2x, cp2y: cp2y, tx: tx, ty: ty };
+  }
+
+  function startSwing() {
+    var AMPLITUDE = 6;  // SVG units of horizontal swing
+    var PERIOD    = 4000; // ms per full left-right-left cycle
+    var t0 = null;
+
+    function frame(ts) {
+      if (!t0) t0 = ts;
+      if (lineState) {
+        var offset = AMPLITUDE * Math.sin(2 * Math.PI * (ts - t0) / PERIOD);
+        var path = document.getElementById('fish-line-path');
+        if (path) {
+          var s = lineState;
+          path.setAttribute('d',
+            'M '  + s.ax.toFixed(1)  + ',' + s.ay.toFixed(1) +
+            ' C ' + s.cp1x.toFixed(1) + ',' + s.cp1y.toFixed(1) +
+            ' '   + (s.cp2x + offset).toFixed(1) + ',' + s.cp2y.toFixed(1) +
+            ' '   + s.tx + ',' + s.ty
+          );
+        }
+      }
+      rafId = requestAnimationFrame(frame);
+    }
+    rafId = requestAnimationFrame(frame);
+  }
+
+  function init() {
+    computeLineState();
+    if (!rafId) startSwing();
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    init();
+    var fish = document.querySelector('.seo-fish');
+    if (fish) fish.addEventListener('load', init);
+  });
+  window.addEventListener('load', init);
+  // On resize, just recompute state — the running loop picks it up next frame
+  window.addEventListener('resize', computeLineState);
+})();
+</script>
+
+<script>
+(function() {
+  var btns = document.querySelectorAll('.msys-expand-btn');
+  var boxes = document.querySelectorAll('.msys-examples');
+  btns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      if (window.innerWidth <= 768) {
+        // Mobile: accordion — expand only this node
+        var thisBox = this.closest('.msys-node').querySelector('.msys-examples');
+        var isOpen = thisBox.classList.contains('open');
+        btns.forEach(function(b) { b.setAttribute('aria-expanded', 'false'); });
+        boxes.forEach(function(box) { box.classList.remove('open'); });
+        if (!isOpen) {
+          thisBox.classList.add('open');
+          this.setAttribute('aria-expanded', 'true');
+        }
+      } else {
+        // Desktop: toggle all together
+        var opening = this.getAttribute('aria-expanded') !== 'true';
+        btns.forEach(function(b) { b.setAttribute('aria-expanded', String(opening)); });
+        boxes.forEach(function(box) { box.classList.toggle('open', opening); });
+      }
+    });
+  });
+})();
+
+</script>
+
+<div id="cursor-glow" aria-hidden="true" style="position:fixed;pointer-events:none;z-index:2;width:480px;height:480px;left:0;top:0;border-radius:var(--r-lg);background:radial-gradient(circle,rgba(61,133,133,0.12) 0%,rgba(61,133,133,0.03) 42%,transparent 70%);transform:translate(-50%,-50%);opacity:0;will-change:left,top;transition:opacity 0.6s ease;"></div>
+</body>
+</html>
