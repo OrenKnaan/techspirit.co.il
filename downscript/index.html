@@ -10,20 +10,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Downscript — Turn any social media profile into transcripts</title>
-<meta name="description" content="Downscript is a free Chrome extension that finds every video on a social media profile and transcribes them all on your Mac. One click, one Markdown file per video, nothing sent to the cloud.">
+<meta name="description" content="Downscript is a free Chrome extension that finds every video on a social media profile and transcribes them all on your computer. One click, one Markdown file per video, nothing sent to the cloud.">
 <link rel="canonical" href="https://downscript.com/">
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://downscript.com/">
 <meta property="og:title" content="Downscript — Turn any social media profile into transcripts">
-<meta property="og:description" content="Downscript is a free Chrome extension that finds every video on a social media profile and transcribes them all on your Mac. One click, one Markdown file per video, nothing sent to the cloud.">
+<meta property="og:description" content="Downscript is a free Chrome extension that finds every video on a social media profile and transcribes them all on your computer. One click, one Markdown file per video, nothing sent to the cloud.">
 <meta property="og:image" content="https://downscript.com/assets/logo-downscript-horizontal.webp">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Downscript">
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Downscript — Turn any social media profile into transcripts">
-<meta name="twitter:description" content="Downscript is a free Chrome extension that finds every video on a social media profile and transcribes them all on your Mac. One click, one Markdown file per video, nothing sent to the cloud.">
+<meta name="twitter:description" content="Downscript is a free Chrome extension that finds every video on a social media profile and transcribes them all on your computer. One click, one Markdown file per video, nothing sent to the cloud.">
 <meta name="twitter:image" content="https://downscript.com/assets/logo-downscript-horizontal.webp">
 
 <link rel="icon" type="image/png" href="assets/icon-254.png">
@@ -298,6 +298,12 @@
     inset-inline-start:16px;inset-block-start:44px;inset-block-end:8px;
     border-inline-start:2px dashed var(--cream-dk);
   }
+  .os-toggle{display:inline-flex;margin-block-start:34px;border:2px solid var(--teal);border-radius:999px;padding:3px;gap:2px;background:var(--white)}
+  .os-toggle button{font:inherit;font-weight:600;font-size:.95rem;color:var(--teal);background:none;border:0;border-radius:999px;padding:.45em 1.5em;cursor:pointer;transition:background .2s,color .2s}
+  .os-toggle button[aria-pressed="true"]{background:var(--teal);color:var(--white)}
+  .os-toggle button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+  .os-panel[hidden]{display:none !important}
+  .os-note{margin-block-start:14px;font-size:.88rem;color:var(--muted);background:var(--cream);border-inline-start:4px solid var(--gold);padding:10px 14px;border-radius:0 var(--r-sm) var(--r-sm) 0}
   .install-steps h3{margin-block-end:6px}
   .install-steps p{color:var(--muted);font-size:.98rem}
   .install-steps pre{
@@ -398,7 +404,7 @@
   <section class="hero" aria-labelledby="hero-title">
     <div class="wrap">
       <div>
-        <span class="kicker">Free Chrome extension · runs on your Mac</span>
+        <span class="kicker">Free Chrome extension · runs on Mac and Windows</span>
         <h1 id="hero-title">Turn a <span class="accent">whole <span class="cycle" id="cycle-word">TikTok</span> profile</span> into readable transcripts.</h1>
         <p class="lead">Downscript finds every video on a profile — even the ones that get hidden as you scroll — and transcribes them all with Whisper, right on your machine. One click, one Markdown file per video.</p>
         <div class="hero-ctas">
@@ -458,7 +464,7 @@ what you protect with it…</pre>
     <div class="wrap">
       <span class="kicker">How it works</span>
       <h2 id="how-title" class="reveal">You click once. <span class="accent">It does the rest.</span></h2>
-      <p class="lead reveal">Downscript is two small tools working together: an extension that browses like you do, and a quiet companion on your Mac that does the heavy lifting.</p>
+      <p class="lead reveal">Downscript is two small tools working together: an extension that browses like you do, and a quiet companion on your computer that does the heavy lifting.</p>
 
       <ol class="steps">
         <li class="step reveal">
@@ -473,7 +479,7 @@ what you protect with it…</pre>
         </li>
         <li class="step reveal">
           <span class="step-num" aria-hidden="true">03</span>
-          <h3>Your Mac writes the transcripts</h3>
+          <h3>Your computer writes the transcripts</h3>
           <p>A local companion downloads each video, converts the audio, and transcribes it with Whisper — then saves a clean Markdown file to your Downloads folder.</p>
         </li>
       </ol>
@@ -519,7 +525,7 @@ what you protect with it…</pre>
         <article class="feature reveal">
           <span class="icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
           <h3>Private by design</h3>
-          <p>Downloading, audio conversion, and transcription all happen on your Mac. Nothing is uploaded, logged, or shared — there's no server to send it to.</p>
+          <p>Downloading, audio conversion, and transcription all happen on your computer. Nothing is uploaded, logged, or shared — there's no server to send it to.</p>
         </article>
         <article class="feature reveal">
           <span class="icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg></span>
@@ -584,23 +590,29 @@ what you protect with it…</pre>
         <a class="btn btn-ghost" href="/downscript/downscript-installation-guide.pdf" target="_blank" rel="noopener">Installation guide (PDF)</a>
       </div>
 
-      <div class="cols">
+      <div class="os-toggle reveal" role="group" aria-label="Choose your operating system">
+        <button type="button" data-os="mac" aria-pressed="true">macOS</button>
+        <button type="button" data-os="win" aria-pressed="false">Windows</button>
+      </div>
+      <noscript><style>.os-panel[hidden]{display:grid !important}.os-toggle{display:none}</style></noscript>
+
+      <div class="cols os-panel" data-os="mac">
         <aside class="prereqs reveal">
           <h3>You'll need on your Mac</h3>
           <ul>
-            <li>Google Chrome, signed in to TikTok</li>
-            <li><code>yt-dlp</code> — fetches the videos</li>
-            <li><code>ffmpeg</code> — converts audio</li>
-            <li><code>whisper-cli</code> + a Whisper model — transcription</li>
-            <li>Python 3 (ships with macOS)</li>
+            <li><span>Google Chrome, signed in to TikTok</span></li>
+            <li><span><code>ffmpeg</code> — converts audio</span></li>
+            <li><span><code>whisper-cli</code> + a Whisper model — transcription</span></li>
+            <li><span>Python 3 (ships with macOS)</span></li>
+            <li><span><code>yt-dlp</code> — fetches the videos (installed for you in step 2)</span></li>
           </ul>
-          <p>The extension's settings page has a "Check setup" button that verifies all of these for you, with a green light per row.</p>
+          <p>One command gets the tools: <code>brew install ffmpeg whisper-cpp</code>. The extension's settings page has a "Check setup" button that verifies everything, with a green light per row.</p>
         </aside>
 
         <ol class="install-steps">
           <li class="reveal">
             <h3>Load the extension</h3>
-            <p>Open <code>chrome://extensions</code>, switch on <em>Developer mode</em>, choose <em>Load unpacked</em>, and select the <code>extension</code> folder from the unzipped download.</p>
+            <p>Unzip the download. Open <code>chrome://extensions</code>, switch on <em>Developer mode</em>, choose <em>Load unpacked</em>, and select the <code>extension</code> folder.</p>
           </li>
           <li class="reveal">
             <h3>Register the companion</h3>
@@ -612,7 +624,42 @@ python3 -m venv .venv
           </li>
           <li class="reveal">
             <h3>Check, then run</h3>
-            <p>Open the extension's settings, press <em>Check setup</em>, and wait for four green rows. Then visit any TikTok profile and press <em>Start Extraction</em>.</p>
+            <p>Open the extension's settings, press <em>Check setup</em>, and wait for green rows. Then visit any TikTok profile and press <em>Start Extraction</em>.</p>
+          </li>
+        </ol>
+      </div>
+
+      <div class="cols os-panel" data-os="win" hidden>
+        <aside class="prereqs reveal">
+          <h3>You'll need on your Windows PC</h3>
+          <ul>
+            <li><span>Windows 10 or 11, Google Chrome signed in to TikTok</span></li>
+            <li><span>Python 3 from <code>python.org</code> (tick "Add python.exe to PATH")</span></li>
+            <li><span><code>ffmpeg</code> — <code>winget install Gyan.FFmpeg</code></span></li>
+            <li><span><code>whisper-cli.exe</code> — from the whisper.cpp releases page on GitHub</span></li>
+            <li><span>A Whisper model file, e.g. <code>ggml-small.bin</code></span></li>
+            <li><span><code>yt-dlp</code> — installed for you in step 2</span></li>
+          </ul>
+          <p>Press <em>Check setup</em> in the extension's settings after pasting the full path of each tool (find them with <code>where.exe ffmpeg</code>). The PDF guide has every command.</p>
+        </aside>
+
+        <ol class="install-steps">
+          <li class="reveal">
+            <h3>Load the extension</h3>
+            <p>Right-click the download and choose <em>Extract All</em>. Open <code>chrome://extensions</code>, switch on <em>Developer mode</em>, choose <em>Load unpacked</em>, and select the <code>extension</code> folder.</p>
+          </li>
+          <li class="reveal">
+            <h3>Register the companion</h3>
+            <p>In PowerShell, from the unzipped folder:</p>
+            <pre>cd downscript\companion
+py -3 -m venv .venv
+.\.venv\Scripts\pip install -r requirements.txt
+powershell -ExecutionPolicy Bypass -File .\install.ps1</pre>
+          </li>
+          <li class="reveal">
+            <h3>Check, then run</h3>
+            <p>Open the extension's settings, paste the paths to <code>ffmpeg.exe</code>, <code>whisper-cli.exe</code> and the model, and press <em>Check setup</em>. Then visit any TikTok profile and press <em>Start Extraction</em>.</p>
+            <p class="os-note">Windows support is new. If a step doesn't work, write to <a href="mailto:oren@techspirit.co.il">oren@techspirit.co.il</a>. If cookie errors appear, pick Edge or Firefox as the cookie browser in Settings.</p>
           </li>
         </ol>
       </div>
@@ -632,7 +679,7 @@ python3 -m venv .venv
             <svg class="plus" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
           </button>
           <div class="faq-a" id="faq1" hidden>
-            <p>No. The only network traffic is between your Mac and the social network itself, to fetch the videos. Transcription runs on your own processor, and the transcripts are written straight to your Downloads folder. There is no central server.</p>
+            <p>No. The only network traffic is between your computer and the social network itself, to fetch the videos. Transcription runs on your own processor, and the transcripts are written straight to your Downloads folder. There is no central server.</p>
           </div>
         </div>
 
@@ -672,7 +719,7 @@ python3 -m venv .venv
             <svg class="plus" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
           </button>
           <div class="faq-a" id="faq5" hidden>
-            <p>Not yet. The installer and file paths assume macOS. The pipeline tools themselves are cross-platform, so ports are possible, but macOS is the currently tested and supported environment.</p>
+            <p>Windows 10 and 11, yes. The Setup section has a Windows tab with its own installer (a PowerShell script in place of <code>install.sh</code>). Windows support is newer than macOS, which is the most tested environment, so if something doesn't work for you, write to <a href="mailto:oren@techspirit.co.il">oren@techspirit.co.il</a>. Linux is not officially supported yet, although the pipeline tools themselves are cross-platform.</p>
           </div>
         </div>
 
@@ -714,6 +761,21 @@ python3 -m venv .venv
 </footer>
 
 <script>
+
+  // Setup: pick the visitor's OS automatically, let them switch
+  (function () {
+    var btns = document.querySelectorAll('.os-toggle button');
+    var panels = document.querySelectorAll('.os-panel');
+    if (!btns.length) return;
+    function show(os) {
+      btns.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.os === os)); });
+      panels.forEach(function (p) { p.hidden = p.dataset.os !== os; });
+    }
+    var plat = (navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || navigator.userAgent || '';
+    show(/Win/.test(plat) ? 'win' : 'mac');
+    btns.forEach(function (b) { b.addEventListener('click', function () { show(b.dataset.os); }); });
+  })();
+
   // FAQ accordion
   document.querySelectorAll('.faq-item button').forEach(function (btn) {
     btn.addEventListener('click', function () {
