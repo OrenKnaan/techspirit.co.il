@@ -579,6 +579,11 @@ what you protect with it…</pre>
       <h2 id="setup-title" class="reveal">A one-time, <span class="accent">five-minute</span> setup.</h2>
       <p class="lead reveal">Downscript is a local tool, so it's installed by hand rather than from a store. In exchange, nothing about it is hidden — you can read every line it runs.</p>
 
+      <div class="reveal" style="display:flex;gap:14px;flex-wrap:wrap;margin:26px 0 6px">
+        <a class="btn btn-primary" href="/downscript/downscript.zip" download>Download Downscript (ZIP)</a>
+        <a class="btn btn-ghost" href="/downscript/downscript-installation-guide.pdf" target="_blank" rel="noopener">Installation guide (PDF)</a>
+      </div>
+
       <div class="cols">
         <aside class="prereqs reveal">
           <h3>You'll need on your Mac</h3>
@@ -595,12 +600,14 @@ what you protect with it…</pre>
         <ol class="install-steps">
           <li class="reveal">
             <h3>Load the extension</h3>
-            <p>Open <code>chrome://extensions</code>, switch on <em>Developer mode</em>, choose <em>Load unpacked</em>, and select the <code>extension</code> folder.</p>
+            <p>Open <code>chrome://extensions</code>, switch on <em>Developer mode</em>, choose <em>Load unpacked</em>, and select the <code>extension</code> folder from the unzipped download.</p>
           </li>
           <li class="reveal">
             <h3>Register the companion</h3>
-            <p>One command connects Chrome to the local transcription pipeline:</p>
+            <p>A few commands connect Chrome to the local transcription pipeline (the PDF guide walks through each one):</p>
             <pre>cd downscript/companion
+python3 -m venv .venv
+.venv/bin/pip install -r requirements.txt
 ./install.sh</pre>
           </li>
           <li class="reveal">
